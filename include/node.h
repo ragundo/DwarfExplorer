@@ -234,6 +234,7 @@ namespace rdf
 
     struct NodeEnum : public Node
     {
+        DF_Type m_base_type;
         QString m_enum_type;
 
         NodeEnum()
@@ -246,6 +247,7 @@ namespace rdf
             auto clon = new NodeEnum;
             init(clon);
             clon->m_enum_type = m_enum_type;
+            clon->m_base_type = m_base_type;            
             return clon;
         }        
     };
@@ -320,6 +322,7 @@ namespace rdf
     struct NodeVector : public Node
     {
         std::string m_addornements;
+        DF_Type      m_enum_base;
 
         NodeVector()
         {
@@ -331,6 +334,7 @@ namespace rdf
             auto clon = new NodeVector;
             init(clon);
             clon->m_addornements = m_addornements;
+            clon->m_enum_base = m_enum_base;
             return clon;
         }
     };
@@ -344,6 +348,7 @@ namespace rdf
     public:
         std::string m_addornements;
         std::size_t m_array_size;
+        DF_Type      m_enum_base;
 
         NodeArray()
         {
@@ -357,6 +362,7 @@ namespace rdf
             init(clon);
             clon->m_addornements = m_addornements;
             clon->m_array_size   = m_array_size;
+            clon->m_enum_base    = m_enum_base;
             return clon;
         }
     };

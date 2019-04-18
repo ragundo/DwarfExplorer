@@ -371,7 +371,7 @@ std::map<DF_Type,size_t> DF_types_size_table =
 	{ DF_Type::knowledge_scholar_flags_13, sizeof(df::knowledge_scholar_flags_13) },
 	{ DF_Type::dfhack_knowledge_scholar_flag, sizeof(df::enums::dfhack_knowledge_scholar_flag::dfhack_knowledge_scholar_flag) },
 	{ DF_Type::language_word_flags, sizeof(df::language_word_flags) },
-	{ DF_Type::part_of_speech, sizeof(df::enums::part_of_speech::part_of_speech) },
+	{ DF_Type::part_of_speech, 2 },
 	{ DF_Type::sphere_type, sizeof(df::enums::sphere_type::sphere_type) },
 	{ DF_Type::language_translation, sizeof(df::language_translation) },
 	{ DF_Type::language_symbol, sizeof(df::language_symbol) },

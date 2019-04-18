@@ -54,15 +54,15 @@ void fill_compound_array_entry(Node* p_parent_node, uint64_t p_address, QString 
     n_pve->m_df_type = p_parent_node->m_df_type;
     n_pve->m_rdf_type = p_rdf_type;
     n_pve->m_field_name = p_field_name;
-    n_pve->m_address = p_address;        
-    n_pve->m_parent = p_parent_node;                
+    n_pve->m_address = p_address;
+    n_pve->m_parent = p_parent_node;
     fill_node(p_address, p_parent_node);
 }
 
 //
 //------------------------------------------------------------------------------------//
 //
-void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
+void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_address)
 {
     // Node name [index]
     QString field_name = "[";
@@ -84,8 +84,8 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<uint16_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(uint16_t), p_address, DF_Type::uint16_t, RDF_Type::uint16_t);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;            
-            n_pve->m_parent = p_parent_node;            
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
             return;
         }
         case rdf::DF_Type::uint32_t :
@@ -93,7 +93,7 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<uint32_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(uint32_t), p_address, DF_Type::uint32_t, RDF_Type::uint32_t);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;           
+            n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
         }
@@ -102,8 +102,8 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<uint64_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(uint64_t), p_address, DF_Type::uint64_t, RDF_Type::uint64_t);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;       
-            n_pve->m_parent = p_parent_node;                 
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
             return;
         }
         case rdf::DF_Type::int8_t :
@@ -111,8 +111,8 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<int8_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(int8_t), p_address, DF_Type::int8_t, RDF_Type::int8_t);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;         
-            n_pve->m_parent = p_parent_node;               
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
             return;
         }
         case rdf::DF_Type::int16_t :
@@ -120,8 +120,8 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<int16_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(int16_t), p_address, DF_Type::int16_t, RDF_Type::int16_t);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;       
-            n_pve->m_parent = p_parent_node;                 
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
             return;
         }
         case rdf::DF_Type::int32_t :
@@ -129,8 +129,8 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<int32_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(int32_t), p_address, DF_Type::int32_t, RDF_Type::int32_t);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;     
-            n_pve->m_parent = p_parent_node;                   
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
             return;
         }
         case rdf::DF_Type::int64_t :
@@ -138,8 +138,8 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<int64_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(int64_t), p_address, DF_Type::int64_t, RDF_Type::int64_t);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;      
-            n_pve->m_parent = p_parent_node;                  
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
             return;
         }
         case rdf::DF_Type::Bool :
@@ -147,8 +147,8 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<bool>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(bool), p_address, DF_Type::Bool, RDF_Type::Bool);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;            
-            n_pve->m_parent = p_parent_node;            
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
             return;
         }
         case rdf::DF_Type::Stl_string :
@@ -156,8 +156,8 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
             auto n_pve = new NodeSimple<std::string>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(std::string), p_address, DF_Type::Stl_string, RDF_Type::Stl_string);
             n_pve->m_field_name = field_name;
-            n_pve->m_address = p_address;      
-            n_pve->m_parent = p_parent_node;                  
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
             return;
         }
         default:
@@ -170,31 +170,40 @@ void fill_array_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
     if (rdf_type == RDF_Type::Enum)
     {
         auto n_pve = new NodeEnum;
-        fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
+        if (p_parent_node->m_enum_base == DF_Type::None)
+        {
+            n_pve->m_base_type = p_parent_node->m_df_type;
+            fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
+        }
+        else
+        {
+            n_pve->m_base_type = p_parent_node->m_enum_base;
+            fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_enum_base), p_address, p_parent_node->m_df_type, rdf_type);
+        }
         n_pve->m_enum_type = QString::fromStdString(DF_Type_to_string(p_parent_node->m_df_type));
         n_pve->m_field_name = field_name;
-        return;        
+        return;
     }
     if (rdf_type == RDF_Type::Bitfield)
     {
         auto n_pve = new NodeBitfield;
         fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
         n_pve->m_field_name = field_name;
-        return;                
-    }    
+        return;
+    }
     switch (rdf_type)
     {
         case RDF_Type::Struct :
-            fill_compound_array_entry(p_parent_node, p_address, field_name,RDF_Type::Struct); 
-            break;        
+            fill_compound_array_entry(p_parent_node, p_address, field_name,RDF_Type::Struct);
+            break;
         case RDF_Type::Compound :
-            fill_compound_array_entry(p_parent_node, p_address, field_name,RDF_Type::Compound);         
-            break;        
+            fill_compound_array_entry(p_parent_node, p_address, field_name,RDF_Type::Compound);
+            break;
         case RDF_Type::Class:
-            fill_compound_array_entry(p_parent_node, p_address, field_name,RDF_Type::Class);                 
-            break;        
+            fill_compound_array_entry(p_parent_node, p_address, field_name,RDF_Type::Class);
+            break;
         case RDF_Type::Union:
-            fill_compound_array_entry(p_parent_node, p_address, field_name,RDF_Type::Union);                         
+            fill_compound_array_entry(p_parent_node, p_address, field_name,RDF_Type::Union);
             break;
         default: break;
     }
@@ -257,9 +266,12 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
                     break;
                 case rdf::DF_Type::Stl_string:
                     item_address += sizeof(std::string);
-                    break;   
+                    break;
                 default:
-                    item_address += size_of_DF_Type(node->m_df_type);
+                    if (node->m_enum_base == DF_Type::None)
+                        item_address += size_of_DF_Type(node->m_df_type);
+                    else
+                        item_address += size_of_DF_Type(node->m_enum_base);
             }
         }
         endInsertRows();
@@ -311,6 +323,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
         {
             NodeArray* node_array = new NodeArray;
             node_array->m_addornements = addornements;
+            node_array->m_enum_base = node->m_enum_base;
             auto size = addornements.substr(1,512);
             auto index = 0;
             while (std::isdigit(size[index++]));

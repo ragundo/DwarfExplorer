@@ -15,7 +15,7 @@ using namespace rdf;
 using namespace DFHack;
 
 extern std::map<DF_Type,size_t> DF_types_size_table;
-extern std::string get_enum_value_as_string(DF_Type p_df_type, uint64_t p_address);
+extern std::pair<int64_t, std::string> get_enum_decoded(const NodeEnum* p_node);
 
 std::string to_hex(uint64_t p_dec)
 {
@@ -208,31 +208,15 @@ QString process_pointer(const NodeBase* p_node)
     return QString::fromStdString(address_hex);
 }
 
+
 QString Enum_data_from_Value(const NodeBase* p_node)
 {
-        std::string enum_value_as_string;
-        if (p_node->m_used_type == "int8_t")
-        {
-            auto pointer_enum = reinterpret_cast<int8_t*>(p_node->m_address);
-            auto enum_value = *pointer_enum;
-            enum_value_as_string = std::to_string(enum_value);
-        }
-        if (p_node->m_used_type == "int16_t")
-        {
-            auto pointer_enum = reinterpret_cast<int16_t*>(p_node->m_address);
-            auto enum_value = *pointer_enum;
-            enum_value_as_string = std::to_string(enum_value);
-        }
-        else if (p_node->m_used_type == "int32_t")
-        {
-            auto pointer_enum = reinterpret_cast<int32_t*>(p_node->m_address);
-            auto enum_value = *pointer_enum;
-            enum_value_as_string = std::to_string(enum_value);
-        }
+        auto enum_node = dynamic_cast<const NodeEnum*>(p_node);
+        auto enum_decoded = get_enum_decoded(enum_node);
         QString l_result = "[";
-        l_result.append(QString::fromStdString(enum_value_as_string));
+        l_result.append(QString::number(enum_decoded.first));
         l_result.append("] = ");
-        l_result.append(QString::fromStdString(get_enum_value_as_string(p_node->m_df_type, p_node->m_address)));
+        l_result.append(QString::fromStdString(enum_decoded.second));
         return l_result;
 }
 
