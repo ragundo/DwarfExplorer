@@ -42,7 +42,7 @@ namespace rdf
         DF_Type          m_df_type    {rdf::DF_Type::None};
         RDF_Type         m_rdf_type   {rdf::RDF_Type::None};
         NodeBase*        m_parent     {nullptr};
-        QString          m_used_type  {""};
+        //QString          m_used_type  {""};
         QString          m_comment    {""};
         uint64_t         m_address;
         NodeType         m_node_type;
@@ -77,7 +77,7 @@ namespace rdf
             p_dest->m_df_type = this->m_df_type;
             p_dest->m_rdf_type = this->m_rdf_type;
             p_dest->m_parent = nullptr;
-            p_dest->m_used_type = this->m_used_type;
+            //p_dest->m_used_type = this->m_used_type;
             p_dest->m_comment = this->m_comment;
             p_dest->m_node_type = this->m_node_type;
             p_dest->m_address = this->m_address;
@@ -327,6 +327,7 @@ namespace rdf
         NodeVector()
         {
             m_node_type = NodeType::NodeVector;
+            m_enum_base = DF_Type::None;
         }
 
         NodeBase* clone() override

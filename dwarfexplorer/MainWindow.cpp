@@ -76,8 +76,6 @@ MainWindow::MainWindow(std::shared_ptr<EventProxy> &&proxy, QWidget *parent)
     node->m_path = "df.global.world";
 
     node_from_world(reinterpret_cast<uint64_t>(df::global::world), node);
-    qDebug() << node->m_used_type;
-
 
     model = new DF_Model(this);
     model->set_root(node);

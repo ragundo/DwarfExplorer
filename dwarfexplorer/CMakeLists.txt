@@ -6,25 +6,26 @@ add_definitions(
 
 set(DWARFEXPLORER_SOURCES
     main.cpp
+    node.cpp        
     EventProxy.cpp
     MainWindow.cpp
-    fill_nodes.cpp
-    fill_offsets.cpp
-    offsets_cache.cpp
-    df_model.cpp
-    df_model_data_from_structure.cpp
-    df_model_data_from_type.cpp
-    df_model_data_from_value.cpp
-    df_types_size.cpp
-    df_model_vector.cpp
-    df_model_array.cpp    
-    df_model_pointer.cpp
-    df_model_util.cpp
     dfstructure_window.cpp
-    node.cpp
-    enum_values.cpp
-    bitfields_values.cpp
-    df_2_rdf.cpp
+    QtModel/df_model.cpp
+    QtModel/df_model_data_from_structure.cpp
+    QtModel/df_model_data_from_type.cpp
+    QtModel/df_model_data_from_value.cpp
+    QtModel/df_model_vector.cpp
+    QtModel/df_model_array.cpp
+    QtModel/df_model_pointer.cpp
+    QtModel/df_model_util.cpp
+    generated/offsets_cache.cpp    
+    generated/fill_nodes.cpp
+    generated/fill_offsets.cpp    
+    generated/df_types_size.cpp    
+    generated/enum_values.cpp
+    generated/bitfields_values.cpp
+    generated/df_2_rdf.cpp
+    generated/polymorphic_factory.cpp
 )
 
 qt5_wrap_cpp(DWARFEXPLORER_MOC_SOURCES
