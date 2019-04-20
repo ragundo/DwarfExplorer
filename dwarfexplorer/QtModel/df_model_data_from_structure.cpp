@@ -3,26 +3,6 @@
 using namespace rdf;
 namespace
 {
-    bool is_simple_type(const NodeBase* l_node)
-    {
-        if ((l_node->m_df_type == rdf::DF_Type::Bool) ||
-                (l_node->m_df_type == rdf::DF_Type::int8_t) ||
-                (l_node->m_df_type == rdf::DF_Type::int16_t) ||
-                (l_node->m_df_type == rdf::DF_Type::int32_t) ||
-                (l_node->m_df_type == rdf::DF_Type::int64_t) ||
-                (l_node->m_df_type == rdf::DF_Type::uint8_t) ||
-                (l_node->m_df_type == rdf::DF_Type::uint16_t) ||
-                (l_node->m_df_type == rdf::DF_Type::uint32_t) ||
-                (l_node->m_df_type == rdf::DF_Type::uint64_t) ||
-                (l_node->m_df_type == rdf::DF_Type::Long) ||
-                (l_node->m_df_type == rdf::DF_Type::Char) ||
-                (l_node->m_df_type == rdf::DF_Type::S_float) ||
-                (l_node->m_df_type == rdf::DF_Type::D_float) ||
-                (l_node->m_df_type == rdf::DF_Type::Void))
-            return true;
-        return false;
-    }
-
     bool is_vector(const NodeBase* l_node)
     {
         if (l_node->m_rdf_type == rdf::RDF_Type::Vector)
@@ -40,15 +20,6 @@ namespace
     bool is_pointer(const NodeBase* l_node)
     {
         if (l_node->m_rdf_type == rdf::RDF_Type::Pointer)
-            return true;
-        return false;
-    }
-
-    bool is_string(const NodeBase* l_node)
-    {
-        if ((l_node->m_rdf_type == rdf::RDF_Type::Stl_string) ||
-                (l_node->m_rdf_type == rdf::RDF_Type::Static_string) ||
-                (l_node->m_rdf_type == rdf::RDF_Type::Ptr_string))
             return true;
         return false;
     }
@@ -70,7 +41,7 @@ std::string rec_array_type(std::string p_addornements)
     }
     if (p_addornements[0] == '[')
     {
-        auto index = 1;
+        std::size_t index = 1;
         while (std::isdigit(p_addornements[index++]));
         std::string array_size = p_addornements.substr(1, index-2);
         result.append("[").append(array_size).append("]");

@@ -215,10 +215,6 @@ void DF_Model::update_node_path(NodeBase* p_source, NodeBase* p_dest)
 //        p_dest->m_path.append(l_iterator.next());
 }
 
-bool DF_Model::insertRowsDFPointer(const QModelIndex& p_parent, int p_num_rows)
-{
-}
-
 
 bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
 {
@@ -273,20 +269,6 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
     return true;
 }
 
-
-void insertRowDFPointerVector(Node* p_parent, int p_index)
-{
-}
-
-bool DF_Model::insertRowsDFPointerVector(const QModelIndex& p_parent)
-{
-    return true;
-}
-
-bool DF_Model::insertRowsSimplePointerVector(const QModelIndex& p_parent)
-{
-    return true;
-}
 
 bool DF_Model::insertRowsCompound(const QModelIndex& p_parent, int p_num_rows)
 {
@@ -367,10 +349,7 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
             return true;
         case rdf::RDF_Type::AnonymousUnion:
             return true;
-//        case rdf::RDF_Type::DfArray:
-//            return true;
-//        case rdf::RDF_Type::Global:
-//            return true;
+        default:     break;
     }
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Pointer)

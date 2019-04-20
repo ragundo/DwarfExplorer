@@ -55,9 +55,7 @@ using namespace dwarfexplorer;
 
 static constexpr struct in_place_t {} in_place;
 
-extern void fill_node(uint64_t p_df_structure, rdf::Node* p_node_parent);
-extern void node_from_world(uint64_t p_df_structure, rdf::Node* p_node_parent);
-
+extern void fill_globals(rdf::Node* p_node_parent);
 
 MainWindow::MainWindow(std::shared_ptr<EventProxy> &&proxy, QWidget *parent)
     : QMainWindow(parent)
@@ -73,15 +71,15 @@ MainWindow::MainWindow(std::shared_ptr<EventProxy> &&proxy, QWidget *parent)
 //            this, &MainWindow::on_actionOpen_in_new_window_triggered);
 
     auto node = new rdf::NodeRoot;
-    node->m_path = "df.global.world";
+    node->m_path = "df.global";
 
-    node_from_world(reinterpret_cast<uint64_t>(df::global::world), node);
+    fill_globals(node);
 
     model = new DF_Model(this);
     model->set_root(node);
     ui->treeView->setModel(model);
 
-    setWindowTitle("DwarfExplorer - df.global.world");
+    setWindowTitle("DwarfExplorer - df.global");
 
 //    connect(event_proxy.get(), &EventProxy::mapLoaded,
 //            this, &MainWindow::updateUnitModel);

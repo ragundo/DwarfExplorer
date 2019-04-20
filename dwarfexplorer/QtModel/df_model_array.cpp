@@ -6,6 +6,7 @@
 using namespace rdf;
 
 extern void fill_simple_entry(NodeBase* p_pve, Node* p_node, size_t p_size, uint64_t p_address, DF_Type p_df_type, RDF_Type p_rdf_type);
+extern DF_Type get_df_subtype(DF_Type p_base_type, uint64_t p_address);
 extern void fill_node(uint64_t p_address, Node* p_node_parent);
 extern RDF_Type df_2_rdf(DF_Type p_df_type);
 
@@ -14,7 +15,7 @@ std::size_t array_size_recursive(std::string p_addornements)
 {
     if (!p_addornements.empty())
     {
-        if (p_addornements[0] = '[')
+        if (p_addornements[0] == '[')
         {
             std::string addornements = p_addornements.substr(1,500);
             int index = 0;
@@ -25,9 +26,9 @@ std::size_t array_size_recursive(std::string p_addornements)
                 return array_size;
             return array_size*array_size_recursive(rest);
         }
-        if (p_addornements[0] = '*')
+        if (p_addornements[0] == '*')
             return sizeof(void*);
-        if (p_addornements[0] = 'v')
+        if (p_addornements[0] == 'v')
             return sizeof(std::vector<void*>);
     }
     return 1;
@@ -38,7 +39,7 @@ std::size_t get_array_element_size(NodeArray* p_node_array)
     std::string addornements = p_node_array->m_addornements;
     // Remove you own addornements
     addornements = addornements.substr(1,500);
-    int index = 0;
+    std::size_t index = 0;
     while (std::isdigit(addornements[index++]));
     int array_size = std::stoi(addornements.substr(0,index-1));
     if (index >= addornements.length())
@@ -170,9 +171,11 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
     if (rdf_type == RDF_Type::Enum)
     {
         auto n_pve = new NodeEnum;
+        n_pve->m_base_type = p_parent_node->m_enum_base;
         if (p_parent_node->m_enum_base == DF_Type::None)
         {
-            n_pve->m_base_type = p_parent_node->m_df_type;
+            //n_pve->m_base_type = p_parent_node->m_df_type;
+            n_pve->m_base_type = DF_Type::int32_t;
             fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
         }
         else
@@ -189,6 +192,7 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
         auto n_pve = new NodeBitfield;
         fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
         n_pve->m_field_name = field_name;
+        n_pve->m_node_type = NodeType::NodeBitfield;
         return;
     }
     switch (rdf_type)
@@ -289,11 +293,11 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             uint64_t pointee = *(reinterpret_cast<uint64_t*>(item_address));
             if (pointee != 0)
             {
-                DF_Type real_type = get_df_subtype(l_node->m_df_type, pointee);
+                DF_Type real_type = get_df_subtype(node->m_df_type, pointee);
                 if (real_type != DF_Type::None)
                     node_pointer->m_df_type = real_type;
             }
-            
+
             node_pointer->m_addornements = addornements;
             node_pointer->m_node_type = NodeType::NodePointer;
             node_pointer->m_children.push_back(dummy());

@@ -23,10 +23,8 @@ public:
 
     bool        insertRowsVector(const QModelIndex& p_parent);
     bool        insertRowsPointer(const QModelIndex& p_parent);    
-    bool        insertRowsDFPointerVector(const QModelIndex& p_parent);
     bool        insertRowsSimplePointerVector(const QModelIndex& p_parent);
     bool        insertRowsCompound(const QModelIndex& p_parent, int p_num_rows);
-    bool        insertRowsDFPointer(const QModelIndex& p_parent, int p_num_rows);
     bool        insertRowsArray(const QModelIndex& p_parent);
     bool        insertRowsBitfield(const QModelIndex& p_parent);
     bool        insertRowsSimple(const QModelIndex& p_parent);    

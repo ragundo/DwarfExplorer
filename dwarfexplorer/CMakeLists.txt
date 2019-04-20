@@ -26,6 +26,7 @@ set(DWARFEXPLORER_SOURCES
     generated/bitfields_values.cpp
     generated/df_2_rdf.cpp
     generated/polymorphic_factory.cpp
+    generated/fill_globals.cpp
 )
 
 qt5_wrap_cpp(DWARFEXPLORER_MOC_SOURCES

@@ -11,7 +11,6 @@
 
 namespace rdf
 {
-
     enum class NodeType
     {
         NodeSimple,
@@ -19,7 +18,6 @@ namespace rdf
         NodeAnonymousCompound,
         NodeVector,
         NodeArray,
-        NodeArrayEntry,
         NodeUnion,
         NodeAnonymousUnion,
         NodeRange,
@@ -32,6 +30,7 @@ namespace rdf
     };
 
     class NodeRoot;
+
     //
     //------------------------------------------------------------------------------------//
     //
@@ -42,7 +41,6 @@ namespace rdf
         DF_Type          m_df_type    {rdf::DF_Type::None};
         RDF_Type         m_rdf_type   {rdf::RDF_Type::None};
         NodeBase*        m_parent     {nullptr};
-        //QString          m_used_type  {""};
         QString          m_comment    {""};
         uint64_t         m_address;
         NodeType         m_node_type;
@@ -77,7 +75,6 @@ namespace rdf
             p_dest->m_df_type = this->m_df_type;
             p_dest->m_rdf_type = this->m_rdf_type;
             p_dest->m_parent = nullptr;
-            //p_dest->m_used_type = this->m_used_type;
             p_dest->m_comment = this->m_comment;
             p_dest->m_node_type = this->m_node_type;
             p_dest->m_address = this->m_address;
@@ -87,7 +84,6 @@ namespace rdf
     //
     //------------------------------------------------------------------------------------//
     //
-
     struct NodeDummy : public NodeBase
     {
         NodeDummy()
@@ -150,6 +146,9 @@ namespace rdf
         }
     };
 
+    //
+    //------------------------------------------------------------------------------------//
+    //
     struct NodeRoot : public Node
     {
         QString m_path;
@@ -232,6 +231,9 @@ namespace rdf
         }
     };
 
+    //
+    //------------------------------------------------------------------------------------//
+    //
     struct NodeEnum : public Node
     {
         DF_Type m_base_type;
@@ -252,8 +254,9 @@ namespace rdf
         }        
     };
 
-  
-
+    //
+    //------------------------------------------------------------------------------------//
+    //
     struct NodeBitfieldEntry : public NodeSimple<bool>
     {
         int m_index;
@@ -274,7 +277,6 @@ namespace rdf
         }
     };    
 
-
     //
     //------------------------------------------------------------------------------------//
     //
@@ -292,7 +294,6 @@ namespace rdf
             return clon;
         }
     };
-
 
     //
     //------------------------------------------------------------------------------------//
@@ -347,9 +348,9 @@ namespace rdf
     struct NodeArray : public Node
     {
     public:
-        std::string m_addornements;
-        std::size_t m_array_size;
-        DF_Type      m_enum_base;
+        std::string m_addornements{""};
+        std::size_t m_array_size{0};
+        DF_Type      m_enum_base{DF_Type::None};
 
         NodeArray()
         {
