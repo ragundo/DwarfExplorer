@@ -23,8 +23,6 @@
 
 #include <QObject>
 
-namespace dwarfexplorer
-{
 
 class EventProxy: public QObject
 {
@@ -40,7 +38,6 @@ signals:
     void embarkScreenClosed();
 };
 
-}
 
 #endif
 

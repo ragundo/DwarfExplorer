@@ -15,6 +15,10 @@
 using namespace rdf;
 
 
+extern DF_Type get_df_subtype(DF_Type, uint64_t);
+extern DF_Type get_real_subtype(uint64_t p_address, DF_Type p_df_type);
+
+
 extern rdf::NodeDummy* dummy();
 
 
@@ -24,7 +28,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "activity_next_id";
 	auto n_activity_next_id          = new NodeSimple<int32_t>;
-	n_activity_next_id->m_field_name = QString::fromStdString(field_name);
+	n_activity_next_id->m_field_name = field_name;
 	n_activity_next_id->m_df_type    = DF_Type::int32_t;
 	n_activity_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_activity_next_id->m_node_type  = NodeType::NodeSimple;
@@ -35,7 +39,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "agreement_next_id";
 	auto n_agreement_next_id          = new NodeSimple<int32_t>;
-	n_agreement_next_id->m_field_name = QString::fromStdString(field_name);
+	n_agreement_next_id->m_field_name = field_name;
 	n_agreement_next_id->m_df_type    = DF_Type::int32_t;
 	n_agreement_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_agreement_next_id->m_node_type  = NodeType::NodeSimple;
@@ -46,7 +50,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "army_controller_next_id";
 	auto n_army_controller_next_id          = new NodeSimple<int32_t>;
-	n_army_controller_next_id->m_field_name = QString::fromStdString(field_name);
+	n_army_controller_next_id->m_field_name = field_name;
 	n_army_controller_next_id->m_df_type    = DF_Type::int32_t;
 	n_army_controller_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_army_controller_next_id->m_node_type  = NodeType::NodeSimple;
@@ -57,7 +61,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "army_next_id";
 	auto n_army_next_id          = new NodeSimple<int32_t>;
-	n_army_next_id->m_field_name = QString::fromStdString(field_name);
+	n_army_next_id->m_field_name = field_name;
 	n_army_next_id->m_df_type    = DF_Type::int32_t;
 	n_army_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_army_next_id->m_node_type  = NodeType::NodeSimple;
@@ -68,7 +72,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "army_tracking_info_next_id";
 	auto n_army_tracking_info_next_id          = new NodeSimple<int32_t>;
-	n_army_tracking_info_next_id->m_field_name = QString::fromStdString(field_name);
+	n_army_tracking_info_next_id->m_field_name = field_name;
 	n_army_tracking_info_next_id->m_df_type    = DF_Type::int32_t;
 	n_army_tracking_info_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_army_tracking_info_next_id->m_node_type  = NodeType::NodeSimple;
@@ -79,7 +83,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "art_image_chunk_next_id";
 	auto n_art_image_chunk_next_id          = new NodeSimple<int32_t>;
-	n_art_image_chunk_next_id->m_field_name = QString::fromStdString(field_name);
+	n_art_image_chunk_next_id->m_field_name = field_name;
 	n_art_image_chunk_next_id->m_df_type    = DF_Type::int32_t;
 	n_art_image_chunk_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_art_image_chunk_next_id->m_node_type  = NodeType::NodeSimple;
@@ -90,7 +94,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "artifact_next_id";
 	auto n_artifact_next_id          = new NodeSimple<int32_t>;
-	n_artifact_next_id->m_field_name = QString::fromStdString(field_name);
+	n_artifact_next_id->m_field_name = field_name;
 	n_artifact_next_id->m_df_type    = DF_Type::int32_t;
 	n_artifact_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_artifact_next_id->m_node_type  = NodeType::NodeSimple;
@@ -101,7 +105,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "basic_seed";
 	auto n_basic_seed          = new NodeSimple<int32_t>;
-	n_basic_seed->m_field_name = QString::fromStdString(field_name);
+	n_basic_seed->m_field_name = field_name;
 	n_basic_seed->m_df_type    = DF_Type::int32_t;
 	n_basic_seed->m_rdf_type   = RDF_Type::int32_t;
 	n_basic_seed->m_node_type  = NodeType::NodeSimple;
@@ -112,7 +116,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "belief_system_next_id";
 	auto n_belief_system_next_id          = new NodeSimple<int32_t>;
-	n_belief_system_next_id->m_field_name = QString::fromStdString(field_name);
+	n_belief_system_next_id->m_field_name = field_name;
 	n_belief_system_next_id->m_df_type    = DF_Type::int32_t;
 	n_belief_system_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_belief_system_next_id->m_node_type  = NodeType::NodeSimple;
@@ -123,7 +127,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "building_next_id";
 	auto n_building_next_id          = new NodeSimple<int32_t>;
-	n_building_next_id->m_field_name = QString::fromStdString(field_name);
+	n_building_next_id->m_field_name = field_name;
 	n_building_next_id->m_df_type    = DF_Type::int32_t;
 	n_building_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_building_next_id->m_node_type  = NodeType::NodeSimple;
@@ -134,7 +138,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "created_item_count";
 	auto n_created_item_count            = new NodeVector;
-	n_created_item_count->m_field_name   = QString::fromStdString(field_name);
+	n_created_item_count->m_field_name   = field_name;
 	n_created_item_count->m_df_type      = DF_Type::int32_t;
 	n_created_item_count->m_rdf_type     = RDF_Type::Vector;
 	n_created_item_count->m_node_type    = NodeType::NodeVector;
@@ -147,7 +151,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "created_item_matindex";
 	auto n_created_item_matindex            = new NodeVector;
-	n_created_item_matindex->m_field_name   = QString::fromStdString(field_name);
+	n_created_item_matindex->m_field_name   = field_name;
 	n_created_item_matindex->m_df_type      = DF_Type::int16_t;
 	n_created_item_matindex->m_rdf_type     = RDF_Type::Vector;
 	n_created_item_matindex->m_node_type    = NodeType::NodeVector;
@@ -160,7 +164,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "created_item_mattype";
 	auto n_created_item_mattype            = new NodeVector;
-	n_created_item_mattype->m_field_name   = QString::fromStdString(field_name);
+	n_created_item_mattype->m_field_name   = field_name;
 	n_created_item_mattype->m_df_type      = DF_Type::int16_t;
 	n_created_item_mattype->m_rdf_type     = RDF_Type::Vector;
 	n_created_item_mattype->m_node_type    = NodeType::NodeVector;
@@ -173,7 +177,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "created_item_subtype";
 	auto n_created_item_subtype            = new NodeVector;
-	n_created_item_subtype->m_field_name   = QString::fromStdString(field_name);
+	n_created_item_subtype->m_field_name   = field_name;
 	n_created_item_subtype->m_df_type      = DF_Type::int16_t;
 	n_created_item_subtype->m_rdf_type     = RDF_Type::Vector;
 	n_created_item_subtype->m_node_type    = NodeType::NodeVector;
@@ -186,11 +190,12 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "created_item_type";
 	auto n_created_item_type            = new NodeVector;
-	n_created_item_type->m_field_name   = QString::fromStdString(field_name);
+	n_created_item_type->m_field_name   = field_name;
 	n_created_item_type->m_df_type      = DF_Type::item_type;
 	n_created_item_type->m_rdf_type     = RDF_Type::Vector;
 	n_created_item_type->m_node_type    = NodeType::NodeVector;
-	n_created_item_type->m_enum_base    = DF_Type::int16_t;
+	n_created_item_type->m_enum_base = DF_Type::int16_t;
+	n_created_item_type->m_enum_base       = DF_Type::int16_t;
 	n_created_item_type->m_addornements = "v";
 	n_created_item_type->m_address      = reinterpret_cast<uint64_t>(df::global::created_item_type);
 	n_created_item_type->m_comment      = "";
@@ -200,7 +205,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "crime_next_id";
 	auto n_crime_next_id          = new NodeSimple<int32_t>;
-	n_crime_next_id->m_field_name = QString::fromStdString(field_name);
+	n_crime_next_id->m_field_name = field_name;
 	n_crime_next_id->m_df_type    = DF_Type::int32_t;
 	n_crime_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_crime_next_id->m_node_type  = NodeType::NodeSimple;
@@ -211,7 +216,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "cultural_identity_next_id";
 	auto n_cultural_identity_next_id          = new NodeSimple<int32_t>;
-	n_cultural_identity_next_id->m_field_name = QString::fromStdString(field_name);
+	n_cultural_identity_next_id->m_field_name = field_name;
 	n_cultural_identity_next_id->m_df_type    = DF_Type::int32_t;
 	n_cultural_identity_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_cultural_identity_next_id->m_node_type  = NodeType::NodeSimple;
@@ -222,7 +227,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "cur_season";
 	auto n_cur_season          = new NodeSimple<int8_t>;
-	n_cur_season->m_field_name = QString::fromStdString(field_name);
+	n_cur_season->m_field_name = field_name;
 	n_cur_season->m_df_type    = DF_Type::int8_t;
 	n_cur_season->m_rdf_type   = RDF_Type::int8_t;
 	n_cur_season->m_node_type  = NodeType::NodeSimple;
@@ -233,7 +238,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "cur_season_tick";
 	auto n_cur_season_tick          = new NodeSimple<int32_t>;
-	n_cur_season_tick->m_field_name = QString::fromStdString(field_name);
+	n_cur_season_tick->m_field_name = field_name;
 	n_cur_season_tick->m_df_type    = DF_Type::int32_t;
 	n_cur_season_tick->m_rdf_type   = RDF_Type::int32_t;
 	n_cur_season_tick->m_node_type  = NodeType::NodeSimple;
@@ -244,7 +249,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "cur_year";
 	auto n_cur_year          = new NodeSimple<int32_t>;
-	n_cur_year->m_field_name = QString::fromStdString(field_name);
+	n_cur_year->m_field_name = field_name;
 	n_cur_year->m_df_type    = DF_Type::int32_t;
 	n_cur_year->m_rdf_type   = RDF_Type::int32_t;
 	n_cur_year->m_node_type  = NodeType::NodeSimple;
@@ -255,7 +260,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "cur_year_tick";
 	auto n_cur_year_tick          = new NodeSimple<int32_t>;
-	n_cur_year_tick->m_field_name = QString::fromStdString(field_name);
+	n_cur_year_tick->m_field_name = field_name;
 	n_cur_year_tick->m_df_type    = DF_Type::int32_t;
 	n_cur_year_tick->m_rdf_type   = RDF_Type::int32_t;
 	n_cur_year_tick->m_node_type  = NodeType::NodeSimple;
@@ -266,7 +271,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "cur_year_tick_advmode";
 	auto n_cur_year_tick_advmode          = new NodeSimple<int32_t>;
-	n_cur_year_tick_advmode->m_field_name = QString::fromStdString(field_name);
+	n_cur_year_tick_advmode->m_field_name = field_name;
 	n_cur_year_tick_advmode->m_df_type    = DF_Type::int32_t;
 	n_cur_year_tick_advmode->m_rdf_type   = RDF_Type::int32_t;
 	n_cur_year_tick_advmode->m_node_type  = NodeType::NodeSimple;
@@ -278,11 +283,12 @@ void fill_globals(Node* p_node_parent)
 	field_name = "current_weather";
 	auto n_current_weather            = new NodeArray;
 	n_current_weather->m_address      = reinterpret_cast<uint64_t>(df::global::current_weather);
-	n_current_weather->m_field_name   = QString::fromStdString(field_name);
+	n_current_weather->m_field_name   = field_name;
 	n_current_weather->m_df_type      = DF_Type::weather_type;
 	n_current_weather->m_rdf_type     = RDF_Type::Array;
 	n_current_weather->m_comment      = "";
 	n_current_weather->m_node_type    = NodeType::NodeArray;
+	n_current_weather->m_enum_base    = DF_Type::int8_t;
 	n_current_weather->m_enum_base    = DF_Type::int8_t;
 	n_current_weather->m_addornements = "[5[5";
 	n_current_weather->m_array_size   = 5;
@@ -292,7 +298,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "cursor";
 	auto n_cursor = new NodeCompound;
-	n_cursor->m_field_name = QString::fromStdString(field_name);
+	n_cursor->m_field_name = field_name;
 	n_cursor->m_df_type    = DF_Type::T_cursor;
 	n_cursor->m_rdf_type   = RDF_Type::Compound;
 	n_cursor->m_node_type  = NodeType::NodeCompound;
@@ -303,7 +309,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "d_init";
 	auto n_d_init = new NodeCompound;
-	n_d_init->m_field_name = QString::fromStdString(field_name);
+	n_d_init->m_field_name = field_name;
 	n_d_init->m_df_type    = DF_Type::d_init;
 	n_d_init->m_rdf_type   = RDF_Type::Compound;
 	n_d_init->m_node_type  = NodeType::NodeCompound;
@@ -314,7 +320,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "dance_form_next_id";
 	auto n_dance_form_next_id          = new NodeSimple<int32_t>;
-	n_dance_form_next_id->m_field_name = QString::fromStdString(field_name);
+	n_dance_form_next_id->m_field_name = field_name;
 	n_dance_form_next_id->m_df_type    = DF_Type::int32_t;
 	n_dance_form_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_dance_form_next_id->m_node_type  = NodeType::NodeSimple;
@@ -325,7 +331,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_combat";
 	auto n_debug_combat          = new NodeSimple<bool>;
-	n_debug_combat->m_field_name = QString::fromStdString(field_name);
+	n_debug_combat->m_field_name = field_name;
 	n_debug_combat->m_df_type    = DF_Type::Bool;
 	n_debug_combat->m_rdf_type   = RDF_Type::Bool;
 	n_debug_combat->m_node_type  = NodeType::NodeSimple;
@@ -336,7 +342,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_fastmining";
 	auto n_debug_fastmining          = new NodeSimple<bool>;
-	n_debug_fastmining->m_field_name = QString::fromStdString(field_name);
+	n_debug_fastmining->m_field_name = field_name;
 	n_debug_fastmining->m_df_type    = DF_Type::Bool;
 	n_debug_fastmining->m_rdf_type   = RDF_Type::Bool;
 	n_debug_fastmining->m_node_type  = NodeType::NodeSimple;
@@ -347,7 +353,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_noberserk";
 	auto n_debug_noberserk          = new NodeSimple<bool>;
-	n_debug_noberserk->m_field_name = QString::fromStdString(field_name);
+	n_debug_noberserk->m_field_name = field_name;
 	n_debug_noberserk->m_df_type    = DF_Type::Bool;
 	n_debug_noberserk->m_rdf_type   = RDF_Type::Bool;
 	n_debug_noberserk->m_node_type  = NodeType::NodeSimple;
@@ -358,7 +364,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_nodrink";
 	auto n_debug_nodrink          = new NodeSimple<bool>;
-	n_debug_nodrink->m_field_name = QString::fromStdString(field_name);
+	n_debug_nodrink->m_field_name = field_name;
 	n_debug_nodrink->m_df_type    = DF_Type::Bool;
 	n_debug_nodrink->m_rdf_type   = RDF_Type::Bool;
 	n_debug_nodrink->m_node_type  = NodeType::NodeSimple;
@@ -369,7 +375,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_noeat";
 	auto n_debug_noeat          = new NodeSimple<bool>;
-	n_debug_noeat->m_field_name = QString::fromStdString(field_name);
+	n_debug_noeat->m_field_name = field_name;
 	n_debug_noeat->m_df_type    = DF_Type::Bool;
 	n_debug_noeat->m_rdf_type   = RDF_Type::Bool;
 	n_debug_noeat->m_node_type  = NodeType::NodeSimple;
@@ -380,7 +386,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_nomoods";
 	auto n_debug_nomoods          = new NodeSimple<bool>;
-	n_debug_nomoods->m_field_name = QString::fromStdString(field_name);
+	n_debug_nomoods->m_field_name = field_name;
 	n_debug_nomoods->m_df_type    = DF_Type::Bool;
 	n_debug_nomoods->m_rdf_type   = RDF_Type::Bool;
 	n_debug_nomoods->m_node_type  = NodeType::NodeSimple;
@@ -391,7 +397,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_nopause";
 	auto n_debug_nopause          = new NodeSimple<bool>;
-	n_debug_nopause->m_field_name = QString::fromStdString(field_name);
+	n_debug_nopause->m_field_name = field_name;
 	n_debug_nopause->m_df_type    = DF_Type::Bool;
 	n_debug_nopause->m_rdf_type   = RDF_Type::Bool;
 	n_debug_nopause->m_node_type  = NodeType::NodeSimple;
@@ -402,7 +408,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_nosleep";
 	auto n_debug_nosleep          = new NodeSimple<bool>;
-	n_debug_nosleep->m_field_name = QString::fromStdString(field_name);
+	n_debug_nosleep->m_field_name = field_name;
 	n_debug_nosleep->m_df_type    = DF_Type::Bool;
 	n_debug_nosleep->m_rdf_type   = RDF_Type::Bool;
 	n_debug_nosleep->m_node_type  = NodeType::NodeSimple;
@@ -413,7 +419,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_showambush";
 	auto n_debug_showambush          = new NodeSimple<bool>;
-	n_debug_showambush->m_field_name = QString::fromStdString(field_name);
+	n_debug_showambush->m_field_name = field_name;
 	n_debug_showambush->m_df_type    = DF_Type::Bool;
 	n_debug_showambush->m_rdf_type   = RDF_Type::Bool;
 	n_debug_showambush->m_node_type  = NodeType::NodeSimple;
@@ -424,7 +430,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_turbospeed";
 	auto n_debug_turbospeed          = new NodeSimple<bool>;
-	n_debug_turbospeed->m_field_name = QString::fromStdString(field_name);
+	n_debug_turbospeed->m_field_name = field_name;
 	n_debug_turbospeed->m_df_type    = DF_Type::Bool;
 	n_debug_turbospeed->m_rdf_type   = RDF_Type::Bool;
 	n_debug_turbospeed->m_node_type  = NodeType::NodeSimple;
@@ -435,7 +441,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "debug_wildlife";
 	auto n_debug_wildlife          = new NodeSimple<bool>;
-	n_debug_wildlife->m_field_name = QString::fromStdString(field_name);
+	n_debug_wildlife->m_field_name = field_name;
 	n_debug_wildlife->m_df_type    = DF_Type::Bool;
 	n_debug_wildlife->m_rdf_type   = RDF_Type::Bool;
 	n_debug_wildlife->m_node_type  = NodeType::NodeSimple;
@@ -446,7 +452,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "entity_next_id";
 	auto n_entity_next_id          = new NodeSimple<int32_t>;
-	n_entity_next_id->m_field_name = QString::fromStdString(field_name);
+	n_entity_next_id->m_field_name = field_name;
 	n_entity_next_id->m_df_type    = DF_Type::int32_t;
 	n_entity_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_entity_next_id->m_node_type  = NodeType::NodeSimple;
@@ -457,7 +463,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "flow_guide_next_id";
 	auto n_flow_guide_next_id          = new NodeSimple<int32_t>;
-	n_flow_guide_next_id->m_field_name = QString::fromStdString(field_name);
+	n_flow_guide_next_id->m_field_name = field_name;
 	n_flow_guide_next_id->m_df_type    = DF_Type::int32_t;
 	n_flow_guide_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_flow_guide_next_id->m_node_type  = NodeType::NodeSimple;
@@ -468,7 +474,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "flows";
 	auto n_flows            = new NodeVector;
-	n_flows->m_field_name   = QString::fromStdString(field_name);
+	n_flows->m_field_name   = field_name;
 	n_flows->m_df_type      = DF_Type::flow_info;
 	n_flows->m_rdf_type     = RDF_Type::Vector;
 	n_flows->m_node_type    = NodeType::NodeVector;
@@ -481,7 +487,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "formation_next_id";
 	auto n_formation_next_id          = new NodeSimple<int32_t>;
-	n_formation_next_id->m_field_name = QString::fromStdString(field_name);
+	n_formation_next_id->m_field_name = field_name;
 	n_formation_next_id->m_df_type    = DF_Type::int32_t;
 	n_formation_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_formation_next_id->m_node_type  = NodeType::NodeSimple;
@@ -492,7 +498,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "gamemode";
 	auto n_gamemode = new NodeEnum;
-	n_gamemode->m_field_name = QString::fromStdString(field_name);
+	n_gamemode->m_field_name = field_name;
 	n_gamemode->m_df_type    = DF_Type::game_mode;
 	n_gamemode->m_rdf_type   = RDF_Type::Enum;
 	n_gamemode->m_node_type  = NodeType::NodeEnum;
@@ -505,7 +511,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "gametype";
 	auto n_gametype = new NodeEnum;
-	n_gametype->m_field_name = QString::fromStdString(field_name);
+	n_gametype->m_field_name = field_name;
 	n_gametype->m_df_type    = DF_Type::game_type;
 	n_gametype->m_rdf_type   = RDF_Type::Enum;
 	n_gametype->m_node_type  = NodeType::NodeEnum;
@@ -518,7 +524,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "gps";
 	auto n_gps = new NodeCompound;
-	n_gps->m_field_name = QString::fromStdString(field_name);
+	n_gps->m_field_name = field_name;
 	n_gps->m_df_type    = DF_Type::graphic;
 	n_gps->m_rdf_type   = RDF_Type::Compound;
 	n_gps->m_node_type  = NodeType::NodeCompound;
@@ -529,7 +535,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "gview";
 	auto n_gview = new NodeCompound;
-	n_gview->m_field_name = QString::fromStdString(field_name);
+	n_gview->m_field_name = field_name;
 	n_gview->m_df_type    = DF_Type::interfacest;
 	n_gview->m_rdf_type   = RDF_Type::Compound;
 	n_gview->m_node_type  = NodeType::NodeCompound;
@@ -540,7 +546,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "hist_event_collection_next_id";
 	auto n_hist_event_collection_next_id          = new NodeSimple<int32_t>;
-	n_hist_event_collection_next_id->m_field_name = QString::fromStdString(field_name);
+	n_hist_event_collection_next_id->m_field_name = field_name;
 	n_hist_event_collection_next_id->m_df_type    = DF_Type::int32_t;
 	n_hist_event_collection_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_hist_event_collection_next_id->m_node_type  = NodeType::NodeSimple;
@@ -551,7 +557,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "hist_event_next_id";
 	auto n_hist_event_next_id          = new NodeSimple<int32_t>;
-	n_hist_event_next_id->m_field_name = QString::fromStdString(field_name);
+	n_hist_event_next_id->m_field_name = field_name;
 	n_hist_event_next_id->m_df_type    = DF_Type::int32_t;
 	n_hist_event_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_hist_event_next_id->m_node_type  = NodeType::NodeSimple;
@@ -562,7 +568,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "hist_figure_next_id";
 	auto n_hist_figure_next_id          = new NodeSimple<int32_t>;
-	n_hist_figure_next_id->m_field_name = QString::fromStdString(field_name);
+	n_hist_figure_next_id->m_field_name = field_name;
 	n_hist_figure_next_id->m_df_type    = DF_Type::int32_t;
 	n_hist_figure_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_hist_figure_next_id->m_node_type  = NodeType::NodeSimple;
@@ -573,7 +579,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "identity_next_id";
 	auto n_identity_next_id          = new NodeSimple<int32_t>;
-	n_identity_next_id->m_field_name = QString::fromStdString(field_name);
+	n_identity_next_id->m_field_name = field_name;
 	n_identity_next_id->m_df_type    = DF_Type::int32_t;
 	n_identity_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_identity_next_id->m_node_type  = NodeType::NodeSimple;
@@ -584,7 +590,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "incident_next_id";
 	auto n_incident_next_id          = new NodeSimple<int32_t>;
-	n_incident_next_id->m_field_name = QString::fromStdString(field_name);
+	n_incident_next_id->m_field_name = field_name;
 	n_incident_next_id->m_df_type    = DF_Type::int32_t;
 	n_incident_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_incident_next_id->m_node_type  = NodeType::NodeSimple;
@@ -595,7 +601,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "init";
 	auto n_init = new NodeCompound;
-	n_init->m_field_name = QString::fromStdString(field_name);
+	n_init->m_field_name = field_name;
 	n_init->m_df_type    = DF_Type::init;
 	n_init->m_rdf_type   = RDF_Type::Compound;
 	n_init->m_node_type  = NodeType::NodeCompound;
@@ -606,7 +612,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "interaction_instance_next_id";
 	auto n_interaction_instance_next_id          = new NodeSimple<int32_t>;
-	n_interaction_instance_next_id->m_field_name = QString::fromStdString(field_name);
+	n_interaction_instance_next_id->m_field_name = field_name;
 	n_interaction_instance_next_id->m_df_type    = DF_Type::int32_t;
 	n_interaction_instance_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_interaction_instance_next_id->m_node_type  = NodeType::NodeSimple;
@@ -617,7 +623,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "item_next_id";
 	auto n_item_next_id          = new NodeSimple<int32_t>;
-	n_item_next_id->m_field_name = QString::fromStdString(field_name);
+	n_item_next_id->m_field_name = field_name;
 	n_item_next_id->m_df_type    = DF_Type::int32_t;
 	n_item_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_item_next_id->m_node_type  = NodeType::NodeSimple;
@@ -628,7 +634,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "job_next_id";
 	auto n_job_next_id          = new NodeSimple<int32_t>;
-	n_job_next_id->m_field_name = QString::fromStdString(field_name);
+	n_job_next_id->m_field_name = field_name;
 	n_job_next_id->m_df_type    = DF_Type::int32_t;
 	n_job_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_job_next_id->m_node_type  = NodeType::NodeSimple;
@@ -639,7 +645,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "machine_next_id";
 	auto n_machine_next_id          = new NodeSimple<int32_t>;
-	n_machine_next_id->m_field_name = QString::fromStdString(field_name);
+	n_machine_next_id->m_field_name = field_name;
 	n_machine_next_id->m_df_type    = DF_Type::int32_t;
 	n_machine_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_machine_next_id->m_node_type  = NodeType::NodeSimple;
@@ -650,7 +656,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "map_renderer";
 	auto n_map_renderer = new NodeCompound;
-	n_map_renderer->m_field_name = QString::fromStdString(field_name);
+	n_map_renderer->m_field_name = field_name;
 	n_map_renderer->m_df_type    = DF_Type::map_renderer;
 	n_map_renderer->m_rdf_type   = RDF_Type::Compound;
 	n_map_renderer->m_node_type  = NodeType::NodeCompound;
@@ -661,7 +667,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "min_load_version";
 	auto n_min_load_version          = new NodeSimple<int32_t>;
-	n_min_load_version->m_field_name = QString::fromStdString(field_name);
+	n_min_load_version->m_field_name = field_name;
 	n_min_load_version->m_df_type    = DF_Type::int32_t;
 	n_min_load_version->m_rdf_type   = RDF_Type::int32_t;
 	n_min_load_version->m_node_type  = NodeType::NodeSimple;
@@ -672,7 +678,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "movie_version";
 	auto n_movie_version          = new NodeSimple<int32_t>;
-	n_movie_version->m_field_name = QString::fromStdString(field_name);
+	n_movie_version->m_field_name = field_name;
 	n_movie_version->m_df_type    = DF_Type::int32_t;
 	n_movie_version->m_rdf_type   = RDF_Type::int32_t;
 	n_movie_version->m_node_type  = NodeType::NodeSimple;
@@ -683,7 +689,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "musical_form_next_id";
 	auto n_musical_form_next_id          = new NodeSimple<int32_t>;
-	n_musical_form_next_id->m_field_name = QString::fromStdString(field_name);
+	n_musical_form_next_id->m_field_name = field_name;
 	n_musical_form_next_id->m_df_type    = DF_Type::int32_t;
 	n_musical_form_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_musical_form_next_id->m_node_type  = NodeType::NodeSimple;
@@ -694,7 +700,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "nemesis_next_id";
 	auto n_nemesis_next_id          = new NodeSimple<int32_t>;
-	n_nemesis_next_id->m_field_name = QString::fromStdString(field_name);
+	n_nemesis_next_id->m_field_name = field_name;
 	n_nemesis_next_id->m_df_type    = DF_Type::int32_t;
 	n_nemesis_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_nemesis_next_id->m_node_type  = NodeType::NodeSimple;
@@ -705,7 +711,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "occupation_next_id";
 	auto n_occupation_next_id          = new NodeSimple<int32_t>;
-	n_occupation_next_id->m_field_name = QString::fromStdString(field_name);
+	n_occupation_next_id->m_field_name = field_name;
 	n_occupation_next_id->m_df_type    = DF_Type::int32_t;
 	n_occupation_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_occupation_next_id->m_node_type  = NodeType::NodeSimple;
@@ -716,7 +722,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "pause_state";
 	auto n_pause_state          = new NodeSimple<bool>;
-	n_pause_state->m_field_name = QString::fromStdString(field_name);
+	n_pause_state->m_field_name = field_name;
 	n_pause_state->m_df_type    = DF_Type::Bool;
 	n_pause_state->m_rdf_type   = RDF_Type::Bool;
 	n_pause_state->m_node_type  = NodeType::NodeSimple;
@@ -727,7 +733,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "poetic_form_next_id";
 	auto n_poetic_form_next_id          = new NodeSimple<int32_t>;
-	n_poetic_form_next_id->m_field_name = QString::fromStdString(field_name);
+	n_poetic_form_next_id->m_field_name = field_name;
 	n_poetic_form_next_id->m_df_type    = DF_Type::int32_t;
 	n_poetic_form_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_poetic_form_next_id->m_node_type  = NodeType::NodeSimple;
@@ -738,7 +744,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "process_dig";
 	auto n_process_dig          = new NodeSimple<bool>;
-	n_process_dig->m_field_name = QString::fromStdString(field_name);
+	n_process_dig->m_field_name = field_name;
 	n_process_dig->m_df_type    = DF_Type::Bool;
 	n_process_dig->m_rdf_type   = RDF_Type::Bool;
 	n_process_dig->m_node_type  = NodeType::NodeSimple;
@@ -749,7 +755,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "process_jobs";
 	auto n_process_jobs          = new NodeSimple<bool>;
-	n_process_jobs->m_field_name = QString::fromStdString(field_name);
+	n_process_jobs->m_field_name = field_name;
 	n_process_jobs->m_df_type    = DF_Type::Bool;
 	n_process_jobs->m_rdf_type   = RDF_Type::Bool;
 	n_process_jobs->m_node_type  = NodeType::NodeSimple;
@@ -760,7 +766,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "proj_next_id";
 	auto n_proj_next_id          = new NodeSimple<int32_t>;
-	n_proj_next_id->m_field_name = QString::fromStdString(field_name);
+	n_proj_next_id->m_field_name = field_name;
 	n_proj_next_id->m_df_type    = DF_Type::int32_t;
 	n_proj_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_proj_next_id->m_node_type  = NodeType::NodeSimple;
@@ -771,7 +777,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "rhythm_next_id";
 	auto n_rhythm_next_id          = new NodeSimple<int32_t>;
-	n_rhythm_next_id->m_field_name = QString::fromStdString(field_name);
+	n_rhythm_next_id->m_field_name = field_name;
 	n_rhythm_next_id->m_df_type    = DF_Type::int32_t;
 	n_rhythm_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_rhythm_next_id->m_node_type  = NodeType::NodeSimple;
@@ -782,7 +788,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "save_on_exit";
 	auto n_save_on_exit          = new NodeSimple<bool>;
-	n_save_on_exit->m_field_name = QString::fromStdString(field_name);
+	n_save_on_exit->m_field_name = field_name;
 	n_save_on_exit->m_df_type    = DF_Type::Bool;
 	n_save_on_exit->m_rdf_type   = RDF_Type::Bool;
 	n_save_on_exit->m_node_type  = NodeType::NodeSimple;
@@ -793,7 +799,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "scale_next_id";
 	auto n_scale_next_id          = new NodeSimple<int32_t>;
-	n_scale_next_id->m_field_name = QString::fromStdString(field_name);
+	n_scale_next_id->m_field_name = field_name;
 	n_scale_next_id->m_df_type    = DF_Type::int32_t;
 	n_scale_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_scale_next_id->m_node_type  = NodeType::NodeSimple;
@@ -804,7 +810,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "schedule_next_id";
 	auto n_schedule_next_id          = new NodeSimple<int32_t>;
-	n_schedule_next_id->m_field_name = QString::fromStdString(field_name);
+	n_schedule_next_id->m_field_name = field_name;
 	n_schedule_next_id->m_df_type    = DF_Type::int32_t;
 	n_schedule_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_schedule_next_id->m_node_type  = NodeType::NodeSimple;
@@ -815,7 +821,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "selection_rect";
 	auto n_selection_rect = new NodeCompound;
-	n_selection_rect->m_field_name = QString::fromStdString(field_name);
+	n_selection_rect->m_field_name = field_name;
 	n_selection_rect->m_df_type    = DF_Type::T_selection_rect;
 	n_selection_rect->m_rdf_type   = RDF_Type::Compound;
 	n_selection_rect->m_node_type  = NodeType::NodeCompound;
@@ -826,7 +832,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "soul_next_id";
 	auto n_soul_next_id          = new NodeSimple<int32_t>;
-	n_soul_next_id->m_field_name = QString::fromStdString(field_name);
+	n_soul_next_id->m_field_name = field_name;
 	n_soul_next_id->m_df_type    = DF_Type::int32_t;
 	n_soul_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_soul_next_id->m_node_type  = NodeType::NodeSimple;
@@ -837,7 +843,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "squad_next_id";
 	auto n_squad_next_id          = new NodeSimple<int32_t>;
-	n_squad_next_id->m_field_name = QString::fromStdString(field_name);
+	n_squad_next_id->m_field_name = field_name;
 	n_squad_next_id->m_df_type    = DF_Type::int32_t;
 	n_squad_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_squad_next_id->m_node_type  = NodeType::NodeSimple;
@@ -848,7 +854,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_butcher";
 	auto n_standing_orders_auto_butcher          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_butcher->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_butcher->m_field_name = field_name;
 	n_standing_orders_auto_butcher->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_butcher->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_butcher->m_node_type  = NodeType::NodeSimple;
@@ -859,7 +865,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_collect_webs";
 	auto n_standing_orders_auto_collect_webs          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_collect_webs->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_collect_webs->m_field_name = field_name;
 	n_standing_orders_auto_collect_webs->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_collect_webs->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_collect_webs->m_node_type  = NodeType::NodeSimple;
@@ -870,7 +876,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_fishery";
 	auto n_standing_orders_auto_fishery          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_fishery->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_fishery->m_field_name = field_name;
 	n_standing_orders_auto_fishery->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_fishery->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_fishery->m_node_type  = NodeType::NodeSimple;
@@ -881,7 +887,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_kiln";
 	auto n_standing_orders_auto_kiln          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_kiln->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_kiln->m_field_name = field_name;
 	n_standing_orders_auto_kiln->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_kiln->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_kiln->m_node_type  = NodeType::NodeSimple;
@@ -892,7 +898,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_kitchen";
 	auto n_standing_orders_auto_kitchen          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_kitchen->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_kitchen->m_field_name = field_name;
 	n_standing_orders_auto_kitchen->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_kitchen->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_kitchen->m_node_type  = NodeType::NodeSimple;
@@ -903,7 +909,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_loom";
 	auto n_standing_orders_auto_loom          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_loom->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_loom->m_field_name = field_name;
 	n_standing_orders_auto_loom->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_loom->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_loom->m_node_type  = NodeType::NodeSimple;
@@ -914,7 +920,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_other";
 	auto n_standing_orders_auto_other          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_other->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_other->m_field_name = field_name;
 	n_standing_orders_auto_other->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_other->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_other->m_node_type  = NodeType::NodeSimple;
@@ -925,7 +931,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_slaughter";
 	auto n_standing_orders_auto_slaughter          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_slaughter->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_slaughter->m_field_name = field_name;
 	n_standing_orders_auto_slaughter->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_slaughter->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_slaughter->m_node_type  = NodeType::NodeSimple;
@@ -936,7 +942,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_smelter";
 	auto n_standing_orders_auto_smelter          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_smelter->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_smelter->m_field_name = field_name;
 	n_standing_orders_auto_smelter->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_smelter->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_smelter->m_node_type  = NodeType::NodeSimple;
@@ -947,7 +953,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_auto_tan";
 	auto n_standing_orders_auto_tan          = new NodeSimple<uint8_t>;
-	n_standing_orders_auto_tan->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_auto_tan->m_field_name = field_name;
 	n_standing_orders_auto_tan->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_auto_tan->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_tan->m_node_type  = NodeType::NodeSimple;
@@ -958,7 +964,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_dump_bones";
 	auto n_standing_orders_dump_bones          = new NodeSimple<uint8_t>;
-	n_standing_orders_dump_bones->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_dump_bones->m_field_name = field_name;
 	n_standing_orders_dump_bones->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_dump_bones->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_bones->m_node_type  = NodeType::NodeSimple;
@@ -969,7 +975,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_dump_corpses";
 	auto n_standing_orders_dump_corpses          = new NodeSimple<uint8_t>;
-	n_standing_orders_dump_corpses->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_dump_corpses->m_field_name = field_name;
 	n_standing_orders_dump_corpses->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_dump_corpses->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_corpses->m_node_type  = NodeType::NodeSimple;
@@ -980,7 +986,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_dump_hair";
 	auto n_standing_orders_dump_hair          = new NodeSimple<uint8_t>;
-	n_standing_orders_dump_hair->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_dump_hair->m_field_name = field_name;
 	n_standing_orders_dump_hair->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_dump_hair->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_hair->m_node_type  = NodeType::NodeSimple;
@@ -991,7 +997,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_dump_other";
 	auto n_standing_orders_dump_other          = new NodeSimple<uint8_t>;
-	n_standing_orders_dump_other->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_dump_other->m_field_name = field_name;
 	n_standing_orders_dump_other->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_dump_other->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_other->m_node_type  = NodeType::NodeSimple;
@@ -1002,7 +1008,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_dump_shells";
 	auto n_standing_orders_dump_shells          = new NodeSimple<uint8_t>;
-	n_standing_orders_dump_shells->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_dump_shells->m_field_name = field_name;
 	n_standing_orders_dump_shells->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_dump_shells->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_shells->m_node_type  = NodeType::NodeSimple;
@@ -1013,7 +1019,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_dump_skins";
 	auto n_standing_orders_dump_skins          = new NodeSimple<uint8_t>;
-	n_standing_orders_dump_skins->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_dump_skins->m_field_name = field_name;
 	n_standing_orders_dump_skins->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_dump_skins->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_skins->m_node_type  = NodeType::NodeSimple;
@@ -1024,7 +1030,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_dump_skulls";
 	auto n_standing_orders_dump_skulls          = new NodeSimple<uint8_t>;
-	n_standing_orders_dump_skulls->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_dump_skulls->m_field_name = field_name;
 	n_standing_orders_dump_skulls->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_dump_skulls->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_skulls->m_node_type  = NodeType::NodeSimple;
@@ -1035,7 +1041,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_farmer_harvest";
 	auto n_standing_orders_farmer_harvest          = new NodeSimple<uint8_t>;
-	n_standing_orders_farmer_harvest->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_farmer_harvest->m_field_name = field_name;
 	n_standing_orders_farmer_harvest->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_farmer_harvest->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_farmer_harvest->m_node_type  = NodeType::NodeSimple;
@@ -1046,7 +1052,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_forbid_other_dead_items";
 	auto n_standing_orders_forbid_other_dead_items          = new NodeSimple<uint8_t>;
-	n_standing_orders_forbid_other_dead_items->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_forbid_other_dead_items->m_field_name = field_name;
 	n_standing_orders_forbid_other_dead_items->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_forbid_other_dead_items->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_other_dead_items->m_node_type  = NodeType::NodeSimple;
@@ -1057,7 +1063,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_forbid_other_nohunt";
 	auto n_standing_orders_forbid_other_nohunt          = new NodeSimple<uint8_t>;
-	n_standing_orders_forbid_other_nohunt->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_forbid_other_nohunt->m_field_name = field_name;
 	n_standing_orders_forbid_other_nohunt->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_forbid_other_nohunt->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_other_nohunt->m_node_type  = NodeType::NodeSimple;
@@ -1068,7 +1074,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_forbid_own_dead";
 	auto n_standing_orders_forbid_own_dead          = new NodeSimple<uint8_t>;
-	n_standing_orders_forbid_own_dead->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_forbid_own_dead->m_field_name = field_name;
 	n_standing_orders_forbid_own_dead->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_forbid_own_dead->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_own_dead->m_node_type  = NodeType::NodeSimple;
@@ -1079,7 +1085,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_forbid_own_dead_items";
 	auto n_standing_orders_forbid_own_dead_items          = new NodeSimple<uint8_t>;
-	n_standing_orders_forbid_own_dead_items->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_forbid_own_dead_items->m_field_name = field_name;
 	n_standing_orders_forbid_own_dead_items->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_forbid_own_dead_items->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_own_dead_items->m_node_type  = NodeType::NodeSimple;
@@ -1090,7 +1096,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_forbid_used_ammo";
 	auto n_standing_orders_forbid_used_ammo          = new NodeSimple<uint8_t>;
-	n_standing_orders_forbid_used_ammo->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_forbid_used_ammo->m_field_name = field_name;
 	n_standing_orders_forbid_used_ammo->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_forbid_used_ammo->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_used_ammo->m_node_type  = NodeType::NodeSimple;
@@ -1101,7 +1107,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_animals";
 	auto n_standing_orders_gather_animals          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_animals->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_animals->m_field_name = field_name;
 	n_standing_orders_gather_animals->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_animals->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_animals->m_node_type  = NodeType::NodeSimple;
@@ -1112,7 +1118,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_bodies";
 	auto n_standing_orders_gather_bodies          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_bodies->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_bodies->m_field_name = field_name;
 	n_standing_orders_gather_bodies->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_bodies->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_bodies->m_node_type  = NodeType::NodeSimple;
@@ -1123,7 +1129,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_food";
 	auto n_standing_orders_gather_food          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_food->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_food->m_field_name = field_name;
 	n_standing_orders_gather_food->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_food->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_food->m_node_type  = NodeType::NodeSimple;
@@ -1134,7 +1140,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_furniture";
 	auto n_standing_orders_gather_furniture          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_furniture->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_furniture->m_field_name = field_name;
 	n_standing_orders_gather_furniture->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_furniture->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_furniture->m_node_type  = NodeType::NodeSimple;
@@ -1145,7 +1151,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_minerals";
 	auto n_standing_orders_gather_minerals          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_minerals->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_minerals->m_field_name = field_name;
 	n_standing_orders_gather_minerals->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_minerals->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_minerals->m_node_type  = NodeType::NodeSimple;
@@ -1156,7 +1162,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_refuse";
 	auto n_standing_orders_gather_refuse          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_refuse->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_refuse->m_field_name = field_name;
 	n_standing_orders_gather_refuse->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_refuse->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_refuse->m_node_type  = NodeType::NodeSimple;
@@ -1167,7 +1173,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_refuse_outside";
 	auto n_standing_orders_gather_refuse_outside          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_refuse_outside->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_refuse_outside->m_field_name = field_name;
 	n_standing_orders_gather_refuse_outside->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_refuse_outside->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_refuse_outside->m_node_type  = NodeType::NodeSimple;
@@ -1178,7 +1184,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_vermin_remains";
 	auto n_standing_orders_gather_vermin_remains          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_vermin_remains->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_vermin_remains->m_field_name = field_name;
 	n_standing_orders_gather_vermin_remains->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_vermin_remains->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_vermin_remains->m_node_type  = NodeType::NodeSimple;
@@ -1189,7 +1195,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_gather_wood";
 	auto n_standing_orders_gather_wood          = new NodeSimple<uint8_t>;
-	n_standing_orders_gather_wood->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_gather_wood->m_field_name = field_name;
 	n_standing_orders_gather_wood->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_gather_wood->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_wood->m_node_type  = NodeType::NodeSimple;
@@ -1200,7 +1206,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_job_cancel_announce";
 	auto n_standing_orders_job_cancel_announce          = new NodeSimple<uint8_t>;
-	n_standing_orders_job_cancel_announce->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_job_cancel_announce->m_field_name = field_name;
 	n_standing_orders_job_cancel_announce->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_job_cancel_announce->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_job_cancel_announce->m_node_type  = NodeType::NodeSimple;
@@ -1211,7 +1217,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_mix_food";
 	auto n_standing_orders_mix_food          = new NodeSimple<uint8_t>;
-	n_standing_orders_mix_food->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_mix_food->m_field_name = field_name;
 	n_standing_orders_mix_food->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_mix_food->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_mix_food->m_node_type  = NodeType::NodeSimple;
@@ -1222,7 +1228,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_use_dyed_cloth";
 	auto n_standing_orders_use_dyed_cloth          = new NodeSimple<uint8_t>;
-	n_standing_orders_use_dyed_cloth->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_use_dyed_cloth->m_field_name = field_name;
 	n_standing_orders_use_dyed_cloth->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_use_dyed_cloth->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_use_dyed_cloth->m_node_type  = NodeType::NodeSimple;
@@ -1233,7 +1239,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_zoneonly_drink";
 	auto n_standing_orders_zoneonly_drink          = new NodeSimple<uint8_t>;
-	n_standing_orders_zoneonly_drink->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_zoneonly_drink->m_field_name = field_name;
 	n_standing_orders_zoneonly_drink->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_zoneonly_drink->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_zoneonly_drink->m_node_type  = NodeType::NodeSimple;
@@ -1244,7 +1250,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "standing_orders_zoneonly_fish";
 	auto n_standing_orders_zoneonly_fish          = new NodeSimple<uint8_t>;
-	n_standing_orders_zoneonly_fish->m_field_name = QString::fromStdString(field_name);
+	n_standing_orders_zoneonly_fish->m_field_name = field_name;
 	n_standing_orders_zoneonly_fish->m_df_type    = DF_Type::uint8_t;
 	n_standing_orders_zoneonly_fish->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_zoneonly_fish->m_node_type  = NodeType::NodeSimple;
@@ -1255,7 +1261,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "task_next_id";
 	auto n_task_next_id          = new NodeSimple<int32_t>;
-	n_task_next_id->m_field_name = QString::fromStdString(field_name);
+	n_task_next_id->m_field_name = field_name;
 	n_task_next_id->m_df_type    = DF_Type::int32_t;
 	n_task_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_task_next_id->m_node_type  = NodeType::NodeSimple;
@@ -1266,7 +1272,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "texture";
 	auto n_texture = new NodeCompound;
-	n_texture->m_field_name = QString::fromStdString(field_name);
+	n_texture->m_field_name = field_name;
 	n_texture->m_df_type    = DF_Type::texture_handler;
 	n_texture->m_rdf_type   = RDF_Type::Compound;
 	n_texture->m_node_type  = NodeType::NodeCompound;
@@ -1277,7 +1283,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "timed_events";
 	auto n_timed_events            = new NodeVector;
-	n_timed_events->m_field_name   = QString::fromStdString(field_name);
+	n_timed_events->m_field_name   = field_name;
 	n_timed_events->m_df_type      = DF_Type::timed_event;
 	n_timed_events->m_rdf_type     = RDF_Type::Vector;
 	n_timed_events->m_node_type    = NodeType::NodeVector;
@@ -1290,7 +1296,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui";
 	auto n_ui = new NodeCompound;
-	n_ui->m_field_name = QString::fromStdString(field_name);
+	n_ui->m_field_name = field_name;
 	n_ui->m_df_type    = DF_Type::ui;
 	n_ui->m_rdf_type   = RDF_Type::Compound;
 	n_ui->m_node_type  = NodeType::NodeCompound;
@@ -1301,7 +1307,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_advmode";
 	auto n_ui_advmode = new NodeCompound;
-	n_ui_advmode->m_field_name = QString::fromStdString(field_name);
+	n_ui_advmode->m_field_name = field_name;
 	n_ui_advmode->m_df_type    = DF_Type::ui_advmode;
 	n_ui_advmode->m_rdf_type   = RDF_Type::Compound;
 	n_ui_advmode->m_node_type  = NodeType::NodeCompound;
@@ -1312,7 +1318,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_build_selector";
 	auto n_ui_build_selector = new NodeCompound;
-	n_ui_build_selector->m_field_name = QString::fromStdString(field_name);
+	n_ui_build_selector->m_field_name = field_name;
 	n_ui_build_selector->m_df_type    = DF_Type::ui_build_selector;
 	n_ui_build_selector->m_rdf_type   = RDF_Type::Compound;
 	n_ui_build_selector->m_node_type  = NodeType::NodeCompound;
@@ -1323,7 +1329,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_building_assign_is_marked";
 	auto n_ui_building_assign_is_marked            = new NodeVector;
-	n_ui_building_assign_is_marked->m_field_name   = QString::fromStdString(field_name);
+	n_ui_building_assign_is_marked->m_field_name   = field_name;
 	n_ui_building_assign_is_marked->m_df_type      = DF_Type::Bool;
 	n_ui_building_assign_is_marked->m_rdf_type     = RDF_Type::Vector;
 	n_ui_building_assign_is_marked->m_node_type    = NodeType::NodeVector;
@@ -1336,7 +1342,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_building_assign_items";
 	auto n_ui_building_assign_items            = new NodeVector;
-	n_ui_building_assign_items->m_field_name   = QString::fromStdString(field_name);
+	n_ui_building_assign_items->m_field_name   = field_name;
 	n_ui_building_assign_items->m_df_type      = DF_Type::item;
 	n_ui_building_assign_items->m_rdf_type     = RDF_Type::Vector;
 	n_ui_building_assign_items->m_node_type    = NodeType::NodeVector;
@@ -1349,7 +1355,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_building_assign_type";
 	auto n_ui_building_assign_type            = new NodeVector;
-	n_ui_building_assign_type->m_field_name   = QString::fromStdString(field_name);
+	n_ui_building_assign_type->m_field_name   = field_name;
 	n_ui_building_assign_type->m_df_type      = DF_Type::int8_t;
 	n_ui_building_assign_type->m_rdf_type     = RDF_Type::Vector;
 	n_ui_building_assign_type->m_node_type    = NodeType::NodeVector;
@@ -1362,7 +1368,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_building_assign_units";
 	auto n_ui_building_assign_units            = new NodeVector;
-	n_ui_building_assign_units->m_field_name   = QString::fromStdString(field_name);
+	n_ui_building_assign_units->m_field_name   = field_name;
 	n_ui_building_assign_units->m_df_type      = DF_Type::unit;
 	n_ui_building_assign_units->m_rdf_type     = RDF_Type::Vector;
 	n_ui_building_assign_units->m_node_type    = NodeType::NodeVector;
@@ -1375,7 +1381,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_building_in_assign";
 	auto n_ui_building_in_assign          = new NodeSimple<bool>;
-	n_ui_building_in_assign->m_field_name = QString::fromStdString(field_name);
+	n_ui_building_in_assign->m_field_name = field_name;
 	n_ui_building_in_assign->m_df_type    = DF_Type::Bool;
 	n_ui_building_in_assign->m_rdf_type   = RDF_Type::Bool;
 	n_ui_building_in_assign->m_node_type  = NodeType::NodeSimple;
@@ -1386,7 +1392,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_building_in_resize";
 	auto n_ui_building_in_resize          = new NodeSimple<bool>;
-	n_ui_building_in_resize->m_field_name = QString::fromStdString(field_name);
+	n_ui_building_in_resize->m_field_name = field_name;
 	n_ui_building_in_resize->m_df_type    = DF_Type::Bool;
 	n_ui_building_in_resize->m_rdf_type   = RDF_Type::Bool;
 	n_ui_building_in_resize->m_node_type  = NodeType::NodeSimple;
@@ -1397,7 +1403,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_building_item_cursor";
 	auto n_ui_building_item_cursor          = new NodeSimple<int32_t>;
-	n_ui_building_item_cursor->m_field_name = QString::fromStdString(field_name);
+	n_ui_building_item_cursor->m_field_name = field_name;
 	n_ui_building_item_cursor->m_df_type    = DF_Type::int32_t;
 	n_ui_building_item_cursor->m_rdf_type   = RDF_Type::int32_t;
 	n_ui_building_item_cursor->m_node_type  = NodeType::NodeSimple;
@@ -1408,7 +1414,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_building_resize_radius";
 	auto n_ui_building_resize_radius          = new NodeSimple<int16_t>;
-	n_ui_building_resize_radius->m_field_name = QString::fromStdString(field_name);
+	n_ui_building_resize_radius->m_field_name = field_name;
 	n_ui_building_resize_radius->m_df_type    = DF_Type::int16_t;
 	n_ui_building_resize_radius->m_rdf_type   = RDF_Type::int16_t;
 	n_ui_building_resize_radius->m_node_type  = NodeType::NodeSimple;
@@ -1419,7 +1425,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_lever_target_type";
 	auto n_ui_lever_target_type = new NodeEnum;
-	n_ui_lever_target_type->m_field_name = QString::fromStdString(field_name);
+	n_ui_lever_target_type->m_field_name = field_name;
 	n_ui_lever_target_type->m_df_type    = DF_Type::lever_target_type;
 	n_ui_lever_target_type->m_rdf_type   = RDF_Type::Enum;
 	n_ui_lever_target_type->m_node_type  = NodeType::NodeEnum;
@@ -1432,7 +1438,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_look_cursor";
 	auto n_ui_look_cursor          = new NodeSimple<int32_t>;
-	n_ui_look_cursor->m_field_name = QString::fromStdString(field_name);
+	n_ui_look_cursor->m_field_name = field_name;
 	n_ui_look_cursor->m_df_type    = DF_Type::int32_t;
 	n_ui_look_cursor->m_rdf_type   = RDF_Type::int32_t;
 	n_ui_look_cursor->m_node_type  = NodeType::NodeSimple;
@@ -1443,7 +1449,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_look_list";
 	auto n_ui_look_list = new NodeCompound;
-	n_ui_look_list->m_field_name = QString::fromStdString(field_name);
+	n_ui_look_list->m_field_name = field_name;
 	n_ui_look_list->m_df_type    = DF_Type::ui_look_list;
 	n_ui_look_list->m_rdf_type   = RDF_Type::Compound;
 	n_ui_look_list->m_node_type  = NodeType::NodeCompound;
@@ -1455,7 +1461,7 @@ void fill_globals(Node* p_node_parent)
 	field_name = "ui_menu_width";
 	auto n_ui_menu_width            = new NodeArray;
 	n_ui_menu_width->m_address      = reinterpret_cast<uint64_t>(df::global::ui_menu_width);
-	n_ui_menu_width->m_field_name   = QString::fromStdString(field_name);
+	n_ui_menu_width->m_field_name   = field_name;
 	n_ui_menu_width->m_df_type      = DF_Type::int8_t;
 	n_ui_menu_width->m_rdf_type     = RDF_Type::Array;
 	n_ui_menu_width->m_comment      = "";
@@ -1468,7 +1474,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_selected_unit";
 	auto n_ui_selected_unit          = new NodeSimple<int32_t>;
-	n_ui_selected_unit->m_field_name = QString::fromStdString(field_name);
+	n_ui_selected_unit->m_field_name = field_name;
 	n_ui_selected_unit->m_df_type    = DF_Type::int32_t;
 	n_ui_selected_unit->m_rdf_type   = RDF_Type::int32_t;
 	n_ui_selected_unit->m_node_type  = NodeType::NodeSimple;
@@ -1479,7 +1485,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_sidebar_menus";
 	auto n_ui_sidebar_menus = new NodeCompound;
-	n_ui_sidebar_menus->m_field_name = QString::fromStdString(field_name);
+	n_ui_sidebar_menus->m_field_name = field_name;
 	n_ui_sidebar_menus->m_df_type    = DF_Type::ui_sidebar_menus;
 	n_ui_sidebar_menus->m_rdf_type   = RDF_Type::Compound;
 	n_ui_sidebar_menus->m_node_type  = NodeType::NodeCompound;
@@ -1490,7 +1496,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_unit_view_mode";
 	auto n_ui_unit_view_mode = new NodeCompound;
-	n_ui_unit_view_mode->m_field_name = QString::fromStdString(field_name);
+	n_ui_unit_view_mode->m_field_name = field_name;
 	n_ui_unit_view_mode->m_df_type    = DF_Type::ui_unit_view_mode;
 	n_ui_unit_view_mode->m_rdf_type   = RDF_Type::Compound;
 	n_ui_unit_view_mode->m_node_type  = NodeType::NodeCompound;
@@ -1501,7 +1507,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_workshop_in_add";
 	auto n_ui_workshop_in_add          = new NodeSimple<bool>;
-	n_ui_workshop_in_add->m_field_name = QString::fromStdString(field_name);
+	n_ui_workshop_in_add->m_field_name = field_name;
 	n_ui_workshop_in_add->m_df_type    = DF_Type::Bool;
 	n_ui_workshop_in_add->m_rdf_type   = RDF_Type::Bool;
 	n_ui_workshop_in_add->m_node_type  = NodeType::NodeSimple;
@@ -1512,7 +1518,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "ui_workshop_job_cursor";
 	auto n_ui_workshop_job_cursor          = new NodeSimple<int32_t>;
-	n_ui_workshop_job_cursor->m_field_name = QString::fromStdString(field_name);
+	n_ui_workshop_job_cursor->m_field_name = field_name;
 	n_ui_workshop_job_cursor->m_df_type    = DF_Type::int32_t;
 	n_ui_workshop_job_cursor->m_rdf_type   = RDF_Type::int32_t;
 	n_ui_workshop_job_cursor->m_node_type  = NodeType::NodeSimple;
@@ -1523,7 +1529,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "unit_chunk_next_id";
 	auto n_unit_chunk_next_id          = new NodeSimple<int32_t>;
-	n_unit_chunk_next_id->m_field_name = QString::fromStdString(field_name);
+	n_unit_chunk_next_id->m_field_name = field_name;
 	n_unit_chunk_next_id->m_df_type    = DF_Type::int32_t;
 	n_unit_chunk_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_unit_chunk_next_id->m_node_type  = NodeType::NodeSimple;
@@ -1534,7 +1540,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "unit_next_id";
 	auto n_unit_next_id          = new NodeSimple<int32_t>;
-	n_unit_next_id->m_field_name = QString::fromStdString(field_name);
+	n_unit_next_id->m_field_name = field_name;
 	n_unit_next_id->m_df_type    = DF_Type::int32_t;
 	n_unit_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_unit_next_id->m_node_type  = NodeType::NodeSimple;
@@ -1545,7 +1551,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "vehicle_next_id";
 	auto n_vehicle_next_id          = new NodeSimple<int32_t>;
-	n_vehicle_next_id->m_field_name = QString::fromStdString(field_name);
+	n_vehicle_next_id->m_field_name = field_name;
 	n_vehicle_next_id->m_df_type    = DF_Type::int32_t;
 	n_vehicle_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_vehicle_next_id->m_node_type  = NodeType::NodeSimple;
@@ -1556,7 +1562,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "version";
 	auto n_version          = new NodeSimple<int32_t>;
-	n_version->m_field_name = QString::fromStdString(field_name);
+	n_version->m_field_name = field_name;
 	n_version->m_df_type    = DF_Type::int32_t;
 	n_version->m_rdf_type   = RDF_Type::int32_t;
 	n_version->m_node_type  = NodeType::NodeSimple;
@@ -1567,7 +1573,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "window_x";
 	auto n_window_x          = new NodeSimple<int32_t>;
-	n_window_x->m_field_name = QString::fromStdString(field_name);
+	n_window_x->m_field_name = field_name;
 	n_window_x->m_df_type    = DF_Type::int32_t;
 	n_window_x->m_rdf_type   = RDF_Type::int32_t;
 	n_window_x->m_node_type  = NodeType::NodeSimple;
@@ -1578,7 +1584,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "window_y";
 	auto n_window_y          = new NodeSimple<int32_t>;
-	n_window_y->m_field_name = QString::fromStdString(field_name);
+	n_window_y->m_field_name = field_name;
 	n_window_y->m_df_type    = DF_Type::int32_t;
 	n_window_y->m_rdf_type   = RDF_Type::int32_t;
 	n_window_y->m_node_type  = NodeType::NodeSimple;
@@ -1589,7 +1595,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "window_z";
 	auto n_window_z          = new NodeSimple<int32_t>;
-	n_window_z->m_field_name = QString::fromStdString(field_name);
+	n_window_z->m_field_name = field_name;
 	n_window_z->m_df_type    = DF_Type::int32_t;
 	n_window_z->m_rdf_type   = RDF_Type::int32_t;
 	n_window_z->m_node_type  = NodeType::NodeSimple;
@@ -1600,7 +1606,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "world";
 	auto n_world = new NodeCompound;
-	n_world->m_field_name = QString::fromStdString(field_name);
+	n_world->m_field_name = field_name;
 	n_world->m_df_type    = DF_Type::world;
 	n_world->m_rdf_type   = RDF_Type::Compound;
 	n_world->m_node_type  = NodeType::NodeCompound;
@@ -1611,7 +1617,7 @@ void fill_globals(Node* p_node_parent)
 
 	field_name = "written_content_next_id";
 	auto n_written_content_next_id          = new NodeSimple<int32_t>;
-	n_written_content_next_id->m_field_name = QString::fromStdString(field_name);
+	n_written_content_next_id->m_field_name = field_name;
 	n_written_content_next_id->m_df_type    = DF_Type::int32_t;
 	n_written_content_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_written_content_next_id->m_node_type  = NodeType::NodeSimple;

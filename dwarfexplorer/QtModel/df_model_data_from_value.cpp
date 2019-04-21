@@ -147,9 +147,7 @@ QString process_node_simple(const NodeBase* p_node)
 
 bool is_node_void_pointer(const NodeBase* p_node)
 {
-    if ((p_node->m_rdf_type == rdf::RDF_Type::Pointer)
-            //&& (p_node->m_used_type == "void*"))
-            && (p_node->m_df_type == DF_Type::Void))    
+    if (p_node->m_node_type == NodeType::NodeVoid)
         return true;
     return false;
 }

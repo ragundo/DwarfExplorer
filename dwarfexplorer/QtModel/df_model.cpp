@@ -78,7 +78,7 @@ NodeBase* DF_Model::nodeFromIndex(const QModelIndex& p_index) const
 
 QString data_from_Name(const NodeBase* p_node)
 {
-    return p_node->m_field_name;
+    return QString::fromStdString(p_node->m_field_name);
 }
 
 
@@ -96,7 +96,7 @@ QString data_from_Address(const rdf::NodeBase* p_node)
 QString data_from_Comment(const NodeBase* p_node)
 {
     const NodeBase* base = dynamic_cast<const NodeBase*>(p_node);
-    return base->m_comment;
+    return QString::fromStdString(base->m_comment);
 }
 
 QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
@@ -229,7 +229,7 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
     unsigned int mask = 1;
     for (unsigned int i = 0; i < bitfield_data.size() ; i++)
     {
-        QString field_name = QString::fromStdString(bitfield_data[i][1]);
+        std::string field_name = bitfield_data[i][1];
         if ((bitfield_value & mask) || (field_name.length() > 0))
         {
             auto* n_pve          = new NodeBitfieldEntry();
@@ -237,26 +237,24 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
             if (field_name.length() == 0)
             {
                 if (i < 10)
-                    n_pve->m_field_name = "[0" + QString::fromStdString(std::to_string(i)) + "]";
+                    n_pve->m_field_name = "[0" + std::to_string(i) + "]";
                 else
-                    n_pve->m_field_name = "[" + QString::fromStdString(std::to_string(i)) + "]";
+                    n_pve->m_field_name = "[" + std::to_string(i) + "]";
             }
             else
             {
                 if (i < 10)
-                    n_pve->m_field_name = "[0" + QString::fromStdString(std::to_string(i)) + "] " +  field_name;
+                    n_pve->m_field_name = "[0" + std::to_string(i) + "] " +  field_name;
                 else
-                    n_pve->m_field_name = "[" + QString::fromStdString(std::to_string(i)) + "] " +  field_name;
+                    n_pve->m_field_name = "[" + std::to_string(i) + "] " +  field_name;
             }
             n_pve->m_rdf_type    = rdf::RDF_Type::Bool;
             n_pve->m_df_type     = rdf::DF_Type::Bool;
             n_pve->m_parent      = bitfield_node;
             n_pve->m_index       = i;
-            //n_pve->m_used_type   = "bool";
-            n_pve->m_comment     = QString::fromStdString(bitfield_data[i][2]);
+            n_pve->m_comment     = bitfield_data[i][2];
             n_pve->m_value       = bitfield_value & mask;
             n_pve->m_address     = bitfield_node->m_address;
-            ;
             bitfield_node->m_children.append(n_pve);
         }
 
@@ -285,6 +283,9 @@ bool DF_Model::insertRowsCompound(const QModelIndex& p_parent, int p_num_rows)
 bool DF_Model::has_children_from_type( NodeBase* p_node) const
 {
     if (p_node->is_root_node())
+        return true;
+
+    if (p_node->m_node_type == NodeType::NodeBitfieldEntry)
         return true;
 
     switch (p_node->m_rdf_type)
@@ -435,8 +436,8 @@ void DF_Model::insert_child_nodes(NodeBase* p_node, const QModelIndex& p_index)
         case rdf::RDF_Type::Class:
         case rdf::RDF_Type::Struct:
         case rdf::RDF_Type::Compound:
-        case rdf::RDF_Type::Union:        
-        case rdf::RDF_Type::AnonymousUnion:        
+        case rdf::RDF_Type::Union:
+        case rdf::RDF_Type::AnonymousUnion:
             insertRowsCompound(p_index, 5);
             break;
         case rdf::RDF_Type::Bitfield:

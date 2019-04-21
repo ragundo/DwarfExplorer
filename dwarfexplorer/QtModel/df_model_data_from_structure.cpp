@@ -53,12 +53,12 @@ std::string rec_array_type(std::string p_addornements)
     return "";
 }
 
-QString get_array_expresion(const NodeBase* p_node)
+std::string get_array_expresion(const NodeBase* p_node)
 {
-    QString result = "Array";
+    std::string result = "Array";
     auto node_array = dynamic_cast<const NodeArray*>(p_node);
     std::string addornements = node_array->m_addornements;
-    auto size = QString::fromStdString(rec_array_type(addornements));
+    auto size = rec_array_type(addornements);
     return result + size;
 }
 
@@ -68,7 +68,10 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
         return "Vector";
 
     if (is_array(p_node))
-        return get_array_expresion(p_node);
+        return QString::fromStdString(get_array_expresion(p_node));
+
+    if (p_node->m_node_type == NodeType::NodeVoid)
+        return "Pointer";
 
     if (is_pointer(p_node))
         return "Pointer";

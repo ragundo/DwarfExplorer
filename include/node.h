@@ -2,7 +2,7 @@
 #define NODE_H
 
 #include <functional>
-#include <QString>
+#include <string>
 #include <QtAlgorithms>
 #include <QList>
 #include <QVector>
@@ -26,6 +26,7 @@ namespace rdf
         NodeBitfield,
         NodeBitfieldEntry,
         NodePointer,
+        NodeVoid,
         NodeDummy
     };
 
@@ -37,18 +38,18 @@ namespace rdf
     struct NodeBase
     {
     public:
-        QString          m_field_name {""};
+        std::string      m_field_name {""};
         DF_Type          m_df_type    {rdf::DF_Type::None};
         RDF_Type         m_rdf_type   {rdf::RDF_Type::None};
         NodeBase*        m_parent     {nullptr};
-        QString          m_comment    {""};
+        std::string      m_comment    {""};
         uint64_t         m_address;
         NodeType         m_node_type;
         //QList<NodeBase*> m_path;
 
         virtual ~NodeBase() {}
         virtual NodeBase* clone() = 0;
-        virtual QString node_path_name() = 0;
+        virtual std::string node_path_name() = 0;
         virtual bool is_root_node() const
         {
             return false;
@@ -57,16 +58,7 @@ namespace rdf
         NodeRoot* get_root_node();
 
 
-        QString path();
-
-//        QString get_string_path() const
-//        {
-//            QString result;
-//            if (m_parent)
-//                result = m_parent->get_string_path();
-//            result.append(".").append(m_field_name);
-//            return result;
-//        }
+        std::string path();
 
     protected:
         void init(NodeBase* p_dest)
@@ -98,7 +90,7 @@ namespace rdf
             return clone;
         }
 
-        QString node_path_name()
+        std::string node_path_name()
         {
             return "";
         }
@@ -114,10 +106,31 @@ namespace rdf
             return clon;
         }
 
-        QString node_path_name()
+        std::string node_path_name()
         {
             return m_field_name;
         }
+    };
+
+    struct NodeVoid : public NodeBase
+    {
+        NodeVoid() : NodeBase()
+        {
+            m_df_type   = DF_Type::Void;
+            m_rdf_type  = RDF_Type::Void;
+            m_node_type = NodeType::NodeVoid;
+        }
+
+        NodeBase* clone() override
+        {
+            auto clon = new NodeVoid;
+            return clon;
+        }
+
+        std::string node_path_name()
+        {
+            return m_field_name;
+        }        
     };
 
     //
@@ -134,7 +147,7 @@ namespace rdf
             return clon;
         }
 
-        QString node_path_name()
+        std::string node_path_name()
         {
             return m_field_name;
         }
@@ -151,7 +164,7 @@ namespace rdf
     //
     struct NodeRoot : public Node
     {
-        QString m_path;
+        std::string m_path;
 
         NodeRoot()
         {
@@ -171,7 +184,7 @@ namespace rdf
             return clon;
         }
 
-        QString node_path_name()
+        std::string node_path_name()
         {
             return m_field_name;
         }
@@ -225,7 +238,7 @@ namespace rdf
             return clon;
         }
 
-        QString node_path_name()
+        std::string node_path_name()
         {
             return "";
         }
@@ -236,8 +249,8 @@ namespace rdf
     //
     struct NodeEnum : public Node
     {
-        DF_Type m_base_type;
-        QString m_enum_type;
+        DF_Type m_base_type{DF_Type::int32_t};
+        std::string m_enum_type{""};
 
         NodeEnum()
         {
@@ -300,8 +313,8 @@ namespace rdf
     //
     struct NodePointer : public Node
     {
-        std::string m_addornements;
-
+        std::string m_addornements{""};
+        DF_Type m_enum_base{DF_Type::int32_t};
         NodePointer()
         {
             m_node_type = NodeType::NodePointer;
@@ -313,6 +326,7 @@ namespace rdf
             auto clon = new NodePointer;
             init(clon);
             clon->m_addornements = m_addornements;
+            clon->m_enum_base    = m_enum_base;            
             return clon;
         }
     };
@@ -322,8 +336,8 @@ namespace rdf
     //
     struct NodeVector : public Node
     {
-        std::string m_addornements;
-        DF_Type      m_enum_base;
+        std::string  m_addornements{""};
+        DF_Type m_enum_base{DF_Type::int32_t};
 
         NodeVector()
         {
@@ -348,9 +362,10 @@ namespace rdf
     struct NodeArray : public Node
     {
     public:
-        std::string m_addornements{""};
+        std::string     m_addornements{""};
         std::size_t m_array_size{0};
-        DF_Type      m_enum_base{DF_Type::None};
+        DF_Type     m_enum_base{DF_Type::None};
+        DF_Type     m_index_enum{DF_Type::None};
 
         NodeArray()
         {

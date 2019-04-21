@@ -2,25 +2,26 @@
 
 using namespace rdf;
 
-QString NodeBase::path()
+std::string NodeBase::path()
 {
-        QString result = "";
-        QVector<NodeBase*> path;
+    std::string result = "";
+    QVector<NodeBase*> path;
 
-        NodeBase* node_iterator = this;
-        while (node_iterator->m_parent->m_node_type != NodeType::NodeRoot)
-    {
-        node_iterator = node_iterator->m_parent;
-                path.append(node_iterator);
-        }
+    NodeBase* node_iterator = this;
+         while (node_iterator->m_parent->m_node_type != NodeType::NodeRoot)
+     {
+         node_iterator = node_iterator->m_parent;
+                 path.append(node_iterator);
+         }
 
-        result.append(dynamic_cast<NodeRoot*>(node_iterator->m_parent)->m_path);
-        for (auto i = path.size() - 1; i >= 0; i--)
-        {
-                result.append(".");
-                result.append(path[i]->node_path_name());
-        }
-        return result;
+         result.append(dynamic_cast<NodeRoot*>(node_iterator->m_parent)->m_path);
+         for (auto i = path.size() - 1; i >= 0; i--)
+         {
+                 result.append(".");
+                 result.append(path[i]->node_path_name());
+         }
+         return result;
+
 }
 
 

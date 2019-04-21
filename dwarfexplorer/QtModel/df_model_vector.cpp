@@ -29,6 +29,22 @@ void fill_simple_entry(NodeBase* p_pve, Node* p_node, size_t p_size, uint64_t p_
 //
 //------------------------------------------------------------------------------------//
 //
+void fill_void_vector_entry(Node* p_parent_node, int p_index, uint64_t p_address)
+{
+    // Node name [index]
+    std::string field_name = "[";
+    field_name.append(std::to_string(p_index)).append("]");
+
+    auto n_void = new NodeVoid;
+    n_void->m_parent = p_parent_node;
+    n_void->m_field_name = field_name;
+    n_void->m_address = p_address;
+    p_parent_node->m_children.push_back(n_void);
+}
+
+//
+//------------------------------------------------------------------------------------//
+//
 std::size_t DF_Model::get_vector_size(const NodeVector* p_node) const
 {
     auto vector_start_address = reinterpret_cast<uint64_t*>(p_node->m_address);
@@ -43,14 +59,22 @@ std::size_t DF_Model::get_vector_size(const NodeVector* p_node) const
     if ((p_node->m_addornements == "v") && (p_node->m_df_type != DF_Type::Void))
     {
         // Vector of DF_Types
-        auto size = rdf::size_of_DF_Type(p_node->m_df_type);
-        return diff/size;
+        if (p_node->m_enum_base == DF_Type::None)
+        {
+            auto size = rdf::size_of_DF_Type(p_node->m_df_type);
+            return diff / size;
+        }
+        else
+        {
+            auto size = rdf::size_of_DF_Type(p_node->m_enum_base);
+            return diff / size;
+        }
     }
     else
     {
         // Vector of something of DF_Types
         auto rest = p_node->m_addornements;
-        rest = rest.substr(1,500);
+        rest = rest.substr(1, 500);
 
         if ((rest[0] == '*') || (p_node->m_df_type == DF_Type::Void))
         {
@@ -60,27 +84,26 @@ std::size_t DF_Model::get_vector_size(const NodeVector* p_node) const
         if (rest[0] == '[')
         {
             // Vector of arrays
+            return 0;
         }
     }
+    return 0;
 }
 
 
-//
-//------------------------------------------------------------------------------------//
-//
-bool DF_Model::insertRowsSimple(const QModelIndex& p_parent)
-{
-    auto l_node = dynamic_cast<NodeVector*>(nodeFromIndex(p_parent));
-
-    if ((l_node->m_children.size() > 0) && (l_node->m_children[0]->m_node_type != NodeType::NodeDummy))
-        return false;
-
-}
-
-void fill_compound_vector_entry(Node* p_parent_node, uint64_t p_address, QString p_field_name, RDF_Type p_rdf_type)
+void fill_compound_vector_entry(Node* p_parent_node, uint64_t p_address, std::string p_field_name, RDF_Type p_rdf_type)
 {
     auto n_pve = new NodeCompound;
     n_pve->m_df_type = p_parent_node->m_df_type;
+
+    uint64_t pointee = *(reinterpret_cast<uint64_t*>(p_address));
+    if (pointee != 0)
+    {
+        DF_Type real_type = get_df_subtype(p_parent_node->m_df_type, pointee);
+        if (real_type != DF_Type::None)
+            n_pve->m_df_type = real_type;
+    }
+
     n_pve->m_rdf_type = p_rdf_type;
     n_pve->m_field_name = p_field_name;
     n_pve->m_address = p_address;
@@ -91,11 +114,11 @@ void fill_compound_vector_entry(Node* p_parent_node, uint64_t p_address, QString
 //
 //------------------------------------------------------------------------------------//
 //
-void fill_vector_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
+void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_address)
 {
     // Node name [index]
-    QString field_name = "[";
-    field_name.append(QString::fromStdString(std::to_string(p_index))).append("]");
+    std::string field_name = "[";
+    field_name.append(std::to_string(p_index)).append("]");
 
     switch(p_parent_node->m_df_type)
     {
@@ -195,13 +218,29 @@ void fill_vector_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
 
     // We need to know if the DF_Type is a
     // DF structure enum or bitfield
-    RDF_Type rdf_type = df_2_rdf(p_parent_node->m_df_type);
+    RDF_Type rdf_type = RDF_Type::Void;
+
+    if (p_parent_node->m_df_type != DF_Type::Void)
+        rdf_type = df_2_rdf(p_parent_node->m_df_type);
+
 
     if (rdf_type == RDF_Type::Enum)
     {
         auto n_pve = new NodeEnum;
-        fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
-        n_pve->m_enum_type = QString::fromStdString(DF_Type_to_string(p_parent_node->m_df_type));
+
+        if (p_parent_node->m_enum_base == DF_Type::None)
+        {
+            fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
+            n_pve->m_node_type = NodeType::NodeEnum;
+            //n_pve->m_base_type = p_parent_node->m_df_type;
+        }
+        else
+        {
+            fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_enum_base), p_address, p_parent_node->m_df_type, rdf_type);
+            n_pve->m_node_type = NodeType::NodeEnum;
+            n_pve->m_base_type = p_parent_node->m_enum_base;
+        }
+        n_pve->m_enum_type = DF_Type_to_string(p_parent_node->m_df_type);
         n_pve->m_field_name = field_name;
         return;
     }
@@ -210,6 +249,7 @@ void fill_vector_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
         auto n_pve = new NodeBitfield;
         fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
         n_pve->m_field_name = field_name;
+        n_pve->m_node_type = NodeType::NodeBitfield;
         return;
     }
 
@@ -217,18 +257,22 @@ void fill_vector_entry(Node* p_parent_node, size_t p_index, uint64_t p_address)
     switch (rdf_type)
     {
         case RDF_Type::Struct :
-            fill_compound_vector_entry(p_parent_node, p_address, field_name,RDF_Type::Struct);
+            fill_compound_vector_entry(p_parent_node, p_address, field_name, RDF_Type::Struct);
             break;
         case RDF_Type::Compound :
-            fill_compound_vector_entry(p_parent_node, p_address, field_name,RDF_Type::Compound);
+            fill_compound_vector_entry(p_parent_node, p_address, field_name, RDF_Type::Compound);
             break;
         case RDF_Type::Class:
-            fill_compound_vector_entry(p_parent_node, p_address, field_name,RDF_Type::Class);
+            fill_compound_vector_entry(p_parent_node, p_address, field_name, RDF_Type::Class);
             break;
         case RDF_Type::Union:
-            fill_compound_vector_entry(p_parent_node, p_address, field_name,RDF_Type::Union);
+            fill_compound_vector_entry(p_parent_node, p_address, field_name, RDF_Type::Union);
             break;
-        default: break;
+        case RDF_Type::Void:
+            fill_void_vector_entry(p_parent_node, p_index, p_address);
+            break;
+        default:
+            break;
     }
 }
 
@@ -300,8 +344,10 @@ bool DF_Model::insertRowsVector(const QModelIndex& p_parent)
                     item_address += sizeof(std::string);
                     break;
                 default: // DF structure, enum or bitfield
-                    item_address += size_of_DF_Type(l_node->m_df_type);
-                    break;
+                    if (l_node->m_enum_base == DF_Type::None)
+                        item_address += size_of_DF_Type(l_node->m_df_type);
+                    else
+                        item_address += size_of_DF_Type(l_node->m_enum_base);
             }
         }
         endInsertRows();
@@ -314,7 +360,7 @@ bool DF_Model::insertRowsVector(const QModelIndex& p_parent)
         for (unsigned int i = 0; i < l_vector_size; i++)
         {
             NodePointer* node_pointer = new NodePointer;
-            fill_simple_entry(node_pointer, l_node, sizeof(void*),item_address, l_node->m_df_type, RDF_Type::Pointer);
+            fill_simple_entry(node_pointer, l_node, sizeof(void*), item_address, l_node->m_df_type, RDF_Type::Pointer);
 
             uint64_t pointee = *(reinterpret_cast<uint64_t*>(item_address));
             if (pointee != 0)
@@ -328,12 +374,13 @@ bool DF_Model::insertRowsVector(const QModelIndex& p_parent)
             node_pointer->m_node_type = NodeType::NodePointer;
             node_pointer->m_children.push_back(dummy());
             // Node name [index]
-            QString field_name = "[";
-            field_name.append(QString::fromStdString(std::to_string(i))).append("]");
+            std::string field_name = "[";
+            field_name.append(std::to_string(i)).append("]");
             node_pointer->m_field_name = field_name;
             item_address += sizeof(void*);
         }
+        endInsertRows();
         return true;
     }
-return false;
+    return false;
 }

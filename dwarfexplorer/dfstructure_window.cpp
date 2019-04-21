@@ -51,7 +51,7 @@ void DFStructure_Window::on_actionOpen_in_new_Window_triggered()
     NodeRoot* n_root         = new NodeRoot;
 
     // This is not "the real root"
-    QString path_name = l_node->get_root_node()->m_path;
+    std::string path_name = l_node->get_root_node()->m_path;
     path_name.append(".");
     path_name.append(l_node->m_field_name);
     n_root->m_parent     = nullptr;
@@ -74,11 +74,11 @@ void DFStructure_Window::on_actionOpen_in_new_Window_triggered()
     l_new_window->get_treeview()->setModel(l_new_model);
 
     // Set the window title to match the element to open
-    QString l_new_window_name = "Dwarf Explorer - ";
+    std::string l_new_window_name = "Dwarf Explorer - ";
     l_new_window_name.append(n_root->m_path);
 
     // Show the window
-    l_new_window->setWindowTitle(l_new_window_name);
+    l_new_window->setWindowTitle(QString::fromStdString(l_new_window_name));
     l_new_window->show();
 }
 

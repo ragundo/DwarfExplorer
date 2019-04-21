@@ -31,9 +31,6 @@
 #include <utility>
 #include "df_model.h"
 
-namespace dwarfexplorer
-{
-
     class EventProxy;
 
     namespace Ui { class MainWindow; }
@@ -59,5 +56,5 @@ namespace dwarfexplorer
         std::shared_ptr<EventProxy> event_proxy;
         DF_Model* model;
     };
-}
+
 #endif

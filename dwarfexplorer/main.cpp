@@ -33,7 +33,7 @@
 #include "MainWindow.h"
 
 using namespace DFHack;
-using namespace dwarfexplorer;
+
 
 DFHACK_PLUGIN("dwarfexplorer");
 

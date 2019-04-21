@@ -51,7 +51,6 @@
 #include <QDebug>
 
 
-using namespace dwarfexplorer;
 
 static constexpr struct in_place_t {} in_place;
 
@@ -166,7 +165,7 @@ void MainWindow::on_actionOpen_in_new_window_triggered()
     NodeRoot* n_root         = new NodeRoot;
     // This is not "the real root"
     n_root->m_parent     = nullptr;
-    QString path_name = l_node->path();
+    std::string path_name = l_node->path();
     path_name.append(".");
     path_name.append(l_node->m_field_name);
     n_root->m_path      =  path_name;
@@ -188,10 +187,10 @@ void MainWindow::on_actionOpen_in_new_window_triggered()
     l_new_window->get_treeview()->setModel(l_new_model);
 
     // Set the window title to match the element to open
-    QString l_new_window_name = "Dwarf Explorer - ";
-    l_new_window_name.append(n_root->m_path);
+    std::string new_window_name = "Dwarf Explorer - ";
+    new_window_name.append(n_root->m_path);
 
     // Show the window
-    l_new_window->setWindowTitle(l_new_window_name);
+    l_new_window->setWindowTitle(QString::fromStdString(new_window_name));
     l_new_window->show();
 }

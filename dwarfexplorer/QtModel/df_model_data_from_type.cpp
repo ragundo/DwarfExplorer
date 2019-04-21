@@ -8,10 +8,14 @@ QString DF_Model::data_from_Type(const NodeBase* p_node) const
     //auto type = p_node->m_used_type;
     // Get df_type translated to string
     QString type = QString::fromStdString(DF_Type_to_string(p_node->m_df_type));
+    
+    if (type == "Void")
+        type = "void*";
+
     if (p_node->m_rdf_type == rdf::RDF_Type::Enum)
     {
         auto node_enum = dynamic_cast<const NodeEnum*>(p_node);
-        type = node_enum->m_enum_type;
+        type = QString::fromStdString(node_enum->m_enum_type);
     }
 
     if (p_node->m_df_type == rdf::DF_Type::Void)

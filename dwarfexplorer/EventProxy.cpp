@@ -20,7 +20,6 @@
 
 #include "EventProxy.h"
 
-using namespace dwarfexplorer;
 
 EventProxy::EventProxy(QObject *parent)
     : QObject(parent)

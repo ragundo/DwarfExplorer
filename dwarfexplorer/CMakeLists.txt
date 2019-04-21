@@ -1,8 +1,12 @@
-project(dwarfexplorer)
+project(dwarfexplorer LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 11)
+
+if(UNIX)
 add_definitions(
     -Wfatal-errors
     )
+endif()
 
 set(DWARFEXPLORER_SOURCES
     main.cpp
