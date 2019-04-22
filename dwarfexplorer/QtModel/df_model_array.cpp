@@ -244,7 +244,7 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
             break;
         case RDF_Type::Void:
             fill_void_array_entry(p_parent_node, p_index, p_address);
-            break;            
+            break;
         default:
             break;
     }
@@ -358,8 +358,24 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             node_vector->m_enum_base = node->m_enum_base;
             node_vector->m_node_type = NodeType::NodeVector;
             node_vector->m_children.push_back(dummy());
+
+            // Node name [index]
             std::string field_name = "[";
             field_name.append(std::to_string(i)).append("]");
+
+            if (node->m_index_enum != DF_Type::None)
+            {
+                // The name is one enum
+                // TODO this is a hack
+                NodeEnum dummy;
+                dummy.m_address   = reinterpret_cast<int64_t>(&i);
+                dummy.m_base_type = (node->m_enum_base != DF_Type::None ? node->m_enum_base : DF_Type::int32_t);
+                dummy.m_df_type   = node->m_index_enum;
+                auto pair         = get_enum_decoded(&dummy);
+                field_name.append(" = ");
+                field_name.append(pair.second);
+            }
+
             node_vector->m_field_name = field_name;
             item_address += sizeof(std::vector<void*>);
         }
@@ -382,8 +398,24 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             node_array->m_array_size = std::stoi(new_array_size);
             fill_simple_entry(node_array, node, sizeof(void*), item_address, node->m_df_type, RDF_Type::Array);
             node_array->m_node_type = NodeType::NodeArray;
+
+            // Node name [index]
             std::string field_name = "[";
             field_name.append(std::to_string(i)).append("]");
+
+            if (node->m_index_enum != DF_Type::None)
+            {
+                // The name is one enum
+                // TODO this is a hack
+                NodeEnum dummy;
+                dummy.m_address   = reinterpret_cast<int64_t>(&i);
+                dummy.m_base_type = (node->m_enum_base != DF_Type::None ? node->m_enum_base : DF_Type::int32_t);
+                dummy.m_df_type   = node->m_index_enum;
+                auto pair         = get_enum_decoded(&dummy);
+                field_name.append(" = ");
+                field_name.append(pair.second);
+            }
+
             node_array->m_field_name = field_name;
             item_address += get_array_element_size(node_array);
         }

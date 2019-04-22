@@ -337,7 +337,8 @@ namespace rdf
     struct NodeVector : public Node
     {
         std::string  m_addornements{""};
-        DF_Type m_enum_base{DF_Type::int32_t};
+        DF_Type m_enum_base{DF_Type::None};
+        DF_Type     m_index_enum{DF_Type::None};        
 
         NodeVector()
         {
@@ -362,7 +363,7 @@ namespace rdf
     struct NodeArray : public Node
     {
     public:
-        std::string     m_addornements{""};
+        std::string m_addornements{""};
         std::size_t m_array_size{0};
         DF_Type     m_enum_base{DF_Type::None};
         DF_Type     m_index_enum{DF_Type::None};
@@ -380,6 +381,7 @@ namespace rdf
             clon->m_addornements = m_addornements;
             clon->m_array_size   = m_array_size;
             clon->m_enum_base    = m_enum_base;
+            clon->m_index_enum   = m_index_enum;
             return clon;
         }
     };

@@ -10,7 +10,7 @@ endif()
 
 set(DWARFEXPLORER_SOURCES
     main.cpp
-    node.cpp        
+    node.cpp
     EventProxy.cpp
     MainWindow.cpp
     dfstructure_window.cpp
@@ -22,15 +22,16 @@ set(DWARFEXPLORER_SOURCES
     QtModel/df_model_array.cpp
     QtModel/df_model_pointer.cpp
     QtModel/df_model_util.cpp
-    generated/offsets_cache.cpp    
+    generated/offsets_cache.cpp
     generated/fill_nodes.cpp
-    generated/fill_offsets.cpp    
-    generated/df_types_size.cpp    
+    generated/fill_offsets.cpp
+    generated/df_types_size.cpp
     generated/enum_values.cpp
     generated/bitfields_values.cpp
     generated/df_2_rdf.cpp
     generated/polymorphic_factory.cpp
     generated/fill_globals.cpp
+    generated/enums_size.cpp
 )
 
 qt5_wrap_cpp(DWARFEXPLORER_MOC_SOURCES
