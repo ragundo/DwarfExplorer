@@ -2234,5 +2234,6 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::zoom_commands: return RDF_Type::Enum;
 		default: break;
 	}
+	return RDF_Type::None;
 }
 

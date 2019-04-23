@@ -249,8 +249,10 @@ namespace rdf
     //
     struct NodeEnum : public Node
     {
-        DF_Type m_base_type{DF_Type::int32_t};
+        DF_Type     m_base_type{DF_Type::int32_t};
         std::string m_enum_type{""};
+        int         m_first_value{999999};
+        int         m_last_value{0};  
 
         NodeEnum()
         {

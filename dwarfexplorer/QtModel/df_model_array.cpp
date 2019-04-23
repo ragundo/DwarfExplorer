@@ -10,7 +10,8 @@ extern std::pair<int64_t, std::string> get_enum_decoded(const NodeEnum* p_node);
 extern DF_Type                         get_df_subtype(DF_Type p_base_type, uint64_t p_address);
 extern void                            fill_node(uint64_t p_address, Node* p_node_parent);
 extern RDF_Type                        df_2_rdf(DF_Type p_df_type);
-
+extern std::pair<int,int>              enum_min_max(DF_Type p_enum);
+extern DF_Type                         enum_base_type(DF_Type p_enum);
 
 std::size_t array_size_recursive(std::string p_addornements)
 {
@@ -84,8 +85,6 @@ void fill_void_array_entry(Node* p_parent_node, int p_index, uint64_t p_address)
 void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_address)
 {
     std::string field_name;
-
-    // Node name [index]
     field_name = "[";
     field_name.append(std::to_string(p_index)).append("]");
 
@@ -94,12 +93,15 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
         // The name is one enum
         // TODO this is a hack
         NodeEnum dummy;
-        dummy.m_address   = reinterpret_cast<int64_t>(&p_index);
-        dummy.m_base_type = (p_parent_node->m_enum_base != DF_Type::None ? p_parent_node->m_enum_base : DF_Type::int32_t);
+        auto first_value  = enum_min_max(p_parent_node->m_df_type).first;
+        int  real_index   = p_index;
+        dummy.m_address   = reinterpret_cast<uint64_t>(&real_index);
+        dummy.m_base_type = (p_parent_node->m_enum_base != DF_Type::None ? p_parent_node->m_enum_base : enum_base_type(p_parent_node->m_index_enum));
         dummy.m_df_type   = p_parent_node->m_index_enum;
         auto pair         = get_enum_decoded(&dummy);
-        field_name.append(" = ");
-        field_name.append(pair.second);
+        auto value_decoded = pair.second;
+        field_name.append("=");
+        field_name.append(value_decoded);
     }
 
 

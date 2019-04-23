@@ -10,6 +10,7 @@
 #include "df_all.h"
 #include "node.h"
 #include "offsets_cache.h"
+#include "DF_Types.h"
 
 
 using namespace rdf;
@@ -17,8 +18,9 @@ using namespace rdf;
 
 extern DF_Type get_df_subtype(DF_Type, uint64_t);
 extern DF_Type get_real_subtype(uint64_t p_address, DF_Type p_df_type);
-extern DF_Type enum_size(DF_Type p_enum);
 extern DF_Type enum_base_type(DF_Type p_enum);
+extern DF_Type enum_size(DF_Type p_enum);
+
 
 extern rdf::NodeDummy* dummy();
 
@@ -501,10 +503,12 @@ void fill_globals(Node* p_node_parent)
 	n_gamemode->m_df_type    = DF_Type::game_mode;
 	n_gamemode->m_rdf_type   = RDF_Type::Enum;
 	n_gamemode->m_node_type  = NodeType::NodeEnum;
-	n_gamemode->m_base_type  = enum_base_type(n_gamemode->m_df_type);
+	n_gamemode->m_base_type  = DF_Type::int32_t;
 	n_gamemode->m_enum_type  = "game_mode";
 	n_gamemode->m_address      = reinterpret_cast<uint64_t>(df::global::gamemode);
 	n_gamemode->m_comment    = "";
+	n_gamemode->m_first_value = 0;
+	n_gamemode->m_last_value  = 3;
 	n_gamemode->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_gamemode);
 
@@ -514,10 +518,12 @@ void fill_globals(Node* p_node_parent)
 	n_gametype->m_df_type    = DF_Type::game_type;
 	n_gametype->m_rdf_type   = RDF_Type::Enum;
 	n_gametype->m_node_type  = NodeType::NodeEnum;
-	n_gametype->m_base_type  = enum_base_type(n_gametype->m_df_type);
+	n_gametype->m_base_type  = DF_Type::int32_t;
 	n_gametype->m_enum_type  = "game_type";
 	n_gametype->m_address      = reinterpret_cast<uint64_t>(df::global::gametype);
 	n_gametype->m_comment    = "";
+	n_gametype->m_first_value = 0;
+	n_gametype->m_last_value  = 11;
 	n_gametype->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_gametype);
 
@@ -1428,10 +1434,12 @@ void fill_globals(Node* p_node_parent)
 	n_ui_lever_target_type->m_df_type    = DF_Type::lever_target_type;
 	n_ui_lever_target_type->m_rdf_type   = RDF_Type::Enum;
 	n_ui_lever_target_type->m_node_type  = NodeType::NodeEnum;
-	n_ui_lever_target_type->m_base_type  = enum_base_type(n_ui_lever_target_type->m_df_type);
+	n_ui_lever_target_type->m_base_type  = DF_Type::int8_t;
 	n_ui_lever_target_type->m_enum_type  = "lever_target_type";
 	n_ui_lever_target_type->m_address      = reinterpret_cast<uint64_t>(df::global::ui_lever_target_type);
 	n_ui_lever_target_type->m_comment    = "";
+	n_ui_lever_target_type->m_first_value = -1;
+	n_ui_lever_target_type->m_last_value  = 119;
 	n_ui_lever_target_type->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_lever_target_type);
 
