@@ -96,43 +96,6 @@ namespace rdf
         }
     };
 
-    template<typename T>
-    struct NodeSimple : public NodeBase
-    {
-        NodeBase* clone() override
-        {
-            auto clon = new NodeSimple<T>;
-            init(clon);
-            return clon;
-        }
-
-        std::string node_path_name()
-        {
-            return m_field_name;
-        }
-    };
-
-    struct NodeVoid : public NodeBase
-    {
-        NodeVoid() : NodeBase()
-        {
-            m_df_type   = DF_Type::Void;
-            m_rdf_type  = RDF_Type::Void;
-            m_node_type = NodeType::NodeVoid;
-        }
-
-        NodeBase* clone() override
-        {
-            auto clon = new NodeVoid;
-            return clon;
-        }
-
-        std::string node_path_name()
-        {
-            return m_field_name;
-        }        
-    };
-
     //
     //------------------------------------------------------------------------------------//
     //
@@ -157,6 +120,49 @@ namespace rdf
             for(int i = 0; i < m_children.size(); i++)
                 delete m_children.takeAt(i);
         }
+    };
+
+    //
+    //------------------------------------------------------------------------------------//
+    //
+    template<typename T>
+    struct NodeSimple : public NodeBase
+    {
+        NodeBase* clone() override
+        {
+            auto clon = new NodeSimple<T>;
+            init(clon);
+            return clon;
+        }
+
+        std::string node_path_name()
+        {
+            return m_field_name;
+        }
+    };
+
+    //
+    //------------------------------------------------------------------------------------//
+    //
+    struct NodeVoid : public NodeBase
+    {
+        NodeVoid() : NodeBase()
+        {
+            m_df_type   = DF_Type::Void;
+            m_rdf_type  = RDF_Type::Void;
+            m_node_type = NodeType::NodeVoid;
+        }
+
+        NodeBase* clone() override
+        {
+            auto clon = new NodeVoid;
+            return clon;
+        }
+
+        std::string node_path_name()
+        {
+            return m_field_name;
+        }        
     };
 
     //
