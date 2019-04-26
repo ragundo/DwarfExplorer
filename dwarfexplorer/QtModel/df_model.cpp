@@ -99,6 +99,12 @@ QString data_from_Comment(const NodeBase* p_node)
     return QString::fromStdString(base->m_comment);
 }
 
+QString data_from_Refers_to(const NodeBase* p_node)
+{
+    const NodeBase* base = dynamic_cast<const NodeBase*>(p_node);
+    return QString::fromStdString(base->m_refers_to);
+}
+
 QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
 {
     const NodeBase* node = nodeFromIndex(p_index);
@@ -157,6 +163,8 @@ QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
             return data_from_Address(node);   // Address
         case 5 :
             return data_from_Comment(node);   // Comment
+        case 6 :
+            return data_from_Refers_to(node);   // refers-to
         default:
             return QVariant();
     }
@@ -181,6 +189,8 @@ QVariant DF_Model::headerData(int p_section, Qt::Orientation p_orientation, int 
                 return tr("Address");
             case 5 :
                 return tr("Comment");
+            case 6 :
+                return tr("Refers-to");                
             default:
                 return QVariant();
         }
@@ -190,7 +200,7 @@ QVariant DF_Model::headerData(int p_section, Qt::Orientation p_orientation, int 
 
 int DF_Model::columnCount(const QModelIndex& /*p_parent*/) const
 {
-    return 6;
+    return 7;
 }
 
 bool DF_Model::removeRows(int p_row, int p_count, const QModelIndex& /*p_parent*/)
@@ -293,21 +303,14 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
         case rdf::RDF_Type::None:
             return false;
         case rdf::RDF_Type::int64_t:
-            return false;
         case rdf::RDF_Type::uint64_t:
-            return false;
         case rdf::RDF_Type::int32_t:
-            return false;
         case rdf::RDF_Type::int16_t:
-            return false;
         case rdf::RDF_Type::uint32_t:
-            return false;
         case rdf::RDF_Type::uint16_t:
-            return false;
         case rdf::RDF_Type::uint8_t:
-            return false;
         case rdf::RDF_Type::int8_t:
-            return false;
+            return !(p_node->m_refers_to.empty());
         case rdf::RDF_Type::Void:
             return false;
         case rdf::RDF_Type::Char:

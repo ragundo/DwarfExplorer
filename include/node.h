@@ -27,6 +27,7 @@ namespace rdf
         NodeBitfieldEntry,
         NodePointer,
         NodeVoid,
+        NodePadding,
         NodeDummy
     };
 
@@ -43,6 +44,7 @@ namespace rdf
         RDF_Type         m_rdf_type   {rdf::RDF_Type::None};
         NodeBase*        m_parent     {nullptr};
         std::string      m_comment    {""};
+        std::string      m_refers_to  {""};        
         uint64_t         m_address;
         NodeType         m_node_type;
         //QList<NodeBase*> m_path;
@@ -99,6 +101,32 @@ namespace rdf
     //
     //------------------------------------------------------------------------------------//
     //
+    struct NodePadding : public NodeBase
+    {
+        unsigned int m_size;
+
+        NodePadding()
+        {
+            m_node_type = NodeType::NodePadding;
+        }
+
+        NodeBase* clone() override
+        {
+            auto clone = new NodeDummy;
+            clone->m_size = m_size;
+            init(clone);
+            return clone;
+        }
+
+        std::string node_path_name()
+        {
+            return "";
+        }
+    };
+
+    //
+    //------------------------------------------------------------------------------------//
+    //
     struct Node : public NodeBase
     {
         QVector<NodeBase*> m_children;
@@ -126,7 +154,7 @@ namespace rdf
     //------------------------------------------------------------------------------------//
     //
     template<typename T>
-    struct NodeSimple : public NodeBase
+    struct NodeSimple : public Node
     {
         NodeBase* clone() override
         {
