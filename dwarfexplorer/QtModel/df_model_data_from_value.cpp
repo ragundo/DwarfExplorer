@@ -302,6 +302,12 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
         return "[X=" + QString::number(coord->x) + ",Y=" + QString::number(coord->y) + "]";
     }
 
+    if (p_node->m_df_type == rdf::DF_Type::Padding)
+    {
+        auto padding_node = dynamic_cast<const NodePadding*>(p_node);
+        return "[" + QString::number(padding_node->m_size) + " bytes" + "]";
+    }    
+
     if (is_node_simple(p_node))
         return process_node_simple(p_node);
     return "";

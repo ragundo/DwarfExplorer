@@ -81,8 +81,6 @@ QString data_from_Name(const NodeBase* p_node)
     return QString::fromStdString(p_node->m_field_name);
 }
 
-
-
 QString data_from_Address(const rdf::NodeBase* p_node)
 {
     const NodeBase* base   = dynamic_cast<const NodeBase*>(p_node);
@@ -325,6 +323,8 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
             return false;
         case rdf::RDF_Type::Ptr_string:
             return false;
+        case rdf::RDF_Type::Padding:
+            return false;            
         case rdf::RDF_Type::S_float:
             return false;
         case rdf::RDF_Type::D_float:

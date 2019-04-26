@@ -21,6 +21,9 @@ QString DF_Model::data_from_Type(const NodeBase* p_node) const
     if (p_node->m_df_type == rdf::DF_Type::Void)
         return type;
 
+    if (p_node->m_df_type == rdf::DF_Type::Padding)
+        return "";    
+
     if (p_node->m_df_type == rdf::DF_Type::Stl_string)
         type = "std::string";
 

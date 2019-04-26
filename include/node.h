@@ -112,7 +112,7 @@ namespace rdf
 
         NodeBase* clone() override
         {
-            auto clone = new NodeDummy;
+            auto clone = new NodePadding;
             clone->m_size = m_size;
             init(clone);
             return clone;
