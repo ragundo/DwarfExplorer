@@ -306,7 +306,38 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
     {
         auto padding_node = dynamic_cast<const NodePadding*>(p_node);
         return "[" + QString::number(padding_node->m_size) + " bytes" + "]";
-    }    
+    }
+
+    if (p_node->m_df_type == rdf::DF_Type::Static_string)
+    {
+        auto ss_node = dynamic_cast<const NodeStaticString*>(p_node);
+        const char* value = reinterpret_cast<const char*>(ss_node->m_address);
+        QString result("\"");
+        result.append(value);
+        result.append("\"");
+        return result;
+    }
+
+    if (p_node->m_rdf_type == rdf::RDF_Type::DFLinkedList)
+    {
+        auto ss_node = dynamic_cast<const NodeCompound*>(p_node);
+        int count = 0;
+        uint64_t* address = reinterpret_cast<uint64_t*>(ss_node->m_address);
+        while (address != nullptr)
+        {
+                // First pointer is to data
+                // Second pointer is previous node
+                // Third pointer is next node
+                count++;
+                address++;
+                address++;
+                address = reinterpret_cast<uint64_t*>(*address);
+
+        }
+        auto result =  QString::number(count);
+        result.append(" entries");
+        return result;
+    }
 
     if (is_node_simple(p_node))
         return process_node_simple(p_node);

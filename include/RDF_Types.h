@@ -38,7 +38,8 @@ namespace rdf
                 Enum,
                 Array,
                 Vector,
-                Pointer
+                Pointer,
+                DFLinkedList
         };
 
 }

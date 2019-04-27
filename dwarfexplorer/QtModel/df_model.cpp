@@ -353,6 +353,8 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
             return true;
         case rdf::RDF_Type::AnonymousUnion:
             return true;
+        case rdf::RDF_Type::DFLinkedList:
+            return true;            
         default:     break;
     }
 
@@ -441,6 +443,7 @@ void DF_Model::insert_child_nodes(NodeBase* p_node, const QModelIndex& p_index)
         case rdf::RDF_Type::Compound:
         case rdf::RDF_Type::Union:
         case rdf::RDF_Type::AnonymousUnion:
+        case rdf::RDF_Type::DFLinkedList:
             insertRowsCompound(p_index, 5);
             break;
         case rdf::RDF_Type::Bitfield:

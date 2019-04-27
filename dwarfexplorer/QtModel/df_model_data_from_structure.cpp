@@ -79,6 +79,9 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
     if (p_node->m_rdf_type == rdf::RDF_Type::Compound)
         return "Compound";
 
+    if (p_node->m_rdf_type == rdf::RDF_Type::DFLinkedList)
+        return "Linked list";    
+
     if (p_node->m_rdf_type == rdf::RDF_Type::Class)
         return "Class";
 
@@ -105,6 +108,9 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Padding)
         return "Padding";
+
+    if (p_node->m_rdf_type == rdf::RDF_Type::Static_string)
+        return "Static String";    
 
 //    if (p_node->m_rdf_type == rdf::RDF_Type::DFArray)
 //        return "DFArray";

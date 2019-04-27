@@ -28,6 +28,7 @@ namespace rdf
         NodePointer,
         NodeVoid,
         NodePadding,
+        NodeStaticString,
         NodeDummy
     };
 
@@ -123,6 +124,32 @@ namespace rdf
             return "";
         }
     };
+
+//
+    //------------------------------------------------------------------------------------//
+    //
+    struct NodeStaticString : public NodeBase
+    {
+        unsigned int m_size;
+
+        NodeStaticString()
+        {
+            m_node_type = NodeType::NodeStaticString;
+        }
+
+        NodeBase* clone() override
+        {
+            auto clone = new NodePadding;
+            clone->m_size = m_size;
+            init(clone);
+            return clone;
+        }
+
+        std::string node_path_name()
+        {
+            return "";
+        }
+    };    
 
     //
     //------------------------------------------------------------------------------------//
