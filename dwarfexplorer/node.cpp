@@ -8,7 +8,7 @@ std::string NodeBase::path()
     QVector<NodeBase*> path;
 
     NodeBase* node_iterator = this;
-         while (node_iterator->m_parent->m_node_type != NodeType::NodeRoot)
+         while (node_iterator->m_parent->m_node_type != NodeType::Root)
      {
          node_iterator = node_iterator->m_parent;
                  path.append(node_iterator);

@@ -70,7 +70,7 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
     if (is_array(p_node))
         return QString::fromStdString(get_array_expresion(p_node));
 
-    if (p_node->m_node_type == NodeType::NodeVoid)
+    if (p_node->m_node_type == NodeType::Void)
         return "Pointer";
 
     if (is_pointer(p_node))
@@ -96,6 +96,9 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Bitfield)
         return "Bitfield";
+
+    if (p_node->m_rdf_type == rdf::RDF_Type::DFFlagArray)
+        return "DFFlagArray";
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Union)
         return "Union";

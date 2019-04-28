@@ -129,9 +129,9 @@ void MainWindow::on_treeView_expanded(const QModelIndex& p_index)
     Node* l_node = dynamic_cast<Node*>(l_node_base);
     if (l_node != nullptr)
         if ((l_node->m_children.size() == 0) ||
-                (l_node->m_node_type == rdf::NodeType::NodeVector) ||
-                (l_node->m_node_type == rdf::NodeType::NodeArray) ||                                
-                (l_node->m_node_type == rdf::NodeType::NodePointer))
+                (l_node->m_node_type == rdf::NodeType::Vector) ||
+                (l_node->m_node_type == rdf::NodeType::Array) ||                                
+                (l_node->m_node_type == rdf::NodeType::Pointer))
                     l_global_model->insert_child_nodes(l_node_base, p_index);
     this->setCursor(Qt::ArrowCursor);
 }
@@ -172,7 +172,7 @@ void MainWindow::on_actionOpen_in_new_window_triggered()
     n_root->m_field_name = l_node->m_field_name;
     n_root->m_rdf_type = l_node->m_rdf_type;
     n_root->m_df_type = l_node->m_df_type;
-    n_root->m_node_type = NodeType::NodeRoot;
+    n_root->m_node_type = NodeType::Root;
 
     //l_cloned_node->m_field_name = n_root->m_path;
 

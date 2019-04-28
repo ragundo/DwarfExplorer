@@ -13,23 +13,24 @@ namespace rdf
 {
     enum class NodeType
     {
-        NodeSimple,
-        NodeCompound,
-        NodeAnonymousCompound,
-        NodeVector,
-        NodeArray,
-        NodeUnion,
-        NodeAnonymousUnion,
-        NodeRange,
-        NodeRoot,
-        NodeEnum,
-        NodeBitfield,
-        NodeBitfieldEntry,
-        NodePointer,
-        NodeVoid,
-        NodePadding,
-        NodeStaticString,
-        NodeDummy
+        Simple,
+        Compound,
+        AnonymousCompound,
+        Vector,
+        Array,
+        Union,
+        AnonymousUnion,
+        Range,
+        Root,
+        Enum,
+        Bitfield,
+        BitfieldEntry,
+        Pointer,
+        Void,
+        Padding,
+        StaticString,
+        Dummy,
+        DFFlagArray
     };
 
     class NodeRoot;
@@ -83,7 +84,7 @@ namespace rdf
     {
         NodeDummy()
         {
-            m_node_type = NodeType::NodeDummy;
+            m_node_type = NodeType::Dummy;
         }
 
         NodeBase* clone() override
@@ -108,7 +109,7 @@ namespace rdf
 
         NodePadding()
         {
-            m_node_type = NodeType::NodePadding;
+            m_node_type = NodeType::Padding;
         }
 
         NodeBase* clone() override
@@ -134,7 +135,7 @@ namespace rdf
 
         NodeStaticString()
         {
-            m_node_type = NodeType::NodeStaticString;
+            m_node_type = NodeType::StaticString;
         }
 
         NodeBase* clone() override
@@ -205,7 +206,7 @@ namespace rdf
         {
             m_df_type   = DF_Type::Void;
             m_rdf_type  = RDF_Type::Void;
-            m_node_type = NodeType::NodeVoid;
+            m_node_type = NodeType::Void;
         }
 
         NodeBase* clone() override
@@ -229,7 +230,7 @@ namespace rdf
 
         NodeRoot()
         {
-            m_node_type = NodeType::NodeRoot;
+            m_node_type = NodeType::Root;
         }
 
         bool is_root_node() const override
@@ -258,7 +259,7 @@ namespace rdf
     {
         NodeCompound()
         {
-            m_node_type = NodeType::NodeCompound;
+            m_node_type = NodeType::Compound;
         }
 
         NodeBase* clone() override
@@ -276,7 +277,7 @@ namespace rdf
     {
         NodeUnion()
         {
-            m_node_type = NodeType::NodeUnion;
+            m_node_type = NodeType::Union;
         }
 
         NodeBase* clone() override
@@ -317,7 +318,7 @@ namespace rdf
 
         NodeEnum()
         {
-            m_node_type = NodeType::NodeEnum;
+            m_node_type = NodeType::Enum;
         }
 
         NodeBase* clone() override
@@ -340,7 +341,7 @@ namespace rdf
 
         NodeBitfieldEntry()
         {
-            m_node_type = NodeType::NodeBitfieldEntry;
+            m_node_type = NodeType::BitfieldEntry;
         }
 
         NodeBase* clone() override
@@ -358,15 +359,40 @@ namespace rdf
     //
     struct NodeBitfield : public Node
     {
+        DF_Type m_index_enum{DF_Type::None};
         NodeBitfield()
         {
-            m_node_type = NodeType::NodeBitfield;
+            m_node_type = NodeType::Bitfield;
         }
 
         NodeBase* clone() override
         {
             auto clon = new NodeBitfield;
             init(clon);
+            clon->m_index_enum = m_index_enum;
+            return clon;
+        }
+    };
+
+    //
+    //------------------------------------------------------------------------------------//
+    //
+    struct NodeDFFlagArray : public Node
+    {
+        DF_Type     m_index_enum{DF_Type::None};
+        std::size_t m_size;
+        
+        NodeDFFlagArray()
+        {
+            m_node_type = NodeType::DFFlagArray;
+        }
+
+        NodeBase* clone() override
+        {
+            auto clon = new NodeDFFlagArray;
+            init(clon);
+            clon->m_index_enum = m_index_enum;
+            clon->m_size       = m_size;
             return clon;
         }
     };
@@ -380,7 +406,7 @@ namespace rdf
         DF_Type m_enum_base{DF_Type::int32_t};
         NodePointer()
         {
-            m_node_type = NodeType::NodePointer;
+            m_node_type = NodeType::Pointer;
         }
 
 
@@ -405,7 +431,7 @@ namespace rdf
 
         NodeVector()
         {
-            m_node_type = NodeType::NodeVector;
+            m_node_type = NodeType::Vector;
             m_enum_base = DF_Type::None;
         }
 
@@ -433,7 +459,7 @@ namespace rdf
 
         NodeArray()
         {
-            m_node_type = NodeType::NodeArray;
+            m_node_type = NodeType::Array;
         }
 
 

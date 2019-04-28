@@ -30,7 +30,7 @@ QString DF_Model::data_from_Type(const NodeBase* p_node) const
     if (p_node->m_df_type == rdf::DF_Type::Stl_string)
         type = "std::string";
 
-    if (p_node->m_node_type == NodeType::NodeVector)
+    if (p_node->m_node_type == NodeType::Vector)
     {
         auto node_vector = dynamic_cast<const NodeVector*>(p_node);
         auto addornements = node_vector->m_addornements;

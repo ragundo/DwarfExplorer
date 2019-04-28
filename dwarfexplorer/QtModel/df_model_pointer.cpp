@@ -22,7 +22,7 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
     if (node->m_df_type == rdf::DF_Type::Void)
         return false;
 
-    if ((node->m_children.size() > 0) && (node->m_children[0]->m_node_type != NodeType::NodeDummy))
+    if ((node->m_children.size() > 0) && (node->m_children[0]->m_node_type != NodeType::Dummy))
         return false;
 
     // Remove the dummy node if exists
@@ -146,12 +146,12 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
             if (node->m_enum_base == DF_Type::None)
             {
                 fill_simple_entry(n_pve, node, size_of_DF_Type(node->m_df_type), item_address, node->m_df_type, rdf_type);
-                n_pve->m_node_type = NodeType::NodeEnum;
+                n_pve->m_node_type = NodeType::Enum;
             }
             else
             {
                 fill_simple_entry(n_pve, node, size_of_DF_Type(node->m_enum_base), item_address, node->m_df_type, rdf_type);
-                n_pve->m_node_type = NodeType::NodeEnum;
+                n_pve->m_node_type = NodeType::Enum;
                 n_pve->m_base_type = node->m_enum_base;
             }
             n_pve->m_enum_type = DF_Type_to_string(node->m_df_type);
@@ -165,7 +165,7 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
             auto n_pve = new NodeBitfield;
             fill_simple_entry(n_pve, node, size_of_DF_Type(node->m_df_type), item_address, node->m_df_type, rdf_type);
             n_pve->m_field_name = "N/A";
-            n_pve->m_node_type = NodeType::NodeBitfield;
+            n_pve->m_node_type = NodeType::Bitfield;
             endInsertRows();
             return true;
         }

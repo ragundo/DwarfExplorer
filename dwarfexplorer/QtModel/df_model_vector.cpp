@@ -24,7 +24,7 @@ void fill_simple_entry(NodeBase* p_pve, Node* p_node, size_t p_size, uint64_t p_
     //p_pve->m_used_type     = p_node->m_used_type;
     p_pve->m_field_name    = "";
     p_pve->m_comment       = "";
-    p_pve->m_node_type     = NodeType::NodeSimple;
+    p_pve->m_node_type     = NodeType::Simple;
     p_pve->m_parent        = p_node;
 
     p_node->m_children.append(p_pve);
@@ -252,13 +252,13 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
         if (p_parent_node->m_enum_base == DF_Type::None)
         {
             fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
-            n_pve->m_node_type = NodeType::NodeEnum;
+            n_pve->m_node_type = NodeType::Enum;
             //n_pve->m_base_type = p_parent_node->m_df_type;
         }
         else
         {
             fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_enum_base), p_address, p_parent_node->m_df_type, rdf_type);
-            n_pve->m_node_type = NodeType::NodeEnum;
+            n_pve->m_node_type = NodeType::Enum;
             n_pve->m_base_type = p_parent_node->m_enum_base;
         }
         n_pve->m_enum_type = DF_Type_to_string(p_parent_node->m_df_type);
@@ -270,7 +270,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
         auto n_pve = new NodeBitfield;
         fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
         n_pve->m_field_name = field_name;
-        n_pve->m_node_type = NodeType::NodeBitfield;
+        n_pve->m_node_type = NodeType::Bitfield;
         return;
     }
 
@@ -304,7 +304,7 @@ bool DF_Model::insertRowsVector(const QModelIndex& p_parent)
 {
     auto l_node = dynamic_cast<NodeVector*>(nodeFromIndex(p_parent));
 
-    if ((l_node->m_children.size() > 0) && (l_node->m_children[0]->m_node_type != NodeType::NodeDummy))
+    if ((l_node->m_children.size() > 0) && (l_node->m_children[0]->m_node_type != NodeType::Dummy))
         return false;
 
 
@@ -392,7 +392,7 @@ bool DF_Model::insertRowsVector(const QModelIndex& p_parent)
             }
 
             node_pointer->m_addornements = addornements;
-            node_pointer->m_node_type = NodeType::NodePointer;
+            node_pointer->m_node_type = NodeType::Pointer;
             node_pointer->m_children.push_back(dummy());
             // Node name [index]
             std::string field_name = "[";

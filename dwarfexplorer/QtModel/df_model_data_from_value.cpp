@@ -147,7 +147,7 @@ QString process_node_simple(const NodeBase* p_node)
 
 bool is_node_void_pointer(const NodeBase* p_node)
 {
-    if (p_node->m_node_type == NodeType::NodeVoid)
+    if (p_node->m_node_type == NodeType::Void)
         return true;
     return false;
 }
@@ -264,7 +264,10 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
     if (p_node->m_rdf_type == rdf::RDF_Type::Bitfield)
         return Bitfield_data_from_Value(p_node);
 
-    if (p_node->m_node_type == rdf::NodeType::NodeBitfieldEntry)
+    if (p_node->m_rdf_type == rdf::RDF_Type::DFFlagArray)
+        return "";
+
+    if (p_node->m_node_type == rdf::NodeType::BitfieldEntry)
     {
         auto node = dynamic_cast<const NodeBitfieldEntry*>(p_node);
         return QString::fromStdString(node->m_value ? "True" : "False");

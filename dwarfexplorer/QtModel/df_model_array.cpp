@@ -227,7 +227,7 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
         auto n_pve = new NodeBitfield;
         fill_simple_entry(n_pve, p_parent_node, size_of_DF_Type(p_parent_node->m_df_type), p_address, p_parent_node->m_df_type, rdf_type);
         n_pve->m_field_name = field_name;
-        n_pve->m_node_type = NodeType::NodeBitfield;
+        n_pve->m_node_type = NodeType::Bitfield;
         return;
     }
     switch (rdf_type)
@@ -338,7 +338,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             }
 
             node_pointer->m_addornements = addornements;
-            node_pointer->m_node_type = NodeType::NodePointer;
+            node_pointer->m_node_type = NodeType::Pointer;
             node_pointer->m_children.push_back(dummy());
             std::string field_name = "[";
             field_name.append(std::to_string(i)).append("]");
@@ -358,7 +358,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             fill_simple_entry(node_vector, node, sizeof(void*), item_address, node->m_df_type, RDF_Type::Vector);
             node_vector->m_addornements = addornements;
             node_vector->m_enum_base = node->m_enum_base;
-            node_vector->m_node_type = NodeType::NodeVector;
+            node_vector->m_node_type = NodeType::Vector;
             node_vector->m_children.push_back(dummy());
 
             // Node name [index]
@@ -399,7 +399,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             auto new_array_size = size.substr(0, index - 1 );
             node_array->m_array_size = std::stoi(new_array_size);
             fill_simple_entry(node_array, node, sizeof(void*), item_address, node->m_df_type, RDF_Type::Array);
-            node_array->m_node_type = NodeType::NodeArray;
+            node_array->m_node_type = NodeType::Array;
 
             // Node name [index]
             std::string field_name = "[";

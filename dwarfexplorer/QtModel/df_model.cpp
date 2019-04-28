@@ -7,10 +7,10 @@
 
 using namespace rdf;
 
-extern void fill_node(uint64_t p_df_structure, rdf::Node* p_node_parent);
+extern void                                        fill_node(uint64_t p_df_structure, rdf::Node* p_node_parent);
 extern std::array<std::array<std::string, 3>, 32>& get_bitfield_bits(DF_Type);
-extern std::string to_hex(uint64_t p_dec);
-
+extern std::string                                 to_hex(uint64_t p_dec);
+extern std::pair<int64_t, std::string>             get_enum_decoded(const NodeEnum* p_node);
 
 void DF_Model::set_root(NodeBase* p_node)
 {
@@ -25,7 +25,7 @@ QModelIndex DF_Model::index(int p_row, int p_column, const QModelIndex& p_parent
     if (!m_rootNode || p_row < 0 || p_column < 0)
         return QModelIndex();
     NodeBase* parentNode = nodeFromIndex(p_parent);
-    if (parentNode->m_node_type == NodeType::NodeSimple)
+    if (parentNode->m_node_type == NodeType::Simple)
         return QModelIndex();
     NodeBase* childNode = (static_cast<Node*>(parentNode))->m_children.at(p_row);
 
@@ -43,7 +43,7 @@ QModelIndex DF_Model::parent(const QModelIndex& p_child_index) const
     NodeBase* grandparentNode = parentNode->m_parent;
     if (!grandparentNode)
         return QModelIndex();
-    if (grandparentNode->m_node_type == NodeType::NodeSimple)
+    if (grandparentNode->m_node_type == NodeType::Simple)
         return QModelIndex();
     Node* l_gp_node = static_cast<Node*>(grandparentNode);
     int row = l_gp_node->m_children.indexOf(parentNode);
@@ -57,7 +57,7 @@ int DF_Model::rowCount(const QModelIndex& p_parent) const
     NodeBase* parentNode = nodeFromIndex(p_parent);
     if (!parentNode)
         return 0;
-    if (parentNode->m_node_type == NodeType::NodeSimple)
+    if (parentNode->m_node_type == NodeType::Simple)
         return 0;
     auto l_parent = static_cast<Node*>(parentNode);
     return l_parent->m_children.count();
@@ -188,7 +188,7 @@ QVariant DF_Model::headerData(int p_section, Qt::Orientation p_orientation, int 
             case 5 :
                 return tr("Comment");
             case 6 :
-                return tr("Refers-to");                
+                return tr("Refers-to");
             default:
                 return QVariant();
         }
@@ -226,18 +226,80 @@ void DF_Model::update_node_path(NodeBase* p_source, NodeBase* p_dest)
 
 bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
 {
-    auto bitfield_node = dynamic_cast<Node*>(nodeFromIndex(p_parent));
+    auto bitfield_node = dynamic_cast<NodeBitfield*>(nodeFromIndex(p_parent));
     if (bitfield_node->m_children.size() > 0)
         return false;
 
     auto pointer_bitfield = reinterpret_cast<int32_t*>(bitfield_node->m_address);
     auto bitfield_value = *pointer_bitfield;
-    auto bitfield_data = get_bitfield_bits(bitfield_node->m_df_type);
-    beginInsertRows(p_parent, 0, bitfield_data.size());
-    unsigned int mask = 1;
-    for (unsigned int i = 0; i < bitfield_data.size() ; i++)
+    if (bitfield_node->m_index_enum == DF_Type::None)
     {
-        std::string field_name = bitfield_data[i][1];
+        auto bitfield_data = get_bitfield_bits(bitfield_node->m_df_type);
+        beginInsertRows(p_parent, 0, bitfield_data.size());
+        unsigned int mask = 1;
+        for (unsigned int i = 0; i < bitfield_data.size() ; i++)
+        {
+            std::string field_name = bitfield_data[i][1];
+            if ((bitfield_value & mask) || (field_name.length() > 0))
+            {
+                auto* n_pve          = new NodeBitfieldEntry();
+                n_pve->m_field_name  = field_name;
+                if (field_name.length() == 0)
+                {
+                    if (i < 10)
+                        n_pve->m_field_name = "[0" + std::to_string(i) + "]";
+                    else
+                        n_pve->m_field_name = "[" + std::to_string(i) + "]";
+                }
+                else
+                {
+                    if (i < 10)
+                        n_pve->m_field_name = "[0" + std::to_string(i) + "] " +  field_name;
+                    else
+                        n_pve->m_field_name = "[" + std::to_string(i) + "] " +  field_name;
+                }
+                n_pve->m_rdf_type    = rdf::RDF_Type::Bool;
+                n_pve->m_df_type     = rdf::DF_Type::Bool;
+                n_pve->m_parent      = bitfield_node;
+                n_pve->m_index       = i;
+                n_pve->m_comment     = bitfield_data[i][2];
+                n_pve->m_value       = bitfield_value & mask;
+                n_pve->m_address     = bitfield_node->m_address;
+                bitfield_node->m_children.append(n_pve);
+            }
+            mask = mask << 1;
+        }
+    }
+//        // Update this node path
+//        update_node_path(l_bitfield_node, n_pve);
+    endInsertRows();
+    return true;
+}
+
+
+bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
+{
+    auto df_flag_array_node = dynamic_cast<NodeDFFlagArray*>(nodeFromIndex(p_parent));
+    if (df_flag_array_node->m_children.size() > 0)
+        return false;
+
+    uint8_t**  a                     = reinterpret_cast<uint8_t**>(df_flag_array_node->m_address);
+    uint8_t*   pointer_df_flag_array = *a;
+    // This is a hack
+    NodeEnum ne;
+    ne.m_base_type = DF_Type::int8_t;
+    ne.m_df_type   = df_flag_array_node->m_index_enum;
+
+    beginInsertRows(p_parent, 0, df_flag_array_node->m_size);
+
+    unsigned int mask = 1;
+    uint8_t bitfield_value;
+    for (unsigned int i = 0; i < df_flag_array_node->m_size ; i++)
+    {
+        ne.m_address   = reinterpret_cast<uint64_t>(&i);
+        std::string field_name = get_enum_decoded(&ne).second;
+        if (i % 8 == 0)
+            bitfield_value = *pointer_df_flag_array;
         if ((bitfield_value & mask) || (field_name.length() > 0))
         {
             auto* n_pve          = new NodeBitfieldEntry();
@@ -258,18 +320,19 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
             }
             n_pve->m_rdf_type    = rdf::RDF_Type::Bool;
             n_pve->m_df_type     = rdf::DF_Type::Bool;
-            n_pve->m_parent      = bitfield_node;
+            n_pve->m_parent      = df_flag_array_node;
             n_pve->m_index       = i;
-            n_pve->m_comment     = bitfield_data[i][2];
+            n_pve->m_comment     = "";
             n_pve->m_value       = bitfield_value & mask;
-            n_pve->m_address     = bitfield_node->m_address;
-            bitfield_node->m_children.append(n_pve);
+            n_pve->m_address     = reinterpret_cast<uint64_t>(pointer_df_flag_array);
+            df_flag_array_node->m_children.append(n_pve);
         }
-
         mask = mask << 1;
-
-//        // Update this node path
-//        update_node_path(l_bitfield_node, n_pve);
+        if ((i+1) % 8 == 0)
+        {
+            pointer_df_flag_array++;
+            mask = 1;
+        }
     }
     endInsertRows();
     return true;
@@ -293,7 +356,7 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
     if (p_node->is_root_node())
         return true;
 
-    if (p_node->m_node_type == NodeType::NodeBitfieldEntry)
+    if (p_node->m_node_type == NodeType::BitfieldEntry)
         return true;
 
     switch (p_node->m_rdf_type)
@@ -324,7 +387,7 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
         case rdf::RDF_Type::Ptr_string:
             return false;
         case rdf::RDF_Type::Padding:
-            return false;            
+            return false;
         case rdf::RDF_Type::S_float:
             return false;
         case rdf::RDF_Type::D_float:
@@ -354,8 +417,12 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
         case rdf::RDF_Type::AnonymousUnion:
             return true;
         case rdf::RDF_Type::DFLinkedList:
-            return true;            
-        default:     break;
+            return true;
+        case rdf::RDF_Type::DFFlagArray:
+            return true;
+
+        default:
+            break;
     }
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Pointer)
@@ -376,7 +443,7 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
         NodeVector* l_node = dynamic_cast<NodeVector*>(p_node);
         if (get_vector_size(l_node) > 0)
             return true;
-        if ((l_node->m_children.size() > 1) && (l_node->m_children[0]->m_node_type != NodeType::NodeDummy))
+        if ((l_node->m_children.size() > 1) && (l_node->m_children[0]->m_node_type != NodeType::Dummy))
             return true;
     }
     return false;
@@ -449,6 +516,8 @@ void DF_Model::insert_child_nodes(NodeBase* p_node, const QModelIndex& p_index)
         case rdf::RDF_Type::Bitfield:
             insertRowsBitfield(p_index);
             break;
+        case rdf::RDF_Type::DFFlagArray:
+            insertRowsDFFlagArray(p_index);
         default:
             break;
     }
