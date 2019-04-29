@@ -29,6 +29,7 @@ public:
     bool        insertRowsBitfield(const QModelIndex& p_parent);
     bool        insertRowsSimple(const QModelIndex& p_parent);    
     bool        insertRowsDFFlagArray(const QModelIndex& p_parent);
+    bool        insertRowsDFArray(const QModelIndex& p_parent);    
 
 
 

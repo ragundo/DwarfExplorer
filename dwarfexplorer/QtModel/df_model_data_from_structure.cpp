@@ -1,6 +1,10 @@
 #include "../df_model.h"
+#include "node.h"
 
 using namespace rdf;
+
+extern unsigned short get_df_array_size(const NodeDFArray* p_node);
+
 namespace
 {
     bool is_vector(const NodeBase* l_node)
@@ -114,6 +118,16 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Static_string)
         return "Static String";    
+
+    if (p_node->m_rdf_type == rdf::RDF_Type::DFArray)
+    {
+        const NodeDFArray* node_df_array = dynamic_cast<const NodeDFArray*>(p_node);
+        QString result = "DFArray[";
+        result.append(QString::number(get_df_array_size(node_df_array)));
+        result.append("]");
+        return result;
+    }
+
 
 //    if (p_node->m_rdf_type == rdf::RDF_Type::DFArray)
 //        return "DFArray";

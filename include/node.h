@@ -30,7 +30,8 @@ namespace rdf
         Padding,
         StaticString,
         Dummy,
-        DFFlagArray
+        DFFlagArray,
+        DFArray
     };
 
     class NodeRoot;
@@ -475,6 +476,29 @@ namespace rdf
         }
     };
 
+    //
+    //------------------------------------------------------------------------------------//
+    //
+    struct NodeDFArray : public Node
+    {
+    public:
+        std::string m_addornements{""};
+        std::size_t m_array_size{0};
+
+        NodeDFArray()
+        {
+            m_node_type = NodeType::DFArray;
+        }
+
+        NodeBase* clone() override
+        {
+            auto clon = new NodeDFArray;
+            init(clon);
+            clon->m_addornements = m_addornements;
+            clon->m_array_size   = m_array_size;
+            return clon;
+        }
+    };
 
     NodeDummy*  dummy();
 }

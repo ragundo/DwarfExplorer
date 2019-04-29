@@ -40,7 +40,8 @@ namespace rdf
                 Vector,
                 Pointer,
                 DFLinkedList,
-                DFFlagArray
+                DFFlagArray,
+                DFArray
         };
 
 }

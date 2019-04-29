@@ -293,7 +293,7 @@ bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
     beginInsertRows(p_parent, 0, df_flag_array_node->m_size);
 
     unsigned int mask = 1;
-    uint8_t bitfield_value;
+    uint8_t bitfield_value = 0;
     for (unsigned int i = 0; i < df_flag_array_node->m_size ; i++)
     {
         ne.m_address   = reinterpret_cast<uint64_t>(&i);
@@ -398,6 +398,8 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
             break;
         case rdf::RDF_Type::Array:
             return true;
+        case rdf::RDF_Type::DFArray:
+            return true;            
         case rdf::RDF_Type::Vector:
             break;
         case rdf::RDF_Type::Bitfield:
@@ -504,6 +506,9 @@ void DF_Model::insert_child_nodes(NodeBase* p_node, const QModelIndex& p_index)
             break;
         case rdf::RDF_Type::Array:
             insertRowsArray(p_index);
+            break;
+        case rdf::RDF_Type::DFArray:
+            insertRowsDFArray(p_index);
             break;
         case rdf::RDF_Type::Class:
         case rdf::RDF_Type::Struct:

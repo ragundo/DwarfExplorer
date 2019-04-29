@@ -278,6 +278,9 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Array)
         return "";
+    
+    if (p_node->m_rdf_type == rdf::RDF_Type::DFArray)
+        return "";    
 
     if (is_node_void_pointer(p_node))
         return process_node_void_pointer(p_node);
