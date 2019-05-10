@@ -36,7 +36,6 @@ void fill_globals(Node* p_node_parent)
 	n_activity_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_activity_next_id->m_node_type  = NodeType::Simple;
 	n_activity_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::activity_next_id);
-	n_activity_next_id->m_comment    = "";
 	n_activity_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_activity_next_id);
 
@@ -47,7 +46,6 @@ void fill_globals(Node* p_node_parent)
 	n_agreement_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_agreement_next_id->m_node_type  = NodeType::Simple;
 	n_agreement_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::agreement_next_id);
-	n_agreement_next_id->m_comment    = "";
 	n_agreement_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_agreement_next_id);
 
@@ -58,7 +56,6 @@ void fill_globals(Node* p_node_parent)
 	n_army_controller_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_army_controller_next_id->m_node_type  = NodeType::Simple;
 	n_army_controller_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::army_controller_next_id);
-	n_army_controller_next_id->m_comment    = "";
 	n_army_controller_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_army_controller_next_id);
 
@@ -69,7 +66,6 @@ void fill_globals(Node* p_node_parent)
 	n_army_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_army_next_id->m_node_type  = NodeType::Simple;
 	n_army_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::army_next_id);
-	n_army_next_id->m_comment    = "";
 	n_army_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_army_next_id);
 
@@ -80,7 +76,6 @@ void fill_globals(Node* p_node_parent)
 	n_army_tracking_info_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_army_tracking_info_next_id->m_node_type  = NodeType::Simple;
 	n_army_tracking_info_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::army_tracking_info_next_id);
-	n_army_tracking_info_next_id->m_comment    = "";
 	n_army_tracking_info_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_army_tracking_info_next_id);
 
@@ -91,7 +86,6 @@ void fill_globals(Node* p_node_parent)
 	n_art_image_chunk_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_art_image_chunk_next_id->m_node_type  = NodeType::Simple;
 	n_art_image_chunk_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::art_image_chunk_next_id);
-	n_art_image_chunk_next_id->m_comment    = "";
 	n_art_image_chunk_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_art_image_chunk_next_id);
 
@@ -102,7 +96,6 @@ void fill_globals(Node* p_node_parent)
 	n_artifact_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_artifact_next_id->m_node_type  = NodeType::Simple;
 	n_artifact_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::artifact_next_id);
-	n_artifact_next_id->m_comment    = "";
 	n_artifact_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_artifact_next_id);
 
@@ -113,7 +106,6 @@ void fill_globals(Node* p_node_parent)
 	n_basic_seed->m_rdf_type   = RDF_Type::int32_t;
 	n_basic_seed->m_node_type  = NodeType::Simple;
 	n_basic_seed->m_address    = reinterpret_cast<uint64_t>(df::global::basic_seed);
-	n_basic_seed->m_comment    = "";
 	n_basic_seed->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_basic_seed);
 
@@ -124,7 +116,6 @@ void fill_globals(Node* p_node_parent)
 	n_belief_system_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_belief_system_next_id->m_node_type  = NodeType::Simple;
 	n_belief_system_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::belief_system_next_id);
-	n_belief_system_next_id->m_comment    = "";
 	n_belief_system_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_belief_system_next_id);
 
@@ -135,7 +126,6 @@ void fill_globals(Node* p_node_parent)
 	n_building_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_building_next_id->m_node_type  = NodeType::Simple;
 	n_building_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::building_next_id);
-	n_building_next_id->m_comment    = "";
 	n_building_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_building_next_id);
 
@@ -147,7 +137,6 @@ void fill_globals(Node* p_node_parent)
 	n_created_item_count->m_node_type    = NodeType::Vector;
 	n_created_item_count->m_addornements = "v";
 	n_created_item_count->m_address      = reinterpret_cast<uint64_t>(df::global::created_item_count);
-	n_created_item_count->m_comment      = "";
 	n_created_item_count->m_parent       = p_node_parent;
 	n_created_item_count->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_created_item_count);
@@ -160,7 +149,6 @@ void fill_globals(Node* p_node_parent)
 	n_created_item_matindex->m_node_type    = NodeType::Vector;
 	n_created_item_matindex->m_addornements = "v";
 	n_created_item_matindex->m_address      = reinterpret_cast<uint64_t>(df::global::created_item_matindex);
-	n_created_item_matindex->m_comment      = "";
 	n_created_item_matindex->m_parent       = p_node_parent;
 	n_created_item_matindex->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_created_item_matindex);
@@ -173,7 +161,6 @@ void fill_globals(Node* p_node_parent)
 	n_created_item_mattype->m_node_type    = NodeType::Vector;
 	n_created_item_mattype->m_addornements = "v";
 	n_created_item_mattype->m_address      = reinterpret_cast<uint64_t>(df::global::created_item_mattype);
-	n_created_item_mattype->m_comment      = "";
 	n_created_item_mattype->m_parent       = p_node_parent;
 	n_created_item_mattype->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_created_item_mattype);
@@ -186,7 +173,6 @@ void fill_globals(Node* p_node_parent)
 	n_created_item_subtype->m_node_type    = NodeType::Vector;
 	n_created_item_subtype->m_addornements = "v";
 	n_created_item_subtype->m_address      = reinterpret_cast<uint64_t>(df::global::created_item_subtype);
-	n_created_item_subtype->m_comment      = "";
 	n_created_item_subtype->m_parent       = p_node_parent;
 	n_created_item_subtype->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_created_item_subtype);
@@ -198,9 +184,9 @@ void fill_globals(Node* p_node_parent)
 	n_created_item_type->m_rdf_type     = RDF_Type::Vector;
 	n_created_item_type->m_node_type    = NodeType::Vector;
 	n_created_item_type->m_enum_base    = DF_Type::int16_t;
+	n_created_item_type->m_defined_in   = "df.item-raws.xml";
 	n_created_item_type->m_addornements = "v";
 	n_created_item_type->m_address      = reinterpret_cast<uint64_t>(df::global::created_item_type);
-	n_created_item_type->m_comment      = "";
 	n_created_item_type->m_parent       = p_node_parent;
 	n_created_item_type->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_created_item_type);
@@ -212,7 +198,6 @@ void fill_globals(Node* p_node_parent)
 	n_crime_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_crime_next_id->m_node_type  = NodeType::Simple;
 	n_crime_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::crime_next_id);
-	n_crime_next_id->m_comment    = "";
 	n_crime_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_crime_next_id);
 
@@ -223,7 +208,6 @@ void fill_globals(Node* p_node_parent)
 	n_cultural_identity_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_cultural_identity_next_id->m_node_type  = NodeType::Simple;
 	n_cultural_identity_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::cultural_identity_next_id);
-	n_cultural_identity_next_id->m_comment    = "";
 	n_cultural_identity_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_cultural_identity_next_id);
 
@@ -234,7 +218,6 @@ void fill_globals(Node* p_node_parent)
 	n_cur_season->m_rdf_type   = RDF_Type::int8_t;
 	n_cur_season->m_node_type  = NodeType::Simple;
 	n_cur_season->m_address    = reinterpret_cast<uint64_t>(df::global::cur_season);
-	n_cur_season->m_comment    = "";
 	n_cur_season->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_cur_season);
 
@@ -245,7 +228,6 @@ void fill_globals(Node* p_node_parent)
 	n_cur_season_tick->m_rdf_type   = RDF_Type::int32_t;
 	n_cur_season_tick->m_node_type  = NodeType::Simple;
 	n_cur_season_tick->m_address    = reinterpret_cast<uint64_t>(df::global::cur_season_tick);
-	n_cur_season_tick->m_comment    = "";
 	n_cur_season_tick->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_cur_season_tick);
 
@@ -256,7 +238,6 @@ void fill_globals(Node* p_node_parent)
 	n_cur_year->m_rdf_type   = RDF_Type::int32_t;
 	n_cur_year->m_node_type  = NodeType::Simple;
 	n_cur_year->m_address    = reinterpret_cast<uint64_t>(df::global::cur_year);
-	n_cur_year->m_comment    = "";
 	n_cur_year->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_cur_year);
 
@@ -267,7 +248,6 @@ void fill_globals(Node* p_node_parent)
 	n_cur_year_tick->m_rdf_type   = RDF_Type::int32_t;
 	n_cur_year_tick->m_node_type  = NodeType::Simple;
 	n_cur_year_tick->m_address    = reinterpret_cast<uint64_t>(df::global::cur_year_tick);
-	n_cur_year_tick->m_comment    = "";
 	n_cur_year_tick->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_cur_year_tick);
 
@@ -278,7 +258,6 @@ void fill_globals(Node* p_node_parent)
 	n_cur_year_tick_advmode->m_rdf_type   = RDF_Type::int32_t;
 	n_cur_year_tick_advmode->m_node_type  = NodeType::Simple;
 	n_cur_year_tick_advmode->m_address    = reinterpret_cast<uint64_t>(df::global::cur_year_tick_advmode);
-	n_cur_year_tick_advmode->m_comment    = "";
 	n_cur_year_tick_advmode->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_cur_year_tick_advmode);
 
@@ -288,9 +267,9 @@ void fill_globals(Node* p_node_parent)
 	n_current_weather->m_field_name   = field_name;
 	n_current_weather->m_df_type      = DF_Type::weather_type;
 	n_current_weather->m_rdf_type     = RDF_Type::Array;
-	n_current_weather->m_comment      = "";
 	n_current_weather->m_node_type    = NodeType::Array;
 	n_current_weather->m_enum_base    = DF_Type::int8_t;
+	n_current_weather->m_defined_in   = "df.globals.xml";
 	n_current_weather->m_addornements = "[5[5";
 	n_current_weather->m_array_size   = 5;
 	n_current_weather->m_address      = reinterpret_cast<uint64_t>(df::global::current_weather);
@@ -304,7 +283,6 @@ void fill_globals(Node* p_node_parent)
 	n_cursor->m_rdf_type   = RDF_Type::Compound;
 	n_cursor->m_node_type  = NodeType::Compound;
 	n_cursor->m_address      = reinterpret_cast<uint64_t>(df::global::cursor);
-	n_cursor->m_comment    = "";
 	n_cursor->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_cursor);
 
@@ -315,7 +293,7 @@ void fill_globals(Node* p_node_parent)
 	n_d_init->m_rdf_type   = RDF_Type::Compound;
 	n_d_init->m_node_type  = NodeType::Compound;
 	n_d_init->m_address      = reinterpret_cast<uint64_t>(df::global::d_init);
-	n_d_init->m_comment    = "";
+	n_d_init->m_defined_in = "df.globals.xml";
 	n_d_init->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_d_init);
 
@@ -326,7 +304,6 @@ void fill_globals(Node* p_node_parent)
 	n_dance_form_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_dance_form_next_id->m_node_type  = NodeType::Simple;
 	n_dance_form_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::dance_form_next_id);
-	n_dance_form_next_id->m_comment    = "";
 	n_dance_form_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_dance_form_next_id);
 
@@ -458,7 +435,6 @@ void fill_globals(Node* p_node_parent)
 	n_entity_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_entity_next_id->m_node_type  = NodeType::Simple;
 	n_entity_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::entity_next_id);
-	n_entity_next_id->m_comment    = "";
 	n_entity_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_entity_next_id);
 
@@ -469,7 +445,6 @@ void fill_globals(Node* p_node_parent)
 	n_flow_guide_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_flow_guide_next_id->m_node_type  = NodeType::Simple;
 	n_flow_guide_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::flow_guide_next_id);
-	n_flow_guide_next_id->m_comment    = "";
 	n_flow_guide_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_flow_guide_next_id);
 
@@ -479,9 +454,9 @@ void fill_globals(Node* p_node_parent)
 	n_flows->m_df_type      = DF_Type::flow_info;
 	n_flows->m_rdf_type     = RDF_Type::Vector;
 	n_flows->m_node_type    = NodeType::Vector;
+	n_flows->m_defined_in   = "df.map.xml";
 	n_flows->m_addornements = "v*";
 	n_flows->m_address      = reinterpret_cast<uint64_t>(df::global::flows);
-	n_flows->m_comment      = "";
 	n_flows->m_parent       = p_node_parent;
 	n_flows->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_flows);
@@ -493,7 +468,6 @@ void fill_globals(Node* p_node_parent)
 	n_formation_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_formation_next_id->m_node_type  = NodeType::Simple;
 	n_formation_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::formation_next_id);
-	n_formation_next_id->m_comment    = "";
 	n_formation_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_formation_next_id);
 
@@ -505,8 +479,8 @@ void fill_globals(Node* p_node_parent)
 	n_gamemode->m_node_type  = NodeType::Enum;
 	n_gamemode->m_base_type  = DF_Type::int32_t;
 	n_gamemode->m_enum_type  = "game_mode";
-	n_gamemode->m_address      = reinterpret_cast<uint64_t>(df::global::gamemode);
-	n_gamemode->m_comment    = "";
+	n_gamemode->m_address    = reinterpret_cast<uint64_t>(df::global::gamemode);
+	n_gamemode->m_defined_in = "df.globals.xml";
 	n_gamemode->m_first_value = 0;
 	n_gamemode->m_last_value  = 3;
 	n_gamemode->m_parent     = p_node_parent;
@@ -520,8 +494,8 @@ void fill_globals(Node* p_node_parent)
 	n_gametype->m_node_type  = NodeType::Enum;
 	n_gametype->m_base_type  = DF_Type::int32_t;
 	n_gametype->m_enum_type  = "game_type";
-	n_gametype->m_address      = reinterpret_cast<uint64_t>(df::global::gametype);
-	n_gametype->m_comment    = "";
+	n_gametype->m_address    = reinterpret_cast<uint64_t>(df::global::gametype);
+	n_gametype->m_defined_in = "df.globals.xml";
 	n_gametype->m_first_value = 0;
 	n_gametype->m_last_value  = 11;
 	n_gametype->m_parent     = p_node_parent;
@@ -534,7 +508,7 @@ void fill_globals(Node* p_node_parent)
 	n_gps->m_rdf_type   = RDF_Type::Compound;
 	n_gps->m_node_type  = NodeType::Compound;
 	n_gps->m_address      = reinterpret_cast<uint64_t>(df::global::gps);
-	n_gps->m_comment    = "";
+	n_gps->m_defined_in = "df.graphics.xml";
 	n_gps->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_gps);
 
@@ -545,7 +519,7 @@ void fill_globals(Node* p_node_parent)
 	n_gview->m_rdf_type   = RDF_Type::Compound;
 	n_gview->m_node_type  = NodeType::Compound;
 	n_gview->m_address      = reinterpret_cast<uint64_t>(df::global::gview);
-	n_gview->m_comment    = "";
+	n_gview->m_defined_in = "df.viewscreen.xml";
 	n_gview->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_gview);
 
@@ -556,7 +530,6 @@ void fill_globals(Node* p_node_parent)
 	n_hist_event_collection_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_hist_event_collection_next_id->m_node_type  = NodeType::Simple;
 	n_hist_event_collection_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::hist_event_collection_next_id);
-	n_hist_event_collection_next_id->m_comment    = "";
 	n_hist_event_collection_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_hist_event_collection_next_id);
 
@@ -567,7 +540,6 @@ void fill_globals(Node* p_node_parent)
 	n_hist_event_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_hist_event_next_id->m_node_type  = NodeType::Simple;
 	n_hist_event_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::hist_event_next_id);
-	n_hist_event_next_id->m_comment    = "";
 	n_hist_event_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_hist_event_next_id);
 
@@ -578,7 +550,6 @@ void fill_globals(Node* p_node_parent)
 	n_hist_figure_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_hist_figure_next_id->m_node_type  = NodeType::Simple;
 	n_hist_figure_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::hist_figure_next_id);
-	n_hist_figure_next_id->m_comment    = "";
 	n_hist_figure_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_hist_figure_next_id);
 
@@ -589,7 +560,6 @@ void fill_globals(Node* p_node_parent)
 	n_identity_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_identity_next_id->m_node_type  = NodeType::Simple;
 	n_identity_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::identity_next_id);
-	n_identity_next_id->m_comment    = "";
 	n_identity_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_identity_next_id);
 
@@ -600,7 +570,6 @@ void fill_globals(Node* p_node_parent)
 	n_incident_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_incident_next_id->m_node_type  = NodeType::Simple;
 	n_incident_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::incident_next_id);
-	n_incident_next_id->m_comment    = "";
 	n_incident_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_incident_next_id);
 
@@ -611,7 +580,7 @@ void fill_globals(Node* p_node_parent)
 	n_init->m_rdf_type   = RDF_Type::Compound;
 	n_init->m_node_type  = NodeType::Compound;
 	n_init->m_address      = reinterpret_cast<uint64_t>(df::global::init);
-	n_init->m_comment    = "";
+	n_init->m_defined_in = "df.init.xml";
 	n_init->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_init);
 
@@ -622,7 +591,6 @@ void fill_globals(Node* p_node_parent)
 	n_interaction_instance_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_interaction_instance_next_id->m_node_type  = NodeType::Simple;
 	n_interaction_instance_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::interaction_instance_next_id);
-	n_interaction_instance_next_id->m_comment    = "";
 	n_interaction_instance_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_interaction_instance_next_id);
 
@@ -633,7 +601,6 @@ void fill_globals(Node* p_node_parent)
 	n_item_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_item_next_id->m_node_type  = NodeType::Simple;
 	n_item_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::item_next_id);
-	n_item_next_id->m_comment    = "";
 	n_item_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_item_next_id);
 
@@ -644,7 +611,6 @@ void fill_globals(Node* p_node_parent)
 	n_job_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_job_next_id->m_node_type  = NodeType::Simple;
 	n_job_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::job_next_id);
-	n_job_next_id->m_comment    = "";
 	n_job_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_job_next_id);
 
@@ -655,7 +621,6 @@ void fill_globals(Node* p_node_parent)
 	n_machine_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_machine_next_id->m_node_type  = NodeType::Simple;
 	n_machine_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::machine_next_id);
-	n_machine_next_id->m_comment    = "";
 	n_machine_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_machine_next_id);
 
@@ -666,7 +631,7 @@ void fill_globals(Node* p_node_parent)
 	n_map_renderer->m_rdf_type   = RDF_Type::Compound;
 	n_map_renderer->m_node_type  = NodeType::Compound;
 	n_map_renderer->m_address      = reinterpret_cast<uint64_t>(df::global::map_renderer);
-	n_map_renderer->m_comment    = "";
+	n_map_renderer->m_defined_in = "df.ui.xml";
 	n_map_renderer->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_map_renderer);
 
@@ -677,7 +642,6 @@ void fill_globals(Node* p_node_parent)
 	n_min_load_version->m_rdf_type   = RDF_Type::int32_t;
 	n_min_load_version->m_node_type  = NodeType::Simple;
 	n_min_load_version->m_address    = reinterpret_cast<uint64_t>(df::global::min_load_version);
-	n_min_load_version->m_comment    = "";
 	n_min_load_version->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_min_load_version);
 
@@ -688,7 +652,6 @@ void fill_globals(Node* p_node_parent)
 	n_movie_version->m_rdf_type   = RDF_Type::int32_t;
 	n_movie_version->m_node_type  = NodeType::Simple;
 	n_movie_version->m_address    = reinterpret_cast<uint64_t>(df::global::movie_version);
-	n_movie_version->m_comment    = "";
 	n_movie_version->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_movie_version);
 
@@ -699,7 +662,6 @@ void fill_globals(Node* p_node_parent)
 	n_musical_form_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_musical_form_next_id->m_node_type  = NodeType::Simple;
 	n_musical_form_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::musical_form_next_id);
-	n_musical_form_next_id->m_comment    = "";
 	n_musical_form_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_musical_form_next_id);
 
@@ -710,7 +672,6 @@ void fill_globals(Node* p_node_parent)
 	n_nemesis_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_nemesis_next_id->m_node_type  = NodeType::Simple;
 	n_nemesis_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::nemesis_next_id);
-	n_nemesis_next_id->m_comment    = "";
 	n_nemesis_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_nemesis_next_id);
 
@@ -721,7 +682,6 @@ void fill_globals(Node* p_node_parent)
 	n_occupation_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_occupation_next_id->m_node_type  = NodeType::Simple;
 	n_occupation_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::occupation_next_id);
-	n_occupation_next_id->m_comment    = "";
 	n_occupation_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_occupation_next_id);
 
@@ -732,7 +692,6 @@ void fill_globals(Node* p_node_parent)
 	n_pause_state->m_rdf_type   = RDF_Type::Bool;
 	n_pause_state->m_node_type  = NodeType::Simple;
 	n_pause_state->m_address    = reinterpret_cast<uint64_t>(df::global::pause_state);
-	n_pause_state->m_comment    = "";
 	n_pause_state->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_pause_state);
 
@@ -743,7 +702,6 @@ void fill_globals(Node* p_node_parent)
 	n_poetic_form_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_poetic_form_next_id->m_node_type  = NodeType::Simple;
 	n_poetic_form_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::poetic_form_next_id);
-	n_poetic_form_next_id->m_comment    = "";
 	n_poetic_form_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_poetic_form_next_id);
 
@@ -776,7 +734,6 @@ void fill_globals(Node* p_node_parent)
 	n_proj_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_proj_next_id->m_node_type  = NodeType::Simple;
 	n_proj_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::proj_next_id);
-	n_proj_next_id->m_comment    = "";
 	n_proj_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_proj_next_id);
 
@@ -787,7 +744,6 @@ void fill_globals(Node* p_node_parent)
 	n_rhythm_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_rhythm_next_id->m_node_type  = NodeType::Simple;
 	n_rhythm_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::rhythm_next_id);
-	n_rhythm_next_id->m_comment    = "";
 	n_rhythm_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_rhythm_next_id);
 
@@ -809,7 +765,6 @@ void fill_globals(Node* p_node_parent)
 	n_scale_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_scale_next_id->m_node_type  = NodeType::Simple;
 	n_scale_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::scale_next_id);
-	n_scale_next_id->m_comment    = "";
 	n_scale_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_scale_next_id);
 
@@ -820,7 +775,6 @@ void fill_globals(Node* p_node_parent)
 	n_schedule_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_schedule_next_id->m_node_type  = NodeType::Simple;
 	n_schedule_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::schedule_next_id);
-	n_schedule_next_id->m_comment    = "";
 	n_schedule_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_schedule_next_id);
 
@@ -831,7 +785,6 @@ void fill_globals(Node* p_node_parent)
 	n_selection_rect->m_rdf_type   = RDF_Type::Compound;
 	n_selection_rect->m_node_type  = NodeType::Compound;
 	n_selection_rect->m_address      = reinterpret_cast<uint64_t>(df::global::selection_rect);
-	n_selection_rect->m_comment    = "";
 	n_selection_rect->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_selection_rect);
 
@@ -842,7 +795,6 @@ void fill_globals(Node* p_node_parent)
 	n_soul_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_soul_next_id->m_node_type  = NodeType::Simple;
 	n_soul_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::soul_next_id);
-	n_soul_next_id->m_comment    = "";
 	n_soul_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_soul_next_id);
 
@@ -853,7 +805,6 @@ void fill_globals(Node* p_node_parent)
 	n_squad_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_squad_next_id->m_node_type  = NodeType::Simple;
 	n_squad_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::squad_next_id);
-	n_squad_next_id->m_comment    = "";
 	n_squad_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_squad_next_id);
 
@@ -864,7 +815,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_butcher->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_butcher->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_butcher->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_butcher);
-	n_standing_orders_auto_butcher->m_comment    = "";
 	n_standing_orders_auto_butcher->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_butcher);
 
@@ -875,7 +825,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_collect_webs->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_collect_webs->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_collect_webs->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_collect_webs);
-	n_standing_orders_auto_collect_webs->m_comment    = "";
 	n_standing_orders_auto_collect_webs->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_collect_webs);
 
@@ -886,7 +835,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_fishery->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_fishery->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_fishery->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_fishery);
-	n_standing_orders_auto_fishery->m_comment    = "";
 	n_standing_orders_auto_fishery->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_fishery);
 
@@ -897,7 +845,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_kiln->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_kiln->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_kiln->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_kiln);
-	n_standing_orders_auto_kiln->m_comment    = "";
 	n_standing_orders_auto_kiln->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_kiln);
 
@@ -908,7 +855,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_kitchen->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_kitchen->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_kitchen->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_kitchen);
-	n_standing_orders_auto_kitchen->m_comment    = "";
 	n_standing_orders_auto_kitchen->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_kitchen);
 
@@ -919,7 +865,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_loom->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_loom->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_loom->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_loom);
-	n_standing_orders_auto_loom->m_comment    = "";
 	n_standing_orders_auto_loom->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_loom);
 
@@ -930,7 +875,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_other->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_other->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_other->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_other);
-	n_standing_orders_auto_other->m_comment    = "";
 	n_standing_orders_auto_other->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_other);
 
@@ -941,7 +885,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_slaughter->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_slaughter->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_slaughter->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_slaughter);
-	n_standing_orders_auto_slaughter->m_comment    = "";
 	n_standing_orders_auto_slaughter->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_slaughter);
 
@@ -952,7 +895,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_smelter->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_smelter->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_smelter->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_smelter);
-	n_standing_orders_auto_smelter->m_comment    = "";
 	n_standing_orders_auto_smelter->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_smelter);
 
@@ -963,7 +905,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_auto_tan->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_auto_tan->m_node_type  = NodeType::Simple;
 	n_standing_orders_auto_tan->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_auto_tan);
-	n_standing_orders_auto_tan->m_comment    = "";
 	n_standing_orders_auto_tan->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_auto_tan);
 
@@ -974,7 +915,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_dump_bones->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_bones->m_node_type  = NodeType::Simple;
 	n_standing_orders_dump_bones->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_dump_bones);
-	n_standing_orders_dump_bones->m_comment    = "";
 	n_standing_orders_dump_bones->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_dump_bones);
 
@@ -985,7 +925,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_dump_corpses->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_corpses->m_node_type  = NodeType::Simple;
 	n_standing_orders_dump_corpses->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_dump_corpses);
-	n_standing_orders_dump_corpses->m_comment    = "";
 	n_standing_orders_dump_corpses->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_dump_corpses);
 
@@ -996,7 +935,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_dump_hair->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_hair->m_node_type  = NodeType::Simple;
 	n_standing_orders_dump_hair->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_dump_hair);
-	n_standing_orders_dump_hair->m_comment    = "";
 	n_standing_orders_dump_hair->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_dump_hair);
 
@@ -1007,7 +945,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_dump_other->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_other->m_node_type  = NodeType::Simple;
 	n_standing_orders_dump_other->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_dump_other);
-	n_standing_orders_dump_other->m_comment    = "";
 	n_standing_orders_dump_other->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_dump_other);
 
@@ -1018,7 +955,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_dump_shells->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_shells->m_node_type  = NodeType::Simple;
 	n_standing_orders_dump_shells->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_dump_shells);
-	n_standing_orders_dump_shells->m_comment    = "";
 	n_standing_orders_dump_shells->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_dump_shells);
 
@@ -1029,7 +965,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_dump_skins->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_skins->m_node_type  = NodeType::Simple;
 	n_standing_orders_dump_skins->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_dump_skins);
-	n_standing_orders_dump_skins->m_comment    = "";
 	n_standing_orders_dump_skins->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_dump_skins);
 
@@ -1040,7 +975,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_dump_skulls->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_dump_skulls->m_node_type  = NodeType::Simple;
 	n_standing_orders_dump_skulls->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_dump_skulls);
-	n_standing_orders_dump_skulls->m_comment    = "";
 	n_standing_orders_dump_skulls->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_dump_skulls);
 
@@ -1051,7 +985,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_farmer_harvest->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_farmer_harvest->m_node_type  = NodeType::Simple;
 	n_standing_orders_farmer_harvest->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_farmer_harvest);
-	n_standing_orders_farmer_harvest->m_comment    = "";
 	n_standing_orders_farmer_harvest->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_farmer_harvest);
 
@@ -1062,7 +995,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_forbid_other_dead_items->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_other_dead_items->m_node_type  = NodeType::Simple;
 	n_standing_orders_forbid_other_dead_items->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_forbid_other_dead_items);
-	n_standing_orders_forbid_other_dead_items->m_comment    = "";
 	n_standing_orders_forbid_other_dead_items->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_forbid_other_dead_items);
 
@@ -1073,7 +1005,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_forbid_other_nohunt->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_other_nohunt->m_node_type  = NodeType::Simple;
 	n_standing_orders_forbid_other_nohunt->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_forbid_other_nohunt);
-	n_standing_orders_forbid_other_nohunt->m_comment    = "";
 	n_standing_orders_forbid_other_nohunt->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_forbid_other_nohunt);
 
@@ -1084,7 +1015,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_forbid_own_dead->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_own_dead->m_node_type  = NodeType::Simple;
 	n_standing_orders_forbid_own_dead->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_forbid_own_dead);
-	n_standing_orders_forbid_own_dead->m_comment    = "";
 	n_standing_orders_forbid_own_dead->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_forbid_own_dead);
 
@@ -1095,7 +1025,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_forbid_own_dead_items->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_own_dead_items->m_node_type  = NodeType::Simple;
 	n_standing_orders_forbid_own_dead_items->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_forbid_own_dead_items);
-	n_standing_orders_forbid_own_dead_items->m_comment    = "";
 	n_standing_orders_forbid_own_dead_items->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_forbid_own_dead_items);
 
@@ -1106,7 +1035,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_forbid_used_ammo->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_forbid_used_ammo->m_node_type  = NodeType::Simple;
 	n_standing_orders_forbid_used_ammo->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_forbid_used_ammo);
-	n_standing_orders_forbid_used_ammo->m_comment    = "";
 	n_standing_orders_forbid_used_ammo->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_forbid_used_ammo);
 
@@ -1117,7 +1045,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_animals->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_animals->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_animals->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_animals);
-	n_standing_orders_gather_animals->m_comment    = "";
 	n_standing_orders_gather_animals->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_animals);
 
@@ -1128,7 +1055,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_bodies->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_bodies->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_bodies->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_bodies);
-	n_standing_orders_gather_bodies->m_comment    = "";
 	n_standing_orders_gather_bodies->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_bodies);
 
@@ -1139,7 +1065,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_food->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_food->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_food->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_food);
-	n_standing_orders_gather_food->m_comment    = "";
 	n_standing_orders_gather_food->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_food);
 
@@ -1150,7 +1075,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_furniture->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_furniture->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_furniture->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_furniture);
-	n_standing_orders_gather_furniture->m_comment    = "";
 	n_standing_orders_gather_furniture->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_furniture);
 
@@ -1161,7 +1085,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_minerals->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_minerals->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_minerals->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_minerals);
-	n_standing_orders_gather_minerals->m_comment    = "";
 	n_standing_orders_gather_minerals->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_minerals);
 
@@ -1172,7 +1095,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_refuse->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_refuse->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_refuse->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_refuse);
-	n_standing_orders_gather_refuse->m_comment    = "";
 	n_standing_orders_gather_refuse->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_refuse);
 
@@ -1183,7 +1105,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_refuse_outside->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_refuse_outside->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_refuse_outside->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_refuse_outside);
-	n_standing_orders_gather_refuse_outside->m_comment    = "";
 	n_standing_orders_gather_refuse_outside->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_refuse_outside);
 
@@ -1194,7 +1115,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_vermin_remains->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_vermin_remains->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_vermin_remains->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_vermin_remains);
-	n_standing_orders_gather_vermin_remains->m_comment    = "";
 	n_standing_orders_gather_vermin_remains->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_vermin_remains);
 
@@ -1205,7 +1125,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_gather_wood->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_gather_wood->m_node_type  = NodeType::Simple;
 	n_standing_orders_gather_wood->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_gather_wood);
-	n_standing_orders_gather_wood->m_comment    = "";
 	n_standing_orders_gather_wood->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_gather_wood);
 
@@ -1216,7 +1135,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_job_cancel_announce->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_job_cancel_announce->m_node_type  = NodeType::Simple;
 	n_standing_orders_job_cancel_announce->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_job_cancel_announce);
-	n_standing_orders_job_cancel_announce->m_comment    = "";
 	n_standing_orders_job_cancel_announce->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_job_cancel_announce);
 
@@ -1227,7 +1145,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_mix_food->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_mix_food->m_node_type  = NodeType::Simple;
 	n_standing_orders_mix_food->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_mix_food);
-	n_standing_orders_mix_food->m_comment    = "";
 	n_standing_orders_mix_food->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_mix_food);
 
@@ -1238,7 +1155,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_use_dyed_cloth->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_use_dyed_cloth->m_node_type  = NodeType::Simple;
 	n_standing_orders_use_dyed_cloth->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_use_dyed_cloth);
-	n_standing_orders_use_dyed_cloth->m_comment    = "";
 	n_standing_orders_use_dyed_cloth->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_use_dyed_cloth);
 
@@ -1249,7 +1165,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_zoneonly_drink->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_zoneonly_drink->m_node_type  = NodeType::Simple;
 	n_standing_orders_zoneonly_drink->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_zoneonly_drink);
-	n_standing_orders_zoneonly_drink->m_comment    = "";
 	n_standing_orders_zoneonly_drink->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_zoneonly_drink);
 
@@ -1260,7 +1175,6 @@ void fill_globals(Node* p_node_parent)
 	n_standing_orders_zoneonly_fish->m_rdf_type   = RDF_Type::uint8_t;
 	n_standing_orders_zoneonly_fish->m_node_type  = NodeType::Simple;
 	n_standing_orders_zoneonly_fish->m_address    = reinterpret_cast<uint64_t>(df::global::standing_orders_zoneonly_fish);
-	n_standing_orders_zoneonly_fish->m_comment    = "";
 	n_standing_orders_zoneonly_fish->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_standing_orders_zoneonly_fish);
 
@@ -1271,7 +1185,6 @@ void fill_globals(Node* p_node_parent)
 	n_task_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_task_next_id->m_node_type  = NodeType::Simple;
 	n_task_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::task_next_id);
-	n_task_next_id->m_comment    = "";
 	n_task_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_task_next_id);
 
@@ -1282,7 +1195,7 @@ void fill_globals(Node* p_node_parent)
 	n_texture->m_rdf_type   = RDF_Type::Compound;
 	n_texture->m_node_type  = NodeType::Compound;
 	n_texture->m_address      = reinterpret_cast<uint64_t>(df::global::texture);
-	n_texture->m_comment    = "";
+	n_texture->m_defined_in = "df.init.xml";
 	n_texture->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_texture);
 
@@ -1292,9 +1205,9 @@ void fill_globals(Node* p_node_parent)
 	n_timed_events->m_df_type      = DF_Type::timed_event;
 	n_timed_events->m_rdf_type     = RDF_Type::Vector;
 	n_timed_events->m_node_type    = NodeType::Vector;
+	n_timed_events->m_defined_in   = "df.ui.xml";
 	n_timed_events->m_addornements = "v*";
 	n_timed_events->m_address      = reinterpret_cast<uint64_t>(df::global::timed_events);
-	n_timed_events->m_comment      = "";
 	n_timed_events->m_parent       = p_node_parent;
 	n_timed_events->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_timed_events);
@@ -1306,7 +1219,7 @@ void fill_globals(Node* p_node_parent)
 	n_ui->m_rdf_type   = RDF_Type::Compound;
 	n_ui->m_node_type  = NodeType::Compound;
 	n_ui->m_address      = reinterpret_cast<uint64_t>(df::global::ui);
-	n_ui->m_comment    = "";
+	n_ui->m_defined_in = "df.ui.xml";
 	n_ui->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui);
 
@@ -1317,7 +1230,7 @@ void fill_globals(Node* p_node_parent)
 	n_ui_advmode->m_rdf_type   = RDF_Type::Compound;
 	n_ui_advmode->m_node_type  = NodeType::Compound;
 	n_ui_advmode->m_address      = reinterpret_cast<uint64_t>(df::global::ui_advmode);
-	n_ui_advmode->m_comment    = "";
+	n_ui_advmode->m_defined_in = "df.globals.xml";
 	n_ui_advmode->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_advmode);
 
@@ -1328,7 +1241,7 @@ void fill_globals(Node* p_node_parent)
 	n_ui_build_selector->m_rdf_type   = RDF_Type::Compound;
 	n_ui_build_selector->m_node_type  = NodeType::Compound;
 	n_ui_build_selector->m_address      = reinterpret_cast<uint64_t>(df::global::ui_build_selector);
-	n_ui_build_selector->m_comment    = "";
+	n_ui_build_selector->m_defined_in = "df.ui-menus.xml";
 	n_ui_build_selector->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_build_selector);
 
@@ -1340,7 +1253,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_building_assign_is_marked->m_node_type    = NodeType::Vector;
 	n_ui_building_assign_is_marked->m_addornements = "v";
 	n_ui_building_assign_is_marked->m_address      = reinterpret_cast<uint64_t>(df::global::ui_building_assign_is_marked);
-	n_ui_building_assign_is_marked->m_comment      = "";
 	n_ui_building_assign_is_marked->m_parent       = p_node_parent;
 	n_ui_building_assign_is_marked->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_ui_building_assign_is_marked);
@@ -1351,9 +1263,9 @@ void fill_globals(Node* p_node_parent)
 	n_ui_building_assign_items->m_df_type      = DF_Type::item;
 	n_ui_building_assign_items->m_rdf_type     = RDF_Type::Vector;
 	n_ui_building_assign_items->m_node_type    = NodeType::Vector;
+	n_ui_building_assign_items->m_defined_in   = "df.items.xml";
 	n_ui_building_assign_items->m_addornements = "v*";
 	n_ui_building_assign_items->m_address      = reinterpret_cast<uint64_t>(df::global::ui_building_assign_items);
-	n_ui_building_assign_items->m_comment      = "";
 	n_ui_building_assign_items->m_parent       = p_node_parent;
 	n_ui_building_assign_items->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_ui_building_assign_items);
@@ -1366,7 +1278,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_building_assign_type->m_node_type    = NodeType::Vector;
 	n_ui_building_assign_type->m_addornements = "v";
 	n_ui_building_assign_type->m_address      = reinterpret_cast<uint64_t>(df::global::ui_building_assign_type);
-	n_ui_building_assign_type->m_comment      = "";
 	n_ui_building_assign_type->m_parent       = p_node_parent;
 	n_ui_building_assign_type->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_ui_building_assign_type);
@@ -1377,9 +1288,9 @@ void fill_globals(Node* p_node_parent)
 	n_ui_building_assign_units->m_df_type      = DF_Type::unit;
 	n_ui_building_assign_units->m_rdf_type     = RDF_Type::Vector;
 	n_ui_building_assign_units->m_node_type    = NodeType::Vector;
+	n_ui_building_assign_units->m_defined_in   = "df.units.xml";
 	n_ui_building_assign_units->m_addornements = "v*";
 	n_ui_building_assign_units->m_address      = reinterpret_cast<uint64_t>(df::global::ui_building_assign_units);
-	n_ui_building_assign_units->m_comment      = "";
 	n_ui_building_assign_units->m_parent       = p_node_parent;
 	n_ui_building_assign_units->m_children.push_back(rdf::dummy());
 	p_node_parent->m_children.push_back(n_ui_building_assign_units);
@@ -1391,7 +1302,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_building_in_assign->m_rdf_type   = RDF_Type::Bool;
 	n_ui_building_in_assign->m_node_type  = NodeType::Simple;
 	n_ui_building_in_assign->m_address    = reinterpret_cast<uint64_t>(df::global::ui_building_in_assign);
-	n_ui_building_in_assign->m_comment    = "";
 	n_ui_building_in_assign->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_building_in_assign);
 
@@ -1402,7 +1312,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_building_in_resize->m_rdf_type   = RDF_Type::Bool;
 	n_ui_building_in_resize->m_node_type  = NodeType::Simple;
 	n_ui_building_in_resize->m_address    = reinterpret_cast<uint64_t>(df::global::ui_building_in_resize);
-	n_ui_building_in_resize->m_comment    = "";
 	n_ui_building_in_resize->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_building_in_resize);
 
@@ -1413,7 +1322,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_building_item_cursor->m_rdf_type   = RDF_Type::int32_t;
 	n_ui_building_item_cursor->m_node_type  = NodeType::Simple;
 	n_ui_building_item_cursor->m_address    = reinterpret_cast<uint64_t>(df::global::ui_building_item_cursor);
-	n_ui_building_item_cursor->m_comment    = "";
 	n_ui_building_item_cursor->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_building_item_cursor);
 
@@ -1424,7 +1332,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_building_resize_radius->m_rdf_type   = RDF_Type::int16_t;
 	n_ui_building_resize_radius->m_node_type  = NodeType::Simple;
 	n_ui_building_resize_radius->m_address    = reinterpret_cast<uint64_t>(df::global::ui_building_resize_radius);
-	n_ui_building_resize_radius->m_comment    = "";
 	n_ui_building_resize_radius->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_building_resize_radius);
 
@@ -1436,8 +1343,8 @@ void fill_globals(Node* p_node_parent)
 	n_ui_lever_target_type->m_node_type  = NodeType::Enum;
 	n_ui_lever_target_type->m_base_type  = DF_Type::int8_t;
 	n_ui_lever_target_type->m_enum_type  = "lever_target_type";
-	n_ui_lever_target_type->m_address      = reinterpret_cast<uint64_t>(df::global::ui_lever_target_type);
-	n_ui_lever_target_type->m_comment    = "";
+	n_ui_lever_target_type->m_address    = reinterpret_cast<uint64_t>(df::global::ui_lever_target_type);
+	n_ui_lever_target_type->m_defined_in = "df.globals.xml";
 	n_ui_lever_target_type->m_first_value = -1;
 	n_ui_lever_target_type->m_last_value  = 119;
 	n_ui_lever_target_type->m_parent     = p_node_parent;
@@ -1450,7 +1357,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_look_cursor->m_rdf_type   = RDF_Type::int32_t;
 	n_ui_look_cursor->m_node_type  = NodeType::Simple;
 	n_ui_look_cursor->m_address    = reinterpret_cast<uint64_t>(df::global::ui_look_cursor);
-	n_ui_look_cursor->m_comment    = "";
 	n_ui_look_cursor->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_look_cursor);
 
@@ -1461,7 +1367,7 @@ void fill_globals(Node* p_node_parent)
 	n_ui_look_list->m_rdf_type   = RDF_Type::Compound;
 	n_ui_look_list->m_node_type  = NodeType::Compound;
 	n_ui_look_list->m_address      = reinterpret_cast<uint64_t>(df::global::ui_look_list);
-	n_ui_look_list->m_comment    = "";
+	n_ui_look_list->m_defined_in = "df.ui-menus.xml";
 	n_ui_look_list->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_look_list);
 
@@ -1471,7 +1377,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_menu_width->m_field_name   = field_name;
 	n_ui_menu_width->m_df_type      = DF_Type::int8_t;
 	n_ui_menu_width->m_rdf_type     = RDF_Type::Array;
-	n_ui_menu_width->m_comment      = "";
 	n_ui_menu_width->m_node_type    = NodeType::Array;
 	n_ui_menu_width->m_addornements = "[2";
 	n_ui_menu_width->m_array_size   = 2;
@@ -1486,7 +1391,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_selected_unit->m_rdf_type   = RDF_Type::int32_t;
 	n_ui_selected_unit->m_node_type  = NodeType::Simple;
 	n_ui_selected_unit->m_address    = reinterpret_cast<uint64_t>(df::global::ui_selected_unit);
-	n_ui_selected_unit->m_comment    = "";
 	n_ui_selected_unit->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_selected_unit);
 
@@ -1497,7 +1401,7 @@ void fill_globals(Node* p_node_parent)
 	n_ui_sidebar_menus->m_rdf_type   = RDF_Type::Compound;
 	n_ui_sidebar_menus->m_node_type  = NodeType::Compound;
 	n_ui_sidebar_menus->m_address      = reinterpret_cast<uint64_t>(df::global::ui_sidebar_menus);
-	n_ui_sidebar_menus->m_comment    = "";
+	n_ui_sidebar_menus->m_defined_in = "df.ui-menus.xml";
 	n_ui_sidebar_menus->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_sidebar_menus);
 
@@ -1508,7 +1412,7 @@ void fill_globals(Node* p_node_parent)
 	n_ui_unit_view_mode->m_rdf_type   = RDF_Type::Compound;
 	n_ui_unit_view_mode->m_node_type  = NodeType::Compound;
 	n_ui_unit_view_mode->m_address      = reinterpret_cast<uint64_t>(df::global::ui_unit_view_mode);
-	n_ui_unit_view_mode->m_comment    = "";
+	n_ui_unit_view_mode->m_defined_in = "df.ui-menus.xml";
 	n_ui_unit_view_mode->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_unit_view_mode);
 
@@ -1519,7 +1423,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_workshop_in_add->m_rdf_type   = RDF_Type::Bool;
 	n_ui_workshop_in_add->m_node_type  = NodeType::Simple;
 	n_ui_workshop_in_add->m_address    = reinterpret_cast<uint64_t>(df::global::ui_workshop_in_add);
-	n_ui_workshop_in_add->m_comment    = "";
 	n_ui_workshop_in_add->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_workshop_in_add);
 
@@ -1530,7 +1433,6 @@ void fill_globals(Node* p_node_parent)
 	n_ui_workshop_job_cursor->m_rdf_type   = RDF_Type::int32_t;
 	n_ui_workshop_job_cursor->m_node_type  = NodeType::Simple;
 	n_ui_workshop_job_cursor->m_address    = reinterpret_cast<uint64_t>(df::global::ui_workshop_job_cursor);
-	n_ui_workshop_job_cursor->m_comment    = "";
 	n_ui_workshop_job_cursor->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_ui_workshop_job_cursor);
 
@@ -1541,7 +1443,6 @@ void fill_globals(Node* p_node_parent)
 	n_unit_chunk_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_unit_chunk_next_id->m_node_type  = NodeType::Simple;
 	n_unit_chunk_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::unit_chunk_next_id);
-	n_unit_chunk_next_id->m_comment    = "";
 	n_unit_chunk_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_unit_chunk_next_id);
 
@@ -1552,7 +1453,6 @@ void fill_globals(Node* p_node_parent)
 	n_unit_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_unit_next_id->m_node_type  = NodeType::Simple;
 	n_unit_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::unit_next_id);
-	n_unit_next_id->m_comment    = "";
 	n_unit_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_unit_next_id);
 
@@ -1563,7 +1463,6 @@ void fill_globals(Node* p_node_parent)
 	n_vehicle_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_vehicle_next_id->m_node_type  = NodeType::Simple;
 	n_vehicle_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::vehicle_next_id);
-	n_vehicle_next_id->m_comment    = "";
 	n_vehicle_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_vehicle_next_id);
 
@@ -1574,7 +1473,6 @@ void fill_globals(Node* p_node_parent)
 	n_version->m_rdf_type   = RDF_Type::int32_t;
 	n_version->m_node_type  = NodeType::Simple;
 	n_version->m_address    = reinterpret_cast<uint64_t>(df::global::version);
-	n_version->m_comment    = "";
 	n_version->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_version);
 
@@ -1585,7 +1483,6 @@ void fill_globals(Node* p_node_parent)
 	n_window_x->m_rdf_type   = RDF_Type::int32_t;
 	n_window_x->m_node_type  = NodeType::Simple;
 	n_window_x->m_address    = reinterpret_cast<uint64_t>(df::global::window_x);
-	n_window_x->m_comment    = "";
 	n_window_x->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_window_x);
 
@@ -1596,7 +1493,6 @@ void fill_globals(Node* p_node_parent)
 	n_window_y->m_rdf_type   = RDF_Type::int32_t;
 	n_window_y->m_node_type  = NodeType::Simple;
 	n_window_y->m_address    = reinterpret_cast<uint64_t>(df::global::window_y);
-	n_window_y->m_comment    = "";
 	n_window_y->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_window_y);
 
@@ -1607,7 +1503,6 @@ void fill_globals(Node* p_node_parent)
 	n_window_z->m_rdf_type   = RDF_Type::int32_t;
 	n_window_z->m_node_type  = NodeType::Simple;
 	n_window_z->m_address    = reinterpret_cast<uint64_t>(df::global::window_z);
-	n_window_z->m_comment    = "";
 	n_window_z->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_window_z);
 
@@ -1618,7 +1513,7 @@ void fill_globals(Node* p_node_parent)
 	n_world->m_rdf_type   = RDF_Type::Compound;
 	n_world->m_node_type  = NodeType::Compound;
 	n_world->m_address      = reinterpret_cast<uint64_t>(df::global::world);
-	n_world->m_comment    = "";
+	n_world->m_defined_in = "df.world.xml";
 	n_world->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_world);
 
@@ -1629,7 +1524,6 @@ void fill_globals(Node* p_node_parent)
 	n_written_content_next_id->m_rdf_type   = RDF_Type::int32_t;
 	n_written_content_next_id->m_node_type  = NodeType::Simple;
 	n_written_content_next_id->m_address    = reinterpret_cast<uint64_t>(df::global::written_content_next_id);
-	n_written_content_next_id->m_comment    = "";
 	n_written_content_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_written_content_next_id);
 

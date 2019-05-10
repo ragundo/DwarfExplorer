@@ -160,9 +160,11 @@ QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
         case 4 :
             return data_from_Address(node);   // Address
         case 5 :
-            return data_from_Comment(node);   // Comment
+            return QString::fromStdString(node->m_defined_in);  // refers-to
         case 6 :
-            return data_from_Refers_to(node);   // refers-to
+            return data_from_Comment(node);   // Comment
+        case 7 :
+            return data_from_Refers_to(node); // refers-to            
         default:
             return QVariant();
     }
@@ -186,9 +188,12 @@ QVariant DF_Model::headerData(int p_section, Qt::Orientation p_orientation, int 
             case 4 :
                 return tr("Address");
             case 5 :
-                return tr("Comment");
+                return tr("Defined in");            
             case 6 :
+                return tr("Comment");                
+            case 7 :
                 return tr("Refers-to");
+
             default:
                 return QVariant();
         }
@@ -198,7 +203,7 @@ QVariant DF_Model::headerData(int p_section, Qt::Orientation p_orientation, int 
 
 int DF_Model::columnCount(const QModelIndex& /*p_parent*/) const
 {
-    return 7;
+    return 8;
 }
 
 bool DF_Model::removeRows(int p_row, int p_count, const QModelIndex& /*p_parent*/)

@@ -19,7 +19,7 @@ namespace rdf
     protected:
         static std::unordered_map<DF_Type, OffsetTable> m_df_types_offset_table;
     public:
-        uint64_t static get_offset(DF_Type, std::string& p_field);
+        uint64_t static get_offset(DF_Type, const std::string& p_field);
     };
 }
 #endif // OFFSETS_CACHE_H

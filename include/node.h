@@ -48,6 +48,7 @@ namespace rdf
         NodeBase*        m_parent     {nullptr};
         std::string      m_comment    {""};
         std::string      m_refers_to  {""};        
+        std::string      m_defined_in {""};                
         uint64_t         m_address;
         NodeType         m_node_type;
         //QList<NodeBase*> m_path;
@@ -69,12 +70,13 @@ namespace rdf
         void init(NodeBase* p_dest)
         {
             p_dest->m_field_name = this->m_field_name;
-            p_dest->m_df_type = this->m_df_type;
-            p_dest->m_rdf_type = this->m_rdf_type;
-            p_dest->m_parent = nullptr;
-            p_dest->m_comment = this->m_comment;
-            p_dest->m_node_type = this->m_node_type;
-            p_dest->m_address = this->m_address;
+            p_dest->m_df_type    = this->m_df_type;
+            p_dest->m_rdf_type   = this->m_rdf_type;
+            p_dest->m_parent     = nullptr;
+            p_dest->m_comment    = this->m_comment;
+            p_dest->m_defined_in = this->m_defined_in;            
+            p_dest->m_node_type  = this->m_node_type;
+            p_dest->m_address    = this->m_address;
         }
     };
 
