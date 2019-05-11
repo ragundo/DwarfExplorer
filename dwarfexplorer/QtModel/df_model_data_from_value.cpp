@@ -14,8 +14,8 @@
 using namespace rdf;
 using namespace DFHack;
 
-extern std::map<DF_Type,size_t> DF_types_size_table;
-extern std::pair<int64_t, std::string> get_enum_decoded(const NodeEnum* p_node);
+extern std::map<DF_Type,size_t>                      DF_types_size_table;
+extern std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p_node);
 
 std::string to_hex(uint64_t p_dec)
 {
@@ -109,6 +109,7 @@ bool is_node_simple(const NodeBase* p_node)
         case rdf::DF_Type::uint16_t: return true;
         case rdf::DF_Type::int8_t:   return true;
         case rdf::DF_Type::uint8_t:  return true;
+        case rdf::DF_Type::Long:     return true;        
         case rdf::DF_Type::Bool:     return true;
         case rdf::DF_Type::Void:     return true;
         default: break;
@@ -136,6 +137,8 @@ QString process_node_simple(const NodeBase* p_node)
             return QString::fromStdString(std::to_string(*(reinterpret_cast<int8_t*>(p_node->m_address))));
         case rdf::DF_Type::uint8_t:
             return QString::fromStdString(std::to_string(*(reinterpret_cast<uint8_t*>(p_node->m_address))));
+        case rdf::DF_Type::Long:
+            return QString::fromStdString(std::to_string(*(reinterpret_cast<long*>(p_node->m_address))));            
         case rdf::DF_Type::Bool:
             return QString::fromStdString(*(reinterpret_cast<int64_t*>(p_node->m_address)) ? "True" : "False");
         case rdf::DF_Type::Void:
@@ -213,9 +216,9 @@ QString Enum_data_from_Value(const NodeBase* p_node)
         auto enum_node = dynamic_cast<const NodeEnum*>(p_node);
         auto enum_decoded = get_enum_decoded(enum_node);
         QString l_result = "[";
-        l_result.append(QString::number(enum_decoded.first));
+        l_result.append(QString::number(std::get<0>(enum_decoded)));
         l_result.append("] = ");
-        l_result.append(QString::fromStdString(enum_decoded.second));
+        l_result.append(QString::fromStdString(std::get<1>(enum_decoded)));
         return l_result;
 }
 

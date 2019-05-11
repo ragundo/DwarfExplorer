@@ -5,12 +5,12 @@
 
 using namespace rdf;
 
-extern void                            fill_node(uint64_t p_df_structure, rdf::Node* p_node_parent);
-extern RDF_Type                        df_2_rdf(DF_Type p_df_type);
-extern std::pair<int64_t, std::string> get_enum_decoded(const NodeEnum* p_node);
-extern DF_Type                         get_df_subtype(DF_Type p_base_type, uint64_t p_address);
-extern std::pair<int,int>              enum_min_max(DF_Type p_enum);
-extern DF_Type                         enum_base_type(DF_Type p_enum);
+extern void                                          fill_node(uint64_t p_df_structure, rdf::Node* p_node_parent);
+extern RDF_Type                                      df_2_rdf(DF_Type p_df_type);
+extern std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p_node);
+extern DF_Type                                       get_df_subtype(DF_Type p_base_type, uint64_t p_address);
+extern std::pair<int,int>                            enum_min_max(DF_Type p_enum);
+extern DF_Type                                       enum_base_type(DF_Type p_enum);
 
 //
 //------------------------------------------------------------------------------------//
@@ -121,6 +121,7 @@ void fill_compound_vector_entry(Node* p_parent_node, uint64_t p_address, std::st
 void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_address)
 {
     std::string field_name;
+    std::string field_comment;
     field_name = "[";
     field_name.append(std::to_string(p_index)).append("]");
 
@@ -134,10 +135,11 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
         dummy.m_address   = reinterpret_cast<uint64_t>(&real_index);
         dummy.m_base_type = (p_parent_node->m_enum_base != DF_Type::None ? p_parent_node->m_enum_base : enum_base_type(p_parent_node->m_index_enum));
         dummy.m_df_type   = p_parent_node->m_index_enum;
-        auto pair         = get_enum_decoded(&dummy);
-        auto value_decoded = pair.second;
+        auto enum_decoded = get_enum_decoded(&dummy);
+        auto value_decoded = std::get<1>(enum_decoded);
         field_name.append("=");
         field_name.append(value_decoded);
+        field_comment = std::get<2>(enum_decoded);
     }
 
 
@@ -148,6 +150,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<uint8_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(uint8_t), p_address, DF_Type::uint8_t, RDF_Type::uint8_t);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
@@ -157,6 +160,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<uint16_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(uint16_t), p_address, DF_Type::uint16_t, RDF_Type::uint16_t);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
@@ -166,6 +170,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<uint32_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(uint32_t), p_address, DF_Type::uint32_t, RDF_Type::uint32_t);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
@@ -175,6 +180,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<uint64_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(uint64_t), p_address, DF_Type::uint64_t, RDF_Type::uint64_t);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
@@ -184,6 +190,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<int8_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(int8_t), p_address, DF_Type::int8_t, RDF_Type::int8_t);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
@@ -193,6 +200,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<int16_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(int16_t), p_address, DF_Type::int16_t, RDF_Type::int16_t);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
@@ -202,6 +210,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<int32_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(int32_t), p_address, DF_Type::int32_t, RDF_Type::int32_t);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
@@ -211,15 +220,27 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<int64_t>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(int64_t), p_address, DF_Type::int64_t, RDF_Type::int64_t);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
         }
+        case rdf::DF_Type::Long :
+        {
+            auto n_pve = new NodeSimple<long>;
+            fill_simple_entry(n_pve, p_parent_node, sizeof(long), p_address, DF_Type::Long, RDF_Type::Long);
+            n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
+            n_pve->m_address = p_address;
+            n_pve->m_parent = p_parent_node;
+            return;
+        }        
         case rdf::DF_Type::Bool :
         {
             auto n_pve = new NodeSimple<bool>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(bool), p_address, DF_Type::Bool, RDF_Type::Bool);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;
@@ -229,6 +250,7 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             auto n_pve = new NodeSimple<std::string>;
             fill_simple_entry(n_pve, p_parent_node, sizeof(std::string), p_address, DF_Type::Stl_string, RDF_Type::Stl_string);
             n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
             n_pve->m_address = p_address;
             n_pve->m_parent = p_parent_node;
             return;

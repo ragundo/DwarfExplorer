@@ -104,6 +104,14 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
                 endInsertRows();
                 return true;
             }
+            case rdf::DF_Type::Long:
+            {
+                auto n_pve = new NodeSimple<long>;
+                beginInsertRows(p_parent, 0, 1);
+                fill_simple_entry(n_pve, node, sizeof(long), item_address, node->m_df_type, RDF_Type::Long);
+                endInsertRows();
+                return true;
+            }            
             case rdf::DF_Type::Bool:
             {
                 auto n_pve = new NodeSimple<bool>;

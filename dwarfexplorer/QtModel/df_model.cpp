@@ -7,10 +7,10 @@
 
 using namespace rdf;
 
-extern void                                        fill_node(uint64_t p_df_structure, rdf::Node* p_node_parent);
-extern std::array<std::array<std::string, 3>, 32>& get_bitfield_bits(DF_Type);
-extern std::string                                 to_hex(uint64_t p_dec);
-extern std::pair<int64_t, std::string>             get_enum_decoded(const NodeEnum* p_node);
+extern void                                          fill_node(uint64_t p_df_structure, rdf::Node* p_node_parent);
+extern std::array<std::array<std::string, 3>, 32>&   get_bitfield_bits(DF_Type);
+extern std::string                                   to_hex(uint64_t p_dec);
+extern std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p_node);
 
 void DF_Model::set_root(NodeBase* p_node)
 {
@@ -93,8 +93,13 @@ QString data_from_Address(const rdf::NodeBase* p_node)
 
 QString data_from_Comment(const NodeBase* p_node)
 {
-    const NodeBase* base = dynamic_cast<const NodeBase*>(p_node);
-    return QString::fromStdString(base->m_comment);
+    if (p_node->m_rdf_type == RDF_Type::Enum)
+    {
+        auto enum_node = dynamic_cast<const NodeEnum*>(p_node);
+        auto enum_decoded = get_enum_decoded(enum_node);
+        return QString::fromStdString(std::get<2>(enum_decoded));
+    }
+    return QString::fromStdString(p_node->m_comment);
 }
 
 QString data_from_Refers_to(const NodeBase* p_node)
@@ -302,7 +307,8 @@ bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
     for (unsigned int i = 0; i < df_flag_array_node->m_size ; i++)
     {
         ne.m_address   = reinterpret_cast<uint64_t>(&i);
-        std::string field_name = get_enum_decoded(&ne).second;
+        auto enum_data = get_enum_decoded(&ne);
+        std::string field_name = std::get<1>(enum_data);
         if (i % 8 == 0)
             bitfield_value = *pointer_df_flag_array;
         if ((bitfield_value & mask) || (field_name.length() > 0))

@@ -5,13 +5,13 @@
 
 using namespace rdf;
 
-extern void                            fill_simple_entry(NodeBase* p_pve, Node* p_node, size_t p_size, uint64_t p_address, DF_Type p_df_type, RDF_Type p_rdf_type);
-extern std::pair<int64_t, std::string> get_enum_decoded(const NodeEnum* p_node);
-extern DF_Type                         get_df_subtype(DF_Type p_base_type, uint64_t p_address);
-extern void                            fill_node(uint64_t p_address, Node* p_node_parent);
-extern RDF_Type                        df_2_rdf(DF_Type p_df_type);
-extern std::pair<int,int>              enum_min_max(DF_Type p_enum);
-extern DF_Type                         enum_base_type(DF_Type p_enum);
+extern void                                          fill_simple_entry(NodeBase* p_pve, Node* p_node, size_t p_size, uint64_t p_address, DF_Type p_df_type, RDF_Type p_rdf_type);
+extern std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p_node);
+extern DF_Type                                       get_df_subtype(DF_Type p_base_type, uint64_t p_address);
+extern void                                          fill_node(uint64_t p_address, Node* p_node_parent);
+extern RDF_Type                                      df_2_rdf(DF_Type p_df_type);
+extern std::pair<int,int>                            enum_min_max(DF_Type p_enum);
+extern DF_Type                                       enum_base_type(DF_Type p_enum);
 
 std::size_t array_size_recursive(std::string p_addornements)
 {
@@ -85,6 +85,7 @@ void fill_void_array_entry(Node* p_parent_node, int p_index, uint64_t p_address)
 void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_address)
 {
     std::string field_name;
+    std::string field_comment;
     field_name = "[";
     field_name.append(std::to_string(p_index)).append("]");
 
@@ -98,10 +99,11 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
         dummy.m_address   = reinterpret_cast<uint64_t>(&real_index);
         dummy.m_base_type = (p_parent_node->m_enum_base != DF_Type::None ? p_parent_node->m_enum_base : enum_base_type(p_parent_node->m_index_enum));
         dummy.m_df_type   = p_parent_node->m_index_enum;
-        auto pair         = get_enum_decoded(&dummy);
-        auto value_decoded = pair.second;
+        auto enum_decoded = get_enum_decoded(&dummy);
+        auto value_decoded = std::get<1>(enum_decoded);
         field_name.append("=");
         field_name.append(value_decoded);
+        field_comment = std::get<2>(enum_decoded);
     }
 
 
@@ -188,6 +190,16 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
             n_pve->m_parent = p_parent_node;
             return;
         }
+            case rdf::DF_Type::Long:
+            {
+                auto n_pve = new NodeSimple<long>;
+                fill_simple_entry(n_pve, p_parent_node, sizeof(long), p_address, DF_Type::Long, RDF_Type::Long);
+                n_pve->m_field_name = field_name;
+                n_pve->m_address = p_address;
+                n_pve->m_parent = p_parent_node;
+                return;
+            }            
+
         case rdf::DF_Type::Stl_string :
         {
             auto n_pve = new NodeSimple<std::string>;
@@ -364,6 +376,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             // Node name [index]
             std::string field_name = "[";
             field_name.append(std::to_string(i)).append("]");
+            std::string field_comment;
 
             if (node->m_index_enum != DF_Type::None)
             {
@@ -373,9 +386,10 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
                 dummy.m_address   = reinterpret_cast<int64_t>(&i);
                 dummy.m_base_type = (node->m_enum_base != DF_Type::None ? node->m_enum_base : DF_Type::int32_t);
                 dummy.m_df_type   = node->m_index_enum;
-                auto pair         = get_enum_decoded(&dummy);
+                auto enum_decoded = get_enum_decoded(&dummy);
                 field_name.append(" = ");
-                field_name.append(pair.second);
+                field_name.append(std::get<1>(enum_decoded));
+                field_comment = std::get<2>(enum_decoded);
             }
 
             node_vector->m_field_name = field_name;
@@ -404,6 +418,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             // Node name [index]
             std::string field_name = "[";
             field_name.append(std::to_string(i)).append("]");
+            std::string field_comment;
 
             if (node->m_index_enum != DF_Type::None)
             {
@@ -413,12 +428,14 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
                 dummy.m_address   = reinterpret_cast<int64_t>(&i);
                 dummy.m_base_type = (node->m_enum_base != DF_Type::None ? node->m_enum_base : DF_Type::int32_t);
                 dummy.m_df_type   = node->m_index_enum;
-                auto pair         = get_enum_decoded(&dummy);
+                auto enum_decoded = get_enum_decoded(&dummy);
                 field_name.append(" = ");
-                field_name.append(pair.second);
+                field_name.append(std::get<1>(enum_decoded));
+                field_comment = std::get<2>(enum_decoded);
             }
 
             node_array->m_field_name = field_name;
+            node_array->m_comment    = field_comment;
             item_address += get_array_element_size(node_array);
         }
         endInsertRows();
