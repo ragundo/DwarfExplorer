@@ -14,6 +14,7 @@ set(DWARFEXPLORER_SOURCES
     EventProxy.cpp
     MainWindow.cpp
     dfstructure_window.cpp
+    hexviewer_window.cpp
     QtModel/df_model.cpp
     QtModel/df_model_data_from_structure.cpp
     QtModel/df_model_data_from_type.cpp
@@ -33,6 +34,7 @@ set(DWARFEXPLORER_SOURCES
     generated/polymorphic_factory.cpp
     generated/fill_globals.cpp
     generated/enums_size.cpp
+    QHexView/QHexView.cpp
 )
 
 qt5_wrap_cpp(DWARFEXPLORER_MOC_SOURCES
@@ -40,6 +42,7 @@ qt5_wrap_cpp(DWARFEXPLORER_MOC_SOURCES
     MainWindow.h
     df_model.h
     dfstructure_window.h
+    hexviewer_window.h
 )
 
 qt5_wrap_ui(DWARFEXPLORER_UI_SOURCES

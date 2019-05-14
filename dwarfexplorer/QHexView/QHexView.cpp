@@ -1,4 +1,4 @@
-#include "../include/QHexView.h"
+#include "QHexView.h"
 #include <QScrollBar>
 #include <QPainter>
 #include <QSize>
@@ -12,7 +12,7 @@
 #include <stdexcept>
 
 const int HEXCHARS_IN_LINE = 47;
-const int GAP_ADR_HEX = 10;
+const int GAP_ADR_HEX = 20;
 const int GAP_HEX_ASCII = 16;
 const int BYTES_PER_LINE = 16;
 
@@ -27,7 +27,7 @@ QHexView::QHexView(QWidget* parent):
     m_charHeight = fontMetrics().height();
 
     m_posAddr = 0;
-    m_posHex = 10 * m_charWidth + GAP_ADR_HEX;
+    m_posHex = 20 * m_charWidth + GAP_ADR_HEX;
     m_posAscii = m_posHex + HEXCHARS_IN_LINE * m_charWidth + GAP_HEX_ASCII;
 
     setMinimumWidth(m_posAscii + (BYTES_PER_LINE * m_charWidth));
@@ -99,7 +99,7 @@ void QHexView::paintEvent(QPaintEvent* event)
 
     int firstLineIdx = verticalScrollBar() -> value();
 
-    int lastLineIdx = firstLineIdx + areaSize.height() / m_charHeight;
+    std::size_t lastLineIdx = firstLineIdx + areaSize.height() / m_charHeight;
     if(lastLineIdx > m_pdata->size() / BYTES_PER_LINE)
     {
         lastLineIdx = m_pdata->size() / BYTES_PER_LINE;
@@ -136,7 +136,7 @@ void QHexView::paintEvent(QPaintEvent* event)
 
     for (int lineIdx = firstLineIdx, yPos = yPosStart;  lineIdx < lastLineIdx; lineIdx += 1, yPos += m_charHeight)
     {
-        QString address = QString("%1").arg(lineIdx * 16, 10, 16, QChar('0'));
+        QString address = QString("%1").arg(m_base_address + lineIdx * 16, 10, 16, QChar('0'));
         painter.drawText(m_posAddr, yPos, address);
 
         for(int xPos = m_posHex, i = 0; i < BYTES_PER_LINE && ((lineIdx - firstLineIdx) * BYTES_PER_LINE + i) < data.size(); i++, xPos += 3 * m_charWidth)

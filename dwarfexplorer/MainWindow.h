@@ -50,6 +50,7 @@
         void clearUnitModel();
         void on_treeView_expanded(const QModelIndex& p_index);
         void on_actionOpen_in_new_window_triggered();
+        void on_actionOpen_in_hex_viewer_triggered();        
 
     private:
         std::unique_ptr<Ui::MainWindow> ui;

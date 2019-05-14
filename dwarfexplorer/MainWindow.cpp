@@ -39,12 +39,11 @@
 #include "ui_MainWindow.h"
 #include "dfstructure_window.h"
 #include "ui_dfstructure_window.h"
+#include "hexviewer_window.h"
 
 #include <Core.h>
 
 #include <QSettings>
-#include <QTreeView>
-#include <QStandardItemModel>
 #include <QDirModel>
 #include "EventProxy.h"
 
@@ -65,6 +64,8 @@ MainWindow::MainWindow(std::shared_ptr<EventProxy> &&proxy, QWidget *parent)
 
     connect(ui->treeView, &QTreeView::expanded,
             this, &MainWindow::updateUnitModel);
+//    connect(ui->actionOpen_in_hex_viewer, &QAction::triggered,
+//            this, &MainWindow::on_actionOpen_in_hex_viewer_triggered);            
 
 //    connect(ui->actionOpen_in_new_window, &QAction::triggered,
 //            this, &MainWindow::on_actionOpen_in_new_window_triggered);
@@ -193,4 +194,31 @@ void MainWindow::on_actionOpen_in_new_window_triggered()
     // Show the window
     l_new_window->setWindowTitle(QString::fromStdString(new_window_name));
     l_new_window->show();
+}
+
+
+void MainWindow::on_actionOpen_in_hex_viewer_triggered()
+{
+    // Get the selected node index
+    QTreeView* treeview = ui->treeView;
+    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    if (selected_nodes.size() == 0)
+        return;
+    QModelIndex selected_node = selected_nodes.first();
+
+    // Get the model
+    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+
+    // Get the selected node
+    rdf::Node* node = dynamic_cast<rdf::Node*>(model->nodeFromIndex(selected_node));
+
+    auto the_data = reinterpret_cast<const char*>(node->m_address);
+    QByteArray data(the_data, 1024);
+    QHexViewer_Window* hex_window = new QHexViewer_Window(this);
+    QHexView* hex_view = hex_window->get_hexview();
+    hex_view->set_base_address(node->m_address);
+    hex_view->setData(new QHexView::DataStorageArray(data));
+
+    hex_window->setWindowTitle("PRUEBA");
+    hex_window->show();
 }

@@ -43,6 +43,8 @@ class QHexView: public QAbstractScrollArea
 		QHexView(QWidget *parent = 0);
 		~QHexView();
 
+		void set_base_address(uint64_t p_base_address) { m_base_address = p_base_address; }
+
 	public slots:
 		void setData(DataStorage *pData);
 		void clear();
@@ -75,6 +77,7 @@ class QHexView: public QAbstractScrollArea
 		void ensureVisible();
 		void setCursorPos(int pos);
 		std::size_t cursorPos(const QPoint &position);
+		uint64_t    m_base_address;
 };
 
 #endif
