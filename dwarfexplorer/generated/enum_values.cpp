@@ -934,7 +934,7 @@ std::tuple<int64_t, std::string, std::string> get_buildings_other_id_value_decod
 	switch (std::get<0>(result))
 	{
 		case -1: std::get<1>(result) = "ANY"; break;
-		case 0: std::get<1>(result) = "IN_PLAY";std::get<2>(result) = "actually on the map, as opposed to in an offloaded fortress elsewhere"; break;
+		case 0: std::get<1>(result) = "IN_PLAY"; std::get<2>(result) = "actually on the map, as opposed to in an offloaded fortress elsewhere"; break;
 		case 1: std::get<1>(result) = "LOCATION_ASSIGNED"; break;
 		case 2: std::get<1>(result) = "STOCKPILE"; break;
 		case 3: std::get<1>(result) = "ANY_ZONE"; break;
@@ -1232,7 +1232,7 @@ std::tuple<int64_t, std::string, std::string> get_construction_type_value_decode
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
 	switch (std::get<0>(result))
 	{
-		case -1: std::get<1>(result) = "NONE";std::get<2>(result) = "unused"; break;
+		case -1: std::get<1>(result) = "NONE"; std::get<2>(result) = "unused"; break;
 		case 0: std::get<1>(result) = "Fortification"; break;
 		case 1: std::get<1>(result) = "Wall"; break;
 		case 2: std::get<1>(result) = "Floor"; break;
@@ -1407,7 +1407,7 @@ std::tuple<int64_t, std::string, std::string> get_creature_raw_flags_value_decod
 		case 64: std::get<1>(result) = "EVIL"; break;
 		case 65: std::get<1>(result) = "SAVAGE"; break;
 		case 66: std::get<1>(result) = "NOT_ASEXUAL"; break;
-		case 67: std::get<1>(result) = "unk_43";std::get<2>(result) = "capable of breeding"; break;
+		case 67: std::get<1>(result) = "unk_43"; std::get<2>(result) = "capable of breeding"; break;
 		case 68: std::get<1>(result) = "unk_44"; break;
 		case 69: std::get<1>(result) = "unk_45"; break;
 		case 70: std::get<1>(result) = "any_vermin"; break;
@@ -1544,7 +1544,7 @@ std::tuple<int64_t, std::string, std::string> get_caste_raw_flags_value_decoded(
 		case 79: std::get<1>(result) = "PARALYZEIMMUNE"; break;
 		case 80: std::get<1>(result) = "NOFEAR"; break;
 		case 81: std::get<1>(result) = "CANOPENDOORS"; break;
-		case 82: std::get<1>(result) = "ITEMCORPSE";std::get<2>(result) = "set if the tag is present; corpse parts go to map_renderer.cursor_other"; break;
+		case 82: std::get<1>(result) = "ITEMCORPSE"; std::get<2>(result) = "set if the tag is present; corpse parts go to map_renderer.cursor_other"; break;
 		case 83: std::get<1>(result) = "GETS_WOUND_INFECTIONS"; break;
 		case 84: std::get<1>(result) = "NOSMELLYROT"; break;
 		case 85: std::get<1>(result) = "REMAINS_UNDETERMINED"; break;
@@ -2243,38 +2243,38 @@ std::tuple<int64_t, std::string, std::string> get_entity_material_category_value
 	switch (std::get<0>(result))
 	{
 		case -1: std::get<1>(result) = "None"; break;
-		case 0: std::get<1>(result) = "Clothing";std::get<2>(result) = "cloth or leather"; break;
-		case 1: std::get<1>(result) = "Leather";std::get<2>(result) = "organic.leather"; break;
-		case 2: std::get<1>(result) = "Cloth";std::get<2>(result) = "any cloth"; break;
-		case 3: std::get<1>(result) = "Wood";std::get<2>(result) = "organic.wood, used for training weapons"; break;
-		case 4: std::get<1>(result) = "Crafts";std::get<2>(result) = "misc_mat.crafts"; break;
-		case 5: std::get<1>(result) = "Stone";std::get<2>(result) = "stones"; break;
-		case 6: std::get<1>(result) = "Improvement";std::get<2>(result) = "misc_mat.crafts"; break;
-		case 7: std::get<1>(result) = "Glass";std::get<2>(result) = "misc_mat.glass_unused, used for extract vials"; break;
-		case 8: std::get<1>(result) = "Wood2";std::get<2>(result) = "misc_mat.barrels, also used for buckets"; break;
-		case 9: std::get<1>(result) = "Bag";std::get<2>(result) = "cloth/leather"; break;
-		case 10: std::get<1>(result) = "Cage";std::get<2>(result) = "misc_mat.cages"; break;
-		case 11: std::get<1>(result) = "WeaponMelee";std::get<2>(result) = "metal.weapon"; break;
-		case 12: std::get<1>(result) = "WeaponRanged";std::get<2>(result) = "metal.ranged"; break;
-		case 13: std::get<1>(result) = "Ammo";std::get<2>(result) = "metal.ammo"; break;
-		case 14: std::get<1>(result) = "Ammo2";std::get<2>(result) = "metal.ammo2"; break;
-		case 15: std::get<1>(result) = "Pick";std::get<2>(result) = "metal.pick"; break;
-		case 16: std::get<1>(result) = "Armor";std::get<2>(result) = "metal.armor, also used for shields, tools, instruments, and toys"; break;
-		case 17: std::get<1>(result) = "Gem";std::get<2>(result) = "gems"; break;
-		case 18: std::get<1>(result) = "Bone";std::get<2>(result) = "refuse.bone"; break;
-		case 19: std::get<1>(result) = "Shell";std::get<2>(result) = "refuse.shell"; break;
-		case 20: std::get<1>(result) = "Pearl";std::get<2>(result) = "refuse.pearl"; break;
-		case 21: std::get<1>(result) = "Ivory";std::get<2>(result) = "refuse.ivory"; break;
-		case 22: std::get<1>(result) = "Horn";std::get<2>(result) = "refuse.horn"; break;
-		case 23: std::get<1>(result) = "Other";std::get<2>(result) = "misc_mat.others"; break;
-		case 24: std::get<1>(result) = "Anvil";std::get<2>(result) = "metal.anvil"; break;
-		case 25: std::get<1>(result) = "Booze";std::get<2>(result) = "misc_mat.booze"; break;
-		case 26: std::get<1>(result) = "Metal";std::get<2>(result) = "metals with ITEMS_HARD, used for chains"; break;
-		case 27: std::get<1>(result) = "PlantFiber";std::get<2>(result) = "organic.fiber"; break;
-		case 28: std::get<1>(result) = "Silk";std::get<2>(result) = "organic.silk"; break;
-		case 29: std::get<1>(result) = "Wool";std::get<2>(result) = "organic.wool"; break;
-		case 30: std::get<1>(result) = "Furniture";std::get<2>(result) = "misc_mat.rock_metal"; break;
-		case 31: std::get<1>(result) = "MiscWood2";std::get<2>(result) = "misc_mat.wood2"; break;
+		case 0: std::get<1>(result) = "Clothing"; std::get<2>(result) = "cloth or leather"; break;
+		case 1: std::get<1>(result) = "Leather"; std::get<2>(result) = "organic.leather"; break;
+		case 2: std::get<1>(result) = "Cloth"; std::get<2>(result) = "any cloth"; break;
+		case 3: std::get<1>(result) = "Wood"; std::get<2>(result) = "organic.wood, used for training weapons"; break;
+		case 4: std::get<1>(result) = "Crafts"; std::get<2>(result) = "misc_mat.crafts"; break;
+		case 5: std::get<1>(result) = "Stone"; std::get<2>(result) = "stones"; break;
+		case 6: std::get<1>(result) = "Improvement"; std::get<2>(result) = "misc_mat.crafts"; break;
+		case 7: std::get<1>(result) = "Glass"; std::get<2>(result) = "misc_mat.glass_unused, used for extract vials"; break;
+		case 8: std::get<1>(result) = "Wood2"; std::get<2>(result) = "misc_mat.barrels, also used for buckets"; break;
+		case 9: std::get<1>(result) = "Bag"; std::get<2>(result) = "cloth/leather"; break;
+		case 10: std::get<1>(result) = "Cage"; std::get<2>(result) = "misc_mat.cages"; break;
+		case 11: std::get<1>(result) = "WeaponMelee"; std::get<2>(result) = "metal.weapon"; break;
+		case 12: std::get<1>(result) = "WeaponRanged"; std::get<2>(result) = "metal.ranged"; break;
+		case 13: std::get<1>(result) = "Ammo"; std::get<2>(result) = "metal.ammo"; break;
+		case 14: std::get<1>(result) = "Ammo2"; std::get<2>(result) = "metal.ammo2"; break;
+		case 15: std::get<1>(result) = "Pick"; std::get<2>(result) = "metal.pick"; break;
+		case 16: std::get<1>(result) = "Armor"; std::get<2>(result) = "metal.armor, also used for shields, tools, instruments, and toys"; break;
+		case 17: std::get<1>(result) = "Gem"; std::get<2>(result) = "gems"; break;
+		case 18: std::get<1>(result) = "Bone"; std::get<2>(result) = "refuse.bone"; break;
+		case 19: std::get<1>(result) = "Shell"; std::get<2>(result) = "refuse.shell"; break;
+		case 20: std::get<1>(result) = "Pearl"; std::get<2>(result) = "refuse.pearl"; break;
+		case 21: std::get<1>(result) = "Ivory"; std::get<2>(result) = "refuse.ivory"; break;
+		case 22: std::get<1>(result) = "Horn"; std::get<2>(result) = "refuse.horn"; break;
+		case 23: std::get<1>(result) = "Other"; std::get<2>(result) = "misc_mat.others"; break;
+		case 24: std::get<1>(result) = "Anvil"; std::get<2>(result) = "metal.anvil"; break;
+		case 25: std::get<1>(result) = "Booze"; std::get<2>(result) = "misc_mat.booze"; break;
+		case 26: std::get<1>(result) = "Metal"; std::get<2>(result) = "metals with ITEMS_HARD, used for chains"; break;
+		case 27: std::get<1>(result) = "PlantFiber"; std::get<2>(result) = "organic.fiber"; break;
+		case 28: std::get<1>(result) = "Silk"; std::get<2>(result) = "organic.silk"; break;
+		case 29: std::get<1>(result) = "Wool"; std::get<2>(result) = "organic.wool"; break;
+		case 30: std::get<1>(result) = "Furniture"; std::get<2>(result) = "misc_mat.rock_metal"; break;
+		case 31: std::get<1>(result) = "MiscWood2"; std::get<2>(result) = "misc_mat.wood2"; break;
 		default: break;
 	}
 	return result;
@@ -3077,22 +3077,22 @@ std::tuple<int64_t, std::string, std::string> get_death_type_value_decoded(DF_Ty
 		case 5: std::get<1>(result) = "DROWN"; break;
 		case 6: std::get<1>(result) = "SUFFOCATE"; break;
 		case 7: std::get<1>(result) = "STRUCK_DOWN"; break;
-		case 8: std::get<1>(result) = "SCUTTLE";std::get<2>(result) = "stuck wagons"; break;
+		case 8: std::get<1>(result) = "SCUTTLE"; std::get<2>(result) = "stuck wagons"; break;
 		case 9: std::get<1>(result) = "COLLISION"; break;
-		case 10: std::get<1>(result) = "MAGMA";std::get<2>(result) = "does not happen anymore?"; break;
-		case 11: std::get<1>(result) = "MAGMA_MIST";std::get<2>(result) = "does not happen anymore?"; break;
+		case 10: std::get<1>(result) = "MAGMA"; std::get<2>(result) = "does not happen anymore?"; break;
+		case 11: std::get<1>(result) = "MAGMA_MIST"; std::get<2>(result) = "does not happen anymore?"; break;
 		case 12: std::get<1>(result) = "DRAGONFIRE"; break;
 		case 13: std::get<1>(result) = "FIRE"; break;
-		case 14: std::get<1>(result) = "SCALD";std::get<2>(result) = "does not happen anymore?"; break;
+		case 14: std::get<1>(result) = "SCALD"; std::get<2>(result) = "does not happen anymore?"; break;
 		case 15: std::get<1>(result) = "CAVEIN"; break;
 		case 16: std::get<1>(result) = "DRAWBRIDGE"; break;
-		case 17: std::get<1>(result) = "FALLING_ROCKS";std::get<2>(result) = "does not happen anymore?"; break;
+		case 17: std::get<1>(result) = "FALLING_ROCKS"; std::get<2>(result) = "does not happen anymore?"; break;
 		case 18: std::get<1>(result) = "CHASM"; break;
 		case 19: std::get<1>(result) = "CAGE"; break;
 		case 20: std::get<1>(result) = "MURDER"; break;
 		case 21: std::get<1>(result) = "TRAP"; break;
-		case 22: std::get<1>(result) = "VANISH";std::get<2>(result) = "bogeyman"; break;
-		case 23: std::get<1>(result) = "QUIT";std::get<2>(result) = "Give in to starvation as adventurer"; break;
+		case 22: std::get<1>(result) = "VANISH"; std::get<2>(result) = "bogeyman"; break;
+		case 23: std::get<1>(result) = "QUIT"; std::get<2>(result) = "Give in to starvation as adventurer"; break;
 		case 24: std::get<1>(result) = "ABANDON"; break;
 		case 25: std::get<1>(result) = "HEAT"; break;
 		case 26: std::get<1>(result) = "COLD"; break;
@@ -3100,23 +3100,23 @@ std::tuple<int64_t, std::string, std::string> get_death_type_value_decoded(DF_Ty
 		case 28: std::get<1>(result) = "ENCASE_LAVA"; break;
 		case 29: std::get<1>(result) = "ENCASE_MAGMA"; break;
 		case 30: std::get<1>(result) = "ENCASE_ICE"; break;
-		case 31: std::get<1>(result) = "BEHEAD";std::get<2>(result) = "execution during worldgen"; break;
-		case 32: std::get<1>(result) = "CRUCIFY";std::get<2>(result) = "execution during worldgen"; break;
-		case 33: std::get<1>(result) = "BURY_ALIVE";std::get<2>(result) = "execution during worldgen"; break;
-		case 34: std::get<1>(result) = "DROWN_ALT";std::get<2>(result) = "execution during worldgen"; break;
-		case 35: std::get<1>(result) = "BURN_ALIVE";std::get<2>(result) = "execution during worldgen"; break;
-		case 36: std::get<1>(result) = "FEED_TO_BEASTS";std::get<2>(result) = "execution during worldgen"; break;
-		case 37: std::get<1>(result) = "HACK_TO_PIECES";std::get<2>(result) = "execution during worldgen"; break;
-		case 38: std::get<1>(result) = "LEAVE_OUT_IN_AIR";std::get<2>(result) = "execution during worldgen"; break;
-		case 39: std::get<1>(result) = "BOIL";std::get<2>(result) = "material state change"; break;
-		case 40: std::get<1>(result) = "MELT";std::get<2>(result) = "material state change"; break;
-		case 41: std::get<1>(result) = "CONDENSE";std::get<2>(result) = "material state change"; break;
-		case 42: std::get<1>(result) = "SOLIDIFY";std::get<2>(result) = "material state change"; break;
+		case 31: std::get<1>(result) = "BEHEAD"; std::get<2>(result) = "execution during worldgen"; break;
+		case 32: std::get<1>(result) = "CRUCIFY"; std::get<2>(result) = "execution during worldgen"; break;
+		case 33: std::get<1>(result) = "BURY_ALIVE"; std::get<2>(result) = "execution during worldgen"; break;
+		case 34: std::get<1>(result) = "DROWN_ALT"; std::get<2>(result) = "execution during worldgen"; break;
+		case 35: std::get<1>(result) = "BURN_ALIVE"; std::get<2>(result) = "execution during worldgen"; break;
+		case 36: std::get<1>(result) = "FEED_TO_BEASTS"; std::get<2>(result) = "execution during worldgen"; break;
+		case 37: std::get<1>(result) = "HACK_TO_PIECES"; std::get<2>(result) = "execution during worldgen"; break;
+		case 38: std::get<1>(result) = "LEAVE_OUT_IN_AIR"; std::get<2>(result) = "execution during worldgen"; break;
+		case 39: std::get<1>(result) = "BOIL"; std::get<2>(result) = "material state change"; break;
+		case 40: std::get<1>(result) = "MELT"; std::get<2>(result) = "material state change"; break;
+		case 41: std::get<1>(result) = "CONDENSE"; std::get<2>(result) = "material state change"; break;
+		case 42: std::get<1>(result) = "SOLIDIFY"; std::get<2>(result) = "material state change"; break;
 		case 43: std::get<1>(result) = "INFECTION"; break;
-		case 44: std::get<1>(result) = "MEMORIALIZE";std::get<2>(result) = "put to rest"; break;
+		case 44: std::get<1>(result) = "MEMORIALIZE"; std::get<2>(result) = "put to rest"; break;
 		case 45: std::get<1>(result) = "SCARE"; break;
-		case 46: std::get<1>(result) = "DARKNESS";std::get<2>(result) = "died in the dark"; break;
-		case 47: std::get<1>(result) = "COLLAPSE";std::get<2>(result) = "used in 0.31 for undead"; break;
+		case 46: std::get<1>(result) = "DARKNESS"; std::get<2>(result) = "died in the dark"; break;
+		case 47: std::get<1>(result) = "COLLAPSE"; std::get<2>(result) = "used in 0.31 for undead"; break;
 		case 48: std::get<1>(result) = "DRAIN_BLOOD"; break;
 		case 49: std::get<1>(result) = "SLAUGHTER"; break;
 		case 50: std::get<1>(result) = "VEHICLE"; break;
@@ -3526,97 +3526,97 @@ std::tuple<int64_t, std::string, std::string> get_item_type_value_decoded(DF_Typ
 	switch (std::get<0>(result))
 	{
 		case -1: std::get<1>(result) = "NONE"; break;
-		case 0: std::get<1>(result) = "BAR";std::get<2>(result) = "Bars, such as metal, fuel, or soap."; break;
-		case 1: std::get<1>(result) = "SMALLGEM";std::get<2>(result) = "Cut gemstones usable in jewelers workshop"; break;
-		case 2: std::get<1>(result) = "BLOCKS";std::get<2>(result) = "Blocks of any kind."; break;
-		case 3: std::get<1>(result) = "ROUGH";std::get<2>(result) = "Rough gemstones."; break;
-		case 4: std::get<1>(result) = "BOULDER";std::get<2>(result) = "Raw mined stone."; break;
-		case 5: std::get<1>(result) = "WOOD";std::get<2>(result) = "Wooden logs."; break;
-		case 6: std::get<1>(result) = "DOOR";std::get<2>(result) = "Doors."; break;
-		case 7: std::get<1>(result) = "FLOODGATE";std::get<2>(result) = "Floodgates."; break;
-		case 8: std::get<1>(result) = "BED";std::get<2>(result) = "Beds."; break;
-		case 9: std::get<1>(result) = "CHAIR";std::get<2>(result) = "Chairs and thrones."; break;
-		case 10: std::get<1>(result) = "CHAIN";std::get<2>(result) = "Restraints."; break;
-		case 11: std::get<1>(result) = "FLASK";std::get<2>(result) = "Flasks."; break;
-		case 12: std::get<1>(result) = "GOBLET";std::get<2>(result) = "Goblets."; break;
-		case 13: std::get<1>(result) = "INSTRUMENT";std::get<2>(result) = "Musical instruments."; break;
-		case 14: std::get<1>(result) = "TOY";std::get<2>(result) = "Toys."; break;
-		case 15: std::get<1>(result) = "WINDOW";std::get<2>(result) = "Glass windows."; break;
-		case 16: std::get<1>(result) = "CAGE";std::get<2>(result) = "Cages."; break;
-		case 17: std::get<1>(result) = "BARREL";std::get<2>(result) = "Barrels."; break;
-		case 18: std::get<1>(result) = "BUCKET";std::get<2>(result) = "Buckets."; break;
-		case 19: std::get<1>(result) = "ANIMALTRAP";std::get<2>(result) = "Animal traps."; break;
-		case 20: std::get<1>(result) = "TABLE";std::get<2>(result) = "Tables."; break;
-		case 21: std::get<1>(result) = "COFFIN";std::get<2>(result) = "Coffins."; break;
-		case 22: std::get<1>(result) = "STATUE";std::get<2>(result) = "Statues."; break;
-		case 23: std::get<1>(result) = "CORPSE";std::get<2>(result) = "Corpses. Does not have a material."; break;
-		case 24: std::get<1>(result) = "WEAPON";std::get<2>(result) = "Weapons."; break;
-		case 25: std::get<1>(result) = "ARMOR";std::get<2>(result) = "Armor and clothing worn on the upper body."; break;
-		case 26: std::get<1>(result) = "SHOES";std::get<2>(result) = "Armor and clothing worn on the feet."; break;
-		case 27: std::get<1>(result) = "SHIELD";std::get<2>(result) = "Shields and bucklers."; break;
-		case 28: std::get<1>(result) = "HELM";std::get<2>(result) = "Armor and clothing worn on the head."; break;
-		case 29: std::get<1>(result) = "GLOVES";std::get<2>(result) = "Armor and clothing worn on the hands."; break;
-		case 30: std::get<1>(result) = "BOX";std::get<2>(result) = "Chests (wood), coffers (stone), boxes (glass), and bags (cloth or leather)."; break;
-		case 31: std::get<1>(result) = "BIN";std::get<2>(result) = "Bins."; break;
-		case 32: std::get<1>(result) = "ARMORSTAND";std::get<2>(result) = "Armor stands."; break;
-		case 33: std::get<1>(result) = "WEAPONRACK";std::get<2>(result) = "Weapon racks."; break;
-		case 34: std::get<1>(result) = "CABINET";std::get<2>(result) = "Cabinets."; break;
-		case 35: std::get<1>(result) = "FIGURINE";std::get<2>(result) = "Figurines."; break;
-		case 36: std::get<1>(result) = "AMULET";std::get<2>(result) = "Amulets."; break;
-		case 37: std::get<1>(result) = "SCEPTER";std::get<2>(result) = "Scepters."; break;
-		case 38: std::get<1>(result) = "AMMO";std::get<2>(result) = "Ammunition for hand-held weapons."; break;
-		case 39: std::get<1>(result) = "CROWN";std::get<2>(result) = "Crowns."; break;
-		case 40: std::get<1>(result) = "RING";std::get<2>(result) = "Rings."; break;
-		case 41: std::get<1>(result) = "EARRING";std::get<2>(result) = "Earrings."; break;
-		case 42: std::get<1>(result) = "BRACELET";std::get<2>(result) = "Bracelets."; break;
-		case 43: std::get<1>(result) = "GEM";std::get<2>(result) = "Large gems."; break;
-		case 44: std::get<1>(result) = "ANVIL";std::get<2>(result) = "Anvils."; break;
-		case 45: std::get<1>(result) = "CORPSEPIECE";std::get<2>(result) = "Body parts. Does not have a material."; break;
-		case 46: std::get<1>(result) = "REMAINS";std::get<2>(result) = "Dead vermin bodies. Material is CREATURE_ID:CASTE."; break;
-		case 47: std::get<1>(result) = "MEAT";std::get<2>(result) = "Butchered meat."; break;
-		case 48: std::get<1>(result) = "FISH";std::get<2>(result) = "Prepared fish. Material is CREATURE_ID:CASTE."; break;
-		case 49: std::get<1>(result) = "FISH_RAW";std::get<2>(result) = "Unprepared fish. Material is CREATURE_ID:CASTE."; break;
-		case 50: std::get<1>(result) = "VERMIN";std::get<2>(result) = "Live vermin. Material is CREATURE_ID:CASTE."; break;
-		case 51: std::get<1>(result) = "PET";std::get<2>(result) = "Tame vermin. Material is CREATURE_ID:CASTE."; break;
-		case 52: std::get<1>(result) = "SEEDS";std::get<2>(result) = "Seeds from plants."; break;
-		case 53: std::get<1>(result) = "PLANT";std::get<2>(result) = "Plants."; break;
-		case 54: std::get<1>(result) = "SKIN_TANNED";std::get<2>(result) = "Tanned skins."; break;
-		case 55: std::get<1>(result) = "PLANT_GROWTH";std::get<2>(result) = "Assorted plant growths, including leaves and berries"; break;
-		case 56: std::get<1>(result) = "THREAD";std::get<2>(result) = "Thread gathered from webs or made at the farmers workshop."; break;
-		case 57: std::get<1>(result) = "CLOTH";std::get<2>(result) = "Cloth made at the loom."; break;
-		case 58: std::get<1>(result) = "TOTEM";std::get<2>(result) = "Skull totems."; break;
-		case 59: std::get<1>(result) = "PANTS";std::get<2>(result) = "Armor and clothing worn on the legs."; break;
-		case 60: std::get<1>(result) = "BACKPACK";std::get<2>(result) = "Backpacks."; break;
-		case 61: std::get<1>(result) = "QUIVER";std::get<2>(result) = "Quivers."; break;
-		case 62: std::get<1>(result) = "CATAPULTPARTS";std::get<2>(result) = "Catapult parts."; break;
-		case 63: std::get<1>(result) = "BALLISTAPARTS";std::get<2>(result) = "Ballista parts."; break;
-		case 64: std::get<1>(result) = "SIEGEAMMO";std::get<2>(result) = "Siege engine ammunition."; break;
-		case 65: std::get<1>(result) = "BALLISTAARROWHEAD";std::get<2>(result) = "Ballista arrow heads."; break;
-		case 66: std::get<1>(result) = "TRAPPARTS";std::get<2>(result) = "Mechanisms."; break;
-		case 67: std::get<1>(result) = "TRAPCOMP";std::get<2>(result) = "Trap components."; break;
-		case 68: std::get<1>(result) = "DRINK";std::get<2>(result) = "Alcoholic drinks."; break;
-		case 69: std::get<1>(result) = "POWDER_MISC";std::get<2>(result) = "Powders such as flour, gypsum plaster, dye, or sand."; break;
-		case 70: std::get<1>(result) = "CHEESE";std::get<2>(result) = "Pieces of cheese."; break;
-		case 71: std::get<1>(result) = "FOOD";std::get<2>(result) = "Prepared meals. Subtypes come from item_food.txt"; break;
-		case 72: std::get<1>(result) = "LIQUID_MISC";std::get<2>(result) = "Liquids such as water, lye, and extracts."; break;
-		case 73: std::get<1>(result) = "COIN";std::get<2>(result) = "Coins."; break;
-		case 74: std::get<1>(result) = "GLOB";std::get<2>(result) = "Fat, tallow, pastes/pressed objects, and small bits of molten rock/metal."; break;
-		case 75: std::get<1>(result) = "ROCK";std::get<2>(result) = "Small rocks (usually sharpened and/or thrown in adventurer mode)"; break;
-		case 76: std::get<1>(result) = "PIPE_SECTION";std::get<2>(result) = "Pipe sections."; break;
-		case 77: std::get<1>(result) = "HATCH_COVER";std::get<2>(result) = "Hatch covers."; break;
-		case 78: std::get<1>(result) = "GRATE";std::get<2>(result) = "Grates."; break;
-		case 79: std::get<1>(result) = "QUERN";std::get<2>(result) = "Querns."; break;
-		case 80: std::get<1>(result) = "MILLSTONE";std::get<2>(result) = "Millstones."; break;
-		case 81: std::get<1>(result) = "SPLINT";std::get<2>(result) = "Splints."; break;
-		case 82: std::get<1>(result) = "CRUTCH";std::get<2>(result) = "Crutches."; break;
-		case 83: std::get<1>(result) = "TRACTION_BENCH";std::get<2>(result) = "Traction benches."; break;
-		case 84: std::get<1>(result) = "ORTHOPEDIC_CAST";std::get<2>(result) = "Casts"; break;
-		case 85: std::get<1>(result) = "TOOL";std::get<2>(result) = "Tools."; break;
-		case 86: std::get<1>(result) = "SLAB";std::get<2>(result) = "Slabs."; break;
-		case 87: std::get<1>(result) = "EGG";std::get<2>(result) = "Eggs. Material is CREATURE_ID:CASTE."; break;
-		case 88: std::get<1>(result) = "BOOK";std::get<2>(result) = "Books."; break;
-		case 89: std::get<1>(result) = "SHEET";std::get<2>(result) = "Sheets of paper"; break;
-		case 90: std::get<1>(result) = "BRANCH";std::get<2>(result) = "Tree branches"; break;
+		case 0: std::get<1>(result) = "BAR"; std::get<2>(result) = "Bars, such as metal, fuel, or soap."; break;
+		case 1: std::get<1>(result) = "SMALLGEM"; std::get<2>(result) = "Cut gemstones usable in jewelers workshop"; break;
+		case 2: std::get<1>(result) = "BLOCKS"; std::get<2>(result) = "Blocks of any kind."; break;
+		case 3: std::get<1>(result) = "ROUGH"; std::get<2>(result) = "Rough gemstones."; break;
+		case 4: std::get<1>(result) = "BOULDER"; std::get<2>(result) = "Raw mined stone."; break;
+		case 5: std::get<1>(result) = "WOOD"; std::get<2>(result) = "Wooden logs."; break;
+		case 6: std::get<1>(result) = "DOOR"; std::get<2>(result) = "Doors."; break;
+		case 7: std::get<1>(result) = "FLOODGATE"; std::get<2>(result) = "Floodgates."; break;
+		case 8: std::get<1>(result) = "BED"; std::get<2>(result) = "Beds."; break;
+		case 9: std::get<1>(result) = "CHAIR"; std::get<2>(result) = "Chairs and thrones."; break;
+		case 10: std::get<1>(result) = "CHAIN"; std::get<2>(result) = "Restraints."; break;
+		case 11: std::get<1>(result) = "FLASK"; std::get<2>(result) = "Flasks."; break;
+		case 12: std::get<1>(result) = "GOBLET"; std::get<2>(result) = "Goblets."; break;
+		case 13: std::get<1>(result) = "INSTRUMENT"; std::get<2>(result) = "Musical instruments."; break;
+		case 14: std::get<1>(result) = "TOY"; std::get<2>(result) = "Toys."; break;
+		case 15: std::get<1>(result) = "WINDOW"; std::get<2>(result) = "Glass windows."; break;
+		case 16: std::get<1>(result) = "CAGE"; std::get<2>(result) = "Cages."; break;
+		case 17: std::get<1>(result) = "BARREL"; std::get<2>(result) = "Barrels."; break;
+		case 18: std::get<1>(result) = "BUCKET"; std::get<2>(result) = "Buckets."; break;
+		case 19: std::get<1>(result) = "ANIMALTRAP"; std::get<2>(result) = "Animal traps."; break;
+		case 20: std::get<1>(result) = "TABLE"; std::get<2>(result) = "Tables."; break;
+		case 21: std::get<1>(result) = "COFFIN"; std::get<2>(result) = "Coffins."; break;
+		case 22: std::get<1>(result) = "STATUE"; std::get<2>(result) = "Statues."; break;
+		case 23: std::get<1>(result) = "CORPSE"; std::get<2>(result) = "Corpses. Does not have a material."; break;
+		case 24: std::get<1>(result) = "WEAPON"; std::get<2>(result) = "Weapons."; break;
+		case 25: std::get<1>(result) = "ARMOR"; std::get<2>(result) = "Armor and clothing worn on the upper body."; break;
+		case 26: std::get<1>(result) = "SHOES"; std::get<2>(result) = "Armor and clothing worn on the feet."; break;
+		case 27: std::get<1>(result) = "SHIELD"; std::get<2>(result) = "Shields and bucklers."; break;
+		case 28: std::get<1>(result) = "HELM"; std::get<2>(result) = "Armor and clothing worn on the head."; break;
+		case 29: std::get<1>(result) = "GLOVES"; std::get<2>(result) = "Armor and clothing worn on the hands."; break;
+		case 30: std::get<1>(result) = "BOX"; std::get<2>(result) = "Chests (wood), coffers (stone), boxes (glass), and bags (cloth or leather)."; break;
+		case 31: std::get<1>(result) = "BIN"; std::get<2>(result) = "Bins."; break;
+		case 32: std::get<1>(result) = "ARMORSTAND"; std::get<2>(result) = "Armor stands."; break;
+		case 33: std::get<1>(result) = "WEAPONRACK"; std::get<2>(result) = "Weapon racks."; break;
+		case 34: std::get<1>(result) = "CABINET"; std::get<2>(result) = "Cabinets."; break;
+		case 35: std::get<1>(result) = "FIGURINE"; std::get<2>(result) = "Figurines."; break;
+		case 36: std::get<1>(result) = "AMULET"; std::get<2>(result) = "Amulets."; break;
+		case 37: std::get<1>(result) = "SCEPTER"; std::get<2>(result) = "Scepters."; break;
+		case 38: std::get<1>(result) = "AMMO"; std::get<2>(result) = "Ammunition for hand-held weapons."; break;
+		case 39: std::get<1>(result) = "CROWN"; std::get<2>(result) = "Crowns."; break;
+		case 40: std::get<1>(result) = "RING"; std::get<2>(result) = "Rings."; break;
+		case 41: std::get<1>(result) = "EARRING"; std::get<2>(result) = "Earrings."; break;
+		case 42: std::get<1>(result) = "BRACELET"; std::get<2>(result) = "Bracelets."; break;
+		case 43: std::get<1>(result) = "GEM"; std::get<2>(result) = "Large gems."; break;
+		case 44: std::get<1>(result) = "ANVIL"; std::get<2>(result) = "Anvils."; break;
+		case 45: std::get<1>(result) = "CORPSEPIECE"; std::get<2>(result) = "Body parts. Does not have a material."; break;
+		case 46: std::get<1>(result) = "REMAINS"; std::get<2>(result) = "Dead vermin bodies. Material is CREATURE_ID:CASTE."; break;
+		case 47: std::get<1>(result) = "MEAT"; std::get<2>(result) = "Butchered meat."; break;
+		case 48: std::get<1>(result) = "FISH"; std::get<2>(result) = "Prepared fish. Material is CREATURE_ID:CASTE."; break;
+		case 49: std::get<1>(result) = "FISH_RAW"; std::get<2>(result) = "Unprepared fish. Material is CREATURE_ID:CASTE."; break;
+		case 50: std::get<1>(result) = "VERMIN"; std::get<2>(result) = "Live vermin. Material is CREATURE_ID:CASTE."; break;
+		case 51: std::get<1>(result) = "PET"; std::get<2>(result) = "Tame vermin. Material is CREATURE_ID:CASTE."; break;
+		case 52: std::get<1>(result) = "SEEDS"; std::get<2>(result) = "Seeds from plants."; break;
+		case 53: std::get<1>(result) = "PLANT"; std::get<2>(result) = "Plants."; break;
+		case 54: std::get<1>(result) = "SKIN_TANNED"; std::get<2>(result) = "Tanned skins."; break;
+		case 55: std::get<1>(result) = "PLANT_GROWTH"; std::get<2>(result) = "Assorted plant growths, including leaves and berries"; break;
+		case 56: std::get<1>(result) = "THREAD"; std::get<2>(result) = "Thread gathered from webs or made at the farmers workshop."; break;
+		case 57: std::get<1>(result) = "CLOTH"; std::get<2>(result) = "Cloth made at the loom."; break;
+		case 58: std::get<1>(result) = "TOTEM"; std::get<2>(result) = "Skull totems."; break;
+		case 59: std::get<1>(result) = "PANTS"; std::get<2>(result) = "Armor and clothing worn on the legs."; break;
+		case 60: std::get<1>(result) = "BACKPACK"; std::get<2>(result) = "Backpacks."; break;
+		case 61: std::get<1>(result) = "QUIVER"; std::get<2>(result) = "Quivers."; break;
+		case 62: std::get<1>(result) = "CATAPULTPARTS"; std::get<2>(result) = "Catapult parts."; break;
+		case 63: std::get<1>(result) = "BALLISTAPARTS"; std::get<2>(result) = "Ballista parts."; break;
+		case 64: std::get<1>(result) = "SIEGEAMMO"; std::get<2>(result) = "Siege engine ammunition."; break;
+		case 65: std::get<1>(result) = "BALLISTAARROWHEAD"; std::get<2>(result) = "Ballista arrow heads."; break;
+		case 66: std::get<1>(result) = "TRAPPARTS"; std::get<2>(result) = "Mechanisms."; break;
+		case 67: std::get<1>(result) = "TRAPCOMP"; std::get<2>(result) = "Trap components."; break;
+		case 68: std::get<1>(result) = "DRINK"; std::get<2>(result) = "Alcoholic drinks."; break;
+		case 69: std::get<1>(result) = "POWDER_MISC"; std::get<2>(result) = "Powders such as flour, gypsum plaster, dye, or sand."; break;
+		case 70: std::get<1>(result) = "CHEESE"; std::get<2>(result) = "Pieces of cheese."; break;
+		case 71: std::get<1>(result) = "FOOD"; std::get<2>(result) = "Prepared meals. Subtypes come from item_food.txt"; break;
+		case 72: std::get<1>(result) = "LIQUID_MISC"; std::get<2>(result) = "Liquids such as water, lye, and extracts."; break;
+		case 73: std::get<1>(result) = "COIN"; std::get<2>(result) = "Coins."; break;
+		case 74: std::get<1>(result) = "GLOB"; std::get<2>(result) = "Fat, tallow, pastes/pressed objects, and small bits of molten rock/metal."; break;
+		case 75: std::get<1>(result) = "ROCK"; std::get<2>(result) = "Small rocks (usually sharpened and/or thrown in adventurer mode)"; break;
+		case 76: std::get<1>(result) = "PIPE_SECTION"; std::get<2>(result) = "Pipe sections."; break;
+		case 77: std::get<1>(result) = "HATCH_COVER"; std::get<2>(result) = "Hatch covers."; break;
+		case 78: std::get<1>(result) = "GRATE"; std::get<2>(result) = "Grates."; break;
+		case 79: std::get<1>(result) = "QUERN"; std::get<2>(result) = "Querns."; break;
+		case 80: std::get<1>(result) = "MILLSTONE"; std::get<2>(result) = "Millstones."; break;
+		case 81: std::get<1>(result) = "SPLINT"; std::get<2>(result) = "Splints."; break;
+		case 82: std::get<1>(result) = "CRUTCH"; std::get<2>(result) = "Crutches."; break;
+		case 83: std::get<1>(result) = "TRACTION_BENCH"; std::get<2>(result) = "Traction benches."; break;
+		case 84: std::get<1>(result) = "ORTHOPEDIC_CAST"; std::get<2>(result) = "Casts"; break;
+		case 85: std::get<1>(result) = "TOOL"; std::get<2>(result) = "Tools."; break;
+		case 86: std::get<1>(result) = "SLAB"; std::get<2>(result) = "Slabs."; break;
+		case 87: std::get<1>(result) = "EGG"; std::get<2>(result) = "Eggs. Material is CREATURE_ID:CASTE."; break;
+		case 88: std::get<1>(result) = "BOOK"; std::get<2>(result) = "Books."; break;
+		case 89: std::get<1>(result) = "SHEET"; std::get<2>(result) = "Sheets of paper"; break;
+		case 90: std::get<1>(result) = "BRANCH"; std::get<2>(result) = "Tree branches"; break;
 		default: break;
 	}
 	return result;
@@ -3978,7 +3978,7 @@ std::tuple<int64_t, std::string, std::string> get_items_other_id_value_decoded(D
 	switch (std::get<0>(result))
 	{
 		case -1: std::get<1>(result) = "ANY"; break;
-		case 0: std::get<1>(result) = "IN_PLAY";std::get<2>(result) = "actually on the map, as opposed to in an offloaded fortress elsewhere"; break;
+		case 0: std::get<1>(result) = "IN_PLAY"; std::get<2>(result) = "actually on the map, as opposed to in an offloaded fortress elsewhere"; break;
 		case 1: std::get<1>(result) = "ANY_ARTIFACT"; break;
 		case 2: std::get<1>(result) = "WEAPON"; break;
 		case 3: std::get<1>(result) = "ANY_WEAPON"; break;
@@ -4135,7 +4135,7 @@ std::tuple<int64_t, std::string, std::string> get_job_item_vector_id_value_decod
 		case 11: std::get<1>(result) = "ANY_ARMOR_PANTS"; break;
 		case 12: std::get<1>(result) = "QUIVER"; break;
 		case 13: std::get<1>(result) = "SPLINT"; break;
-		case 14: std::get<1>(result) = "ANY_14";std::get<2>(result) = "supposed to be ORTHOPEDIC_CAST"; break;
+		case 14: std::get<1>(result) = "ANY_14"; std::get<2>(result) = "supposed to be ORTHOPEDIC_CAST"; break;
 		case 15: std::get<1>(result) = "CRUTCH"; break;
 		case 16: std::get<1>(result) = "BACKPACK"; break;
 		case 17: std::get<1>(result) = "AMMO"; break;
@@ -4245,10 +4245,10 @@ std::tuple<int64_t, std::string, std::string> get_job_item_vector_id_value_decod
 		case 121: std::get<1>(result) = "SHOES"; break;
 		case 122: std::get<1>(result) = "HELM"; break;
 		case 123: std::get<1>(result) = "GLOVES"; break;
-		case 124: std::get<1>(result) = "ANY_124";std::get<2>(result) = "supposed to be TOOL"; break;
-		case 125: std::get<1>(result) = "ANY_125";std::get<2>(result) = "supposed to be SLAB"; break;
+		case 124: std::get<1>(result) = "ANY_124"; std::get<2>(result) = "supposed to be TOOL"; break;
+		case 125: std::get<1>(result) = "ANY_125"; std::get<2>(result) = "supposed to be SLAB"; break;
 		case 126: std::get<1>(result) = "EGG"; break;
-		case 127: std::get<1>(result) = "ANY_127";std::get<2>(result) = "supposed to be FOOD_STORAGE"; break;
+		case 127: std::get<1>(result) = "ANY_127"; std::get<2>(result) = "supposed to be FOOD_STORAGE"; break;
 		case 128: std::get<1>(result) = "ANY_CORPSE"; break;
 		case 129: std::get<1>(result) = "BOOK"; break;
 		default: break;
@@ -4367,7 +4367,7 @@ std::tuple<int64_t, std::string, std::string> get_item_magicness_type_value_deco
 		case 4: std::get<1>(result) = "SmallBumps"; break;
 		case 5: std::get<1>(result) = "EarthSmell"; break;
 		case 6: std::get<1>(result) = "Lightning"; break;
-		case 7: std::get<1>(result) = "GrayHairs";std::get<2>(result) = "with value of 10 or higher, creatures that look at the item cannot think negative thoughts"; break;
+		case 7: std::get<1>(result) = "GrayHairs"; std::get<2>(result) = "with value of 10 or higher, creatures that look at the item cannot think negative thoughts"; break;
 		case 8: std::get<1>(result) = "RustlingLeaves"; break;
 		default: break;
 	}
@@ -4403,7 +4403,7 @@ std::tuple<int64_t, std::string, std::string> get_slab_engraving_type_value_deco
 		case 3: std::get<1>(result) = "ArmorsmithShopSign"; break;
 		case 4: std::get<1>(result) = "GeneralStoreSign"; break;
 		case 5: std::get<1>(result) = "FoodShopSign"; break;
-		case 6: std::get<1>(result) = "Secrets";std::get<2>(result) = "from the gods?"; break;
+		case 6: std::get<1>(result) = "Secrets"; std::get<2>(result) = "from the gods?"; break;
 		case 7: std::get<1>(result) = "FoodImportsSign"; break;
 		case 8: std::get<1>(result) = "ClothingImportsSign"; break;
 		case 9: std::get<1>(result) = "GeneralImportsSign"; break;
@@ -4422,7 +4422,7 @@ std::tuple<int64_t, std::string, std::string> get_slab_engraving_type_value_deco
 		case 22: std::get<1>(result) = "CarpenterShopSign"; break;
 		case 23: std::get<1>(result) = "StoneFurnitureShopSign"; break;
 		case 24: std::get<1>(result) = "MetalFurnitureShopSign"; break;
-		case 25: std::get<1>(result) = "DemonIdentity";std::get<2>(result) = "when a demon assumes identity?"; break;
+		case 25: std::get<1>(result) = "DemonIdentity"; std::get<2>(result) = "when a demon assumes identity?"; break;
 		case 26: std::get<1>(result) = "TavernSign"; break;
 		default: break;
 	}
@@ -4482,7 +4482,7 @@ std::tuple<int64_t, std::string, std::string> get_job_type_value_decoded(DF_Type
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
 	switch (std::get<0>(result))
 	{
-		case -1: std::get<1>(result) = "NONE";std::get<2>(result) = "unused"; break;
+		case -1: std::get<1>(result) = "NONE"; std::get<2>(result) = "unused"; break;
 		case 0: std::get<1>(result) = "CarveFortification"; break;
 		case 1: std::get<1>(result) = "DetailWall"; break;
 		case 2: std::get<1>(result) = "DetailFloor"; break;
@@ -4663,8 +4663,8 @@ std::tuple<int64_t, std::string, std::string> get_job_type_value_decoded(DF_Type
 		case 177: std::get<1>(result) = "FillPond"; break;
 		case 178: std::get<1>(result) = "GiveWater"; break;
 		case 179: std::get<1>(result) = "GiveFood"; break;
-		case 180: std::get<1>(result) = "GiveWater2";std::get<2>(result) = "for pets"; break;
-		case 181: std::get<1>(result) = "GiveFood2";std::get<2>(result) = "for pets"; break;
+		case 180: std::get<1>(result) = "GiveWater2"; std::get<2>(result) = "for pets"; break;
+		case 181: std::get<1>(result) = "GiveFood2"; std::get<2>(result) = "for pets"; break;
 		case 182: std::get<1>(result) = "RecoverPet"; break;
 		case 183: std::get<1>(result) = "PitLargeAnimal"; break;
 		case 184: std::get<1>(result) = "PitSmallAnimal"; break;
@@ -4706,7 +4706,7 @@ std::tuple<int64_t, std::string, std::string> get_job_type_value_decoded(DF_Type
 		case 220: std::get<1>(result) = "InstallColonyInHive"; break;
 		case 221: std::get<1>(result) = "CollectHiveProducts"; break;
 		case 222: std::get<1>(result) = "CauseTrouble"; break;
-		case 223: std::get<1>(result) = "DrinkBlood";std::get<2>(result) = "??"; break;
+		case 223: std::get<1>(result) = "DrinkBlood"; std::get<2>(result) = "??"; break;
 		case 224: std::get<1>(result) = "ReportCrime"; break;
 		case 225: std::get<1>(result) = "ExecuteCriminal"; break;
 		case 226: std::get<1>(result) = "TrainAnimal"; break;
@@ -6943,9 +6943,9 @@ std::tuple<int64_t, std::string, std::string> get_nemesis_flags_value_decoded(DF
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
 	switch (std::get<0>(result))
 	{
-		case 0: std::get<1>(result) = "ACTIVE_ADVENTURER";std::get<2>(result) = "used when loading save"; break;
-		case 1: std::get<1>(result) = "RETIRED_ADVENTURER";std::get<2>(result) = "allows resuming play"; break;
-		case 2: std::get<1>(result) = "ADVENTURER";std::get<2>(result) = "blue color in legends"; break;
+		case 0: std::get<1>(result) = "ACTIVE_ADVENTURER"; std::get<2>(result) = "used when loading save"; break;
+		case 1: std::get<1>(result) = "RETIRED_ADVENTURER"; std::get<2>(result) = "allows resuming play"; break;
+		case 2: std::get<1>(result) = "ADVENTURER"; std::get<2>(result) = "blue color in legends"; break;
 		default: break;
 	}
 	return result;
@@ -6995,8 +6995,8 @@ std::tuple<int64_t, std::string, std::string> get_tile_dig_designation_value_dec
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
 	switch (std::get<0>(result))
 	{
-		case 0: std::get<1>(result) = "No";std::get<2>(result) = "no designation"; break;
-		case 1: std::get<1>(result) = "Default";std::get<2>(result) = "dig walls, remove stairs and ramps, gather plants, fell trees"; break;
+		case 0: std::get<1>(result) = "No"; std::get<2>(result) = "no designation"; break;
+		case 1: std::get<1>(result) = "Default"; std::get<2>(result) = "dig walls, remove stairs and ramps, gather plants, fell trees"; break;
 		case 2: std::get<1>(result) = "UpDownStair"; break;
 		case 3: std::get<1>(result) = "Channel"; break;
 		case 4: std::get<1>(result) = "Ramp"; break;
@@ -7024,14 +7024,14 @@ std::tuple<int64_t, std::string, std::string> get_tile_building_occ_value_decode
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
 	switch (std::get<0>(result))
 	{
-		case 0: std::get<1>(result) = "None";std::get<2>(result) = "no building"; break;
-		case 1: std::get<1>(result) = "Planned";std::get<2>(result) = "nothing built yet"; break;
+		case 0: std::get<1>(result) = "None"; std::get<2>(result) = "no building"; break;
+		case 1: std::get<1>(result) = "Planned"; std::get<2>(result) = "nothing built yet"; break;
 		case 2: std::get<1>(result) = "Passable"; break;
-		case 3: std::get<1>(result) = "Obstacle";std::get<2>(result) = "workshop tile; ~fortification"; break;
+		case 3: std::get<1>(result) = "Obstacle"; std::get<2>(result) = "workshop tile; ~fortification"; break;
 		case 4: std::get<1>(result) = "Well"; break;
-		case 5: std::get<1>(result) = "Floored";std::get<2>(result) = "depot; lowered bridge"; break;
+		case 5: std::get<1>(result) = "Floored"; std::get<2>(result) = "depot; lowered bridge"; break;
 		case 6: std::get<1>(result) = "Impassable"; break;
-		case 7: std::get<1>(result) = "Dynamic";std::get<2>(result) = "doors, grates, etc"; break;
+		case 7: std::get<1>(result) = "Dynamic"; std::get<2>(result) = "doors, grates, etc"; break;
 		default: break;
 	}
 	return result;
@@ -7208,7 +7208,7 @@ std::tuple<int64_t, std::string, std::string> get_flow_type_value_decoded(DF_Typ
 	switch (std::get<0>(result))
 	{
 		case 0: std::get<1>(result) = "Miasma"; break;
-		case 1: std::get<1>(result) = "Steam";std::get<2>(result) = "only if mat_type=1"; break;
+		case 1: std::get<1>(result) = "Steam"; std::get<2>(result) = "only if mat_type=1"; break;
 		case 2: std::get<1>(result) = "Mist"; break;
 		case 3: std::get<1>(result) = "MaterialDust"; break;
 		case 4: std::get<1>(result) = "MagmaMist"; break;
@@ -7424,7 +7424,7 @@ std::tuple<int64_t, std::string, std::string> get_inorganic_flags_value_decoded(
 	{
 		case 0: std::get<1>(result) = "LAVA"; break;
 		case 1: std::get<1>(result) = "GENERATED"; break;
-		case 2: std::get<1>(result) = "ENVIRONMENT_NON_SOIL_OCEAN";std::get<2>(result) = "is METAMORPHIC, or has ENVIRONMENT with anything but SOIL_OCEAN"; break;
+		case 2: std::get<1>(result) = "ENVIRONMENT_NON_SOIL_OCEAN"; std::get<2>(result) = "is METAMORPHIC, or has ENVIRONMENT with anything but SOIL_OCEAN"; break;
 		case 3: std::get<1>(result) = "SEDIMENTARY"; break;
 		case 4: std::get<1>(result) = "SEDIMENTARY_OCEAN_SHALLOW"; break;
 		case 5: std::get<1>(result) = "IGNEOUS_INTRUSIVE"; break;
@@ -7438,7 +7438,7 @@ std::tuple<int64_t, std::string, std::string> get_inorganic_flags_value_decoded(
 		case 13: std::get<1>(result) = "SOIL_SAND"; break;
 		case 14: std::get<1>(result) = "SEDIMENTARY_OCEAN_DEEP"; break;
 		case 15: std::get<1>(result) = "THREAD_METAL"; break;
-		case 16: std::get<1>(result) = "SPECIAL";std::get<2>(result) = "or any DEEP_*"; break;
+		case 16: std::get<1>(result) = "SPECIAL"; std::get<2>(result) = "or any DEEP_*"; break;
 		case 17: std::get<1>(result) = "SOIL"; break;
 		case 18: std::get<1>(result) = "DEEP_SPECIAL"; break;
 		case 19: std::get<1>(result) = "DIVINE"; break;
@@ -7482,7 +7482,7 @@ std::tuple<int64_t, std::string, std::string> get_inclusion_type_value_decoded(D
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
 	switch (std::get<0>(result))
 	{
-		case 0: std::get<1>(result) = "anon_1";std::get<2>(result) = "unused"; break;
+		case 0: std::get<1>(result) = "anon_1"; std::get<2>(result) = "unused"; break;
 		case 1: std::get<1>(result) = "VEIN"; break;
 		case 2: std::get<1>(result) = "CLUSTER"; break;
 		case 3: std::get<1>(result) = "CLUSTER_SMALL"; break;
@@ -8365,8 +8365,8 @@ std::tuple<int64_t, std::string, std::string> get_specific_ref_type_value_decode
 		case 4: std::get<1>(result) = "ACTIVITY"; break;
 		case 5: std::get<1>(result) = "ITEM_GENERAL"; break;
 		case 6: std::get<1>(result) = "EFFECT"; break;
-		case 7: std::get<1>(result) = "PETINFO_PET";std::get<2>(result) = "unused"; break;
-		case 8: std::get<1>(result) = "PETINFO_OWNER";std::get<2>(result) = "unused"; break;
+		case 7: std::get<1>(result) = "PETINFO_PET"; std::get<2>(result) = "unused"; break;
+		case 8: std::get<1>(result) = "PETINFO_OWNER"; std::get<2>(result) = "unused"; break;
 		case 9: std::get<1>(result) = "VERMIN_EVENT"; break;
 		case 10: std::get<1>(result) = "VERMIN_ESCAPED_PET"; break;
 		case 11: std::get<1>(result) = "ENTITY"; break;
@@ -10162,7 +10162,7 @@ std::tuple<int64_t, std::string, std::string> get_timed_event_type_value_decoded
 		case 0: std::get<1>(result) = "Caravan"; break;
 		case 1: std::get<1>(result) = "Migrants"; break;
 		case 2: std::get<1>(result) = "Diplomat"; break;
-		case 3: std::get<1>(result) = "FeatureAttack";std::get<2>(result) = "unused, does nothing"; break;
+		case 3: std::get<1>(result) = "FeatureAttack"; std::get<2>(result) = "unused, does nothing"; break;
 		case 4: std::get<1>(result) = "Megabeast"; break;
 		case 5: std::get<1>(result) = "WildlifeCurious"; break;
 		case 6: std::get<1>(result) = "WildlifeMischievous"; break;
@@ -10829,7 +10829,7 @@ std::tuple<int64_t, std::string, std::string> get_animal_training_level_value_de
 		case 6: std::get<1>(result) = "MasterfullyTrained"; break;
 		case 7: std::get<1>(result) = "Domesticated"; break;
 		case 8: std::get<1>(result) = "Unk8"; break;
-		case 9: std::get<1>(result) = "WildUntamed";std::get<2>(result) = "Seems to be used as default when not flags1.tame"; break;
+		case 9: std::get<1>(result) = "WildUntamed"; std::get<2>(result) = "Seems to be used as default when not flags1.tame"; break;
 		default: break;
 	}
 	return result;
@@ -11026,61 +11026,61 @@ std::tuple<int64_t, std::string, std::string> get_misc_trait_type_value_decoded(
 		case 1: std::get<1>(result) = "RequestFoodCooldown"; break;
 		case 2: std::get<1>(result) = "RequestRescueCooldown"; break;
 		case 3: std::get<1>(result) = "RequestHealthcareCooldown"; break;
-		case 4: std::get<1>(result) = "GetDrinkCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 5: std::get<1>(result) = "GetFoodCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 6: std::get<1>(result) = "CleanSelfCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 7: std::get<1>(result) = "Migrant";std::get<2>(result) = "auto-decrement"; break;
-		case 8: std::get<1>(result) = "RoomComplaint";std::get<2>(result) = "auto-decrement"; break;
-		case 9: std::get<1>(result) = "UnnamedResident";std::get<2>(result) = "upon reaching zero, resident creature gets named"; break;
-		case 10: std::get<1>(result) = "RentBedroomCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 11: std::get<1>(result) = "ClaimTrinketCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 12: std::get<1>(result) = "ClaimClothingCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 13: std::get<1>(result) = "WantsDrink";std::get<2>(result) = "auto-increment to 403200"; break;
-		case 14: std::get<1>(result) = "anon_1";std::get<2>(result) = "formerly LikesOutdoors"; break;
-		case 15: std::get<1>(result) = "anon_2";std::get<2>(result) = "formerly Hardened"; break;
-		case 16: std::get<1>(result) = "anon_3";std::get<2>(result) = "formerly TimeSinceBreak"; break;
-		case 17: std::get<1>(result) = "anon_4";std::get<2>(result) = "formerly OnBreak"; break;
-		case 18: std::get<1>(result) = "PrepareToDie";std::get<2>(result) = "auto-decrement"; break;
+		case 4: std::get<1>(result) = "GetDrinkCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 5: std::get<1>(result) = "GetFoodCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 6: std::get<1>(result) = "CleanSelfCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 7: std::get<1>(result) = "Migrant"; std::get<2>(result) = "auto-decrement"; break;
+		case 8: std::get<1>(result) = "RoomComplaint"; std::get<2>(result) = "auto-decrement"; break;
+		case 9: std::get<1>(result) = "UnnamedResident"; std::get<2>(result) = "upon reaching zero, resident creature gets named"; break;
+		case 10: std::get<1>(result) = "RentBedroomCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 11: std::get<1>(result) = "ClaimTrinketCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 12: std::get<1>(result) = "ClaimClothingCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 13: std::get<1>(result) = "WantsDrink"; std::get<2>(result) = "auto-increment to 403200"; break;
+		case 14: std::get<1>(result) = "anon_1"; std::get<2>(result) = "formerly LikesOutdoors"; break;
+		case 15: std::get<1>(result) = "anon_2"; std::get<2>(result) = "formerly Hardened"; break;
+		case 16: std::get<1>(result) = "anon_3"; std::get<2>(result) = "formerly TimeSinceBreak"; break;
+		case 17: std::get<1>(result) = "anon_4"; std::get<2>(result) = "formerly OnBreak"; break;
+		case 18: std::get<1>(result) = "PrepareToDie"; std::get<2>(result) = "auto-decrement"; break;
 		case 19: std::get<1>(result) = "CaveAdapt"; break;
-		case 20: std::get<1>(result) = "anon_5";std::get<2>(result) = "auto-decrement"; break;
-		case 21: std::get<1>(result) = "anon_6";std::get<2>(result) = "auto-decrement"; break;
+		case 20: std::get<1>(result) = "anon_5"; std::get<2>(result) = "auto-decrement"; break;
+		case 21: std::get<1>(result) = "anon_6"; std::get<2>(result) = "auto-decrement"; break;
 		case 22: std::get<1>(result) = "anon_7"; break;
-		case 23: std::get<1>(result) = "anon_8";std::get<2>(result) = "auto-decrement"; break;
-		case 24: std::get<1>(result) = "FollowUnitCooldown";std::get<2>(result) = "0-20, 200 on failed path, auto-decrement"; break;
-		case 25: std::get<1>(result) = "anon_9";std::get<2>(result) = "auto-decrement"; break;
-		case 26: std::get<1>(result) = "anon_10";std::get<2>(result) = "auto-decrement"; break;
+		case 23: std::get<1>(result) = "anon_8"; std::get<2>(result) = "auto-decrement"; break;
+		case 24: std::get<1>(result) = "FollowUnitCooldown"; std::get<2>(result) = "0-20, 200 on failed path, auto-decrement"; break;
+		case 25: std::get<1>(result) = "anon_9"; std::get<2>(result) = "auto-decrement"; break;
+		case 26: std::get<1>(result) = "anon_10"; std::get<2>(result) = "auto-decrement"; break;
 		case 27: std::get<1>(result) = "anon_11"; break;
-		case 28: std::get<1>(result) = "DangerousTerrainCooldown";std::get<2>(result) = "created at 200, blocks repath?, auto-decrement"; break;
-		case 29: std::get<1>(result) = "Beaching";std::get<2>(result) = "triggered by BEACH_FREQUENCY, auto-decrement"; break;
-		case 30: std::get<1>(result) = "IdleAreaCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 31: std::get<1>(result) = "anon_12";std::get<2>(result) = "auto-decrement"; break;
-		case 32: std::get<1>(result) = "PartiedOut";std::get<2>(result) = "auto-decrement"; break;
-		case 33: std::get<1>(result) = "DiagnosePatientCooldown";std::get<2>(result) = "0-2000, auto-decrement"; break;
-		case 34: std::get<1>(result) = "DressWoundCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 35: std::get<1>(result) = "CleanPatientCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 36: std::get<1>(result) = "SurgeryCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 37: std::get<1>(result) = "SutureCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 38: std::get<1>(result) = "SetBoneCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 39: std::get<1>(result) = "PlaceInTractionCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 40: std::get<1>(result) = "ApplyCastCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 41: std::get<1>(result) = "ImmobilizeBreakCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 42: std::get<1>(result) = "BringCrutchCooldown";std::get<2>(result) = "auto-decrement"; break;
-		case 43: std::get<1>(result) = "anon_13";std::get<2>(result) = "auto-decrement, set military pickup flag upon reaching zero"; break;
-		case 44: std::get<1>(result) = "MilkCounter";std::get<2>(result) = "auto-decrement"; break;
-		case 45: std::get<1>(result) = "HadDrill";std::get<2>(result) = "auto-decrement"; break;
-		case 46: std::get<1>(result) = "CompletedDrill";std::get<2>(result) = "auto-decrement"; break;
-		case 47: std::get<1>(result) = "EggSpent";std::get<2>(result) = "auto-decrement"; break;
-		case 48: std::get<1>(result) = "GroundedAnimalAnger";std::get<2>(result) = "auto-decrement"; break;
-		case 49: std::get<1>(result) = "anon_14";std::get<2>(result) = "auto-decrement"; break;
+		case 28: std::get<1>(result) = "DangerousTerrainCooldown"; std::get<2>(result) = "created at 200, blocks repath?, auto-decrement"; break;
+		case 29: std::get<1>(result) = "Beaching"; std::get<2>(result) = "triggered by BEACH_FREQUENCY, auto-decrement"; break;
+		case 30: std::get<1>(result) = "IdleAreaCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 31: std::get<1>(result) = "anon_12"; std::get<2>(result) = "auto-decrement"; break;
+		case 32: std::get<1>(result) = "PartiedOut"; std::get<2>(result) = "auto-decrement"; break;
+		case 33: std::get<1>(result) = "DiagnosePatientCooldown"; std::get<2>(result) = "0-2000, auto-decrement"; break;
+		case 34: std::get<1>(result) = "DressWoundCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 35: std::get<1>(result) = "CleanPatientCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 36: std::get<1>(result) = "SurgeryCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 37: std::get<1>(result) = "SutureCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 38: std::get<1>(result) = "SetBoneCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 39: std::get<1>(result) = "PlaceInTractionCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 40: std::get<1>(result) = "ApplyCastCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 41: std::get<1>(result) = "ImmobilizeBreakCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 42: std::get<1>(result) = "BringCrutchCooldown"; std::get<2>(result) = "auto-decrement"; break;
+		case 43: std::get<1>(result) = "anon_13"; std::get<2>(result) = "auto-decrement, set military pickup flag upon reaching zero"; break;
+		case 44: std::get<1>(result) = "MilkCounter"; std::get<2>(result) = "auto-decrement"; break;
+		case 45: std::get<1>(result) = "HadDrill"; std::get<2>(result) = "auto-decrement"; break;
+		case 46: std::get<1>(result) = "CompletedDrill"; std::get<2>(result) = "auto-decrement"; break;
+		case 47: std::get<1>(result) = "EggSpent"; std::get<2>(result) = "auto-decrement"; break;
+		case 48: std::get<1>(result) = "GroundedAnimalAnger"; std::get<2>(result) = "auto-decrement"; break;
+		case 49: std::get<1>(result) = "anon_14"; std::get<2>(result) = "auto-decrement"; break;
 		case 50: std::get<1>(result) = "TimeSinceSuckedBlood"; break;
-		case 51: std::get<1>(result) = "DrinkingBlood";std::get<2>(result) = "auto-decrement"; break;
-		case 52: std::get<1>(result) = "anon_15";std::get<2>(result) = "auto-decrement"; break;
-		case 53: std::get<1>(result) = "anon_16";std::get<2>(result) = "auto-decrement"; break;
-		case 54: std::get<1>(result) = "RevertWildTimer";std::get<2>(result) = "one trigger => --training_level, auto-decrement"; break;
-		case 55: std::get<1>(result) = "anon_17";std::get<2>(result) = "auto-decrement"; break;
-		case 56: std::get<1>(result) = "NoPantsAnger";std::get<2>(result) = "auto-decrement"; break;
-		case 57: std::get<1>(result) = "NoShirtAnger";std::get<2>(result) = "auto-decrement"; break;
-		case 58: std::get<1>(result) = "NoShoesAnger";std::get<2>(result) = "auto-decrement"; break;
+		case 51: std::get<1>(result) = "DrinkingBlood"; std::get<2>(result) = "auto-decrement"; break;
+		case 52: std::get<1>(result) = "anon_15"; std::get<2>(result) = "auto-decrement"; break;
+		case 53: std::get<1>(result) = "anon_16"; std::get<2>(result) = "auto-decrement"; break;
+		case 54: std::get<1>(result) = "RevertWildTimer"; std::get<2>(result) = "one trigger => --training_level, auto-decrement"; break;
+		case 55: std::get<1>(result) = "anon_17"; std::get<2>(result) = "auto-decrement"; break;
+		case 56: std::get<1>(result) = "NoPantsAnger"; std::get<2>(result) = "auto-decrement"; break;
+		case 57: std::get<1>(result) = "NoShirtAnger"; std::get<2>(result) = "auto-decrement"; break;
+		case 58: std::get<1>(result) = "NoShoesAnger"; std::get<2>(result) = "auto-decrement"; break;
 		default: break;
 	}
 	return result;
@@ -11463,7 +11463,7 @@ std::tuple<int64_t, std::string, std::string> get_world_site_flags_value_decoded
 		case 0: std::get<1>(result) = "Undiscovered"; break;
 		case 1: std::get<1>(result) = "anon_1"; break;
 		case 2: std::get<1>(result) = "anon_2"; break;
-		case 3: std::get<1>(result) = "Town";std::get<2>(result) = "not hamlet"; break;
+		case 3: std::get<1>(result) = "Town"; std::get<2>(result) = "not hamlet"; break;
 		default: break;
 	}
 	return result;
@@ -11855,12 +11855,12 @@ std::tuple<int64_t, std::string, std::string> get_history_event_body_abusedst__T
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
 	switch (std::get<0>(result))
 	{
-		case 0: std::get<1>(result) = "Impaled";std::get<2>(result) = "props.item"; break;
-		case 1: std::get<1>(result) = "Piled";std::get<2>(result) = "props.pile_type"; break;
-		case 2: std::get<1>(result) = "Flayed";std::get<2>(result) = "props.structure"; break;
-		case 3: std::get<1>(result) = "Hung";std::get<2>(result) = "props.hung"; break;
-		case 4: std::get<1>(result) = "Mutilated";std::get<2>(result) = "no props"; break;
-		case 5: std::get<1>(result) = "Animated";std::get<2>(result) = "no props"; break;
+		case 0: std::get<1>(result) = "Impaled"; std::get<2>(result) = "props.item"; break;
+		case 1: std::get<1>(result) = "Piled"; std::get<2>(result) = "props.pile_type"; break;
+		case 2: std::get<1>(result) = "Flayed"; std::get<2>(result) = "props.structure"; break;
+		case 3: std::get<1>(result) = "Hung"; std::get<2>(result) = "props.hung"; break;
+		case 4: std::get<1>(result) = "Mutilated"; std::get<2>(result) = "no props"; break;
+		case 5: std::get<1>(result) = "Animated"; std::get<2>(result) = "no props"; break;
 		default: break;
 	}
 	return result;
@@ -11871,9 +11871,9 @@ std::tuple<int64_t, std::string, std::string> get_history_event_hist_figure_trav
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
 	switch (std::get<0>(result))
 	{
-		case 0: std::get<1>(result) = "Journey";std::get<2>(result) = "made a journey to"; break;
-		case 1: std::get<1>(result) = "Return";std::get<2>(result) = "returned to"; break;
-		case 2: std::get<1>(result) = "Escape";std::get<2>(result) = "escaped from"; break;
+		case 0: std::get<1>(result) = "Journey"; std::get<2>(result) = "made a journey to"; break;
+		case 1: std::get<1>(result) = "Return"; std::get<2>(result) = "returned to"; break;
+		case 2: std::get<1>(result) = "Escape"; std::get<2>(result) = "escaped from"; break;
 		default: break;
 	}
 	return result;
@@ -12208,14 +12208,14 @@ std::tuple<int64_t, std::string, std::string> get_unit_inventory_item__T_mode_va
 	switch (std::get<0>(result))
 	{
 		case 0: std::get<1>(result) = "Hauled"; break;
-		case 1: std::get<1>(result) = "Weapon";std::get<2>(result) = "also shield, crutch"; break;
-		case 2: std::get<1>(result) = "Worn";std::get<2>(result) = "quiver"; break;
+		case 1: std::get<1>(result) = "Weapon"; std::get<2>(result) = "also shield, crutch"; break;
+		case 2: std::get<1>(result) = "Worn"; std::get<2>(result) = "quiver"; break;
 		case 3: std::get<1>(result) = "Piercing"; break;
-		case 4: std::get<1>(result) = "Flask";std::get<2>(result) = "attached to clothing"; break;
-		case 5: std::get<1>(result) = "WrappedAround";std::get<2>(result) = "e.g. bandage"; break;
+		case 4: std::get<1>(result) = "Flask"; std::get<2>(result) = "attached to clothing"; break;
+		case 5: std::get<1>(result) = "WrappedAround"; std::get<2>(result) = "e.g. bandage"; break;
 		case 6: std::get<1>(result) = "StuckIn"; break;
-		case 7: std::get<1>(result) = "InMouth";std::get<2>(result) = "string descr like Worn"; break;
-		case 8: std::get<1>(result) = "Pet";std::get<2>(result) = "Left shoulder, right shoulder, or head, selected randomly using pet_seed"; break;
+		case 7: std::get<1>(result) = "InMouth"; std::get<2>(result) = "string descr like Worn"; break;
+		case 8: std::get<1>(result) = "Pet"; std::get<2>(result) = "Left shoulder, right shoulder, or head, selected randomly using pet_seed"; break;
 		case 9: std::get<1>(result) = "SewnInto"; break;
 		case 10: std::get<1>(result) = "Strapped"; break;
 		default: break;
@@ -12234,7 +12234,7 @@ std::tuple<int64_t, std::string, std::string> get_unit_preference__T_type_value_
 		case 3: std::get<1>(result) = "HateCreature"; break;
 		case 4: std::get<1>(result) = "LikeItem"; break;
 		case 5: std::get<1>(result) = "LikePlant"; break;
-		case 6: std::get<1>(result) = "LikeTree";std::get<2>(result) = "holdover from 40d and earlier"; break;
+		case 6: std::get<1>(result) = "LikeTree"; std::get<2>(result) = "holdover from 40d and earlier"; break;
 		case 7: std::get<1>(result) = "LikeColor"; break;
 		case 8: std::get<1>(result) = "LikeShape"; break;
 		case 9: std::get<1>(result) = "LikePoeticForm"; break;
@@ -12252,7 +12252,7 @@ std::tuple<int64_t, std::string, std::string> get_unit_complaint__T_type_value_d
 	{
 		case 25: std::get<1>(result) = "SelfUnemployed"; break;
 		case 26: std::get<1>(result) = "GuildUnemployed"; break;
-		case 27: std::get<1>(result) = "NeedWeapons";std::get<2>(result) = "no longer used"; break;
+		case 27: std::get<1>(result) = "NeedWeapons"; std::get<2>(result) = "no longer used"; break;
 		case 28: std::get<1>(result) = "IsAngry"; break;
 		case 29: std::get<1>(result) = "IsSad"; break;
 		case 30: std::get<1>(result) = "anon_1"; break;
@@ -12770,8 +12770,8 @@ std::tuple<int64_t, std::string, std::string> get_cultural_identity__T_group_log
 	switch (std::get<0>(result))
 	{
 		case 0: std::get<1>(result) = "Peaceful"; break;
-		case 1: std::get<1>(result) = "CompleteTakeOver";std::get<2>(result) = "The previous group left the culture."; break;
-		case 2: std::get<1>(result) = "TakeOver";std::get<2>(result) = "The previous group's end_year is still -1."; break;
+		case 1: std::get<1>(result) = "CompleteTakeOver"; std::get<2>(result) = "The previous group left the culture."; break;
+		case 2: std::get<1>(result) = "TakeOver"; std::get<2>(result) = "The previous group's end_year is still -1."; break;
 		default: break;
 	}
 	return result;

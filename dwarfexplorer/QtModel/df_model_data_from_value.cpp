@@ -90,6 +90,14 @@ bool is_node_bitfield_entry(NodeBase* p_node)
     return false;
 }
 
+QString process_pointer(const NodeBase* p_node)
+{
+    auto        pointer_address = reinterpret_cast<uint64_t*>(p_node->m_address);
+    auto        item_address    = reinterpret_cast<uint64_t>(*pointer_address);
+    std::string address_hex     = to_hex(item_address);
+    return QString::fromStdString(address_hex);
+}
+
 QString process_node_bitfield_entry(NodeBase* p_node)
 {
 //    NodeBitfieldEntry* l_bitfield_entry = dynamic_cast<NodeBitfieldEntry*>(p_node);
@@ -109,12 +117,29 @@ bool is_node_simple(const NodeBase* p_node)
         case rdf::DF_Type::uint16_t: return true;
         case rdf::DF_Type::int8_t:   return true;
         case rdf::DF_Type::uint8_t:  return true;
-        case rdf::DF_Type::Long:     return true;        
+        case rdf::DF_Type::Long:     return true;
         case rdf::DF_Type::Bool:     return true;
         case rdf::DF_Type::Void:     return true;
         default: break;
     }
     return false;
+}
+
+QString process_bool(const NodeBase* p_node)
+{
+    if (p_node->m_parent->m_rdf_type == RDF_Type::Vector)
+    {
+        auto string_index = p_node->m_field_name.substr(1,10);
+        string_index      = string_index.substr(0, string_index.length() - 1);
+        int  index        = std::stoi(string_index);
+
+        auto     void_pointer   = reinterpret_cast<void*>(p_node->m_address);
+        auto     vector_pointer = reinterpret_cast<std::vector<char>*>(void_pointer);
+        auto&    vector         = *vector_pointer;
+        bool     vector_value   = vector[index];
+        return QString::fromStdString(vector_value ? "True" : "False");
+    }
+    return QString::fromStdString(*(reinterpret_cast<int64_t*>(p_node->m_address)) ? "True" : "False");
 }
 
 QString process_node_simple(const NodeBase* p_node)
@@ -138,11 +163,11 @@ QString process_node_simple(const NodeBase* p_node)
         case rdf::DF_Type::uint8_t:
             return QString::fromStdString(std::to_string(*(reinterpret_cast<uint8_t*>(p_node->m_address))));
         case rdf::DF_Type::Long:
-            return QString::fromStdString(std::to_string(*(reinterpret_cast<long*>(p_node->m_address))));            
+            return QString::fromStdString(std::to_string(*(reinterpret_cast<long*>(p_node->m_address))));
         case rdf::DF_Type::Bool:
-            return QString::fromStdString(*(reinterpret_cast<int64_t*>(p_node->m_address)) ? "True" : "False");
+            return process_bool(p_node) ;
         case rdf::DF_Type::Void:
-            return "";
+            return process_pointer(p_node);
         default: break;
     }
     return "Unknown1";
@@ -170,8 +195,8 @@ bool is_node_stl_string(const NodeBase*p_node)
 
 QString process_node_stl_string(const NodeBase*p_node)
 {
-    auto string_address = reinterpret_cast<std::string*>(p_node->m_address);
-    std::string object = *string_address;
+    auto        string_address = reinterpret_cast<std::string*>(p_node->m_address);
+    std::string object         = *string_address;
     if (object.empty())
         return "''";
     return QString::fromStdString(object);
@@ -202,20 +227,14 @@ QString process_node_df_pointer_vector_entry(NodeBase* p_node)
     return "";
 }
 
-QString process_pointer(const NodeBase* p_node)
-{
-    auto pointer_address = reinterpret_cast<uint64_t*>(p_node->m_address);
-    auto item_address = reinterpret_cast<uint64_t>(*pointer_address);
-    std::string address_hex = to_hex(item_address);
-    return QString::fromStdString(address_hex);
-}
+
 
 
 QString Enum_data_from_Value(const NodeBase* p_node)
 {
-        auto enum_node = dynamic_cast<const NodeEnum*>(p_node);
-        auto enum_decoded = get_enum_decoded(enum_node);
-        QString l_result = "[";
+        auto    enum_node    = dynamic_cast<const NodeEnum*>(p_node);
+        auto    enum_decoded = get_enum_decoded(enum_node);
+        QString l_result     = "[";
         l_result.append(QString::number(std::get<0>(enum_decoded)));
         l_result.append("] = ");
         l_result.append(QString::fromStdString(std::get<1>(enum_decoded)));
@@ -224,8 +243,8 @@ QString Enum_data_from_Value(const NodeBase* p_node)
 
 QString Bitfield_data_from_Value(const NodeBase* p_node)
 {
-        auto pointer_bitfield = reinterpret_cast<uint32_t*>(p_node->m_address);
-        auto bitfield_value = *pointer_bitfield;
+        auto pointer_bitfield         = reinterpret_cast<uint32_t*>(p_node->m_address);
+        auto bitfield_value           = *pointer_bitfield;
         auto bitfield_value_as_string = to_hex(bitfield_value);
         return QString::fromStdString(bitfield_value_as_string);
 }
@@ -233,20 +252,20 @@ QString Bitfield_data_from_Value(const NodeBase* p_node)
 
 QString DF_Model::Vector_data_from_Value(const NodeBase* p_node) const
 {
-       auto node_vector = dynamic_cast<const NodeVector*>(p_node);
-        auto vector_size = get_vector_size(node_vector);
-        std::string l_size = "[";
-        if (vector_size == 0)
-        {
-            l_size.append("empty]");
-            return QString::fromStdString(l_size);
-        }
-        l_size.append(std::to_string(vector_size));
-        if (vector_size == 1)
-            l_size.append(" item]");
-        else
-            l_size.append(" items]");
+    auto        node_vector = dynamic_cast<const NodeVector*>(p_node);
+    auto        vector_size = get_vector_size(node_vector);
+    std::string l_size      = "[";
+    if (vector_size == 0)
+    {
+        l_size.append("empty]");
         return QString::fromStdString(l_size);
+    }
+    l_size.append(std::to_string(vector_size));
+    if (vector_size == 1)
+        l_size.append(" item]");
+    else
+        l_size.append(" items]");
+    return QString::fromStdString(l_size);
  }
 
 
@@ -281,9 +300,9 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Array)
         return "";
-    
+
     if (p_node->m_rdf_type == rdf::RDF_Type::DFArray)
-        return "";    
+        return "";
 
     if (is_node_void_pointer(p_node))
         return process_node_void_pointer(p_node);
@@ -294,8 +313,8 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
     if (p_node->m_df_type == rdf::DF_Type::language_name)
     {
         // Translate the name
-        df::language_name* lang = reinterpret_cast<df::language_name*>(p_node->m_address);
-        std::string result = Translation::TranslateName(lang, false, false);
+        df::language_name* lang   = reinterpret_cast<df::language_name*>(p_node->m_address);
+        std::string        result = Translation::TranslateName(lang, false, false);
        return QString::fromStdString(DF2UTF(result));
     }
 
@@ -319,8 +338,8 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
 
     if (p_node->m_df_type == rdf::DF_Type::Static_string)
     {
-        auto ss_node = dynamic_cast<const NodeStaticString*>(p_node);
-        const char* value = reinterpret_cast<const char*>(ss_node->m_address);
+        auto        ss_node = dynamic_cast<const NodeStaticString*>(p_node);
+        const char* value   = reinterpret_cast<const char*>(ss_node->m_address);
         QString result("\"");
         result.append(value);
         result.append("\"");
@@ -329,8 +348,8 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
 
     if (p_node->m_rdf_type == rdf::RDF_Type::DFLinkedList)
     {
-        auto ss_node = dynamic_cast<const NodeCompound*>(p_node);
-        int count = 0;
+        auto      ss_node = dynamic_cast<const NodeCompound*>(p_node);
+        int       count   = 0;
         uint64_t* address = reinterpret_cast<uint64_t*>(ss_node->m_address);
         while (address != nullptr)
         {

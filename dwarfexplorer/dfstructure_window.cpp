@@ -57,9 +57,9 @@ void DFStructure_Window::on_actionOpen_in_new_Window_triggered()
     n_root->m_parent     = nullptr;
     n_root->m_path       = path_name;
     n_root->m_field_name = l_node->m_field_name;
-    n_root->m_rdf_type = l_node->m_rdf_type;
-    n_root->m_df_type = l_node->m_df_type;
-    n_root->m_node_type = NodeType::Root;
+    n_root->m_rdf_type   = l_node->m_rdf_type;
+    n_root->m_df_type    = l_node->m_df_type;
+    n_root->m_node_type  = NodeType::Root;
 
     //l_cloned_node->m_field_name = n_root->m_path;
 
