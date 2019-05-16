@@ -53,7 +53,9 @@
 
 static constexpr struct in_place_t {} in_place;
 
-extern void fill_globals(rdf::Node* p_node_parent);
+extern void        fill_globals(rdf::Node* p_node_parent);
+extern std::string to_hex(uint64_t p_dec);
+
 
 MainWindow::MainWindow(std::shared_ptr<EventProxy> &&proxy, QWidget *parent)
     : QMainWindow(parent)
@@ -64,11 +66,6 @@ MainWindow::MainWindow(std::shared_ptr<EventProxy> &&proxy, QWidget *parent)
 
     connect(ui->treeView, &QTreeView::expanded,
             this, &MainWindow::updateUnitModel);
-//    connect(ui->actionOpen_in_hex_viewer, &QAction::triggered,
-//            this, &MainWindow::on_actionOpen_in_hex_viewer_triggered);            
-
-//    connect(ui->actionOpen_in_new_window, &QAction::triggered,
-//            this, &MainWindow::on_actionOpen_in_new_window_triggered);
 
     auto node = new rdf::NodeRoot;
     node->m_path = "df.global";
@@ -131,7 +128,7 @@ void MainWindow::on_treeView_expanded(const QModelIndex& p_index)
     if (l_node != nullptr)
         if ((l_node->m_children.size() == 0) ||
                 (l_node->m_node_type == rdf::NodeType::Vector) ||
-                (l_node->m_node_type == rdf::NodeType::Array) ||                                
+                (l_node->m_node_type == rdf::NodeType::Array) ||
                 (l_node->m_node_type == rdf::NodeType::Pointer))
                     l_global_model->insert_child_nodes(l_node_base, p_index);
     this->setCursor(Qt::ArrowCursor);
@@ -219,6 +216,39 @@ void MainWindow::on_actionOpen_in_hex_viewer_triggered()
     hex_view->set_base_address(node->m_address);
     hex_view->setData(new QHexView::DataStorageArray(data));
 
-    hex_window->setWindowTitle("PRUEBA");
+    // window title
+    auto the_number = QString::fromStdString(to_hex(node->m_address));
+    hex_window->setWindowTitle("Memory viewer - " + the_number);
+    hex_window->show();
+}
+
+void MainWindow::on_actionOpenPointer_in_hex_viewer_triggered()
+{
+    // Get the selected node index
+    QTreeView* treeview = ui->treeView;
+    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    if (selected_nodes.size() == 0)
+        return;
+    QModelIndex selected_node = selected_nodes.first();
+
+    // Get the model
+    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+
+    // Get the selected node
+    rdf::Node* node = dynamic_cast<rdf::Node*>(model->nodeFromIndex(selected_node));
+
+    auto pointer_address = reinterpret_cast<uint64_t*>(node->m_address);
+    auto item_address    = reinterpret_cast<uint64_t>(*pointer_address);
+
+    auto the_data = reinterpret_cast<const char*>(item_address);
+    QByteArray data(the_data, 1024);
+    QHexViewer_Window* hex_window = new QHexViewer_Window(this);
+    QHexView* hex_view = hex_window->get_hexview();
+    hex_view->set_base_address(item_address);
+    hex_view->setData(new QHexView::DataStorageArray(data));
+
+    // Window tittle
+    auto the_number = QString::fromStdString(to_hex(item_address));
+    hex_window->setWindowTitle("Memory viewer - " + the_number);
     hex_window->show();
 }

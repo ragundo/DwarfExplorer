@@ -57,6 +57,7 @@
     </property>
     <addaction name="actionOpen_in_new_window"/>
     <addaction name="actionOpen_in_hex_viewer"/>    
+    <addaction name="actionOpenPointer_in_hex_viewer"/>        
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuWindow"/>
@@ -85,6 +86,11 @@
     <string>Open address in hex viewer</string>
    </property>
   </action>  
+  <action name="actionOpenPointer_in_hex_viewer">
+   <property name="text">
+    <string>Open destination address in hex viewer</string>
+   </property>
+  </action>    
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
