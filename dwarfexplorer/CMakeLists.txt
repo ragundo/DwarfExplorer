@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 if(UNIX)
 add_definitions(
     -Wfatal-errors
+    -Og
     )
 endif()
 
@@ -23,7 +24,7 @@ set(DWARFEXPLORER_SOURCES
     QtModel/df_model_array.cpp
     QtModel/df_model_pointer.cpp
     QtModel/df_model_util.cpp
-    QtModel/df_model_df_array.cpp    
+    QtModel/df_model_df_array.cpp
     generated/offsets_cache.cpp
     generated/fill_nodes.cpp
     generated/fill_offsets.cpp
