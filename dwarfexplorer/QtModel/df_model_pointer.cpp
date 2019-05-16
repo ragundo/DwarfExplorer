@@ -34,7 +34,7 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
     }
 
     auto pointer_address = reinterpret_cast<uint64_t*>(node->m_address);
-    auto item_address = reinterpret_cast<uint64_t>(*pointer_address);
+    auto item_address    = reinterpret_cast<uint64_t>(*pointer_address);
 
     if (node->m_addornements == "*")
     {
@@ -162,7 +162,7 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
                 n_pve->m_node_type = NodeType::Enum;
                 n_pve->m_base_type = node->m_enum_base;
             }
-            n_pve->m_enum_type = DF_Type_to_string(node->m_df_type);
+            n_pve->m_enum_type  = DF_Type_to_string(node->m_df_type);
             n_pve->m_field_name = "N/A";
             endInsertRows();
             return true;
@@ -173,7 +173,7 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
             auto n_pve = new NodeBitfield;
             fill_simple_entry(n_pve, node, size_of_DF_Type(node->m_df_type), item_address, node->m_df_type, rdf_type);
             n_pve->m_field_name = "N/A";
-            n_pve->m_node_type = NodeType::Bitfield;
+            n_pve->m_node_type  = NodeType::Bitfield;
             endInsertRows();
             return true;
         }
@@ -209,19 +209,19 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
 
     // Remove "*"
     std::string addornements = node->m_addornements;
-    addornements = addornements.substr(1, 512);
+    addornements             = addornements.substr(1, 512);
     if (addornements == "*")
     {
         // Pointer to pointer
         beginInsertRows(p_parent, 0, 1);
-        NodePointer* n_ptr = new NodePointer;
-        n_ptr->m_df_type = node->m_df_type;
-        n_ptr->m_rdf_type = RDF_Type::Pointer;
+        NodePointer* n_ptr    = new NodePointer;
+        n_ptr->m_df_type      = node->m_df_type;
+        n_ptr->m_rdf_type     = RDF_Type::Pointer;
         n_ptr->m_addornements = addornements;
-        n_ptr->m_address = item_address;
-        n_ptr->m_field_name = "N/A";
-        n_ptr->m_parent = node;
-        n_ptr->m_enum_base = node->m_enum_base;
+        n_ptr->m_address      = item_address;
+        n_ptr->m_field_name   = "N/A";
+        n_ptr->m_parent       = node;
+        n_ptr->m_enum_base    = node->m_enum_base;
         node->m_children.push_back(n_ptr);
         endInsertRows();
         return true;
@@ -231,13 +231,13 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
         // Pointer to vector
         beginInsertRows(p_parent, 0, 1);
         NodeVector* n_vec = new NodeVector;
-        n_vec->m_df_type = node->m_df_type;
-        n_vec->m_rdf_type = RDF_Type::Vector;
+        n_vec->m_df_type      = node->m_df_type;
+        n_vec->m_rdf_type     = RDF_Type::Vector;
         n_vec->m_addornements = addornements;
-        n_vec->m_field_name = "N/A";
-        n_vec->m_address = item_address;
-        n_vec->m_enum_base = node->m_enum_base;
-        n_vec->m_parent = node;
+        n_vec->m_field_name   = "N/A";
+        n_vec->m_address      = item_address;
+        n_vec->m_enum_base    = node->m_enum_base;
+        n_vec->m_parent       = node;
         node->m_children.push_back(n_vec);
         endInsertRows();
         return true;

@@ -83,8 +83,8 @@ QString data_from_Name(const NodeBase* p_node)
 
 QString data_from_Address(const rdf::NodeBase* p_node)
 {
-    const NodeBase* base   = dynamic_cast<const NodeBase*>(p_node);
-    uint64_t address = base->m_address;
+    const NodeBase* base    = dynamic_cast<const NodeBase*>(p_node);
+    uint64_t        address = base->m_address;
     if (address == 0)
         return "N/A";
     std::string address_hex = to_hex(address);
@@ -95,7 +95,7 @@ QString data_from_Comment(const NodeBase* p_node)
 {
     if (p_node->m_rdf_type == RDF_Type::Enum)
     {
-        auto enum_node = dynamic_cast<const NodeEnum*>(p_node);
+        auto enum_node    = dynamic_cast<const NodeEnum*>(p_node);
         auto enum_decoded = get_enum_decoded(enum_node);
         return QString::fromStdString(std::get<2>(enum_decoded));
     }
@@ -241,7 +241,7 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
         return false;
 
     auto pointer_bitfield = reinterpret_cast<int32_t*>(bitfield_node->m_address);
-    auto bitfield_value = *pointer_bitfield;
+    auto bitfield_value   = *pointer_bitfield;
     if (bitfield_node->m_index_enum == DF_Type::None)
     {
         auto bitfield_data = get_bitfield_bits(bitfield_node->m_df_type);

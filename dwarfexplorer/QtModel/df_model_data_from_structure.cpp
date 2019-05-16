@@ -59,10 +59,10 @@ std::string rec_array_type(std::string p_addornements)
 
 std::string get_array_expresion(const NodeBase* p_node)
 {
-    std::string result = "Array";
-    auto node_array = dynamic_cast<const NodeArray*>(p_node);
+    std::string result       = "Array";
+    auto        node_array   = dynamic_cast<const NodeArray*>(p_node);
     std::string addornements = node_array->m_addornements;
-    auto size = rec_array_type(addornements);
+    auto        size         = rec_array_type(addornements);
     return result + size;
 }
 

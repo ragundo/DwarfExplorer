@@ -32,8 +32,8 @@ QString DF_Model::data_from_Type(const NodeBase* p_node) const
 
     if (p_node->m_node_type == NodeType::Vector)
     {
-        auto node_vector = dynamic_cast<const NodeVector*>(p_node);
-        auto addornements = node_vector->m_addornements;
+        auto node_vector   = dynamic_cast<const NodeVector*>(p_node);
+        auto addornements  = node_vector->m_addornements;
         auto qaddornements = QString::fromStdString(addornements.substr(1,100));
         type.append(qaddornements);
     }
