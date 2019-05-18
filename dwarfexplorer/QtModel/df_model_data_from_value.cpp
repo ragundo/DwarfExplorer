@@ -17,6 +17,9 @@ using namespace DFHack;
 extern std::map<DF_Type,size_t>                      DF_types_size_table;
 extern std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p_node);
 
+//
+//-------------------------------------------------------------------------------------
+//
 std::string to_hex(uint64_t p_dec)
 {
     if (p_dec == 0)
@@ -83,13 +86,18 @@ std::string to_hex(uint64_t p_dec)
     return "0x" + l_answer;
 }
 
-
+//
+//-------------------------------------------------------------------------------------
+//
 bool is_node_bitfield_entry(NodeBase* p_node)
 {
     //return ( p_node->m_rdf_type == rdf::RDF_Type::Bool) && ( p_node->m_parent->m_rdf_type == rdf::RDF_Type::Bitfield);
     return false;
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_pointer(const NodeBase* p_node)
 {
     auto        pointer_address = reinterpret_cast<uint64_t*>(p_node->m_address);
@@ -98,6 +106,9 @@ QString process_pointer(const NodeBase* p_node)
     return QString::fromStdString(address_hex);
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_node_bitfield_entry(NodeBase* p_node)
 {
 //    NodeBitfieldEntry* l_bitfield_entry = dynamic_cast<NodeBitfieldEntry*>(p_node);
@@ -105,6 +116,9 @@ QString process_node_bitfield_entry(NodeBase* p_node)
     return "";
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 bool is_node_simple(const NodeBase* p_node)
 {
     switch (p_node->m_df_type)
@@ -125,6 +139,9 @@ bool is_node_simple(const NodeBase* p_node)
     return false;
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_bool(const NodeBase* p_node)
 {
     if (p_node->m_parent->m_rdf_type == RDF_Type::Vector)
@@ -142,6 +159,9 @@ QString process_bool(const NodeBase* p_node)
     return QString::fromStdString(*(reinterpret_cast<int64_t*>(p_node->m_address)) ? "True" : "False");
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_node_simple(const NodeBase* p_node)
 {
     switch (p_node->m_df_type)
@@ -173,6 +193,9 @@ QString process_node_simple(const NodeBase* p_node)
     return "Unknown1";
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 bool is_node_void_pointer(const NodeBase* p_node)
 {
     if (p_node->m_node_type == NodeType::Void)
@@ -180,12 +203,17 @@ bool is_node_void_pointer(const NodeBase* p_node)
     return false;
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_node_void_pointer(const NodeBase* p_node)
 {
     return "";
 }
 
-
+//
+//-------------------------------------------------------------------------------------
+//
 bool is_node_stl_string(const NodeBase*p_node)
 {
     if (p_node->m_rdf_type == rdf::RDF_Type::Stl_string)
@@ -193,6 +221,9 @@ bool is_node_stl_string(const NodeBase*p_node)
     return false;
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_node_stl_string(const NodeBase*p_node)
 {
     auto        string_address = reinterpret_cast<std::string*>(p_node->m_address);
@@ -202,34 +233,49 @@ QString process_node_stl_string(const NodeBase*p_node)
     return QString::fromStdString(object);
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_node_simple_pointer(NodeBase*p_node)
 {
     return "";
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 bool is_node_df_pointer(NodeBase* p_node)
 {
     return false;
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_node_df_pointer(NodeBase* p_node)
 {
     return "";
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 bool is_node_df_pointer_vector_entry(NodeBase* p_node)
 {
     return false;
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString process_node_df_pointer_vector_entry(NodeBase* p_node)
 {
     return "";
 }
 
-
-
-
+//
+//-------------------------------------------------------------------------------------
+//
 QString Enum_data_from_Value(const NodeBase* p_node)
 {
         auto    enum_node    = dynamic_cast<const NodeEnum*>(p_node);
@@ -241,6 +287,9 @@ QString Enum_data_from_Value(const NodeBase* p_node)
         return l_result;
 }
 
+//
+//-------------------------------------------------------------------------------------
+//
 QString Bitfield_data_from_Value(const NodeBase* p_node)
 {
         auto pointer_bitfield         = reinterpret_cast<uint32_t*>(p_node->m_address);
@@ -249,7 +298,9 @@ QString Bitfield_data_from_Value(const NodeBase* p_node)
         return QString::fromStdString(bitfield_value_as_string);
 }
 
-
+//
+//-------------------------------------------------------------------------------------
+//
 QString DF_Model::Vector_data_from_Value(const NodeBase* p_node) const
 {
     auto        node_vector = dynamic_cast<const NodeVector*>(p_node);
@@ -268,7 +319,9 @@ QString DF_Model::Vector_data_from_Value(const NodeBase* p_node) const
     return QString::fromStdString(l_size);
  }
 
-
+//
+//-------------------------------------------------------------------------------------
+//
 QString DF_Model::data_from_Value(const NodeBase* p_node) const
 {
     uint64_t l_address = p_node->m_address;
@@ -321,12 +374,14 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
     if (p_node->m_df_type == rdf::DF_Type::coord)
     {
         df::coord* coord = reinterpret_cast<df::coord*>(p_node->m_address);
+
         return "[X=" + QString::number(coord->x) + ",Y=" + QString::number(coord->y) + ",Z=" + QString::number(coord->z) + "]";
     }
 
     if (p_node->m_df_type == rdf::DF_Type::coord2d)
     {
         df::coord2d* coord = reinterpret_cast<df::coord2d*>(p_node->m_address);
+
         return "[X=" + QString::number(coord->x) + ",Y=" + QString::number(coord->y) + "]";
     }
 
@@ -340,9 +395,11 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
     {
         auto        ss_node = dynamic_cast<const NodeStaticString*>(p_node);
         const char* value   = reinterpret_cast<const char*>(ss_node->m_address);
+
         QString result("\"");
         result.append(value);
         result.append("\"");
+
         return result;
     }
 
@@ -364,6 +421,7 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
         }
         auto result =  QString::number(count);
         result.append(" entries");
+
         return result;
     }
 

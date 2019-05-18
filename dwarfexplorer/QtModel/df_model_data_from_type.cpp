@@ -8,7 +8,7 @@ QString DF_Model::data_from_Type(const NodeBase* p_node) const
     //auto type = p_node->m_used_type;
     // Get df_type translated to string
     QString type = QString::fromStdString(DF_Type_to_string(p_node->m_df_type));
-    
+
     if (type == "Void")
         type = "void*";
 
@@ -22,10 +22,10 @@ QString DF_Model::data_from_Type(const NodeBase* p_node) const
         return type;
 
     if (p_node->m_df_type == rdf::DF_Type::Padding)
-        return "";    
+        return "";
 
     if (p_node->m_df_type == rdf::DF_Type::Static_string)
-        return "";        
+        return "";
 
     if (p_node->m_df_type == rdf::DF_Type::Stl_string)
         type = "std::string";
@@ -37,5 +37,10 @@ QString DF_Model::data_from_Type(const NodeBase* p_node) const
         auto qaddornements = QString::fromStdString(addornements.substr(1,100));
         type.append(qaddornements);
     }
+
+    if (p_node->m_rdf_type == rdf::RDF_Type::AnonymousCompound)
+        return "";
+    if (p_node->m_rdf_type == rdf::RDF_Type::AnonymousUnion)
+        return "";
     return type;
 }
