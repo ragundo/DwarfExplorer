@@ -397,7 +397,7 @@ bool DF_Model::insertRowsVector(const QModelIndex& p_parent)
     beginInsertRows(p_parent, 0, (int)vector_size);
     auto vector_address = node->m_address;
     uint64_t* pointer = reinterpret_cast<uint64_t*>(vector_address);
-    auto item_address = reinterpret_cast<uint64_t>(*pointer);
+    uint64_t  item_address = *pointer;
 
     // Remove vector qualifier
     auto addornements = node->m_addornements.substr(1, 500);

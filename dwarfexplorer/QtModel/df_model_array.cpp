@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <sstream>
 #include <iomanip>
+#include <locale>
+#include <cctype>
 #include <QListIterator>
 #include "../df_model.h"
 #include "node.h"
@@ -302,7 +304,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
         return false;
 
     beginInsertRows(p_parent, 0, node->m_array_size);
-    auto item_address = reinterpret_cast<uint64_t>(node->m_address);
+    uint64_t item_address = node->m_address;
 
     // Remove array qualifier
     auto addornements = node->m_addornements.substr(1, 500);

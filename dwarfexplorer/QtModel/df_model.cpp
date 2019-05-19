@@ -1,3 +1,4 @@
+#include <array>
 #include <algorithm>
 #include <QPixmap>
 #include <QListIterator>
@@ -244,7 +245,7 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
     auto bitfield_value   = *pointer_bitfield;
     if (bitfield_node->m_index_enum == DF_Type::None)
     {
-        auto bitfield_data = get_bitfield_bits(bitfield_node->m_df_type);
+		std::array < std::array<std::string, 3>, 32>& bitfield_data = get_bitfield_bits(bitfield_node->m_df_type);
         beginInsertRows(p_parent, 0, bitfield_data.size());
         unsigned int mask = 1;
         for (unsigned int i = 0; i < bitfield_data.size() ; i++)

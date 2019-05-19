@@ -33,8 +33,8 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
         endRemoveRows();
     }
 
-    auto pointer_address = reinterpret_cast<uint64_t*>(node->m_address);
-    auto item_address    = reinterpret_cast<uint64_t>(*pointer_address);
+    uint64_t* pointer_address = reinterpret_cast<uint64_t*>(node->m_address);
+    uint64_t  item_address    = *pointer_address;
 
     if (node->m_addornements == "*")
     {

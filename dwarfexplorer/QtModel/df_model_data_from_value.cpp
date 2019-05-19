@@ -100,8 +100,8 @@ bool is_node_bitfield_entry(NodeBase* p_node)
 //
 QString process_pointer(const NodeBase* p_node)
 {
-    auto        pointer_address = reinterpret_cast<uint64_t*>(p_node->m_address);
-    auto        item_address    = reinterpret_cast<uint64_t>(*pointer_address);
+    uint64_t*   pointer_address = reinterpret_cast<uint64_t*>(p_node->m_address);
+    uint64_t    item_address    = *pointer_address;
     std::string address_hex     = to_hex(item_address);
     return QString::fromStdString(address_hex);
 }

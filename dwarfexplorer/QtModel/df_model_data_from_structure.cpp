@@ -1,5 +1,7 @@
 #include "../df_model.h"
 #include "node.h"
+#include <locale>
+#include <cctype>
 
 using namespace rdf;
 
