@@ -47,8 +47,8 @@ namespace rdf
         RDF_Type         m_rdf_type   {rdf::RDF_Type::None};
         NodeBase*        m_parent     {nullptr};
         std::string      m_comment    {""};
-        std::string      m_refers_to  {""};        
-        std::string      m_defined_in {""};                
+        std::string      m_refers_to  {""};
+        std::string      m_defined_in {""};
         uint64_t         m_address;
         NodeType         m_node_type;
         //QList<NodeBase*> m_path;
@@ -74,7 +74,7 @@ namespace rdf
             p_dest->m_rdf_type   = this->m_rdf_type;
             p_dest->m_parent     = nullptr;
             p_dest->m_comment    = this->m_comment;
-            p_dest->m_defined_in = this->m_defined_in;            
+            p_dest->m_defined_in = this->m_defined_in;
             p_dest->m_node_type  = this->m_node_type;
             p_dest->m_address    = this->m_address;
         }
@@ -153,7 +153,7 @@ namespace rdf
         {
             return "";
         }
-    };    
+    };
 
     //
     //------------------------------------------------------------------------------------//
@@ -221,7 +221,7 @@ namespace rdf
         std::string node_path_name()
         {
             return m_field_name;
-        }        
+        }
     };
 
     //
@@ -317,7 +317,7 @@ namespace rdf
         DF_Type     m_base_type{DF_Type::int32_t};
         std::string m_enum_type{""};
         int         m_first_value{999999};
-        int         m_last_value{0};  
+        int         m_last_value{0};
 
         NodeEnum()
         {
@@ -328,10 +328,12 @@ namespace rdf
         {
             auto clon = new NodeEnum;
             init(clon);
-            clon->m_enum_type = m_enum_type;
-            clon->m_base_type = m_base_type;            
+            clon->m_enum_type   = m_enum_type;
+            clon->m_base_type   = m_base_type;
+            clon->m_first_value = m_first_value;
+            clon->m_last_value  = m_last_value            ;
             return clon;
-        }        
+        }
     };
 
     //
@@ -355,7 +357,7 @@ namespace rdf
             clon->m_value = m_value;
             return clon;
         }
-    };    
+    };
 
     //
     //------------------------------------------------------------------------------------//
@@ -384,7 +386,7 @@ namespace rdf
     {
         DF_Type     m_index_enum{DF_Type::None};
         std::size_t m_size;
-        
+
         NodeDFFlagArray()
         {
             m_node_type = NodeType::DFFlagArray;
@@ -418,7 +420,7 @@ namespace rdf
             auto clon = new NodePointer;
             init(clon);
             clon->m_addornements = m_addornements;
-            clon->m_enum_base    = m_enum_base;            
+            clon->m_enum_base    = m_enum_base;
             return clon;
         }
     };
@@ -430,7 +432,7 @@ namespace rdf
     {
         std::string  m_addornements{""};
         DF_Type m_enum_base{DF_Type::None};
-        DF_Type     m_index_enum{DF_Type::None};        
+        DF_Type     m_index_enum{DF_Type::None};
 
         NodeVector()
         {
