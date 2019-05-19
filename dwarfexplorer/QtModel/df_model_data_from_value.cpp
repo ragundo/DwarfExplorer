@@ -208,7 +208,7 @@ bool is_node_void_pointer(const NodeBase* p_node)
 //
 QString process_node_void_pointer(const NodeBase* p_node)
 {
-    return "";
+    return process_pointer(p_node);
 }
 
 //
@@ -276,15 +276,28 @@ QString process_node_df_pointer_vector_entry(NodeBase* p_node)
 //
 //-------------------------------------------------------------------------------------
 //
-QString Enum_data_from_Value(const NodeBase* p_node)
+QString Enum_data_from_Value(const NodeBase* p_node, bool p_format_value = false)
 {
-        auto    enum_node    = dynamic_cast<const NodeEnum*>(p_node);
-        auto    enum_decoded = get_enum_decoded(enum_node);
-        QString l_result     = "[";
-        l_result.append(QString::number(std::get<0>(enum_decoded)));
-        l_result.append("] = ");
-        l_result.append(QString::fromStdString(std::get<1>(enum_decoded)));
-        return l_result;
+        auto enum_node    = dynamic_cast<const NodeEnum*>(p_node);
+        auto enum_decoded = get_enum_decoded(enum_node);
+        auto value        = QString::number(std::get<0>(enum_decoded));
+        auto padded_value = value;
+
+        if (p_format_value)
+        {
+            auto max_length   = std::to_string(enum_node->m_first_value).length();
+
+            if (max_length < std::to_string(enum_node->m_last_value).length())
+                max_length = std::to_string(enum_node->m_last_value).length();
+
+            padded_value = value.rightJustified(max_length, ' ');
+        }
+
+        QString result = "[";
+        result.append(padded_value);
+        result.append("] = ");
+        result.append(QString::fromStdString(std::get<1>(enum_decoded)));
+        return result;
 }
 
 //
@@ -292,9 +305,9 @@ QString Enum_data_from_Value(const NodeBase* p_node)
 //
 QString Bitfield_data_from_Value(const NodeBase* p_node)
 {
-        auto pointer_bitfield         = reinterpret_cast<uint32_t*>(p_node->m_address);
-        auto bitfield_value           = *pointer_bitfield;
-        auto bitfield_value_as_string = to_hex(bitfield_value);
+        uint32_t* pointer_bitfield         = reinterpret_cast<uint32_t*>(p_node->m_address);
+        uint32_t  bitfield_value           = *pointer_bitfield;
+        auto      bitfield_value_as_string = to_hex(bitfield_value);
         return QString::fromStdString(bitfield_value_as_string);
 }
 
@@ -334,13 +347,17 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
         return process_pointer(p_node);
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Enum)
+    {
+        if ((p_node->m_parent->m_rdf_type == rdf::RDF_Type::Vector) ||
+            (p_node->m_parent->m_rdf_type == rdf::RDF_Type::Array))
+                return Enum_data_from_Value(p_node, true);
         return Enum_data_from_Value(p_node);
-
+    }
     if (p_node->m_rdf_type == rdf::RDF_Type::Bitfield)
         return Bitfield_data_from_Value(p_node);
 
     if (p_node->m_rdf_type == rdf::RDF_Type::DFFlagArray)
-        return "";
+        return process_pointer(p_node);
 
     if (p_node->m_node_type == rdf::NodeType::BitfieldEntry)
     {
@@ -419,8 +436,9 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
                 address = reinterpret_cast<uint64_t*>(*address);
 
         }
-        auto result =  QString::number(count);
-        result.append(" entries");
+        QString result =  "[";
+        result.append(QString::number(count));
+        result.append(" items]");
 
         return result;
     }
