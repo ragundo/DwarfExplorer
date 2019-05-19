@@ -169,7 +169,7 @@ QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
         case 6 :
             return data_from_Comment(node);   // Comment
         case 7 :
-            return data_from_Refers_to(node); // refers-to            
+            return data_from_Refers_to(node); // refers-to
         default:
             return QVariant();
     }
@@ -193,9 +193,9 @@ QVariant DF_Model::headerData(int p_section, Qt::Orientation p_orientation, int 
             case 4 :
                 return tr("Address");
             case 5 :
-                return tr("Defined in");            
+                return tr("Defined in");
             case 6 :
-                return tr("Comment");                
+                return tr("Comment");
             case 7 :
                 return tr("Refers-to");
 
@@ -410,7 +410,7 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
         case rdf::RDF_Type::Array:
             return true;
         case rdf::RDF_Type::DFArray:
-            return true;            
+            return true;
         case rdf::RDF_Type::Vector:
             break;
         case rdf::RDF_Type::Bitfield:
@@ -525,6 +525,7 @@ void DF_Model::insert_child_nodes(NodeBase* p_node, const QModelIndex& p_index)
         case rdf::RDF_Type::Struct:
         case rdf::RDF_Type::Compound:
         case rdf::RDF_Type::Union:
+        case rdf::RDF_Type::AnonymousCompound:
         case rdf::RDF_Type::AnonymousUnion:
         case rdf::RDF_Type::DFLinkedList:
             insertRowsCompound(p_index, 5);
