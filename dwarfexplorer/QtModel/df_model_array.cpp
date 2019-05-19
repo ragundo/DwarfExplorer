@@ -1,4 +1,6 @@
 #include <algorithm>
+#include <sstream>
+#include <iomanip>
 #include <QListIterator>
 #include "../df_model.h"
 #include "node.h"
@@ -13,6 +15,26 @@ extern RDF_Type                                      df_2_rdf(DF_Type p_df_type)
 extern std::pair<int,int>                            enum_min_max(DF_Type p_enum);
 extern DF_Type                                       enum_base_type(DF_Type p_enum);
 
+
+//
+//------------------------------------------------------------------------------------//
+//
+std::string format_array_index(int p_value, int p_array_size)
+{
+    // Node name [index]
+    std::stringstream ss;
+    auto max_length        = std::to_string(p_array_size).length();
+    std::string field_name = "[";
+    std::string value      = std::to_string(p_value);
+    ss << std::right << std::setw(max_length) << value;
+    auto value_padded      = ss.str();
+    field_name.append(value_padded).append("]");
+    return field_name;
+}
+
+//
+//------------------------------------------------------------------------------------//
+//
 std::size_t array_size_recursive(std::string p_addornements)
 {
     if (!p_addornements.empty())
@@ -36,6 +58,9 @@ std::size_t array_size_recursive(std::string p_addornements)
     return 1;
 }
 
+//
+//------------------------------------------------------------------------------------//
+//
 std::size_t get_array_element_size(NodeArray* p_node_array)
 {
     std::string addornements = p_node_array->m_addornements;
@@ -50,7 +75,9 @@ std::size_t get_array_element_size(NodeArray* p_node_array)
     return array_size * array_size_recursive(rest) * size_of_DF_Type(p_node_array->m_df_type);
 }
 
-
+//
+//------------------------------------------------------------------------------------//
+//
 void fill_compound_array_entry(Node* p_parent_node, uint64_t p_address, std::string p_field_name, RDF_Type p_rdf_type)
 {
     auto n_pve          = new NodeCompound;
@@ -84,10 +111,8 @@ void fill_void_array_entry(Node* p_parent_node, int p_index, uint64_t p_address)
 //
 void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_address)
 {
-    std::string field_name;
     std::string field_comment;
-    field_name = "[";
-    field_name.append(std::to_string(p_index)).append("]");
+    std::string field_name = format_array_index(p_index, p_parent_node->m_array_size);
 
     if (p_parent_node->m_index_enum != DF_Type::None)
     {
@@ -198,7 +223,7 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
                 n_pve->m_address    = p_address;
                 n_pve->m_parent     = p_parent_node;
                 return;
-            }            
+            }
 
         case rdf::DF_Type::Stl_string :
         {
@@ -352,9 +377,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             node_pointer->m_addornements = addornements;
             node_pointer->m_node_type    = NodeType::Pointer;
             node_pointer->m_children.push_back(dummy());
-            std::string field_name = "[";
-            field_name.append(std::to_string(i)).append("]");
-            node_pointer->m_field_name = field_name;
+            node_pointer->m_field_name   = format_array_index(i, node->m_array_size);
             item_address += sizeof(void*);
         }
         endInsertRows();
@@ -374,8 +397,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             node_vector->m_children.push_back(dummy());
 
             // Node name [index]
-            std::string field_name = "[";
-            field_name.append(std::to_string(i)).append("]");
+            std::string field_name = format_array_index(i, node->m_array_size);
             std::string field_comment;
 
             if (node->m_index_enum != DF_Type::None)
@@ -416,8 +438,10 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
             node_array->m_node_type = NodeType::Array;
 
             // Node name [index]
-            std::string field_name = "[";
-            field_name.append(std::to_string(i)).append("]");
+            std::stringstream ss;
+            auto max_length        = std::to_string(node_array->m_array_size).length();
+            std::string field_name = format_array_index(i, node_array->m_array_size);
+
             std::string field_comment;
 
             if (node->m_index_enum != DF_Type::None)
