@@ -39,7 +39,9 @@
     <property name="title">
      <string>Window</string>
     </property>
-    <addaction name="actionOpen_in_new_Window"/>
+    <addaction name="actionOpen_in_new_window"/>
+     <addaction name="actionOpen_in_hex_viewer"/>
+     <addaction name="actionOpenPointer_in_hex_viewer"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuWindow"/>
@@ -50,11 +52,21 @@
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionOpen_in_new_Window">
+  <action name="actionOpen_in_new_window">
    <property name="text">
     <string>Open in new Window</string>
    </property>
   </action>
+   <action name="actionOpen_in_hex_viewer">
+     <property name="text">
+       <string>Open address in hex viewer</string>
+     </property>
+   </action>
+   <action name="actionOpenPointer_in_hex_viewer">
+     <property name="text">
+       <string>Open destination address in hex viewer</string>
+     </property>
+   </action>
  </widget>
  <resources/>
  <connections/>

@@ -2,9 +2,16 @@
 #include "ui_dfstructure_window.h"
 #include "df_model.h"
 #include "node.h"
+#include "hexviewer_window.h"
 
 using namespace rdf;
 
+extern void        fill_globals(rdf::Node* p_node_parent);
+extern std::string to_hex(uint64_t p_dec);
+
+//
+//---------------------------------------------------------------------------------------
+//
 DFStructure_Window::DFStructure_Window(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::DFStructure_Window)
@@ -12,17 +19,26 @@ DFStructure_Window::DFStructure_Window(QWidget *parent) :
     ui->setupUi(this);
 }
 
+//
+//---------------------------------------------------------------------------------------
+//
 DFStructure_Window::~DFStructure_Window()
 {
     delete ui;
 }
 
+//
+//---------------------------------------------------------------------------------------
+//
 QTreeView* DFStructure_Window::get_treeview()
 {
     return ui->treeView;
 }
 
-void DFStructure_Window::on_actionOpen_in_new_Window_triggered()
+//
+//---------------------------------------------------------------------------------------
+//
+void DFStructure_Window::on_actionOpen_in_new_window_triggered()
 {
     using namespace rdf;
     // Create the child window
@@ -82,6 +98,9 @@ void DFStructure_Window::on_actionOpen_in_new_Window_triggered()
     l_new_window->show();
 }
 
+//
+//---------------------------------------------------------------------------------------
+//
 void DFStructure_Window::on_treeView_expanded(const QModelIndex &p_index)
 {
     using namespace rdf;
@@ -94,8 +113,73 @@ void DFStructure_Window::on_treeView_expanded(const QModelIndex &p_index)
     if (l_node != nullptr)
         if ((l_node->m_children.size() == 0) ||
                 (l_node->m_node_type == rdf::NodeType::Vector) ||
-                (l_node->m_node_type == rdf::NodeType::Array) ||                                
+                (l_node->m_node_type == rdf::NodeType::Array) ||
                 (l_node->m_node_type == rdf::NodeType::Pointer))
                     l_global_model->insert_child_nodes(l_node_base, p_index);
     this->setCursor(Qt::ArrowCursor);
+}
+
+//
+//---------------------------------------------------------------------------------------
+//
+void DFStructure_Window::on_actionOpen_in_hex_viewer_triggered()
+{
+	// Get the selected node index
+	QTreeView* treeview = ui->treeView;
+	QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+	if (selected_nodes.size() == 0)
+		return;
+	QModelIndex selected_node = selected_nodes.first();
+
+	// Get the model
+	DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+
+	// Get the selected node
+	rdf::NodeBase* node = dynamic_cast<rdf::NodeBase*>(model->nodeFromIndex(selected_node));
+
+	auto the_data = reinterpret_cast<const char*>(node->m_address);
+	QByteArray data(the_data, 1024);
+	QHexViewer_Window* hex_window = new QHexViewer_Window(this);
+	QHexView* hex_view = hex_window->get_hexview();
+	hex_view->set_base_address(node->m_address);
+	hex_view->setData(new QHexView::DataStorageArray(data));
+
+	// window title
+	auto the_number = QString::fromStdString(to_hex(node->m_address));
+	hex_window->setWindowTitle("Memory viewer - " + the_number);
+	hex_window->show();
+}
+
+//
+//---------------------------------------------------------------------------------------
+//
+void DFStructure_Window::on_actionOpenPointer_in_hex_viewer_triggered()
+{
+	// Get the selected node index
+	QTreeView* treeview = ui->treeView;
+	QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+	if (selected_nodes.size() == 0)
+		return;
+	QModelIndex selected_node = selected_nodes.first();
+
+	// Get the model
+	DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+
+	// Get the selected node
+	rdf::NodeBase* node_base = model->nodeFromIndex(selected_node);
+
+	uint64_t* pointer_address = reinterpret_cast<uint64_t*>(node_base->m_address);
+	uint64_t  item_address = *pointer_address;
+
+	auto the_data = reinterpret_cast<const char*>(item_address);
+	QByteArray data(the_data, 1024);
+	QHexViewer_Window* hex_window = new QHexViewer_Window(this);
+	QHexView* hex_view = hex_window->get_hexview();
+	hex_view->set_base_address(item_address);
+	hex_view->setData(new QHexView::DataStorageArray(data));
+
+	// Window tittle
+	auto the_number = QString::fromStdString(to_hex(item_address));
+	hex_window->setWindowTitle("Memory viewer - " + the_number);
+	hex_window->show();
 }

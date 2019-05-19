@@ -17,10 +17,10 @@ public:
     ~DFStructure_Window();
     QTreeView* get_treeview();
 private Q_SLOTS:
-    void on_actionOpen_in_new_Window_triggered();
-
-    void on_treeView_expanded(const QModelIndex &index);
-
+    void on_treeView_expanded(const QModelIndex& p_index);
+    void on_actionOpen_in_new_window_triggered();
+    void on_actionOpen_in_hex_viewer_triggered();
+    void on_actionOpenPointer_in_hex_viewer_triggered();
 private:
     Ui::DFStructure_Window *ui;
 };
