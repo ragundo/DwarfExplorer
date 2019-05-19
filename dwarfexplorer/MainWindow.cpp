@@ -235,9 +235,9 @@ void MainWindow::on_actionOpenPointer_in_hex_viewer_triggered()
     DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
 
     // Get the selected node
-    rdf::Node* node = dynamic_cast<rdf::Node*>(model->nodeFromIndex(selected_node));
+    rdf::NodeBase* node_base = model->nodeFromIndex(selected_node);
 
-    auto pointer_address = reinterpret_cast<uint64_t*>(node->m_address);
+    auto pointer_address = reinterpret_cast<uint64_t*>(node_base->m_address);
     auto item_address    = reinterpret_cast<uint64_t>(*pointer_address);
 
     auto the_data = reinterpret_cast<const char*>(item_address);
