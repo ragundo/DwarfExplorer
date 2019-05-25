@@ -123,6 +123,7 @@ QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
                 || (node->m_rdf_type == rdf::RDF_Type::int16_t)
                 || (node->m_rdf_type == rdf::RDF_Type::int32_t)
                 || (node->m_rdf_type == rdf::RDF_Type::int64_t)
+                || (node->m_rdf_type == rdf::RDF_Type::Long)
                 || (node->m_rdf_type == rdf::RDF_Type::Bool))
             return QPixmap(":/circle.png");
 
@@ -132,18 +133,36 @@ QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
             return QPixmap(":/t2_small.png");
 
         if ((node->m_rdf_type == rdf::RDF_Type::Compound))
-            return QPixmap(":/group.png");
+            return QPixmap(":/folder.png");
+
+        if ((node->m_rdf_type == rdf::RDF_Type::Struct))
+            return QPixmap(":/folder.png");
+
+        if ((node->m_rdf_type == rdf::RDF_Type::Class))
+            return QPixmap(":/folder.png");
 
         if (node->m_rdf_type == rdf::RDF_Type::Pointer)
             return QPixmap(":/cube.png");
 
         if (node->m_rdf_type == rdf::RDF_Type::Vector)
-            return QPixmap(":/folder.png");
+            return QPixmap(":/group.png");
+
+        if (node->m_rdf_type == rdf::RDF_Type::Array)
+            return QPixmap(":/group.png");
+
+        if (node->m_rdf_type == rdf::RDF_Type::DFLinkedList)
+            return QPixmap(":/group.png");
+
+        if (node->m_rdf_type == rdf::RDF_Type::DFFlagArray)
+            return QPixmap(":/group.png");
 
         if ((node->m_rdf_type == rdf::RDF_Type::Enum))
             return QPixmap(":/square.png");
 
         if ((node->m_rdf_type == rdf::RDF_Type::Bitfield))
+            return QPixmap(":/stripes.png");
+
+        if (node->m_rdf_type == rdf::RDF_Type::DFFlagArray)
             return QPixmap(":/stripes.png");
     }
 
