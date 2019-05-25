@@ -28,6 +28,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QResource>
+#include <QFile>
 
 #include "tinythread.h"
 
@@ -103,6 +104,19 @@ static command_result register_resource(color_ostream &out, std::vector<std::str
     return CR_OK;
 }
 
+void apply_style_sheet(QApplication& p_application)
+{
+    QFile f(":qdarkstyle/style.qss");
+
+    if (f.exists())
+    {
+        f.open(QFile::ReadOnly | QFile::Text);
+        QTextStream ts(&f);
+        p_application.setStyleSheet(ts.readAll());
+    }
+}
+
+
 // main QApplication thread
 static std::unique_ptr<tthread::thread> thread;
 
@@ -124,6 +138,7 @@ static void app_exec(void *arg)
         QIcon::setThemeName(icon_theme_name);
 
     Application app(argc, argv);
+    //apply_style_sheet(app);
     promise.set_value();
     app.exec();
 
@@ -191,4 +206,3 @@ DFhackCExport command_result plugin_shutdown(color_ostream &out)
         plugin_enable(out, false);
     return CR_OK;
 }
-
