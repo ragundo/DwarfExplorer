@@ -102,6 +102,8 @@ QString process_pointer(const NodeBase* p_node)
 {
     uint64_t*   pointer_address = reinterpret_cast<uint64_t*>(p_node->m_address);
     uint64_t    item_address    = *pointer_address;
+    if (item_address == 0)
+        return "NULL";
     std::string address_hex     = to_hex(item_address);
     return QString::fromStdString(address_hex);
 }
@@ -111,8 +113,6 @@ QString process_pointer(const NodeBase* p_node)
 //
 QString process_node_bitfield_entry(NodeBase* p_node)
 {
-//    NodeBitfieldEntry* l_bitfield_entry = dynamic_cast<NodeBitfieldEntry*>(p_node);
-//    return l_bitfield_entry->m_value;
     return "";
 }
 
@@ -184,6 +184,8 @@ QString process_node_simple(const NodeBase* p_node)
             return QString::fromStdString(std::to_string(*(reinterpret_cast<uint8_t*>(p_node->m_address))));
         case rdf::DF_Type::Long:
             return QString::fromStdString(std::to_string(*(reinterpret_cast<long*>(p_node->m_address))));
+        case rdf::DF_Type::S_float:
+            return QString::fromStdString(std::to_string(*(reinterpret_cast<float*>(p_node->m_address))));
         case rdf::DF_Type::Bool:
             return process_bool(p_node) ;
         case rdf::DF_Type::Void:
@@ -285,7 +287,7 @@ QString Enum_data_from_Value(const NodeBase* p_node, bool p_format_value = false
 
         if (p_format_value)
         {
-            auto max_length   = std::to_string(enum_node->m_first_value).length();
+            auto max_length = std::to_string(enum_node->m_first_value).length();
 
             if (max_length < std::to_string(enum_node->m_last_value).length())
                 max_length = std::to_string(enum_node->m_last_value).length();
@@ -318,18 +320,18 @@ QString DF_Model::Vector_data_from_Value(const NodeBase* p_node) const
 {
     auto        node_vector = dynamic_cast<const NodeVector*>(p_node);
     auto        vector_size = get_vector_size(node_vector);
-    std::string l_size      = "[";
+    std::string size        = "[";
     if (vector_size == 0)
     {
-        l_size.append("empty]");
-        return QString::fromStdString(l_size);
+        size.append("empty]");
+        return QString::fromStdString(size);
     }
-    l_size.append(std::to_string(vector_size));
+    size.append(std::to_string(vector_size));
     if (vector_size == 1)
-        l_size.append(" item]");
+        size.append(" item]");
     else
-        l_size.append(" items]");
-    return QString::fromStdString(l_size);
+        size.append(" items]");
+    return QString::fromStdString(size);
  }
 
 //
@@ -385,6 +387,8 @@ QString DF_Model::data_from_Value(const NodeBase* p_node) const
         // Translate the name
         df::language_name* lang   = reinterpret_cast<df::language_name*>(p_node->m_address);
         std::string        result = Translation::TranslateName(lang, false, false);
+        if (result.empty())
+            return "''";
        return QString::fromStdString(DF2UTF(result));
     }
 

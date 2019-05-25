@@ -111,7 +111,15 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
                 fill_simple_entry(n_pve, node, sizeof(long), item_address, node->m_df_type, RDF_Type::Long);
                 endInsertRows();
                 return true;
-            }            
+            }
+            case rdf::DF_Type::S_float:
+            {
+                auto n_pve = new NodeSimple<float>;
+                beginInsertRows(p_parent, 0, 1);
+                fill_simple_entry(n_pve, node, sizeof(float), item_address, node->m_df_type, RDF_Type::S_float);
+                endInsertRows();
+                return true;
+            }
             case rdf::DF_Type::Bool:
             {
                 auto n_pve = new NodeSimple<bool>;
@@ -210,7 +218,7 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
     // Remove "*"
     std::string addornements = node->m_addornements;
     addornements             = addornements.substr(1, 512);
-    if (addornements == "*")
+    if (addornements[0] == '*')
     {
         // Pointer to pointer
         beginInsertRows(p_parent, 0, 1);
@@ -226,7 +234,7 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
         endInsertRows();
         return true;
     }
-    if (addornements == "v")
+    if (addornements[0] == 'v')
     {
         // Pointer to vector
         beginInsertRows(p_parent, 0, 1);
@@ -239,6 +247,31 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
         n_vec->m_enum_base    = node->m_enum_base;
         n_vec->m_parent       = node;
         node->m_children.push_back(n_vec);
+        endInsertRows();
+        return true;
+    }
+    if (addornements[0] == '[')
+    {
+        // Pointer to array
+        auto array_addornements = addornements.substr(1, 500);
+
+        // Get the array size from the addornements
+        size_t iterator = 0;
+        while ((iterator < array_addornements.length()) && (std::isdigit(array_addornements[iterator])))
+            iterator++;
+        std::string array_size = array_addornements.substr(0, iterator);
+
+        beginInsertRows(p_parent, 0, 1);
+        NodeArray* n_array    = new NodeArray;
+        n_array->m_df_type      = node->m_df_type;
+        n_array->m_rdf_type     = RDF_Type::Array;
+        n_array->m_addornements = addornements;
+        n_array->m_field_name   = "N/A";
+        n_array->m_address      = item_address;
+        n_array->m_enum_base    = node->m_enum_base;
+        n_array->m_array_size   = std::stoi(array_size);
+        n_array->m_parent       = node;
+        node->m_children.push_back(n_array);
         endInsertRows();
         return true;
     }

@@ -42,7 +42,7 @@ void fill_simple_entry(NodeBase* p_pve, Node* p_node, size_t p_size, uint64_t p_
     p_pve->m_rdf_type      = p_rdf_type;
     p_pve->m_parent        = p_node;
     //p_pve->m_used_type     = p_node->m_used_type;
-    p_pve->m_field_name    = "";
+    p_pve->m_field_name    = "N/A";
     p_pve->m_comment       = "";
     p_pve->m_node_type     = NodeType::Simple;
     p_pve->m_parent        = p_node;
@@ -243,6 +243,16 @@ void fill_vector_entry(NodeVector* p_parent_node, size_t p_index, uint64_t p_add
             n_pve->m_parent     = p_parent_node;
             return;
         }
+        case rdf::DF_Type::S_float :
+        {
+            auto n_pve = new NodeSimple<float>;
+            fill_simple_entry(n_pve, p_parent_node, sizeof(float), p_address, DF_Type::S_float, RDF_Type::S_float);
+            n_pve->m_field_name = field_name;
+            n_pve->m_comment    = field_comment;
+            n_pve->m_address    = p_address;
+            n_pve->m_parent     = p_parent_node;
+            return;
+        }
         case rdf::DF_Type::Long :
         {
             auto n_pve = new NodeSimple<long>;
@@ -433,6 +443,9 @@ bool DF_Model::insertRowsVector(const QModelIndex& p_parent)
                     break;
                 case rdf::DF_Type::int64_t:
                     item_address += sizeof(int64_t);
+                    break;
+                case rdf::DF_Type::S_float:
+                    item_address += sizeof(float);
                     break;
                 case rdf::DF_Type::Bool:
                     item_address += sizeof(bool);

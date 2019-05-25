@@ -6,6 +6,7 @@
 using namespace rdf;
 
 extern unsigned short get_df_array_size(const NodeDFArray* p_node);
+extern void           decode_addornements(std::string& p_addornments, std::string& p_result);
 
 namespace
 {
@@ -64,8 +65,10 @@ std::string get_array_expresion(const NodeBase* p_node)
     std::string result       = "Array";
     auto        node_array   = dynamic_cast<const NodeArray*>(p_node);
     std::string addornements = node_array->m_addornements;
-    auto        size         = rec_array_type(addornements);
-    return result + size;
+//    auto        size         = rec_array_type(addornements);
+//    return result + size;
+    decode_addornements(addornements, result);
+    return result;
 }
 
 QString DF_Model::data_from_Structure(const NodeBase* p_node) const
@@ -86,7 +89,7 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
         return "Compound";
 
     if (p_node->m_rdf_type == rdf::RDF_Type::DFLinkedList)
-        return "Linked list";    
+        return "Linked list";
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Class)
         return "Class";
@@ -119,7 +122,7 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
         return "Padding";
 
     if (p_node->m_rdf_type == rdf::RDF_Type::Static_string)
-        return "Static String";    
+        return "Static String";
 
     if (p_node->m_rdf_type == rdf::RDF_Type::DFArray)
     {
@@ -129,10 +132,6 @@ QString DF_Model::data_from_Structure(const NodeBase* p_node) const
         result.append("]");
         return result;
     }
-
-
-//    if (p_node->m_rdf_type == rdf::RDF_Type::DFArray)
-//        return "DFArray";
 
     if (is_simple_type(p_node))
         return "";

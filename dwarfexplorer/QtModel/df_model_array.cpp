@@ -208,6 +208,15 @@ void fill_array_entry(NodeArray* p_parent_node, size_t p_index, uint64_t p_addre
             n_pve->m_parent     = p_parent_node;
             return;
         }
+        case rdf::DF_Type::S_float :
+        {
+            auto n_pve = new NodeSimple<float>;
+            fill_simple_entry(n_pve, p_parent_node, sizeof(float), p_address, DF_Type::S_float, RDF_Type::S_float);
+            n_pve->m_field_name = field_name;
+            n_pve->m_address    = p_address;
+            n_pve->m_parent     = p_parent_node;
+            return;
+        }
         case rdf::DF_Type::Bool :
         {
             auto n_pve = new NodeSimple<bool>;
@@ -343,6 +352,12 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
                 case rdf::DF_Type::int64_t:
                     item_address += sizeof(int64_t);
                     break;
+                case rdf::DF_Type::Long:
+                    item_address += sizeof(long);
+                    break;
+                case rdf::DF_Type::S_float:
+                    item_address += sizeof(float);
+                    break;
                 case rdf::DF_Type::Bool:
                     item_address += sizeof(bool);
                     break;
@@ -392,7 +407,7 @@ bool DF_Model::insertRowsArray(const QModelIndex& p_parent)
         for (unsigned int i = 0; i < node->m_array_size; i++)
         {
             NodeVector* node_vector = new NodeVector;
-            fill_simple_entry(node_vector, node, sizeof(void*), item_address, node->m_df_type, RDF_Type::Vector);
+            fill_simple_entry(node_vector, node, sizeof(std::vector<void*>), item_address, node->m_df_type, RDF_Type::Vector);
             node_vector->m_addornements = addornements;
             node_vector->m_enum_base    = node->m_enum_base;
             node_vector->m_node_type    = NodeType::Vector;
