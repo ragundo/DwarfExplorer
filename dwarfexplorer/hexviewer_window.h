@@ -2,7 +2,7 @@
 #define HEXVIEWER_WINDOW_H
 
 #include <QMainWindow>
-#include "QHexView/QHexView.h"
+#include "QHexView/qhexview.h"
 
 class QHexViewer_Window : public QMainWindow
 {
@@ -13,7 +13,7 @@ public:
     //~QHexViewer_Window();
     QHexView* get_hexview();
 protected:
-    QHexView* m_hexview;    
+    QHexView* m_hexview;
 private Q_SLOTS:
 
 };
