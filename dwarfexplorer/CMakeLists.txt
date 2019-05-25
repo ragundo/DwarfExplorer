@@ -1,6 +1,7 @@
 project(dwarfexplorer LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
+#set(CMAKE_AUTORCC ON)
 
 if(UNIX)
 add_definitions(
@@ -9,13 +10,17 @@ add_definitions(
     )
 endif()
 
+qt5_add_resources(RSCS
+    resources/resources.qrc
+    resources/styles/qdarkstyle/style.qrc
+)
+
 set(DWARFEXPLORER_SOURCES
     main.cpp
     node.cpp
     EventProxy.cpp
     MainWindow.cpp
     dfstructure_window.cpp
-    hexviewer_window.cpp
     QtModel/df_model.cpp
     QtModel/df_model_data_from_structure.cpp
     QtModel/df_model_data_from_type.cpp
@@ -30,12 +35,24 @@ set(DWARFEXPLORER_SOURCES
     generated/fill_offsets.cpp
     generated/df_types_size.cpp
     generated/enum_values.cpp
-    generated/bitfields_values.cpp
+    generated/bitfield_values.cpp
     generated/df_2_rdf.cpp
     generated/polymorphic_factory.cpp
     generated/fill_globals.cpp
-    generated/enums_size.cpp
-    QHexView/QHexView.cpp
+    generated/enum_sizes.cpp
+    QHexView/document/commands/hexcommand.cpp
+    QHexView/document/commands/insertcommand.cpp
+    QHexView/document/commands/removecommand.cpp
+    QHexView/document/commands/replacecommand.cpp
+    QHexView/document/buffer/qhexbuffer.cpp
+    QHexView/document/buffer/qmemoryrefbuffer.cpp
+    QHexView/document/buffer/qmemorybuffer.cpp
+    QHexView/document/qhexcursor.cpp
+    QHexView/document/qhexdocument.cpp
+    QHexView/document/qhexmetadata.cpp
+    QHexView/document/qhexrenderer.cpp
+    QHexView/qhexview.cpp
+    ${RSCS}
 )
 
 qt5_wrap_cpp(DWARFEXPLORER_MOC_SOURCES
@@ -43,13 +60,26 @@ qt5_wrap_cpp(DWARFEXPLORER_MOC_SOURCES
     MainWindow.h
     df_model.h
     dfstructure_window.h
-    hexviewer_window.h
+    QHexView/document/commands/hexcommand.h
+    QHexView/document/commands/insertcommand.h
+    QHexView/document/commands/removecommand.h
+    QHexView/document/commands/replacecommand.h
+    QHexView/document/buffer/qhexbuffer.h
+    QHexView/document/buffer/qmemoryrefbuffer.h
+    QHexView/document/buffer/qmemorybuffer.h
+    QHexView/document/qhexcursor.h
+    QHexView/document/qhexdocument.h
+    QHexView/document/qhexmetadata.h
+    QHexView/document/qhexrenderer.h
+    QHexView/qhexview.h
 )
 
 qt5_wrap_ui(DWARFEXPLORER_UI_SOURCES
     MainWindow.ui
     dfstructure_window.ui
 )
+
+
 
 DFHACK_PLUGIN(dwarfexplorer
     ${DWARFEXPLORER_SOURCES} ${DWARFEXPLORER_MOC_SOURCES} ${DWARFEXPLORER_UI_SOURCES}
