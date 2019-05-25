@@ -40,6 +40,8 @@
 #include "dfstructure_window.h"
 #include "ui_dfstructure_window.h"
 #include "hexviewer_window.h"
+#include "QHexView/document/buffer/qmemorybuffer.h"
+
 
 #include <Core.h>
 
@@ -231,17 +233,22 @@ void MainWindow::on_actionOpen_in_hex_viewer_triggered()
     // Get the selected node
     rdf::NodeBase* node = dynamic_cast<rdf::NodeBase*>(model->nodeFromIndex(selected_node));
 
-    auto the_data = reinterpret_cast<const char*>(node->m_address);
-    QByteArray data(the_data, 1024);
-    QHexViewer_Window* hex_window = new QHexViewer_Window(this);
-    QHexView* hex_view = hex_window->get_hexview();
-    hex_view->set_base_address(node->m_address);
-    hex_view->setData(new QHexView::DataStorageArray(data));
+    auto the_data = reinterpret_cast<char*>(node->m_address);
+    QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(the_data, 1024);
+    QHexView* hexview = new QHexView();
+    hexview->setDocument(document);
+    hexview->setReadOnly(true);
+    document->setBaseAddress(node->m_address);
+    //QHexViewer_Window* hex_window = new QHexViewer_Window(this);
+
+    //QHexView* hex_view = hex_window->get_hexview();
+    //hex_view->set_base_address(node->m_address);
+    //hex_view->setData(new QHexView::DataStorageArray(data));
 
     // window title
     auto the_number = QString::fromStdString(to_hex(node->m_address));
-    hex_window->setWindowTitle("Memory viewer - " + the_number);
-    hex_window->show();
+    hexview->setWindowTitle("Memory viewer - " + the_number);
+    hexview->show();
 }
 
 //
@@ -265,15 +272,19 @@ void MainWindow::on_actionOpenPointer_in_hex_viewer_triggered()
     uint64_t* pointer_address = reinterpret_cast<uint64_t*>(node_base->m_address);
     uint64_t  item_address    = *pointer_address;
 
-    auto the_data = reinterpret_cast<const char*>(item_address);
-    QByteArray data(the_data, 1024);
-    QHexViewer_Window* hex_window = new QHexViewer_Window(this);
-    QHexView* hex_view = hex_window->get_hexview();
-    hex_view->set_base_address(item_address);
-    hex_view->setData(new QHexView::DataStorageArray(data));
+    auto the_data = reinterpret_cast<char*>(item_address);
+    QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(the_data, 1024);
+    document->setBaseAddress(item_address);
+    QHexView* hexview = new QHexView();
+    hexview->setDocument(document);
+    hexview->setReadOnly(true);
+    //QHexViewer_Window* hex_window = new QHexViewer_Window(this);
+    //QHexView* hex_view = hex_window->get_hexview();
+    //hex_view->set_base_address(item_address);
+    //hex_view->setData(new QHexView::DataStorageArray(data));
 
     // Window tittle
     auto the_number = QString::fromStdString(to_hex(item_address));
-    hex_window->setWindowTitle("Memory viewer - " + the_number);
-    hex_window->show();
+    hexview->setWindowTitle("Memory viewer - " + the_number);
+    hexview->show();
 }
