@@ -84,6 +84,8 @@ std::tuple<int64_t, std::string, std::string> get_ui_advmode_menu_value_decoded(
 		case 44: std::get<1>(result) = "Unk44"; break;
 		case 45: std::get<1>(result) = "Unk45"; break;
 		case 46: std::get<1>(result) = "Build"; break;
+		case 47: std::get<1>(result) = "AssumeIdentity"; break;
+		case 48: std::get<1>(result) = "NameItem"; break;
 		default: break;
 	}
 	return result;
@@ -319,6 +321,21 @@ std::tuple<int64_t, std::string, std::string> get_talk_choice_type_value_decoded
 		case 222: std::get<1>(result) = "SuggestTrade"; break;
 		case 223: std::get<1>(result) = "AcceptNotTrade"; break;
 		case 224: std::get<1>(result) = "DemandIdentity"; break;
+		default: break;
+	}
+	return result;
+}
+
+std::tuple<int64_t, std::string, std::string> get_assume_identity_mode_value_decoded(DF_Type p_base_type, uint64_t p_address)
+{
+	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
+	switch (std::get<0>(result))
+	{
+		case 0: std::get<1>(result) = "SelectIdentity"; break;
+		case 1: std::get<1>(result) = "CreateIdentity"; break;
+		case 2: std::get<1>(result) = "SelectProfession"; break;
+		case 3: std::get<1>(result) = "SelectWorship"; break;
+		case 4: std::get<1>(result) = "SelectOrigin"; break;
 		default: break;
 	}
 	return result;
@@ -906,6 +923,118 @@ std::tuple<int64_t, std::string, std::string> get_poetic_form_perspective__T_typ
 		case 5: std::get<1>(result) = "FictionalPoet"; break;
 		case 6: std::get<1>(result) = "Histfig"; break;
 		case 7: std::get<1>(result) = "Animal"; break;
+		default: break;
+	}
+	return result;
+}
+
+std::tuple<int64_t, std::string, std::string> get_musical_form_purpose_value_decoded(DF_Type p_base_type, uint64_t p_address)
+{
+	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
+	switch (std::get<0>(result))
+	{
+		case 0: std::get<1>(result) = "Entertainment"; break;
+		case 1: std::get<1>(result) = "Commemoration"; break;
+		case 2: std::get<1>(result) = "Devotion"; break;
+		case 3: std::get<1>(result) = "Military"; break;
+		default: break;
+	}
+	return result;
+}
+
+std::tuple<int64_t, std::string, std::string> get_musical_form_style_value_decoded(DF_Type p_base_type, uint64_t p_address)
+{
+	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
+	switch (std::get<0>(result))
+	{
+		case -1: std::get<1>(result) = "None"; break;
+		case 0: std::get<1>(result) = "FreeTempo"; break;
+		case 1: std::get<1>(result) = "VerySlow"; break;
+		case 2: std::get<1>(result) = "Slow"; break;
+		case 3: std::get<1>(result) = "WalkingPace"; break;
+		case 4: std::get<1>(result) = "ModeratelyPaced"; break;
+		case 5: std::get<1>(result) = "ModeratelyFast"; break;
+		case 6: std::get<1>(result) = "Fast"; break;
+		case 7: std::get<1>(result) = "VeryFast"; break;
+		case 8: std::get<1>(result) = "ExtremelyFast"; break;
+		case 9: std::get<1>(result) = "anon_1"; break;
+		case 10: std::get<1>(result) = "anon_2"; break;
+		case 11: std::get<1>(result) = "anon_3"; break;
+		case 12: std::get<1>(result) = "anon_4"; break;
+		case 13: std::get<1>(result) = "anon_5"; break;
+		case 14: std::get<1>(result) = "anon_6"; break;
+		case 15: std::get<1>(result) = "Accelerates"; break;
+		case 16: std::get<1>(result) = "SlowsAndBroadens"; break;
+		case 17: std::get<1>(result) = "ConsistentlySlowing"; break;
+		case 18: std::get<1>(result) = "HurriedPace"; break;
+		case 19: std::get<1>(result) = "GraduallySlowsAtEnd"; break;
+		case 20: std::get<1>(result) = "WhisperedUndertones"; break;
+		case 21: std::get<1>(result) = "VerySoft"; break;
+		case 22: std::get<1>(result) = "Soft"; break;
+		case 23: std::get<1>(result) = "ModeratelySoft"; break;
+		case 24: std::get<1>(result) = "ModeratelyLoud"; break;
+		case 25: std::get<1>(result) = "Loud"; break;
+		case 26: std::get<1>(result) = "VeryLoud"; break;
+		case 27: std::get<1>(result) = "BecomeLouderAndLouder"; break;
+		case 28: std::get<1>(result) = "BecomeSofterAndSofter"; break;
+		case 29: std::get<1>(result) = "FadeIntoSilence"; break;
+		case 30: std::get<1>(result) = "StartLoudThenImmediatelySoft"; break;
+		case 31: std::get<1>(result) = "SlowsAndDiesAwayAtEnd"; break;
+		case 32: std::get<1>(result) = "BecomesCalmerAtEnd"; break;
+		case 33: std::get<1>(result) = "BecomesFrenzied"; break;
+		case 34: std::get<1>(result) = "StressRhythm"; break;
+		case 35: std::get<1>(result) = "BeStately"; break;
+		case 36: std::get<1>(result) = "BeBright"; break;
+		case 37: std::get<1>(result) = "BeLively"; break;
+		case 38: std::get<1>(result) = "BeSkilled"; break;
+		case 39: std::get<1>(result) = "BeVigorous"; break;
+		case 40: std::get<1>(result) = "BeSpirited"; break;
+		case 41: std::get<1>(result) = "BeDelicate"; break;
+		case 42: std::get<1>(result) = "BeFiery"; break;
+		case 43: std::get<1>(result) = "BringSenseOfMotion"; break;
+		case 44: std::get<1>(result) = "BeFiery2"; break;
+		case 45: std::get<1>(result) = "FeelAgitated"; break;
+		case 46: std::get<1>(result) = "BePassionate"; break;
+		case 47: std::get<1>(result) = "Sparkle"; break;
+		case 48: std::get<1>(result) = "BeBroad"; break;
+		case 49: std::get<1>(result) = "BeMadeSweetly"; break;
+		case 50: std::get<1>(result) = "BeStrong"; break;
+		case 51: std::get<1>(result) = "BeEnergetic"; break;
+		case 52: std::get<1>(result) = "BeForceful"; break;
+		case 53: std::get<1>(result) = "FeelHeroic"; break;
+		case 54: std::get<1>(result) = "BeMadeExpressively"; break;
+		case 55: std::get<1>(result) = "FeelFurious"; break;
+		case 56: std::get<1>(result) = "BeJoyful"; break;
+		case 57: std::get<1>(result) = "BeGrand"; break;
+		case 58: std::get<1>(result) = "BeMerry"; break;
+		case 59: std::get<1>(result) = "BeGraceful"; break;
+		case 60: std::get<1>(result) = "BuildAsItProceeds"; break;
+		case 61: std::get<1>(result) = "EvokeTears"; break;
+		case 62: std::get<1>(result) = "BeMelancholic"; break;
+		case 63: std::get<1>(result) = "FeelMournful"; break;
+		case 64: std::get<1>(result) = "BeMadeWithLightTouch"; break;
+		case 65: std::get<1>(result) = "FeelHeavy"; break;
+		case 66: std::get<1>(result) = "FeelMysterious"; break;
+		case 67: std::get<1>(result) = "BeJumpy"; break;
+		case 68: std::get<1>(result) = "FeelPlayful"; break;
+		case 69: std::get<1>(result) = "FeelTender"; break;
+		case 70: std::get<1>(result) = "FeelCalm"; break;
+		case 71: std::get<1>(result) = "BeTriumphant"; break;
+		default: break;
+	}
+	return result;
+}
+
+std::tuple<int64_t, std::string, std::string> get_musical_form_pitch_style_value_decoded(DF_Type p_base_type, uint64_t p_address)
+{
+	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
+	switch (std::get<0>(result))
+	{
+		case 0: std::get<1>(result) = "SinglePitchesOnly"; break;
+		case 1: std::get<1>(result) = "IntervalsOnly"; break;
+		case 2: std::get<1>(result) = "SparseChords"; break;
+		case 3: std::get<1>(result) = "PitchClusters"; break;
+		case 4: std::get<1>(result) = "ChordLayers"; break;
 		default: break;
 	}
 	return result;
@@ -11803,6 +11932,7 @@ std::tuple<int64_t, std::string, std::string> get_caravan_state__T_trade_state_v
 		case 1: std::get<1>(result) = "Approaching"; break;
 		case 2: std::get<1>(result) = "AtDepot"; break;
 		case 3: std::get<1>(result) = "Leaving"; break;
+		case 4: std::get<1>(result) = "Stuck"; break;
 		default: break;
 	}
 	return result;
@@ -12823,6 +12953,7 @@ std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p
 	{
 		case DF_Type::ui_advmode_menu: return get_ui_advmode_menu_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::talk_choice_type: return get_talk_choice_type_value_decoded(p_node->m_base_type, p_node->m_address);
+		case DF_Type::assume_identity_mode: return get_assume_identity_mode_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::announcement_type: return get_announcement_type_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::art_image_element_type: return get_art_image_element_type_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::art_image_property_type: return get_art_image_property_type_value_decoded(p_node->m_base_type, p_node->m_address);
@@ -12835,6 +12966,9 @@ std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p
 		case DF_Type::poetic_form_subject: return get_poetic_form_subject_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::poetic_form_additional_feature: return get_poetic_form_additional_feature_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::poetic_form_perspective__T_type: return get_poetic_form_perspective__T_type_value_decoded(p_node->m_base_type, p_node->m_address);
+		case DF_Type::musical_form_purpose: return get_musical_form_purpose_value_decoded(p_node->m_base_type, p_node->m_address);
+		case DF_Type::musical_form_style: return get_musical_form_style_value_decoded(p_node->m_base_type, p_node->m_address);
+		case DF_Type::musical_form_pitch_style: return get_musical_form_pitch_style_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::occupation_type: return get_occupation_type_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::buildings_other_id: return get_buildings_other_id_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::building_type: return get_building_type_value_decoded(p_node->m_base_type, p_node->m_address);

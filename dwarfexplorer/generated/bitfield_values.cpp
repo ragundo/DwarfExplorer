@@ -121,6 +121,76 @@ std::array<std::array<std::string, 3>, 32> poetic_form_feature_values = {{
 	{"31", "", ""}
 }};
 
+std::array<std::array<std::string, 3>, 32> musical_form_feature_values = {{
+	{"0", "GlideFromNoteToNote", ""},
+	{"1", "UseGraceNotes", ""},
+	{"2", "UseMordents", ""},
+	{"3", "MakeTrills", ""},
+	{"4", "PlayRapidRuns", ""},
+	{"5", "LocallyImprovise", ""},
+	{"6", "SpreadSyllablesOverManyNotes", ""},
+	{"7", "MatchNotesAndSyllables", ""},
+	{"8", "Syncopate", ""},
+	{"9", "AddFills", ""},
+	{"10", "AlternateTensionAndRepose", ""},
+	{"11", "ModulateFrequently", ""},
+	{"12", "PlayArpeggios", ""},
+	{"13", "PlayStaccato", ""},
+	{"14", "PlayLegato", ""},
+	{"15", "FreelyAdjustBeats", ""},
+	{"16", "", ""},
+	{"17", "", ""},
+	{"18", "", ""},
+	{"19", "", ""},
+	{"20", "", ""},
+	{"21", "", ""},
+	{"22", "", ""},
+	{"23", "", ""},
+	{"24", "", ""},
+	{"25", "", ""},
+	{"26", "", ""},
+	{"27", "", ""},
+	{"28", "", ""},
+	{"29", "", ""},
+	{"30", "", ""},
+	{"31", "", ""}
+}};
+
+std::array<std::array<std::string, 3>, 32> musical_form_interval__T_flags_values = {{
+	{"0", "rising", "otherwise falling"},
+	{"1", "flattened", ""},
+	{"2", "sharpened", ""},
+	{"3", "", ""},
+	{"4", "", ""},
+	{"5", "", ""},
+	{"6", "", ""},
+	{"7", "", ""},
+	{"8", "", ""},
+	{"9", "", ""},
+	{"10", "", ""},
+	{"11", "", ""},
+	{"12", "", ""},
+	{"13", "", ""},
+	{"14", "", ""},
+	{"15", "", ""},
+	{"16", "", ""},
+	{"17", "", ""},
+	{"18", "", ""},
+	{"19", "", ""},
+	{"20", "", ""},
+	{"21", "", ""},
+	{"22", "", ""},
+	{"23", "", ""},
+	{"24", "", ""},
+	{"25", "", ""},
+	{"26", "", ""},
+	{"27", "", ""},
+	{"28", "", ""},
+	{"29", "", ""},
+	{"30", "", ""},
+	{"31", "", ""}
+}};
+
 std::array<std::array<std::string, 3>, 32> building_flags_values = {{
 	{"0", "exists", "actually built, not just ordered"},
 	{"1", "site_blocked", "items on ground on site"},
@@ -3271,6 +3341,41 @@ std::array<std::array<std::string, 3>, 32> poetic_form_part__T_flags_values = {{
 	{"31", "", ""}
 }};
 
+std::array<std::array<std::string, 3>, 32> musical_form_instruments__T_substitutions_values = {{
+	{"0", "singer", ""},
+	{"1", "speaker", ""},
+	{"2", "chanter", ""},
+	{"3", "", ""},
+	{"4", "", ""},
+	{"5", "", ""},
+	{"6", "", ""},
+	{"7", "", ""},
+	{"8", "", ""},
+	{"9", "", ""},
+	{"10", "", ""},
+	{"11", "", ""},
+	{"12", "", ""},
+	{"13", "", ""},
+	{"14", "", ""},
+	{"15", "", ""},
+	{"16", "", ""},
+	{"17", "", ""},
+	{"18", "", ""},
+	{"19", "", ""},
+	{"20", "", ""},
+	{"21", "", ""},
+	{"22", "", ""},
+	{"23", "", ""},
+	{"24", "", ""},
+	{"25", "", ""},
+	{"26", "", ""},
+	{"27", "", ""},
+	{"28", "", ""},
+	{"29", "", ""},
+	{"30", "", ""},
+	{"31", "", ""}
+}};
+
 std::array<std::array<std::string, 3>, 32> building_civzonest__T_zone_flags_values = {{
 	{"0", "water_source", ""},
 	{"1", "garbage_dump", ""},
@@ -4219,6 +4324,41 @@ std::array<std::array<std::string, 3>, 32> item_eggst__T_egg_flags_values = {{
 std::array<std::array<std::string, 3>, 32> poetic_form__T_flags_values = {{
 	{"0", "tone_patterns", ""},
 	{"1", "produces_individual_poems", ""},
+	{"2", "", ""},
+	{"3", "", ""},
+	{"4", "", ""},
+	{"5", "", ""},
+	{"6", "", ""},
+	{"7", "", ""},
+	{"8", "", ""},
+	{"9", "", ""},
+	{"10", "", ""},
+	{"11", "", ""},
+	{"12", "", ""},
+	{"13", "", ""},
+	{"14", "", ""},
+	{"15", "", ""},
+	{"16", "", ""},
+	{"17", "", ""},
+	{"18", "", ""},
+	{"19", "", ""},
+	{"20", "", ""},
+	{"21", "", ""},
+	{"22", "", ""},
+	{"23", "", ""},
+	{"24", "", ""},
+	{"25", "", ""},
+	{"26", "", ""},
+	{"27", "", ""},
+	{"28", "", ""},
+	{"29", "", ""},
+	{"30", "", ""},
+	{"31", "", ""}
+}};
+
+std::array<std::array<std::string, 3>, 32> musical_form__T_flags_values = {{
+	{"0", "produces_individual_songs", ""},
+	{"1", "repeats_as_necessary", ""},
 	{"2", "", ""},
 	{"3", "", ""},
 	{"4", "", ""},
@@ -5727,6 +5867,8 @@ std::array<std::array<std::string, 3>, 32>& get_bitfield_bits(DF_Type p_df_type)
 	{
 		case DF_Type::announcement_flags: return announcement_flags_values;
 		case DF_Type::poetic_form_feature: return poetic_form_feature_values;
+		case DF_Type::musical_form_feature: return musical_form_feature_values;
+		case DF_Type::musical_form_interval__T_flags: return musical_form_interval__T_flags_values;
 		case DF_Type::building_flags: return building_flags_values;
 		case DF_Type::door_flags: return door_flags_values;
 		case DF_Type::gate_flags: return gate_flags_values;
@@ -5817,6 +5959,7 @@ std::array<std::array<std::string, 3>, 32>& get_bitfield_bits(DF_Type p_df_type)
 		case DF_Type::tower_shape: return tower_shape_values;
 		case DF_Type::report__T_flags: return report__T_flags_values;
 		case DF_Type::poetic_form_part__T_flags: return poetic_form_part__T_flags_values;
+		case DF_Type::musical_form_instruments__T_substitutions: return musical_form_instruments__T_substitutions_values;
 		case DF_Type::building_civzonest__T_zone_flags: return building_civzonest__T_zone_flags_values;
 		case DF_Type::building_civzonest__T_pit_flags: return building_civzonest__T_pit_flags_values;
 		case DF_Type::building_civzonest__T_gather_flags: return building_civzonest__T_gather_flags_values;
@@ -5845,6 +5988,7 @@ std::array<std::array<std::string, 3>, 32>& get_bitfield_bits(DF_Type p_df_type)
 		case DF_Type::item_body_component__T_corpse_flags: return item_body_component__T_corpse_flags_values;
 		case DF_Type::item_eggst__T_egg_flags: return item_eggst__T_egg_flags_values;
 		case DF_Type::poetic_form__T_flags: return poetic_form__T_flags_values;
+		case DF_Type::musical_form__T_flags: return musical_form__T_flags_values;
 		case DF_Type::historical_entity__T_flags: return historical_entity__T_flags_values;
 		case DF_Type::item_petst__T_pet_flags: return item_petst__T_pet_flags_values;
 		case DF_Type::entity_raw__T_scholar: return entity_raw__T_scholar_values;

@@ -202,6 +202,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::artifact_record: return RDF_Type::Struct;
 		case DF_Type::assign_trade_status: return RDF_Type::Struct;
 		case DF_Type::assign_trade_status__T_status: return RDF_Type::Enum;
+		case DF_Type::assume_identity_mode: return RDF_Type::Enum;
 		case DF_Type::barrack_preference_category: return RDF_Type::Enum;
 		case DF_Type::belief_system: return RDF_Type::Struct;
 		case DF_Type::biome_type: return RDF_Type::Enum;
@@ -812,8 +813,8 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::historical_figure_info__T_reputation__T_unk_2c__T_anon_12: return RDF_Type::Compound;
 		case DF_Type::historical_figure_info__T_reputation__T_wanted: return RDF_Type::Compound;
 		case DF_Type::historical_figure_info__T_secret: return RDF_Type::Compound;
-		case DF_Type::historical_figure_info__T_secret__T_anon_2: return RDF_Type::Compound;
-		case DF_Type::historical_figure_info__T_secret__T_anon_8: return RDF_Type::Compound;
+		case DF_Type::historical_figure_info__T_secret__T_anon_1: return RDF_Type::Compound;
+		case DF_Type::historical_figure_info__T_secret__T_anon_7: return RDF_Type::Compound;
 		case DF_Type::historical_figure_info__T_secret__T_knowledge: return RDF_Type::Compound;
 		case DF_Type::historical_figure_info__T_secret__T_knowledge__T_knowledge_goal: return RDF_Type::Bitfield;
 		case DF_Type::historical_figure_info__T_secret__T_unk_a8: return RDF_Type::Compound;
@@ -1017,6 +1018,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::instrument_piece__T_flags: return RDF_Type::Bitfield;
 		case DF_Type::instrument_register: return RDF_Type::Struct;
 		case DF_Type::insurrection_outcome: return RDF_Type::Enum;
+		case DF_Type::int16_t: return RDF_Type::DFArray;
 		case DF_Type::interaction: return RDF_Type::Struct;
 		case DF_Type::interaction_effect: return RDF_Type::Class;
 		case DF_Type::interaction_effect__T_flags: return RDF_Type::Bitfield;
@@ -1363,11 +1365,18 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::moving_party: return RDF_Type::Struct;
 		case DF_Type::moving_party__T_members: return RDF_Type::Compound;
 		case DF_Type::musical_form: return RDF_Type::Struct;
+		case DF_Type::musical_form__T_flags: return RDF_Type::Bitfield;
+		case DF_Type::musical_form_feature: return RDF_Type::Bitfield;
 		case DF_Type::musical_form_instruments: return RDF_Type::Struct;
-		case DF_Type::musical_form_sub1: return RDF_Type::Struct;
-		case DF_Type::musical_form_sub3: return RDF_Type::Struct;
+		case DF_Type::musical_form_instruments__T_substitutions: return RDF_Type::Bitfield;
+		case DF_Type::musical_form_interval: return RDF_Type::Struct;
+		case DF_Type::musical_form_interval__T_flags: return RDF_Type::Bitfield;
+		case DF_Type::musical_form_melodies: return RDF_Type::Struct;
+		case DF_Type::musical_form_pitch_style: return RDF_Type::Enum;
+		case DF_Type::musical_form_purpose: return RDF_Type::Enum;
+		case DF_Type::musical_form_style: return RDF_Type::Enum;
 		case DF_Type::musical_form_sub4: return RDF_Type::Struct;
-		case DF_Type::musical_form_sub5: return RDF_Type::Struct;
+		case DF_Type::musical_form_vocals: return RDF_Type::Struct;
 		case DF_Type::need_type: return RDF_Type::Enum;
 		case DF_Type::nemesis_flags: return RDF_Type::Enum;
 		case DF_Type::nemesis_offload: return RDF_Type::Struct;
@@ -1511,7 +1520,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::resource_allotment_specifier_woodst: return RDF_Type::Class;
 		case DF_Type::rhythm: return RDF_Type::Struct;
 		case DF_Type::rhythm_sub1: return RDF_Type::Struct;
-		case DF_Type::rhythm_sub1__T_anon_2: return RDF_Type::Compound;
+		case DF_Type::rhythm_sub1__T_anon_1: return RDF_Type::Compound;
 		case DF_Type::rhythm_sub2: return RDF_Type::Struct;
 		case DF_Type::room_rent_info: return RDF_Type::Struct;
 		case DF_Type::room_rent_info__T_flags: return RDF_Type::Bitfield;
@@ -1704,6 +1713,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::ui__T_waypoints__T_points: return RDF_Type::Compound;
 		case DF_Type::ui__T_waypoints__T_routes: return RDF_Type::Compound;
 		case DF_Type::ui_advmode: return RDF_Type::Struct;
+		case DF_Type::ui_advmode__T_assume_identity: return RDF_Type::Compound;
 		case DF_Type::ui_advmode__T_companions: return RDF_Type::Compound;
 		case DF_Type::ui_advmode__T_conversation: return RDF_Type::Compound;
 		case DF_Type::ui_advmode__T_conversation__T_choices: return RDF_Type::Compound;
@@ -1722,7 +1732,6 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::ui_advmode__T_unk_v40_4__T_unk_v40_4a: return RDF_Type::Compound;
 		case DF_Type::ui_advmode__T_unk_v40_5: return RDF_Type::Compound;
 		case DF_Type::ui_advmode__T_unk_v42_1: return RDF_Type::Compound;
-		case DF_Type::ui_advmode__T_unk_v44_1: return RDF_Type::Compound;
 		case DF_Type::ui_advmode_menu: return RDF_Type::Enum;
 		case DF_Type::ui_build_item_req: return RDF_Type::Struct;
 		case DF_Type::ui_build_selector: return RDF_Type::Class;
@@ -1753,6 +1762,8 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::ui_sidebar_mode: return RDF_Type::Enum;
 		case DF_Type::ui_unit_view_mode: return RDF_Type::Struct;
 		case DF_Type::ui_unit_view_mode__T_value: return RDF_Type::Enum;
+		case DF_Type::uint16_t: return RDF_Type::DFArray;
+		case DF_Type::uint8_t: return RDF_Type::DFArray;
 		case DF_Type::uniform_category: return RDF_Type::Enum;
 		case DF_Type::uniform_flags: return RDF_Type::Bitfield;
 		case DF_Type::uniform_indiv_choice: return RDF_Type::Bitfield;

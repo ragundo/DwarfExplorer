@@ -6,6 +6,7 @@
 #include <df/global_objects.h>
 #include <df/ui_advmode_menu.h>
 #include <df/talk_choice_type.h>
+#include <df/assume_identity_mode.h>
 #include <df/text_info_elementst.h>
 #include <df/text_info_element_longst.h>
 #include <df/text_info_element_stringst.h>
@@ -36,9 +37,12 @@
 #include <df/poetic_form_feature.h>
 #include <df/poetic_form_additional_feature.h>
 #include <df/poetic_form_perspective.h>
-#include <df/musical_form_instruments.h>
+#include <df/musical_form_purpose.h>
+#include <df/musical_form_style.h>
+#include <df/musical_form_pitch_style.h>
+#include <df/musical_form_feature.h>
 #include <df/musical_form_sub4.h>
-#include <df/musical_form_sub5.h>
+#include <df/musical_form_interval.h>
 #include <df/dance_form_sub1.h>
 #include <df/dance_form_sub2.h>
 #include <df/scale_sub1.h>
@@ -788,8 +792,9 @@
 #include <df/art_image_property_intransitive_verbst.h>
 #include <df/art_image_chunk.h>
 #include <df/poetic_form_part.h>
-#include <df/musical_form_sub1.h>
-#include <df/musical_form_sub3.h>
+#include <df/musical_form_vocals.h>
+#include <df/musical_form_instruments.h>
+#include <df/musical_form_melodies.h>
 #include <df/scale.h>
 #include <df/rhythm.h>
 #include <df/rhythm_sub1.h>

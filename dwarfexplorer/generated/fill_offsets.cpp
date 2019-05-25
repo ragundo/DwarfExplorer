@@ -136,19 +136,6 @@ void generate_poetic_form_perspective_offsets(void* p_df_structure, std::unorder
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_instruments_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
-{
-	auto df_structure = static_cast<df::musical_form_instruments*>(p_df_structure);
-
-	p_table["instrument_subtype"] = reinterpret_cast<uint64_t>(&(df_structure->instrument_subtype)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["minimum_required"] = reinterpret_cast<uint64_t>(&(df_structure->minimum_required)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["maximum_permitted"] = reinterpret_cast<uint64_t>(&(df_structure->maximum_permitted)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
-}
-
 void generate_musical_form_sub4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::musical_form_sub4*>(p_df_structure);
@@ -161,12 +148,12 @@ void generate_musical_form_sub4_offsets(void* p_df_structure, std::unordered_map
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_sub5_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
+void generate_musical_form_interval_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
-	auto df_structure = static_cast<df::musical_form_sub5*>(p_df_structure);
+	auto df_structure = static_cast<df::musical_form_interval*>(p_df_structure);
 
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["degree"] = reinterpret_cast<uint64_t>(&(df_structure->degree)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_dance_form_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -221,21 +208,21 @@ void generate_scale_sub2_offsets(void* p_df_structure, std::unordered_map<std::s
 	auto df_structure = static_cast<df::scale_sub2*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_rhythm_sub2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::rhythm_sub2*>(p_df_structure);
 
+	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_occupation_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -1777,7 +1764,7 @@ void generate_interaction_instance_offsets(void* p_df_structure, std::unordered_
 	p_table["interaction_id"] = reinterpret_cast<uint64_t>(&(df_structure->interaction_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["region_index"] = reinterpret_cast<uint64_t>(&(df_structure->region_index)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["affected_units"] = reinterpret_cast<uint64_t>(&(df_structure->affected_units)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_weapon_attack_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -4515,9 +4502,9 @@ void generate_poetic_form_part_offsets(void* p_df_structure, std::unordered_map<
 	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
+void generate_musical_form_vocals_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
-	auto df_structure = static_cast<df::musical_form_sub1*>(p_df_structure);
+	auto df_structure = static_cast<df::musical_form_vocals*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
@@ -4532,6 +4519,8 @@ void generate_musical_form_sub1_offsets(void* p_df_structure, std::unordered_map
 	p_table["anon_11"] = reinterpret_cast<uint64_t>(&(df_structure->anon_11)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_12"] = reinterpret_cast<uint64_t>(&(df_structure->anon_12)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_13"] = reinterpret_cast<uint64_t>(&(df_structure->anon_13)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["vocal_components"] = reinterpret_cast<uint64_t>(&(df_structure->vocal_components)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["phrase_lengths"] = reinterpret_cast<uint64_t>(&(df_structure->phrase_lengths)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_14"] = reinterpret_cast<uint64_t>(&(df_structure->anon_14)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_15"] = reinterpret_cast<uint64_t>(&(df_structure->anon_15)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_16"] = reinterpret_cast<uint64_t>(&(df_structure->anon_16)) - reinterpret_cast<uint64_t>(df_structure);
@@ -4542,18 +4531,29 @@ void generate_musical_form_sub1_offsets(void* p_df_structure, std::unordered_map
 	p_table["anon_21"] = reinterpret_cast<uint64_t>(&(df_structure->anon_21)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_22"] = reinterpret_cast<uint64_t>(&(df_structure->anon_22)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_23"] = reinterpret_cast<uint64_t>(&(df_structure->anon_23)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_24"] = reinterpret_cast<uint64_t>(&(df_structure->anon_24)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_25"] = reinterpret_cast<uint64_t>(&(df_structure->anon_25)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_sub3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
+void generate_musical_form_instruments_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
-	auto df_structure = static_cast<df::musical_form_sub3*>(p_df_structure);
+	auto df_structure = static_cast<df::musical_form_instruments*>(p_df_structure);
 
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["instrument_subtype"] = reinterpret_cast<uint64_t>(&(df_structure->instrument_subtype)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["substitutions"] = reinterpret_cast<uint64_t>(&(df_structure->substitutions)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["features"] = reinterpret_cast<uint64_t>(&(df_structure->features)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["minimum_required"] = reinterpret_cast<uint64_t>(&(df_structure->minimum_required)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["maximum_permitted"] = reinterpret_cast<uint64_t>(&(df_structure->maximum_permitted)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["dynamic_style"] = reinterpret_cast<uint64_t>(&(df_structure->dynamic_style)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["overall_style"] = reinterpret_cast<uint64_t>(&(df_structure->overall_style)) - reinterpret_cast<uint64_t>(df_structure);
+}
+
+void generate_musical_form_melodies_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
+{
+	auto df_structure = static_cast<df::musical_form_melodies*>(p_df_structure);
+
+	p_table["style"] = reinterpret_cast<uint64_t>(&(df_structure->style)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["frequency"] = reinterpret_cast<uint64_t>(&(df_structure->frequency)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["intervals"] = reinterpret_cast<uint64_t>(&(df_structure->intervals)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["features"] = reinterpret_cast<uint64_t>(&(df_structure->features)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_scale__T_unk1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -4591,9 +4591,9 @@ void generate_rhythm_offsets(void* p_df_structure, std::unordered_map<std::strin
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_rhythm_sub1__T_anon_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
+void generate_rhythm_sub1__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
-	auto df_structure = static_cast<df::rhythm_sub1::T_anon_2*>(p_df_structure);
+	auto df_structure = static_cast<df::rhythm_sub1::T_anon_1*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["length"] = reinterpret_cast<uint64_t>(&(df_structure->length)) - reinterpret_cast<uint64_t>(df_structure);
@@ -4603,11 +4603,11 @@ void generate_rhythm_sub1_offsets(void* p_df_structure, std::unordered_map<std::
 {
 	auto df_structure = static_cast<df::rhythm_sub1*>(p_df_structure);
 
+	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_occupation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -7945,14 +7945,14 @@ void generate_written_content_offsets(void* p_df_structure, std::unordered_map<s
 	p_table["page_end"] = reinterpret_cast<uint64_t>(&(df_structure->page_end)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["refs"] = reinterpret_cast<uint64_t>(&(df_structure->refs)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["ref_aux"] = reinterpret_cast<uint64_t>(&(df_structure->ref_aux)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["unk1"] = reinterpret_cast<uint64_t>(&(df_structure->unk1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["poetic_form"] = reinterpret_cast<uint64_t>(&(df_structure->poetic_form)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["styles"] = reinterpret_cast<uint64_t>(&(df_structure->styles)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["style_strength"] = reinterpret_cast<uint64_t>(&(df_structure->style_strength)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["author"] = reinterpret_cast<uint64_t>(&(df_structure->author)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["author_roll"] = reinterpret_cast<uint64_t>(&(df_structure->author_roll)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_engraving_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -8062,8 +8062,8 @@ void generate_item_history_info_offsets(void* p_df_structure, std::unordered_map
 	auto df_structure = static_cast<df::item_history_info*>(p_df_structure);
 
 	p_table["kills"] = reinterpret_cast<uint64_t>(&(df_structure->kills)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk1"] = reinterpret_cast<uint64_t>(&(df_structure->unk1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["attack_counter"] = reinterpret_cast<uint64_t>(&(df_structure->attack_counter)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["defence_counter"] = reinterpret_cast<uint64_t>(&(df_structure->defence_counter)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_item_actual_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -9438,20 +9438,20 @@ void generate_ui_advmode__T_unk_v42_1_offsets(void* p_df_structure, std::unorder
 	p_table["unk_s9"] = reinterpret_cast<uint64_t>(&(df_structure->unk_s9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_v44_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_assume_identity_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
-	auto df_structure = static_cast<df::ui_advmode::T_unk_v44_1*>(p_df_structure);
+	auto df_structure = static_cast<df::ui_advmode::T_assume_identity*>(p_df_structure);
 
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["mode"] = reinterpret_cast<uint64_t>(&(df_structure->mode)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["worship_object"] = reinterpret_cast<uint64_t>(&(df_structure->worship_object)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["profession"] = reinterpret_cast<uint64_t>(&(df_structure->profession)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["origin"] = reinterpret_cast<uint64_t>(&(df_structure->origin)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["filter"] = reinterpret_cast<uint64_t>(&(df_structure->filter)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["filter"] = reinterpret_cast<uint64_t>(&(df_structure->filter)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -9460,9 +9460,9 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::s
 
 	p_table["menu"] = reinterpret_cast<uint64_t>(&(df_structure->menu)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["site_level_zoom"] = reinterpret_cast<uint64_t>(&(df_structure->site_level_zoom)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["travel_origin_x"] = reinterpret_cast<uint64_t>(&(df_structure->travel_origin_x)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["travel_origin_y"] = reinterpret_cast<uint64_t>(&(df_structure->travel_origin_y)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["travel_origin_z"] = reinterpret_cast<uint64_t>(&(df_structure->travel_origin_z)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["travel_clouds"] = reinterpret_cast<uint64_t>(&(df_structure->travel_clouds)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["travel_right_map"] = reinterpret_cast<uint64_t>(&(df_structure->travel_right_map)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["show_menu"] = reinterpret_cast<uint64_t>(&(df_structure->show_menu)) - reinterpret_cast<uint64_t>(df_structure);
@@ -9490,7 +9490,7 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["unk_16"] = reinterpret_cast<uint64_t>(&(df_structure->unk_16)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["bogeymen_timer"] = reinterpret_cast<uint64_t>(&(df_structure->bogeymen_timer)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["bogeymen_killed"] = reinterpret_cast<uint64_t>(&(df_structure->bogeymen_killed)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_17"] = reinterpret_cast<uint64_t>(&(df_structure->unk_17)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["bogeymen_ambush_delay"] = reinterpret_cast<uint64_t>(&(df_structure->bogeymen_ambush_delay)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_18"] = reinterpret_cast<uint64_t>(&(df_structure->unk_18)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["searched_x"] = reinterpret_cast<uint64_t>(&(df_structure->searched_x)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["searched_y"] = reinterpret_cast<uint64_t>(&(df_structure->searched_y)) - reinterpret_cast<uint64_t>(df_structure);
@@ -9511,8 +9511,8 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["unk_31"] = reinterpret_cast<uint64_t>(&(df_structure->unk_31)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_32"] = reinterpret_cast<uint64_t>(&(df_structure->unk_32)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_33"] = reinterpret_cast<uint64_t>(&(df_structure->unk_33)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_34"] = reinterpret_cast<uint64_t>(&(df_structure->unk_34)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_35"] = reinterpret_cast<uint64_t>(&(df_structure->unk_35)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["view_tracks_odors"] = reinterpret_cast<uint64_t>(&(df_structure->view_tracks_odors)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["tracks_visible"] = reinterpret_cast<uint64_t>(&(df_structure->tracks_visible)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_36"] = reinterpret_cast<uint64_t>(&(df_structure->unk_36)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_37"] = reinterpret_cast<uint64_t>(&(df_structure->unk_37)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_38"] = reinterpret_cast<uint64_t>(&(df_structure->unk_38)) - reinterpret_cast<uint64_t>(df_structure);
@@ -9521,11 +9521,11 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["unk_40"] = reinterpret_cast<uint64_t>(&(df_structure->unk_40)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_41"] = reinterpret_cast<uint64_t>(&(df_structure->unk_41)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_42"] = reinterpret_cast<uint64_t>(&(df_structure->unk_42)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_43"] = reinterpret_cast<uint64_t>(&(df_structure->unk_43)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_44"] = reinterpret_cast<uint64_t>(&(df_structure->unk_44)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_45"] = reinterpret_cast<uint64_t>(&(df_structure->unk_45)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["odor_race"] = reinterpret_cast<uint64_t>(&(df_structure->odor_race)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["odor_caste"] = reinterpret_cast<uint64_t>(&(df_structure->odor_caste)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["odor_death"] = reinterpret_cast<uint64_t>(&(df_structure->odor_death)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["travel_odor_race"] = reinterpret_cast<uint64_t>(&(df_structure->travel_odor_race)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["travel_odor_caste"] = reinterpret_cast<uint64_t>(&(df_structure->travel_odor_caste)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_46"] = reinterpret_cast<uint64_t>(&(df_structure->unk_46)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_47"] = reinterpret_cast<uint64_t>(&(df_structure->unk_47)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_3170"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3170)) - reinterpret_cast<uint64_t>(df_structure);
@@ -9545,9 +9545,9 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["unk_60"] = reinterpret_cast<uint64_t>(&(df_structure->unk_60)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_61"] = reinterpret_cast<uint64_t>(&(df_structure->unk_61)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_62"] = reinterpret_cast<uint64_t>(&(df_structure->unk_62)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_63"] = reinterpret_cast<uint64_t>(&(df_structure->unk_63)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_64"] = reinterpret_cast<uint64_t>(&(df_structure->unk_64)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_65"] = reinterpret_cast<uint64_t>(&(df_structure->unk_65)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["travel_start_x"] = reinterpret_cast<uint64_t>(&(df_structure->travel_start_x)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["travel_start_y"] = reinterpret_cast<uint64_t>(&(df_structure->travel_start_y)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["travel_start_z"] = reinterpret_cast<uint64_t>(&(df_structure->travel_start_z)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["player_id"] = reinterpret_cast<uint64_t>(&(df_structure->player_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_66"] = reinterpret_cast<uint64_t>(&(df_structure->unk_66)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_67"] = reinterpret_cast<uint64_t>(&(df_structure->unk_67)) - reinterpret_cast<uint64_t>(df_structure);
@@ -9561,13 +9561,13 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["commands"] = reinterpret_cast<uint64_t>(&(df_structure->commands)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["movements"] = reinterpret_cast<uint64_t>(&(df_structure->movements)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_75"] = reinterpret_cast<uint64_t>(&(df_structure->unk_75)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_76"] = reinterpret_cast<uint64_t>(&(df_structure->unk_76)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_77"] = reinterpret_cast<uint64_t>(&(df_structure->unk_77)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["sleep_hours"] = reinterpret_cast<uint64_t>(&(df_structure->sleep_hours)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["sleep_until_dawn"] = reinterpret_cast<uint64_t>(&(df_structure->sleep_until_dawn)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_78"] = reinterpret_cast<uint64_t>(&(df_structure->unk_78)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_79"] = reinterpret_cast<uint64_t>(&(df_structure->unk_79)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["wait"] = reinterpret_cast<uint64_t>(&(df_structure->wait)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_80"] = reinterpret_cast<uint64_t>(&(df_structure->unk_80)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_81"] = reinterpret_cast<uint64_t>(&(df_structure->unk_81)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_82"] = reinterpret_cast<uint64_t>(&(df_structure->unk_82)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["player_control_state"] = reinterpret_cast<uint64_t>(&(df_structure->player_control_state)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_83"] = reinterpret_cast<uint64_t>(&(df_structure->unk_83)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_84"] = reinterpret_cast<uint64_t>(&(df_structure->unk_84)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["companions"] = reinterpret_cast<uint64_t>(&(df_structure->companions)) - reinterpret_cast<uint64_t>(df_structure);
@@ -9584,7 +9584,7 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["unk_v40_5"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_5)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_v42_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v42_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_91"] = reinterpret_cast<uint64_t>(&(df_structure->unk_91)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_v44_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v44_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["assume_identity"] = reinterpret_cast<uint64_t>(&(df_structure->assume_identity)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_92"] = reinterpret_cast<uint64_t>(&(df_structure->unk_92)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_93"] = reinterpret_cast<uint64_t>(&(df_structure->unk_93)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_94"] = reinterpret_cast<uint64_t>(&(df_structure->unk_94)) - reinterpret_cast<uint64_t>(df_structure);
@@ -9593,8 +9593,8 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["unk_97"] = reinterpret_cast<uint64_t>(&(df_structure->unk_97)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_98"] = reinterpret_cast<uint64_t>(&(df_structure->unk_98)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_99"] = reinterpret_cast<uint64_t>(&(df_structure->unk_99)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_100"] = reinterpret_cast<uint64_t>(&(df_structure->unk_100)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["name_item"] = reinterpret_cast<uint64_t>(&(df_structure->name_item)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_art_image_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -9638,7 +9638,7 @@ void generate_poetic_form_offsets(void* p_df_structure, std::unordered_map<std::
 	p_table["subject_histfig"] = reinterpret_cast<uint64_t>(&(df_structure->subject_histfig)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["subject_topic"] = reinterpret_cast<uint64_t>(&(df_structure->subject_topic)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["action"] = reinterpret_cast<uint64_t>(&(df_structure->action)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["preferred_perspective"] = reinterpret_cast<uint64_t>(&(df_structure->preferred_perspective)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["features"] = reinterpret_cast<uint64_t>(&(df_structure->features)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["perspectives"] = reinterpret_cast<uint64_t>(&(df_structure->perspectives)) - reinterpret_cast<uint64_t>(df_structure);
 }
@@ -9649,27 +9649,27 @@ void generate_musical_form_offsets(void* p_df_structure, std::unordered_map<std:
 
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["originating_entity"] = reinterpret_cast<uint64_t>(&(df_structure->originating_entity)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["original_author"] = reinterpret_cast<uint64_t>(&(df_structure->original_author)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["scales"] = reinterpret_cast<uint64_t>(&(df_structure->scales)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["instruments"] = reinterpret_cast<uint64_t>(&(df_structure->instruments)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["melodies"] = reinterpret_cast<uint64_t>(&(df_structure->melodies)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["voices"] = reinterpret_cast<uint64_t>(&(df_structure->voices)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_11"] = reinterpret_cast<uint64_t>(&(df_structure->anon_11)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_12"] = reinterpret_cast<uint64_t>(&(df_structure->anon_12)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_13"] = reinterpret_cast<uint64_t>(&(df_structure->anon_13)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_14"] = reinterpret_cast<uint64_t>(&(df_structure->anon_14)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_15"] = reinterpret_cast<uint64_t>(&(df_structure->anon_15)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_16"] = reinterpret_cast<uint64_t>(&(df_structure->anon_16)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_17"] = reinterpret_cast<uint64_t>(&(df_structure->anon_17)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_18"] = reinterpret_cast<uint64_t>(&(df_structure->anon_18)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_19"] = reinterpret_cast<uint64_t>(&(df_structure->anon_19)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_20"] = reinterpret_cast<uint64_t>(&(df_structure->anon_20)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["tempo_style"] = reinterpret_cast<uint64_t>(&(df_structure->tempo_style)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["dynamic_style"] = reinterpret_cast<uint64_t>(&(df_structure->dynamic_style)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["overall_style"] = reinterpret_cast<uint64_t>(&(df_structure->overall_style)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["poetic_form_id"] = reinterpret_cast<uint64_t>(&(df_structure->poetic_form_id)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["written_content_id"] = reinterpret_cast<uint64_t>(&(df_structure->written_content_id)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["scale_id"] = reinterpret_cast<uint64_t>(&(df_structure->scale_id)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["scale_subid"] = reinterpret_cast<uint64_t>(&(df_structure->scale_subid)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["rhythm_id"] = reinterpret_cast<uint64_t>(&(df_structure->rhythm_id)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["rhythm_subid2"] = reinterpret_cast<uint64_t>(&(df_structure->rhythm_subid2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["rhythm_subid1"] = reinterpret_cast<uint64_t>(&(df_structure->rhythm_subid1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["features"] = reinterpret_cast<uint64_t>(&(df_structure->features)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["pitch_style"] = reinterpret_cast<uint64_t>(&(df_structure->pitch_style)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["purpose"] = reinterpret_cast<uint64_t>(&(df_structure->purpose)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["devotion_target"] = reinterpret_cast<uint64_t>(&(df_structure->devotion_target)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_dance_form_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -9681,6 +9681,8 @@ void generate_dance_form_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["musical_form_id"] = reinterpret_cast<uint64_t>(&(df_structure->musical_form_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["music_written_content_id"] = reinterpret_cast<uint64_t>(&(df_structure->music_written_content_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["originating_entity"] = reinterpret_cast<uint64_t>(&(df_structure->originating_entity)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["original_author"] = reinterpret_cast<uint64_t>(&(df_structure->original_author)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
@@ -9702,8 +9704,6 @@ void generate_dance_form_offsets(void* p_df_structure, std::unordered_map<std::s
 	p_table["anon_20"] = reinterpret_cast<uint64_t>(&(df_structure->anon_20)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_21"] = reinterpret_cast<uint64_t>(&(df_structure->anon_21)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_22"] = reinterpret_cast<uint64_t>(&(df_structure->anon_22)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_23"] = reinterpret_cast<uint64_t>(&(df_structure->anon_23)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_24"] = reinterpret_cast<uint64_t>(&(df_structure->anon_24)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_entity_occasion_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -9913,7 +9913,7 @@ void generate_historical_entity__T_unknown1b_offsets(void* p_df_structure, std::
 	p_table["unk32a"] = reinterpret_cast<uint64_t>(&(df_structure->unk32a)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["deities"] = reinterpret_cast<uint64_t>(&(df_structure->deities)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["worship"] = reinterpret_cast<uint64_t>(&(df_structure->worship)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk32d"] = reinterpret_cast<uint64_t>(&(df_structure->unk32d)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["belief_systems"] = reinterpret_cast<uint64_t>(&(df_structure->belief_systems)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk32e"] = reinterpret_cast<uint64_t>(&(df_structure->unk32e)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["diplomacy"] = reinterpret_cast<uint64_t>(&(df_structure->diplomacy)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk33"] = reinterpret_cast<uint64_t>(&(df_structure->unk33)) - reinterpret_cast<uint64_t>(df_structure);
@@ -10566,7 +10566,15 @@ void generate_artifact_record_offsets(void* p_df_structure, std::unordered_map<s
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["item"] = reinterpret_cast<uint64_t>(&(df_structure->item)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["abs_tile_x"] = reinterpret_cast<uint64_t>(&(df_structure->abs_tile_x)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["abs_tile_y"] = reinterpret_cast<uint64_t>(&(df_structure->abs_tile_y)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["abs_tile_z"] = reinterpret_cast<uint64_t>(&(df_structure->abs_tile_z)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["structure_local"] = reinterpret_cast<uint64_t>(&(df_structure->structure_local)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["subregion"] = reinterpret_cast<uint64_t>(&(df_structure->subregion)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["feature_layer"] = reinterpret_cast<uint64_t>(&(df_structure->feature_layer)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["holder_hf"] = reinterpret_cast<uint64_t>(&(df_structure->holder_hf)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
@@ -10578,14 +10586,6 @@ void generate_artifact_record_offsets(void* p_df_structure, std::unordered_map<s
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_11"] = reinterpret_cast<uint64_t>(&(df_structure->anon_11)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_12"] = reinterpret_cast<uint64_t>(&(df_structure->anon_12)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_13"] = reinterpret_cast<uint64_t>(&(df_structure->anon_13)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_14"] = reinterpret_cast<uint64_t>(&(df_structure->anon_14)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_15"] = reinterpret_cast<uint64_t>(&(df_structure->anon_15)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_16"] = reinterpret_cast<uint64_t>(&(df_structure->anon_16)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_17"] = reinterpret_cast<uint64_t>(&(df_structure->anon_17)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_18"] = reinterpret_cast<uint64_t>(&(df_structure->anon_18)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_19"] = reinterpret_cast<uint64_t>(&(df_structure->anon_19)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_20"] = reinterpret_cast<uint64_t>(&(df_structure->anon_20)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_machine_tile_set_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -12234,7 +12234,7 @@ void generate_army_controller_offsets(void* p_df_structure, std::unordered_map<s
 
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["entity_id"] = reinterpret_cast<uint64_t>(&(df_structure->entity_id)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_8)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["site_id"] = reinterpret_cast<uint64_t>(&(df_structure->site_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["pos_x"] = reinterpret_cast<uint64_t>(&(df_structure->pos_x)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["pos_y"] = reinterpret_cast<uint64_t>(&(df_structure->pos_y)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_14"] = reinterpret_cast<uint64_t>(&(df_structure->unk_14)) - reinterpret_cast<uint64_t>(df_structure);
@@ -12441,8 +12441,8 @@ void generate_army__T_members_offsets(void* p_df_structure, std::unordered_map<s
 	p_table["nemesis_id"] = reinterpret_cast<uint64_t>(&(df_structure->nemesis_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["hunger_timer"] = reinterpret_cast<uint64_t>(&(df_structure->hunger_timer)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["thirst_timer"] = reinterpret_cast<uint64_t>(&(df_structure->thirst_timer)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["sleepiness_timer"] = reinterpret_cast<uint64_t>(&(df_structure->sleepiness_timer)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["stored_fat"] = reinterpret_cast<uint64_t>(&(df_structure->stored_fat)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_10)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_14"] = reinterpret_cast<uint64_t>(&(df_structure->unk_14)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_18"] = reinterpret_cast<uint64_t>(&(df_structure->unk_18)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_1c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1c)) - reinterpret_cast<uint64_t>(df_structure);
@@ -12584,7 +12584,7 @@ void generate_plant_raw_offsets(void* p_df_structure, std::unordered_map<std::st
 
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["index"] = reinterpret_cast<uint64_t>(&(df_structure->index)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["raws"] = reinterpret_cast<uint64_t>(&(df_structure->raws)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["name_plural"] = reinterpret_cast<uint64_t>(&(df_structure->name_plural)) - reinterpret_cast<uint64_t>(df_structure);
@@ -14571,8 +14571,8 @@ void generate_unit__T_enemy__T_undead_offsets(void* p_df_structure, std::unorder
 	p_table["unk_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_4)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_5"] = reinterpret_cast<uint64_t>(&(df_structure->unk_5)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_6"] = reinterpret_cast<uint64_t>(&(df_structure->unk_6)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_7"] = reinterpret_cast<uint64_t>(&(df_structure->unk_7)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["root_body_part_id"] = reinterpret_cast<uint64_t>(&(df_structure->root_body_part_id)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["undead_name"] = reinterpret_cast<uint64_t>(&(df_structure->undead_name)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_v43_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_v43_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
@@ -14722,7 +14722,7 @@ void generate_unit__T_enemy_offsets(void* p_df_structure, std::unordered_map<std
 	p_table["army_controller_id"] = reinterpret_cast<uint64_t>(&(df_structure->army_controller_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_v40_sub3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_sub3)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["enemy_status_slot"] = reinterpret_cast<uint64_t>(&(df_structure->enemy_status_slot)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_4406_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_4406_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["caste_flags"] = reinterpret_cast<uint64_t>(&(df_structure->caste_flags)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_v4206_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v4206_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_874_cntr"] = reinterpret_cast<uint64_t>(&(df_structure->unk_874_cntr)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["body_part_878"] = reinterpret_cast<uint64_t>(&(df_structure->body_part_878)) - reinterpret_cast<uint64_t>(df_structure);
@@ -15233,11 +15233,11 @@ void generate_historical_figure_info__T_unk_14_offsets(void* p_df_structure, std
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["region_id"] = reinterpret_cast<uint64_t>(&(df_structure->region_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["beast_id"] = reinterpret_cast<uint64_t>(&(df_structure->beast_id)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["army_id"] = reinterpret_cast<uint64_t>(&(df_structure->army_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["region"] = reinterpret_cast<uint64_t>(&(df_structure->region)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_14"] = reinterpret_cast<uint64_t>(&(df_structure->unk_14)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_18"] = reinterpret_cast<uint64_t>(&(df_structure->unk_18)) - reinterpret_cast<uint64_t>(df_structure);
@@ -15258,9 +15258,9 @@ void generate_historical_figure_info__T_wounds_offsets(void* p_df_structure, std
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_secret__T_anon_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_secret__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
-	auto df_structure = static_cast<df::historical_figure_info::T_secret::T_anon_2*>(p_df_structure);
+	auto df_structure = static_cast<df::historical_figure_info::T_secret::T_anon_1*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
@@ -15270,9 +15270,9 @@ void generate_historical_figure_info__T_secret__T_anon_2_offsets(void* p_df_stru
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_secret__T_anon_8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_secret__T_anon_7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
-	auto df_structure = static_cast<df::historical_figure_info::T_secret::T_anon_8*>(p_df_structure);
+	auto df_structure = static_cast<df::historical_figure_info::T_secret::T_anon_7*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
@@ -15328,7 +15328,8 @@ void generate_historical_figure_info__T_secret_offsets(void* p_df_structure, std
 
 	p_table["interactions"] = reinterpret_cast<uint64_t>(&(df_structure->interactions)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_10)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["read_books"] = reinterpret_cast<uint64_t>(&(df_structure->read_books)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["known_written_contents"] = reinterpret_cast<uint64_t>(&(df_structure->known_written_contents)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["known_identities"] = reinterpret_cast<uint64_t>(&(df_structure->known_identities)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
@@ -15336,12 +15337,11 @@ void generate_historical_figure_info__T_secret_offsets(void* p_df_structure, std
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_v4201_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v4201_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_v4201_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v4201_2)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_v4201_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v4201_3)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["known_poetic_forms"] = reinterpret_cast<uint64_t>(&(df_structure->known_poetic_forms)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["known_musical_forms"] = reinterpret_cast<uint64_t>(&(df_structure->known_musical_forms)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["known_dance_forms"] = reinterpret_cast<uint64_t>(&(df_structure->known_dance_forms)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["knowledge"] = reinterpret_cast<uint64_t>(&(df_structure->knowledge)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_a4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_a4)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["belief_systems"] = reinterpret_cast<uint64_t>(&(df_structure->belief_systems)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_a8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_a8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
@@ -15365,11 +15365,11 @@ void generate_historical_figure_info__T_curse_offsets(void* p_df_structure, std:
 	p_table["unk_a0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_a0)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_b0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_b0)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_c0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_c0)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_d0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_d0)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_d4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_d4)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_d8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_d8)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_dc"] = reinterpret_cast<uint64_t>(&(df_structure->unk_dc)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_e0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_e0)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["original_histfig_id"] = reinterpret_cast<uint64_t>(&(df_structure->original_histfig_id)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["original_race"] = reinterpret_cast<uint64_t>(&(df_structure->original_race)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["original_caste"] = reinterpret_cast<uint64_t>(&(df_structure->original_caste)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["root_body_part_id"] = reinterpret_cast<uint64_t>(&(df_structure->root_body_part_id)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["undead_name"] = reinterpret_cast<uint64_t>(&(df_structure->undead_name)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_fc"] = reinterpret_cast<uint64_t>(&(df_structure->unk_fc)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
@@ -16798,7 +16798,7 @@ void generate_viewscreen_itemst_offsets(void* p_df_structure, std::unordered_map
 	p_table["item"] = reinterpret_cast<uint64_t>(&(df_structure->item)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["entry_ref"] = reinterpret_cast<uint64_t>(&(df_structure->entry_ref)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["entry_indent"] = reinterpret_cast<uint64_t>(&(df_structure->entry_indent)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_34"] = reinterpret_cast<uint64_t>(&(df_structure->unk_34)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["entry_spatters"] = reinterpret_cast<uint64_t>(&(df_structure->entry_spatters)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["entry_string"] = reinterpret_cast<uint64_t>(&(df_structure->entry_string)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["entry_reaction"] = reinterpret_cast<uint64_t>(&(df_structure->entry_reaction)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["cursor_pos"] = reinterpret_cast<uint64_t>(&(df_structure->cursor_pos)) - reinterpret_cast<uint64_t>(df_structure);
@@ -18568,7 +18568,7 @@ void generate_viewscreen_unitst_offsets(void* p_df_structure, std::unordered_map
 	p_table["noble_assignments"] = reinterpret_cast<uint64_t>(&(df_structure->noble_assignments)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["noble_histfigs"] = reinterpret_cast<uint64_t>(&(df_structure->noble_histfigs)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["noble_groups"] = reinterpret_cast<uint64_t>(&(df_structure->noble_groups)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["has_kills"] = reinterpret_cast<uint64_t>(&(df_structure->has_kills)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
 void generate_viewscreen_unitlistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
@@ -18772,7 +18772,7 @@ void generate_world_region_offsets(void* p_df_structure, std::unordered_map<std:
 	p_table["evil"] = reinterpret_cast<uint64_t>(&(df_structure->evil)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["good"] = reinterpret_cast<uint64_t>(&(df_structure->good)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["lake_surface"] = reinterpret_cast<uint64_t>(&(df_structure->lake_surface)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_1f0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1f0)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["forces"] = reinterpret_cast<uint64_t>(&(df_structure->forces)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_200"] = reinterpret_cast<uint64_t>(&(df_structure->unk_200)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["mid_x"] = reinterpret_cast<uint64_t>(&(df_structure->mid_x)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["mid_y"] = reinterpret_cast<uint64_t>(&(df_structure->mid_y)) - reinterpret_cast<uint64_t>(df_structure);
@@ -20595,8 +20595,8 @@ void generate_belief_system_offsets(void* p_df_structure, std::unordered_map<std
 
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["mental_pictures"] = reinterpret_cast<uint64_t>(&(df_structure->mental_pictures)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["deities"] = reinterpret_cast<uint64_t>(&(df_structure->deities)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["worship_levels"] = reinterpret_cast<uint64_t>(&(df_structure->worship_levels)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
