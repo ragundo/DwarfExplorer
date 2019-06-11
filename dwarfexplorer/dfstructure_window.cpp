@@ -4,6 +4,7 @@
 #include "node.h"
 #include "hexviewer_window.h"
 #include "QHexView/document/buffer/qmemorybuffer.h"
+#include "MainWindow.h"
 
 using namespace rdf;
 
@@ -14,8 +15,9 @@ extern std::string to_hex(uint64_t p_dec);
 //---------------------------------------------------------------------------------------
 //
 DFStructure_Window::DFStructure_Window(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::DFStructure_Window)
+    QMainWindow(parent)
+    , ui(new Ui::DFStructure_Window)
+    , m_outdated(false)
 {
     ui->setupUi(this);
 }
@@ -28,6 +30,7 @@ DFStructure_Window::~DFStructure_Window()
     delete ui;
 }
 
+
 //
 //---------------------------------------------------------------------------------------
 //
@@ -39,11 +42,37 @@ QTreeView* DFStructure_Window::get_treeview()
 //
 //---------------------------------------------------------------------------------------
 //
+void DFStructure_Window::set_outdated()
+{
+    m_outdated = true;
+
+    // Get the model
+    QTreeView* treeview = ui->treeView;
+    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+    model->set_outdated();
+
+    QString title = this->windowTitle();
+    QString new_title = "OUTDATED - " + title;
+    this->setWindowTitle(new_title);
+}
+
+//
+//---------------------------------------------------------------------------------------
+//
 void DFStructure_Window::on_actionOpen_in_new_window_triggered()
 {
+    if (m_outdated)
+        return;
+
     using namespace rdf;
+
+    MainWindow* main_window = reinterpret_cast<MainWindow*>(parent());
+
     // Create the child window
-    DFStructure_Window* l_new_window = new DFStructure_Window(this);
+    DFStructure_Window* new_window = new DFStructure_Window(main_window);
+
+    // Add the window to the list of child windows
+    main_window->add_child_window(new_window);
 
     // Get the selected node index
     QTreeView* l_treeview = ui->treeView;
@@ -62,7 +91,7 @@ void DFStructure_Window::on_actionOpen_in_new_window_triggered()
     auto l_cloned_node = dynamic_cast<Node*>(l_node->clone());
 
     // Create the new model only for this subtree
-    DF_Model* l_new_model = new DF_Model(l_new_window);
+    DF_Model* l_new_model = new DF_Model(new_window);
 
     // Create the root node for this subtree
     NodeRoot* n_root         = new NodeRoot;
@@ -81,22 +110,22 @@ void DFStructure_Window::on_actionOpen_in_new_window_triggered()
     //l_cloned_node->m_field_name = n_root->m_path;
 
     // Connect the root and the cloned node
-    n_root->m_children.append(l_cloned_node);
+    n_root->m_children.push_back(l_cloned_node);
     l_cloned_node->m_parent = n_root;
 
     // Set it in the model
     l_new_model->set_root(n_root);
 
     // Assign the model to the TreeView
-    l_new_window->get_treeview()->setModel(l_new_model);
+    new_window->get_treeview()->setModel(l_new_model);
 
     // Set the window title to match the element to open
     std::string l_new_window_name = "Dwarf Explorer - ";
     l_new_window_name.append(n_root->m_path);
 
     // Show the window
-    l_new_window->setWindowTitle(QString::fromStdString(l_new_window_name));
-    l_new_window->show();
+    new_window->setWindowTitle(QString::fromStdString(l_new_window_name));
+    new_window->show();
 }
 
 //
@@ -104,6 +133,9 @@ void DFStructure_Window::on_actionOpen_in_new_window_triggered()
 //
 void DFStructure_Window::on_treeView_expanded(const QModelIndex &p_index)
 {
+    if (m_outdated)
+        return;
+
     using namespace rdf;
     this->setCursor(Qt::WaitCursor);
 
@@ -125,32 +157,34 @@ void DFStructure_Window::on_treeView_expanded(const QModelIndex &p_index)
 //
 void DFStructure_Window::on_actionOpen_in_hex_viewer_triggered()
 {
-        // Get the selected node index
-        QTreeView* treeview = ui->treeView;
-        QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
-        if (selected_nodes.size() == 0)
-                return;
-        QModelIndex selected_node = selected_nodes.first();
+    if (m_outdated)
+        return;
 
-        // Get the model
-        DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+    // Get the selected node index
+    QTreeView* treeview = ui->treeView;
+    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    if (selected_nodes.size() == 0)
+        return;
+    QModelIndex selected_node = selected_nodes.first();
 
-        // Get the selected node
-        rdf::NodeBase* node = dynamic_cast<rdf::NodeBase*>(model->nodeFromIndex(selected_node));
+    // Get the model
+    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
 
-        auto the_data = reinterpret_cast<const char*>(node->m_address);
-        QByteArray data(the_data, 1024);
-        QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(data);
-        QHexView* hexview = new QHexView();
-        hexview->setDocument(document);
-//      QHexViewer_Window* hex_window = new QHexViewer_Window(this);
-//	hex_view->set_base_address(node->m_address);
-//	hex_view->setData(new QHexView::DataStorageArray(data));
+    // Get the selected node
+    rdf::NodeBase* node = dynamic_cast<rdf::NodeBase*>(model->nodeFromIndex(selected_node));
 
-        // window title
-        auto the_number = QString::fromStdString(to_hex(node->m_address));
-        hexview->setWindowTitle("Memory viewer - " + the_number);
-        hexview->show();
+    auto the_data = reinterpret_cast<char*>(node->m_address);
+    QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(the_data, 1024);
+    QHexView* hexview = new QHexView();
+    hexview->setDocument(document);
+
+    document->setBaseAddress(node->m_address);
+    hexview->setReadOnly(true);
+
+    // window title
+    auto the_number = QString::fromStdString(to_hex(node->m_address));
+    hexview->setWindowTitle("Memory viewer - " + the_number);
+    hexview->show();
 }
 
 //
@@ -158,34 +192,45 @@ void DFStructure_Window::on_actionOpen_in_hex_viewer_triggered()
 //
 void DFStructure_Window::on_actionOpenPointer_in_hex_viewer_triggered()
 {
-        // Get the selected node index
-        QTreeView* treeview = ui->treeView;
-        QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
-        if (selected_nodes.size() == 0)
-                return;
-        QModelIndex selected_node = selected_nodes.first();
+    if (m_outdated)
+        return;
 
-        // Get the model
-        DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+    // Get the selected node index
+    QTreeView *treeview = ui->treeView;
+    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    if (selected_nodes.size() == 0)
+        return;
+    QModelIndex selected_node = selected_nodes.first();
 
-        // Get the selected node
-        rdf::NodeBase* node_base = model->nodeFromIndex(selected_node);
+    // Get the model
+    DF_Model *model = dynamic_cast<DF_Model *>(treeview->model());
 
-        uint64_t* pointer_address = reinterpret_cast<uint64_t*>(node_base->m_address);
-        uint64_t  item_address = *pointer_address;
+    // Get the selected node
+    rdf::NodeBase *node_base = model->nodeFromIndex(selected_node);
 
-        auto the_data = reinterpret_cast<const char*>(item_address);
-        QByteArray data(the_data, 1024);
-        QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(data);
-        QHexView* hexview = new QHexView();
-        hexview->setDocument(document);
-        //QHexViewer_Window* hex_window = new QHexViewer_Window(this);
-//        QHexView* hex_view = hex_window->get_hexview();
-//        hex_view->set_base_address(item_address);
-//        hex_view->setData(new QHexView::DataStorageArray(data));
+    uint64_t *pointer_address = reinterpret_cast<uint64_t *>(node_base->m_address);
+    uint64_t item_address = *pointer_address;
 
-        // Window tittle
-        auto the_number = QString::fromStdString(to_hex(item_address));
-        hexview->setWindowTitle("Memory viewer - " + the_number);
-        hexview->show();
+    auto the_data = reinterpret_cast<char*>(item_address);
+    auto the_size = std::min(std::size_t(4096), size_of_DF_Type(node_base->m_df_type));
+    the_size = std::max(std::size_t(4096), the_size);
+    QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(the_data, the_size);
+    document->setBaseAddress(item_address);
+
+    QHexView *hexview = new QHexView();
+    hexview->setDocument(document);
+    hexview->setReadOnly(true);
+
+    // Window tittle
+    auto the_number = QString::fromStdString(to_hex(item_address));
+    hexview->setWindowTitle("Memory viewer - " + the_number);
+    hexview->show();
+}
+
+void DFStructure_Window::closeEvent (QCloseEvent* p_event)
+{
+    // Do the thing
+    MainWindow* main_window = reinterpret_cast<MainWindow*>(parent());
+    main_window->remove_child_window(this);
+    p_event->accept();
 }

@@ -8,7 +8,7 @@
 
 struct QHexMetadataItem
 {
-    int line, start, length;
+    uint64_t line, start, length;
     QColor foreground, background;
     QString comment;
 };
@@ -21,28 +21,28 @@ class QHexMetadata : public QObject
 
     public:
         explicit QHexMetadata(QObject *parent = nullptr);
-        const QHexLineMetadata& get(int line) const;
-        QString comments(int line) const;
-        bool hasMetadata(int line) const;
-        void clear(int line);
-        void clear();
+        const QHexLineMetadata& get(uint64_t line) const;
+        QString                 comments(uint64_t line) const;
+        bool                    hasMetadata(uint64_t line) const;
+        void                    clear(uint64_t line);
+        void                    clear();
 
     public:
-        void metadata(int line, int start, int length, const QColor& fgcolor, const QColor& bgcolor, const QString& comment);
-        void color(int line, int start, int length, const QColor& fgcolor, const QColor& bgcolor);
-        void foreground(int line, int start, int length, const QColor& fgcolor);
-        void background(int line, int start, int length, const QColor& bgcolor);
-        void comment(int line, int start, int length, const QString &comment);
+        void metadata(uint64_t line, uint64_t start, uint64_t length, const QColor& fgcolor, const QColor& bgcolor, const QString& comment);
+        void color(uint64_t line, uint64_t start, uint64_t length, const QColor& fgcolor, const QColor& bgcolor);
+        void foreground(uint64_t line, uint64_t start, uint64_t length, const QColor& fgcolor);
+        void background(uint64_t line, uint64_t start, uint64_t length, const QColor& bgcolor);
+        void comment(uint64_t line, uint64_t start, uint64_t length, const QString &comment);
 
     private:
         void setMetadata(const QHexMetadataItem& mi);
 
     signals:
-        void metadataChanged(int line);
+        void metadataChanged(uint64_t line);
         void metadataCleared();
 
     private:
-        QHash<int, QHexLineMetadata> m_metadata;
+        QHash<uint64_t, QHexLineMetadata> m_metadata;
 };
 
 #endif // QHEXMETADATA_H

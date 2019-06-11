@@ -5,7 +5,7 @@
 #include <string>
 #include <QtAlgorithms>
 #include <QList>
-#include <QVector>
+#include <vector>
 #include "DF_Types.h"
 #include "RDF_Types.h"
 
@@ -160,7 +160,7 @@ namespace rdf
     //
     struct Node : public NodeBase
     {
-        QVector<NodeBase*> m_children;
+        std::vector<NodeBase*> m_children;
 
         NodeBase* clone() override
         {
@@ -176,8 +176,13 @@ namespace rdf
 
         ~Node()
         {
-            for(int i = 0; i < m_children.size(); i++)
-                delete m_children.takeAt(i);
+            for(std::size_t i = 0; i < m_children.size(); i++)
+            {
+                if (m_children[i])
+                    if (m_children[i]->m_node_type != NodeType::Dummy)
+                        delete m_children[i];
+                m_children[i] = nullptr;
+            }
         }
     };
 

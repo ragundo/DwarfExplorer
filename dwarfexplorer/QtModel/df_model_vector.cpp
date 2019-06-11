@@ -47,7 +47,7 @@ void fill_simple_entry(NodeBase* p_pve, Node* p_node, size_t p_size, uint64_t p_
     p_pve->m_node_type     = NodeType::Simple;
     p_pve->m_parent        = p_node;
 
-    p_node->m_children.append(p_pve);
+    p_node->m_children.push_back(p_pve);
 }
 
 //
@@ -373,7 +373,7 @@ bool DF_Model::insertRowsBoolVector(NodeVector* p_node_vector, const QModelIndex
         n_pve->m_field_name = field_name;
         n_pve->m_address    = vector_address;
         n_pve->m_parent     = p_node_vector;
-        p_node_vector->m_children.append(n_pve);
+        p_node_vector->m_children.push_back(n_pve);
     }
 
     endInsertRows();
@@ -391,10 +391,13 @@ bool DF_Model::insertRowsVector(const QModelIndex& p_parent)
         return false;
 
 
-    // Remove the dummy node
-    beginRemoveRows(p_parent, 0, 1);
-    node->m_children.remove(0);
-    endRemoveRows();
+    // Remove the dummy node if any
+    if (node->m_children.size() > 0)
+    {
+        beginRemoveRows(p_parent, 0, 1);
+        node->m_children.erase(node->m_children.begin());
+        endRemoveRows();
+    }
 
     // vector<bool> is a special case
     if (node->m_df_type == DF_Type::Bool)

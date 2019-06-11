@@ -6,93 +6,181 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>796</width>
-    <height>505</height>
+    <width>932</width>
+    <height>711</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dwarf  Explorer - df.global</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QTreeView" name="treeView">
-      <property name="minimumSize">
-       <size>
-        <width>100</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="indentation">
-       <number>25</number>
-      </property>
-      <attribute name="headerDefaultSectionSize">
-       <number>120</number>
-      </attribute>
-      <attribute name="headerMinimumSectionSize">
-       <number>40</number>
-      </attribute>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>796</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionExit"/>
-   </widget>
-   <widget class="QMenu" name="menuWindow">
-    <property name="title">
-     <string>Window</string>
-    </property>
-    <addaction name="actionOpen_in_new_window"/>
-    <addaction name="actionOpen_in_hex_viewer"/>    
-    <addaction name="actionOpenPointer_in_hex_viewer"/>        
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuWindow"/>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionExit">
-   <property name="text">
-    <string>Exit</string>
-   </property>
-  </action>
-  <action name="actionOpen_in_new_window">
-   <property name="text">
-    <string>Open in new window</string>
-   </property>
-  </action>
-  <action name="actionOpen_in_hex_viewer">
-   <property name="text">
-    <string>Open address in hex viewer</string>
-   </property>
-  </action>  
-  <action name="actionOpenPointer_in_hex_viewer">
-   <property name="text">
-    <string>Open destination address in hex viewer</string>
-   </property>
-  </action>    
- </widget>
- <layoutdefault spacing="6" margin="11"/>
- <resources/>
- <connections/>
+    <widget class="QWidget" name="centralWidget">
+        <layout class="QVBoxLayout" name="verticalLayout">
+<!--
+            <item>
+                <layout class="QHBoxLayout" name="horizontalLayout">
+                    <item>
+                        <widget class="QLabel" name="filter_label">
+                            <property name="text">
+                                <string>Filter: </string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QLineEdit" name="filter_edit"/>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="filter_clear">
+                            <property name="text">
+                                <string>Clear</string>
+                            </property>
+                            <property name="icon">
+                                <iconset theme="edit-clear">
+                                    <normaloff>.</normaloff>.
+                                </iconset>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </item>
+-->
+            <item>
+                <widget class="QStackedWidget" name="stackedWidget">
+                    <widget class="QWidget" name="page_label">
+                        <layout class="QVBoxLayout" name="verticalLayout_2">
+                            <item>
+                                <widget class="QLabel" name="label">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>Dwarf Fortress is running. Press 'Suspend' button to enable Dwarf Explorer operation</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignCenter</set>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+                    <widget class="QWidget" name="page_treeview">
+                        <layout class="QVBoxLayout" name="verticalLayout3">
+                            <item>
+                                <widget class="QTreeView" name="treeView">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>100</width>
+                                            <height>100</height>
+                                        </size>
+                                    </property>
+                                        <property name="indentation">
+                                        <number>25</number>
+                                    </property>
+                                    <attribute name="headerMinimumSectionSize">
+                                        <number>40</number>
+                                    </attribute>
+                                    <attribute name="headerDefaultSectionSize">
+                                        <number>120</number>
+                                    </attribute>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <widget class="QMenuBar" name="menuBar">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>932</width>
+                <height>25</height>
+            </rect>
+        </property>
+        <widget class="QMenu" name="menuFile">
+            <property name="title">
+                <string>File</string>
+            </property>
+            <addaction name="actionExit"/>
+        </widget>
+        <widget class="QMenu" name="menuWindow">
+            <property name="title">
+                <string>Window</string>
+            </property>
+            <addaction name="actionOpen_in_new_window"/>
+            <addaction name="actionOpen_in_hex_viewer"/>
+            <addaction name="actionOpenPointer_in_hex_viewer"/>
+        </widget>
+        <addaction name="menuFile"/>
+        <addaction name="menuWindow"/>
+    </widget>
+    <widget class="QToolBar" name="tool_bar">
+        <property name="windowTitle">
+            <string>toolBar</string>
+        </property>
+        <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+        </property>
+        <attribute name="toolBarArea">
+            <enum>TopToolBarArea</enum>
+        </attribute>
+        <attribute name="toolBarBreak">
+            <bool>false</bool>
+        </attribute>
+        <addaction name="suspend_action"/>
+        <addaction name="resume_action"/>
+    </widget>
+    <action name="suspend_action">
+        <property name="icon">
+            <iconset theme="media-playback-pause">
+            <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="text">
+            <string>Suspend</string>
+        </property>
+        <property name="toolTip">
+            <string>Suspend DF so data can be accessed</string>
+        </property>
+    </action>
+    <action name="resume_action">
+        <property name="icon">
+            <iconset theme="media-playback-start">
+            <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="text">
+            <string>Resume</string>
+        </property>
+        <property name="toolTip">
+            <string>Resume DF</string>
+        </property>
+    </action>
+    <widget class="QStatusBar" name="statusBar"/>
+        <action name="actionExit">
+            <property name="text">
+                <string>Exit</string>
+            </property>
+        </action>
+        <action name="actionOpen_in_new_window">
+            <property name="text">
+                <string>Open in new window</string>
+            </property>
+        </action>
+        <action name="actionOpen_in_hex_viewer">
+            <property name="text">
+                <string>Open address in hex viewer</string>
+            </property>
+        </action>
+        <action name="actionOpenPointer_in_hex_viewer">
+            <property name="text">
+                <string>Open destination address in hex viewer</string>
+            </property>
+        </action>
+    </widget>
+    <layoutdefault spacing="6" margin="11"/>
+    <resources/>
+    <connections/>
 </ui>

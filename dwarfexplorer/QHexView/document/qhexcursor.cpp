@@ -40,23 +40,23 @@ const QHexPosition &QHexCursor::selectionEnd() const
     return m_selection;
 }
 
-const QHexPosition &QHexCursor::position() const { return m_position; }
-QHexCursor::InsertionMode QHexCursor::insertionMode() const { return m_insertionmode; }
-int QHexCursor::selectionLength() const { return this->selectionEnd() - this->selectionStart() + 1;  }
-int QHexCursor::currentLine() const { return m_position.line; }
-int QHexCursor::currentColumn() const { return m_position.column; }
-int QHexCursor::currentNibble() const { return m_position.nibbleindex; }
-int QHexCursor::selectionLine() const { return m_selection.line; }
-int QHexCursor::selectionColumn() const { return m_selection.column; }
-int QHexCursor::selectionNibble() const { return m_selection.nibbleindex;  }
+const QHexPosition&       QHexCursor::position()        const { return m_position; }
+QHexCursor::InsertionMode QHexCursor::insertionMode()   const { return m_insertionmode; }
+uint64_t                  QHexCursor::selectionLength() const { return this->selectionEnd() - this->selectionStart() + 1;  }
+uint64_t                  QHexCursor::currentLine()     const { return m_position.line; }
+uint64_t                  QHexCursor::currentColumn()   const { return m_position.column; }
+uint64_t                  QHexCursor::currentNibble()   const { return m_position.nibbleindex; }
+uint64_t                  QHexCursor::selectionLine()   const { return m_selection.line; }
+uint64_t                  QHexCursor::selectionColumn() const { return m_selection.column; }
+uint64_t                  QHexCursor::selectionNibble() const { return m_selection.nibbleindex;  }
 
-bool QHexCursor::isLineSelected(int line) const
+bool QHexCursor::isLineSelected(uint64_t line) const
 {
     if(!this->hasSelection())
         return false;
 
-    int first = std::min(m_position.line, m_selection.line);
-    int last = std::max(m_position.line, m_selection.line);
+    uint64_t first = std::min(m_position.line, m_selection.line);
+    uint64_t last  = std::max(m_position.line, m_selection.line);
 
     if((line < first) || (line > last))
         return false;
@@ -64,7 +64,10 @@ bool QHexCursor::isLineSelected(int line) const
     return true;
 }
 
-bool QHexCursor::hasSelection() const { return m_position != m_selection; }
+bool QHexCursor::hasSelection() const
+{
+    return m_position != m_selection;
+}
 
 void QHexCursor::clearSelection()
 {
@@ -75,7 +78,7 @@ void QHexCursor::clearSelection()
 void QHexCursor::moveTo(const QHexPosition &pos) { this->moveTo(pos.line, pos.column, pos.nibbleindex); }
 void QHexCursor::select(const QHexPosition &pos) { this->select(pos.line, pos.column, pos.nibbleindex); }
 
-void QHexCursor::moveTo(int line, int column, int nibbleindex)
+void QHexCursor::moveTo(uint64_t line, uint64_t column, uint64_t nibbleindex)
 {
     m_selection.line = line;
     m_selection.column = column;
@@ -84,7 +87,7 @@ void QHexCursor::moveTo(int line, int column, int nibbleindex)
     this->select(line, column, nibbleindex);
 }
 
-void QHexCursor::select(int line, int column, int nibbleindex)
+void QHexCursor::select(uint64_t line, uint64_t column, uint64_t nibbleindex)
 {
     m_position.line = line;
     m_position.column = column;
@@ -93,15 +96,18 @@ void QHexCursor::select(int line, int column, int nibbleindex)
     emit positionChanged();
 }
 
-void QHexCursor::moveTo(int offset)
+void QHexCursor::moveTo(uint64_t offset)
 {
-    int line = offset / HEX_LINE_LENGTH;
+    uint64_t line = offset / HEX_LINE_LENGTH;
     this->moveTo(line, offset - (line * HEX_LINE_LENGTH));
 }
 
-void QHexCursor::select(int length) { this->select(m_position.line, std::min(HEX_LINE_LAST_COLUMN, m_position.column + length - 1)); }
+void QHexCursor::select(uint64_t p_length)
+{
+    this->select(m_position.line, std::min(uint64_t(HEX_LINE_LAST_COLUMN), m_position.column + p_length - 1));
+}
 
-void QHexCursor::selectOffset(int offset, int length)
+void QHexCursor::selectOffset(uint64_t offset, uint64_t length)
 {
     this->moveTo(offset);
     this->select(length);

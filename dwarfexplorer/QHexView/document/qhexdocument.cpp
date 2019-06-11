@@ -22,16 +22,16 @@ QHexDocument::QHexDocument(QHexBuffer *buffer, QObject *parent): QObject(parent)
     connect(&m_undostack, &QUndoStack::canRedoChanged, this, &QHexDocument::canRedoChanged);
 }
 
-bool        QHexDocument::isEmpty() const { return m_buffer->isEmpty(); }
-bool        QHexDocument::atEnd() const { return m_cursor->position().offset() >= m_buffer->length(); }
-bool        QHexDocument::canUndo() const { return m_undostack.canUndo(); }
-bool        QHexDocument::canRedo() const { return m_undostack.canRedo(); }
-int         QHexDocument::length() const { return m_buffer->length(); }
-uint64_t    QHexDocument::baseAddress() const { return m_baseaddress; }
-QHexCursor* QHexDocument::cursor() const { return m_cursor; }
+bool          QHexDocument::isEmpty()     const { return m_buffer->isEmpty(); }
+bool          QHexDocument::atEnd()       const { return m_cursor->position().offset() >= m_buffer->length(); }
+bool          QHexDocument::canUndo()     const { return m_undostack.canUndo(); }
+bool          QHexDocument::canRedo()     const { return m_undostack.canRedo(); }
+uint64_t      QHexDocument::length()      const { return m_buffer->length(); }
+uint64_t      QHexDocument::baseAddress() const { return m_baseaddress; }
+QHexCursor*   QHexDocument::cursor()      const { return m_cursor; }
+QHexMetadata* QHexDocument::metadata()    const { return m_metadata; }
 
-QHexMetadata *QHexDocument::metadata() const { return m_metadata; }
-QByteArray QHexDocument::read(int offset, int len) { return m_buffer->read(offset, len); }
+QByteArray    QHexDocument::read(uint64_t offset, uint64_t len) { return m_buffer->read(offset, len); }
 
 void QHexDocument::removeSelection()
 {
@@ -50,7 +50,7 @@ QByteArray QHexDocument::selectedBytes() const
     return m_buffer->read(m_cursor->selectionStart().offset(), m_cursor->selectionLength());
 }
 
-char QHexDocument::at(int offset) const { return m_buffer->at(offset); }
+char QHexDocument::at(uint64_t offset) const { return m_buffer->at(offset); }
 
 void QHexDocument::setBaseAddress(uint64_t baseaddress)
 {
@@ -117,35 +117,38 @@ void QHexDocument::paste(bool hex)
         this->replace(m_cursor->position().offset(), data);
 }
 
-void QHexDocument::insert(int offset, uchar b)
+void QHexDocument::insert(uint64_t offset, uchar b)
 {
     this->insert(offset, QByteArray(1, b));
 }
 
-void QHexDocument::replace(int offset, uchar b)
+void QHexDocument::replace(uint64_t offset, uchar b)
 {
     this->replace(offset, QByteArray(1, b));
 }
 
-void QHexDocument::insert(int offset, const QByteArray &data)
+void QHexDocument::insert(uint64_t offset, const QByteArray &data)
 {
     m_undostack.push(new InsertCommand(m_buffer, offset, data));
     emit documentChanged();
 }
 
-void QHexDocument::replace(int offset, const QByteArray &data)
+void QHexDocument::replace(uint64_t offset, const QByteArray &data)
 {
     m_undostack.push(new ReplaceCommand(m_buffer, offset, data));
     emit documentChanged();
 }
 
-void QHexDocument::remove(int offset, int len)
+void QHexDocument::remove(uint64_t offset, uint64_t len)
 {
     m_undostack.push(new RemoveCommand(m_buffer, offset, len));
     emit documentChanged();
 }
 
-QByteArray QHexDocument::read(int offset, int len) const { return m_buffer->read(offset, len); }
+QByteArray QHexDocument::read(uint64_t p_offset, uint64_t p_len) const
+{
+    return m_buffer->read(p_offset, p_len);
+}
 
 bool QHexDocument::saveTo(QIODevice *device)
 {

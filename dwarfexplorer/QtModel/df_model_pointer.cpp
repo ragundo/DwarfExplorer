@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cctype>
 #include <QPixmap>
 #include <QListIterator>
 #include "../df_model.h"
@@ -29,7 +30,7 @@ bool DF_Model::insertRowsPointer(const QModelIndex& p_parent)
     if ((node->m_children.size() == 1) && (node->m_children[0]->m_df_type == DF_Type::None))
     {
         beginRemoveRows(p_parent, 0, 1);
-        node->m_children.remove(0);
+        node->m_children.erase(node->m_children.begin());
         endRemoveRows();
     }
 

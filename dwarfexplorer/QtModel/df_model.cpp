@@ -13,17 +13,33 @@ extern std::array<std::array<std::string, 3>, 32>&   get_bitfield_bits(DF_Type);
 extern std::string                                   to_hex(uint64_t p_dec);
 extern std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p_node);
 
-void DF_Model::set_root(NodeBase* p_node)
+void DF_Model::set_root(Node* p_node)
 {
     beginResetModel();
-    m_rootNode = p_node;
+    m_root_node = p_node;
     endResetModel();
 }
 
+DF_Model::~DF_Model()
+{
+    delete m_root_node;
+    m_root_node = nullptr;
+}
+
+void DF_Model::reset(rdf::NodeRoot* p_node_root = nullptr)
+{
+    if (m_root_node != nullptr)
+    {
+        beginResetModel();
+        delete m_root_node;
+        m_root_node = p_node_root;
+        endResetModel();
+    }
+}
 
 QModelIndex DF_Model::index(int p_row, int p_column, const QModelIndex& p_parent) const
 {
-    if (!m_rootNode || p_row < 0 || p_column < 0)
+    if (!m_root_node || p_row < 0 || p_column < 0)
         return QModelIndex();
     NodeBase* parentNode = nodeFromIndex(p_parent);
     if (parentNode->m_node_type == NodeType::Simple)
@@ -47,7 +63,12 @@ QModelIndex DF_Model::parent(const QModelIndex& p_child_index) const
     if (grandparentNode->m_node_type == NodeType::Simple)
         return QModelIndex();
     Node* l_gp_node = static_cast<Node*>(grandparentNode);
-    int row = l_gp_node->m_children.indexOf(parentNode);
+
+    auto it = std::find(l_gp_node->m_children.cbegin()
+                       ,l_gp_node->m_children.cend()
+                       , parentNode);
+    int row = std::distance(l_gp_node->m_children.cbegin(), it);
+    //int row = l_gp_node->m_children.indexOf(parentNode);
     return createIndex(row, 0, parentNode);
 }
 
@@ -61,7 +82,7 @@ int DF_Model::rowCount(const QModelIndex& p_parent) const
     if (parentNode->m_node_type == NodeType::Simple)
         return 0;
     auto l_parent = static_cast<Node*>(parentNode);
-    return l_parent->m_children.count();
+    return l_parent->m_children.size();
 }
 
 
@@ -73,7 +94,7 @@ NodeBase* DF_Model::nodeFromIndex(const QModelIndex& p_index) const
     }
     else
     {
-        return m_rootNode;
+        return m_root_node;
     }
 }
 
@@ -111,6 +132,9 @@ QString data_from_Refers_to(const NodeBase* p_node)
 
 QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
 {
+    if (m_root_node == nullptr)
+        return QVariant();
+
     const NodeBase* node = nodeFromIndex(p_index);
 
     if ((p_index.column() == 0) && (p_role == Qt::DecorationRole))
@@ -295,7 +319,7 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
                 n_pve->m_comment     = bitfield_data[i][2];
                 n_pve->m_value       = bitfield_value & mask;
                 n_pve->m_address     = bitfield_node->m_address;
-                bitfield_node->m_children.append(n_pve);
+                bitfield_node->m_children.push_back(n_pve);
             }
             mask = mask << 1;
         }
@@ -356,7 +380,7 @@ bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
             n_pve->m_comment     = "";
             n_pve->m_value       = bitfield_value & mask;
             n_pve->m_address     = reinterpret_cast<uint64_t>(pointer_df_flag_array);
-            df_flag_array_node->m_children.append(n_pve);
+            df_flag_array_node->m_children.push_back(n_pve);
         }
         mask = mask << 1;
         if ((i+1) % 8 == 0)
@@ -402,7 +426,7 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
         case rdf::RDF_Type::uint16_t:
         case rdf::RDF_Type::uint8_t:
         case rdf::RDF_Type::int8_t:
-            return !(p_node->m_refers_to.empty());
+            return false;
         case rdf::RDF_Type::Void:
             return false;
         case rdf::RDF_Type::Char:
@@ -458,9 +482,17 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
             break;
     }
 
+
     if (p_node->m_rdf_type == rdf::RDF_Type::Pointer)
     {
-        NodePointer* l_pointer = dynamic_cast<NodePointer*>(p_node);
+        NodePointer *l_pointer = dynamic_cast<NodePointer *>(p_node);
+        if (m_outdated)
+        {
+            if (l_pointer->m_children.size() > 0)
+                if (l_pointer->m_children[0]->m_node_type != NodeType::Dummy)
+                    return true;
+            return false;
+        }
         if (l_pointer->m_df_type == rdf::DF_Type::Void)
             return false;
         if (l_pointer->m_address == 0)
@@ -474,6 +506,14 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
     if (p_node->m_rdf_type == rdf::RDF_Type::Vector)
     {
         NodeVector* l_node = dynamic_cast<NodeVector*>(p_node);
+        if (m_outdated)
+        {
+            if (l_node->m_children.size() > 0)
+                if (l_node->m_children[0]->m_node_type != NodeType::Dummy)
+                    return true;
+            return false;
+        }
+
         if (get_vector_size(l_node) > 0)
             return true;
         if ((l_node->m_children.size() > 1) && (l_node->m_children[0]->m_node_type != NodeType::Dummy))
@@ -558,4 +598,9 @@ void DF_Model::insert_child_nodes(NodeBase* p_node, const QModelIndex& p_index)
         default:
             break;
     }
+}
+
+void DF_Model::set_outdated()
+{
+    m_outdated = true;
 }

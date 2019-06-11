@@ -7,9 +7,14 @@ class DF_Model  : public QAbstractItemModel
 {
     Q_OBJECT
 public:
-    DF_Model(QObject* p_parent = 0) : QAbstractItemModel(p_parent) {}
+    DF_Model(QObject* p_parent = 0)
+        : QAbstractItemModel(p_parent)
+        , m_root_node(nullptr)
+        , m_outdated(false)
+        {}
+    ~DF_Model();
 
-    void           set_root(rdf::NodeBase* p_node);
+    void           set_root(rdf::Node* p_node);
     QModelIndex    index(int p_row, int p_column, const QModelIndex& p_parent = QModelIndex()) const;
     QModelIndex    parent(const QModelIndex& p_child_index) const;
     int            rowCount(const QModelIndex& p_parent = QModelIndex()) const;
@@ -45,6 +50,9 @@ public:
 
     rdf::NodeBase* nodeFromIndex(const QModelIndex& p_index) const;
     std::size_t    get_vector_size(const rdf::NodeVector* p_node) const;
+
+    void           reset(rdf::NodeRoot* p_node_root);
+    void           set_outdated();
 private:
     QString        data_from_Type(const rdf::NodeBase* p_node) const;
     QString        data_from_Value(const rdf::NodeBase* p_node) const;
@@ -53,7 +61,8 @@ private:
     QString        Vector_data_from_Value(const rdf::NodeBase* p_node) const;
 
 private:
-    rdf::NodeBase* m_rootNode;
+    rdf::Node*     m_root_node;
+    bool           m_outdated;
 };
 
 #endif // DF_MODEL_H

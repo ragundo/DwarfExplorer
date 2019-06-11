@@ -41,15 +41,15 @@ class QHexView : public QAbstractScrollArea
         void movePrevious(bool select = false);
 
     private:
-        bool processMove(QHexCursor* cur, QKeyEvent* e);
-        bool processTextInput(QHexCursor* cur, QKeyEvent* e);
-        bool processAction(QHexCursor* cur, QKeyEvent* e);
-        void adjustScrollBars();
-        void renderLine(int line);
-        int firstVisibleLine() const;
-        int lastVisibleLine() const;
-        int visibleLines() const;
-        bool isLineVisible(int line) const;
+        bool     processMove(QHexCursor* cur, QKeyEvent* e);
+        bool     processTextInput(QHexCursor* cur, QKeyEvent* e);
+        bool     processAction(QHexCursor* cur, QKeyEvent* e);
+        void     adjustScrollBars();
+        void     renderLine(uint64_t line);
+        uint64_t firstVisibleLine() const;
+        uint64_t lastVisibleLine() const;
+        uint64_t visibleLines() const;
+        bool     isLineVisible(uint64_t line) const;
 
     private:
         QHexDocument* m_document;

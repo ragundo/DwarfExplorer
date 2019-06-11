@@ -2,13 +2,13 @@
 
 QHexMetadata::QHexMetadata(QObject *parent) : QObject(parent) { }
 
-const QHexLineMetadata &QHexMetadata::get(int line) const
+const QHexLineMetadata &QHexMetadata::get(uint64_t line) const
 {
     auto it = m_metadata.find(line);
     return it.value();
 }
 
-QString QHexMetadata::comments(int line) const
+QString QHexMetadata::comments(uint64_t line) const
 {
     if(!this->hasMetadata(line))
         return QString();
@@ -31,9 +31,9 @@ QString QHexMetadata::comments(int line) const
     return s;
 }
 
-bool QHexMetadata::hasMetadata(int line) const { return m_metadata.contains(line); }
+bool QHexMetadata::hasMetadata(uint64_t line) const { return m_metadata.contains(line); }
 
-void QHexMetadata::clear(int line)
+void QHexMetadata::clear(uint64_t line)
 {
     auto it = m_metadata.find(line);
 
@@ -50,27 +50,27 @@ void QHexMetadata::clear()
     emit metadataCleared();
 }
 
-void QHexMetadata::metadata(int line, int start, int length, const QColor &fgcolor, const QColor &bgcolor, const QString &comment)
+void QHexMetadata::metadata(uint64_t line, uint64_t start, uint64_t length, const QColor &fgcolor, const QColor &bgcolor, const QString &comment)
 {
     this->setMetadata({ line, start, length, fgcolor, bgcolor, comment});
 }
 
-void QHexMetadata::color(int line, int start, int length, const QColor &fgcolor, const QColor &bgcolor)
+void QHexMetadata::color(uint64_t line, uint64_t start, uint64_t length, const QColor &fgcolor, const QColor &bgcolor)
 {
     this->metadata(line, start, length, fgcolor, bgcolor, QString());
 }
 
-void QHexMetadata::foreground(int line, int start, int length, const QColor &fgcolor)
+void QHexMetadata::foreground(uint64_t line, uint64_t start, uint64_t length, const QColor &fgcolor)
 {
     this->color(line, start, length, fgcolor, QColor());
 }
 
-void QHexMetadata::background(int line, int start, int length, const QColor &bgcolor)
+void QHexMetadata::background(uint64_t line, uint64_t start, uint64_t length, const QColor &bgcolor)
 {
     this->color(line, start, length, QColor(), bgcolor);
 }
 
-void QHexMetadata::comment(int line, int start, int length, const QString &comment)
+void QHexMetadata::comment(uint64_t line, uint64_t start, uint64_t length, const QString &comment)
 {
     this->metadata(line, start, length, QColor(), QColor(), comment);
 }

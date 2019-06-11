@@ -6,6 +6,7 @@
 #include "buffer/qhexbuffer.h"
 #include "qhexmetadata.h"
 #include "qhexcursor.h"
+#include <cctype>
 
 class QHexDocument: public QObject
 {
@@ -19,37 +20,37 @@ class QHexDocument: public QObject
         bool          atEnd() const;
         bool          canUndo() const;
         bool          canRedo() const;
-        int           length() const;
+        uint64_t      length() const;
         uint64_t      baseAddress() const;
         QHexCursor*   cursor() const;
         QHexMetadata* metadata() const;
 
     public:
-        void removeSelection();
-        QByteArray read(int offset, int len = 0);
+        void       removeSelection();
+        QByteArray read(uint64_t offset, uint64_t len = 0);
         QByteArray selectedBytes() const;
-        char at(int offset) const;
-        void setBaseAddress(uint64_t baseaddress);
-        void sync();
+        char       at(uint64_t offset) const;
+        void       setBaseAddress(uint64_t baseaddress);
+        void       sync();
 
     public slots:
-        void undo();
-        void redo();
-        void cut(bool hex = false);
-        void copy(bool hex = false);
-        void paste(bool hex = false);
-        void insert(int offset, uchar b);
-        void replace(int offset, uchar b);
-        void insert(int offset, const QByteArray& data);
-        void replace(int offset, const QByteArray& data);
-        void remove(int offset, int len);
-        QByteArray read(int offset, int len) const;
-        bool saveTo(QIODevice* device);
+        void       undo();
+        void       redo();
+        void       cut(bool hex = false);
+        void       copy(bool hex = false);
+        void       paste(bool hex = false);
+        void       insert(uint64_t offset, uchar b);
+        void       replace(uint64_t offset, uchar b);
+        void       insert(uint64_t offset, const QByteArray& data);
+        void       replace(uint64_t offset, const QByteArray& data);
+        void       remove(uint64_t offset, uint64_t len);
+        QByteArray read(uint64_t offset, uint64_t len) const;
+        bool       saveTo(QIODevice* device);
 
     public:
         template<typename T> static QHexDocument* fromDevice(QIODevice* iodevice, QObject* parent = nullptr);
         template<typename T> static QHexDocument* fromFile(QString filename, QObject* parent = nullptr);
-        template<typename T> static QHexDocument* fromMemory(char *data, int size, QObject* parent = nullptr);
+        template<typename T> static QHexDocument* fromMemory(char *data, uint64_t size, QObject* parent = nullptr);
         template<typename T> static QHexDocument* fromMemory(const QByteArray& ba, QObject* parent = nullptr);
 
     signals:
@@ -95,11 +96,11 @@ template<typename T> QHexDocument* QHexDocument::fromFile(QString filename, QObj
     return doc;
 }
 
-template<typename T> QHexDocument* QHexDocument::fromMemory(char *data, int size, QObject *parent)
+template<typename T> QHexDocument* QHexDocument::fromMemory(char* p_data, uint64_t p_size, QObject* p_parent)
 {
     QHexBuffer* hexbuffer = new T();
-    hexbuffer->read(data, size);
-    return new QHexDocument(hexbuffer, parent);
+    hexbuffer->read(p_data, p_size);
+    return new QHexDocument(hexbuffer, p_parent);
 }
 
 template<typename T> QHexDocument* QHexDocument::fromMemory(const QByteArray& ba, QObject *parent)
