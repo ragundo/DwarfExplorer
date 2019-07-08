@@ -24,6 +24,8 @@ private Q_SLOTS:
     void on_actionOpen_in_new_window_triggered();
     void on_actionOpen_in_hex_viewer_triggered();
     void on_actionOpenPointer_in_hex_viewer_triggered();
+public slots:
+    void on_MainWindow_resumed();
 protected:
     void closeEvent(QCloseEvent* p_close_event);
 private:

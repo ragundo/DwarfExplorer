@@ -21,6 +21,7 @@ set(DWARFEXPLORER_SOURCES
     EventProxy.cpp
     MainWindow.cpp
     dfstructure_window.cpp
+    hexviewer_window.cpp
     QtModel/df_model.cpp
     QtModel/df_model_data_from_structure.cpp
     QtModel/df_model_data_from_type.cpp
@@ -30,6 +31,7 @@ set(DWARFEXPLORER_SOURCES
     QtModel/df_model_pointer.cpp
     QtModel/df_model_util.cpp
     QtModel/df_model_df_array.cpp
+    QtModel/df_proxy_model.cpp
     generated/offsets_cache.cpp
     generated/fill_nodes.cpp
     generated/fill_offsets.cpp
@@ -59,7 +61,9 @@ qt5_wrap_cpp(DWARFEXPLORER_MOC_SOURCES
     EventProxy.h
     MainWindow.h
     df_model.h
+    QtModel/df_proxy_model.h
     dfstructure_window.h
+    hexviewer_window.h
     QHexView/document/commands/hexcommand.h
     QHexView/document/commands/insertcommand.h
     QHexView/document/commands/removecommand.h
@@ -82,6 +86,6 @@ qt5_wrap_ui(DWARFEXPLORER_UI_SOURCES
 
 
 DFHACK_PLUGIN(dwarfexplorer
-    ${DWARFEXPLORER_SOURCES} ${DWARFEXPLORER_MOC_SOURCES} ${DWARFEXPLORER_UI_SOURCES}
+    ${DWARFEXPLORER_SOURCES} ${DWARFEXPLORER_MOC_SOURCES} ${DWARFEXPLORER_UI_SOURCES} ${RSCS}
     LINK_LIBRARIES Qt5::Core Qt5::Widgets)
 target_include_directories(dwarfexplorer PRIVATE ${CMAKE_CURRENT_BINARY_DIR})

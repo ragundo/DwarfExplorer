@@ -13,5 +13,7 @@
         <file>stripes.png</file>
         <file>t_small.png</file>
         <file>t2_small.png</file>
+        <file>Breezeicons-actions-22-media-playback-pause.png</file>
+        <file>Breezeicons-actions-22-media-playback-start.png</file>
     </qresource>
 </RCC>

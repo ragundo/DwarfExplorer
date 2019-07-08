@@ -3,16 +3,23 @@
 
 QHexBuffer::QHexBuffer(QObject *parent) : QObject(parent) { }
 
-uchar QHexBuffer::at(int idx) { return this->read(idx, 1)[0]; }
-bool QHexBuffer::isEmpty() const { return this->length() <= 0; }
+uchar QHexBuffer::at(uint64_t idx)
+{
+        return this->read(idx, 1)[0];
+}
 
-void QHexBuffer::replace(int offset, const QByteArray &data)
+bool QHexBuffer::isEmpty() const
+{
+    return this->length() <= 0;
+}
+
+void QHexBuffer::replace(uint64_t offset, const QByteArray &data)
 {
     this->remove(offset, data.length());
     this->insert(offset, data);
 }
 
-void QHexBuffer::read(char *data, int size)
+void QHexBuffer::read(char *data, uint64_t size)
 {
     QBuffer* buffer = new QBuffer(this);
     buffer->setData(data, size);
@@ -33,4 +40,3 @@ void QHexBuffer::read(const QByteArray &ba)
     buffer->setData(ba);
     this->read(buffer);
 }
-

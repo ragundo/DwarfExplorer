@@ -149,9 +149,10 @@ void MainWindow::on_suspend_action_triggered()
 //
 void MainWindow::on_resume_action_triggered()
 {
-    for (DFStructure_Window* child_window: m_child_window_list)
-        if (child_window != nullptr)
-            child_window->set_outdated();
+//    for (DFStructure_Window* child_window: m_child_window_list)
+//        if (child_window != nullptr)
+//            child_window->set_outdated();
+    emit resumed_signal();
 
     ui->stackedWidget->setCurrentIndex(0);
     ui->resume_action->setEnabled(false);
@@ -163,24 +164,6 @@ void MainWindow::on_resume_action_triggered()
         m_core_suspender = nullptr;
     }
     m_suspended = false;
-}
-
-//
-//---------------------------------------------------------------------------------------
-//
-void MainWindow::remove_child_window(DFStructure_Window *p_child_window)
-{
-    for (auto i = 0; i < m_child_window_list.size(); i++)
-        if (m_child_window_list[i] == p_child_window)
-            m_child_window_list[i] = nullptr;
-}
-
-//
-//---------------------------------------------------------------------------------------
-//
-void MainWindow::add_child_window(DFStructure_Window *p_child_window)
-{
-    m_child_window_list.push_back(p_child_window);
 }
 
 //
@@ -264,7 +247,7 @@ void MainWindow::on_actionOpen_in_new_window_triggered()
     new_window_name.append(n_root->m_path);
 
     // Add the window to the list of child windows
-    m_child_window_list.push_back(new_window);
+    //m_child_window_list.push_back(new_window);
 
     // Show the window
     new_window->setWindowTitle(QString::fromStdString(new_window_name));
@@ -292,24 +275,13 @@ void MainWindow::on_actionOpen_in_hex_viewer_triggered()
     // Get the selected node
     rdf::NodeBase* node = dynamic_cast<rdf::NodeBase*>(model->nodeFromIndex(selected_node));
 
-    auto the_data = reinterpret_cast<char*>(node->m_address);
-    auto the_size = std::min(std::size_t(4096), size_of_DF_Type(node->m_df_type));
-    the_size = std::max(std::size_t(4096), the_size);
+    uint64_t the_address = node->m_address;
+    auto     the_data    = reinterpret_cast<char*>(node->m_address);
+    auto     the_size    = std::min(std::size_t(4096), size_of_DF_Type(node->m_df_type));
+    the_size             = std::max(std::size_t(4096), the_size);
 
-    QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(the_data, the_size);
-    QHexView* hexview = new QHexView();
-    hexview->setDocument(document);
-    hexview->setReadOnly(true);
-    document->setBaseAddress(node->m_address);
-    //QHexViewer_Window* hex_window = new QHexViewer_Window(this);
-
-    //QHexView* hex_view = hex_window->get_hexview();
-    //hex_view->set_base_address(node->m_address);
-    //hex_view->setData(new QHexView::DataStorageArray(data));
-
-    // window title
-    auto the_number = QString::fromStdString(to_hex(node->m_address));
-    hexview->setWindowTitle("Memory viewer - " + the_number);
+    // Create the window and show it
+    auto hexview = new QHexViewer_Window(this, the_address, the_data, the_size);
     hexview->show();
 }
 
@@ -335,21 +307,14 @@ void MainWindow::on_actionOpenPointer_in_hex_viewer_triggered()
     rdf::NodeBase* node_base = model->nodeFromIndex(selected_node);
 
     uint64_t* pointer_address = reinterpret_cast<uint64_t*>(node_base->m_address);
-    uint64_t  item_address    = *pointer_address;
+    uint64_t  the_address     = *pointer_address;
 
-    auto the_data = reinterpret_cast<char*>(item_address);
+    auto the_data = reinterpret_cast<char*>(the_address);
     auto the_size = std::min(std::size_t(4096), size_of_DF_Type(node_base->m_df_type));
     the_size = std::max(std::size_t(4096), the_size);
-    QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(the_data, the_size);
-    document->setBaseAddress(item_address);
 
-    QHexView* hexview = new QHexView();
-    hexview->setDocument(document);
-    hexview->setReadOnly(true);
-
-    // Window tittle
-    auto the_number = QString::fromStdString(to_hex(item_address));
-    hexview->setWindowTitle("Memory viewer - " + the_number);
+    // Create the window and show it
+    auto hexview = new QHexViewer_Window(this, the_address, the_data, the_size);
     hexview->show();
 }
 
@@ -364,3 +329,7 @@ void MainWindow::closeEvent(QCloseEvent* p_event)
     // Do the thing
     p_event->accept();
 }
+
+//void MainWindow::resumed_signal()
+//{
+//}

@@ -9,13 +9,14 @@ class QMemoryBuffer : public QHexBuffer
 
     public:
         explicit QMemoryBuffer(QObject *parent = nullptr);
-        uchar at(int idx) override;
-        int length() const override;
-        void insert(int offset, const QByteArray& data) override;
-        void remove(int offset, int length) override;
-        QByteArray read(int offset, int length) override;
-        void read(QIODevice* device) override;
-        void write(QIODevice* device) override;
+
+        uchar      at(uint64_t idx) override;
+        uint64_t   length() const override;
+        void       insert(uint64_t offset, const QByteArray& data) override;
+        void       remove(uint64_t offset, uint64_t length) override;
+        QByteArray read(uint64_t offset, uint64_t length) override;
+        void       read(QIODevice* device) override;
+        void       write(QIODevice* device) override;
 
     private:
         QByteArray m_buffer;

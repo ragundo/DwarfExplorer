@@ -9,13 +9,18 @@ class QHexViewer_Window : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit QHexViewer_Window(QWidget *parent = 0, Qt::WindowFlags flags = 0);
-    //~QHexViewer_Window();
-    QHexView* get_hexview();
+    QHexViewer_Window(QWidget *parent, uint64_t p_address, char *p_data, std::size_t p_size);
+    ~QHexViewer_Window()
+    {
+        delete m_hexview;
+        m_hexview = nullptr;
+    }
+
+    QHexView *get_hexview();
+
 protected:
     QHexView* m_hexview;
 private Q_SLOTS:
-
+    void on_MainWindow_resumed();
 };
-
 #endif // HEXVIEWER_WINDOW_H

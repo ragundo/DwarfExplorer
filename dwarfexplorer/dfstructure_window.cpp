@@ -5,11 +5,14 @@
 #include "hexviewer_window.h"
 #include "QHexView/document/buffer/qmemorybuffer.h"
 #include "MainWindow.h"
+#include <QDebug>
 
 using namespace rdf;
 
 extern void        fill_globals(rdf::Node* p_node_parent);
 extern std::string to_hex(uint64_t p_dec);
+
+
 
 //
 //---------------------------------------------------------------------------------------
@@ -20,7 +23,11 @@ DFStructure_Window::DFStructure_Window(QWidget *parent) :
     , m_outdated(false)
 {
     ui->setupUi(this);
+
+    MainWindow *mw = dynamic_cast<MainWindow*>(parent);
+    bool ok = QObject::connect(mw, &MainWindow::resumed_signal, this, &DFStructure_Window::on_MainWindow_resumed);
 }
+
 
 //
 //---------------------------------------------------------------------------------------
@@ -50,10 +57,6 @@ void DFStructure_Window::set_outdated()
     QTreeView* treeview = ui->treeView;
     DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
     model->set_outdated();
-
-    QString title = this->windowTitle();
-    QString new_title = "OUTDATED - " + title;
-    this->setWindowTitle(new_title);
 }
 
 //
@@ -72,7 +75,7 @@ void DFStructure_Window::on_actionOpen_in_new_window_triggered()
     DFStructure_Window* new_window = new DFStructure_Window(main_window);
 
     // Add the window to the list of child windows
-    main_window->add_child_window(new_window);
+    //main_window->add_child_window(new_window);
 
     // Get the selected node index
     QTreeView* l_treeview = ui->treeView;
@@ -173,17 +176,14 @@ void DFStructure_Window::on_actionOpen_in_hex_viewer_triggered()
     // Get the selected node
     rdf::NodeBase* node = dynamic_cast<rdf::NodeBase*>(model->nodeFromIndex(selected_node));
 
-    auto the_data = reinterpret_cast<char*>(node->m_address);
-    QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(the_data, 1024);
-    QHexView* hexview = new QHexView();
-    hexview->setDocument(document);
+    uint64_t the_address = node->m_address;
+    char*    the_data    = reinterpret_cast<char*>(node->m_address);
+    std::size_t the_size = std::min(std::size_t(4096), size_of_DF_Type(node->m_df_type));
+    the_size = std::max(std::size_t(4096), the_size);
 
-    document->setBaseAddress(node->m_address);
-    hexview->setReadOnly(true);
-
-    // window title
-    auto the_number = QString::fromStdString(to_hex(node->m_address));
-    hexview->setWindowTitle("Memory viewer - " + the_number);
+    // Create the window and show it
+    MainWindow *mw = dynamic_cast<MainWindow *>(parent());
+    auto hexview = new QHexViewer_Window(mw, the_address, the_data, the_size);
     hexview->show();
 }
 
@@ -208,29 +208,31 @@ void DFStructure_Window::on_actionOpenPointer_in_hex_viewer_triggered()
     // Get the selected node
     rdf::NodeBase *node_base = model->nodeFromIndex(selected_node);
 
+    // Get the address and the size of the data to be visualized
     uint64_t *pointer_address = reinterpret_cast<uint64_t *>(node_base->m_address);
-    uint64_t item_address = *pointer_address;
-
-    auto the_data = reinterpret_cast<char*>(item_address);
-    auto the_size = std::min(std::size_t(4096), size_of_DF_Type(node_base->m_df_type));
+    uint64_t the_address = *pointer_address;
+    char *the_data = reinterpret_cast<char *>(the_address);
+    std::size_t the_size = std::min(std::size_t(4096), size_of_DF_Type(node_base->m_df_type));
     the_size = std::max(std::size_t(4096), the_size);
-    QHexDocument* document = QHexDocument::fromMemory<QMemoryBuffer>(the_data, the_size);
-    document->setBaseAddress(item_address);
 
-    QHexView *hexview = new QHexView();
-    hexview->setDocument(document);
-    hexview->setReadOnly(true);
-
-    // Window tittle
-    auto the_number = QString::fromStdString(to_hex(item_address));
-    hexview->setWindowTitle("Memory viewer - " + the_number);
+    // Create the window and show it
+    MainWindow* mw = dynamic_cast<MainWindow*>(parent());
+    auto hexview = new QHexViewer_Window(mw, the_address, the_data, the_size);
     hexview->show();
 }
 
 void DFStructure_Window::closeEvent (QCloseEvent* p_event)
 {
     // Do the thing
-    MainWindow* main_window = reinterpret_cast<MainWindow*>(parent());
-    main_window->remove_child_window(this);
     p_event->accept();
+}
+
+void DFStructure_Window::on_MainWindow_resumed()
+{
+    QString new_name = "OUTDATED -";
+    auto name = this->windowTitle();
+    new_name.append(name);
+    this->setWindowTitle(new_name);
+
+    set_outdated();
 }

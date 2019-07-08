@@ -21,11 +21,16 @@ std::string NodeBase::path()
         result.append(this->node_path_name());
     }
     else
-        for (auto i = path.size() - 1; i >= 0; i--)
+    {
+        int i = path.size() - 1;
+        while (i >= 0)
         {
             result.append(".");
-            result.append(path[i]->node_path_name());
+            NodeBase* node = path[i--];
+            if (node != nullptr)
+                result.append(node->node_path_name());
         }
+    }
     return result;
 }
 
