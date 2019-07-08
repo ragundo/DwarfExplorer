@@ -17,7 +17,7 @@ Features
 * Show the dfhack xml file where each structure is defined.
 * Stores opened df structures so you can track evolution of the structures in time (rather primitive right now).
 * Automatic decoding of enums, bitfields, coordinates and language names.
-* Decoding of derived classes showing its hyerarachy.
+* Decoding of derived classes showing its hierarachy.
 
 
 
@@ -54,13 +54,16 @@ First, download the plugin from github. You need to download the plugin for the 
 
 You will get four files:
 * `dwarfexplorer.plug.dll` (.so in Linux).
+* `qapplication.dll`
 * `Qt5Core.dll`
 * `Qt5Gui.dll`
 * `Qt5Widgets.dll`
 
-The first one is the dfhack plugin and you need to put in the folder `/hack/plugins` of your Dwarf Fortress directory.
+The first and second ones are the dfhack plugin and you need to put them in the folder `/hack/plugins` of your Dwarf Fortress directory.
+
 
 The other ones are Qt dynamic libraries that need to be installed in your Dwarf Fortress directory.
+
 
 How do I run the plugin?
 ----------------------
