@@ -52,18 +52,22 @@ How do I install the plugin?
 
 First, download the plugin from github. You need to download the plugin for the dfhack version that you have installed in your computer.
 
-You will get four files:
-* `dwarfexplorer.plug.dll` (.so in Linux).
+Extract all the files to the Dwarf Fortress installation directory.
+
+You will get six files:
+
+* `dwarfexplorer.plug.dll`
 * `qapplication.dll`
 * `Qt5Core.dll`
 * `Qt5Gui.dll`
 * `Qt5Widgets.dll`
+* `qwindows.dll`
 
-The first and second ones are the dfhack plugin and you need to put them in the folder `/hack/plugins` of your Dwarf Fortress directory.
+The first and second ones are the dfhack plugin libraries and are installed in the subdirectory `/hack/plugins`.
 
+Qt5Core, Qt5Gui and Qt5Widgets are installed in the Dwarf Fortress directory.
 
-The other ones are Qt dynamic libraries that need to be installed in your Dwarf Fortress directory.
-
+qwindows.dll is installed in a subdirectory called `platforms`.
 
 How do I run the plugin?
 ----------------------
