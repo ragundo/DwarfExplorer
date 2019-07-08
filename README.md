@@ -168,7 +168,7 @@ I hope this tool will encourage more people to do researching in Dwarf Fortress.
 You can try to find relationship between known and unknown data, discover new structures or fields, etc. Then, open a pull request in https://github.com/DFHack/df-structures
 for providing that valuable info to the community.
 
-When you starts digging into Dwarf Fortress internals, you wil be hooked. You can even try to advance to the next level and do some reverse engineering of Dwarf Fortress code using IDA or Ghidra.
+When you starts digging into Dwarf Fortress internals, you will be hooked. You can even try to advance to the next level and do some reverse engineering of Dwarf Fortress code using IDA or Ghidra.
 
 
 
