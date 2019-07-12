@@ -1,7 +1,7 @@
 /*
  * Copyright 2019 Rafael Agundo
  *
- * This file is part of dearfexplorer plugin for DFHack
+ * This file is part of dwarfexplorer plugin for DFHack
  * The code is based on Clement Vuchener qtlabors plugin for DFHack
  *
  * This program is free software: you can redistribute it and/or modify
