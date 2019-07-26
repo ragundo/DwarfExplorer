@@ -1,0 +1,4 @@
+[submodule "dfhack-qt"]
+	path = dfhack-qt
+	url = https://github.com/cvuchener/dfhack-qt
+	branch = master
