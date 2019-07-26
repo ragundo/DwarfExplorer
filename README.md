@@ -2,6 +2,8 @@ DwarfExplorer
 =============
 A DFHack plugin for browsing Dwarf Fortress internal structures (Windows/Linux).
 
+**NEW!!** Linux release available. See below for installing instructions.
+
 ![](images/dwarf_explorer.png)
 
 *NOTE:* Linux version is done but it will be out in a few weeks.
@@ -36,6 +38,7 @@ Dwarf Explorer has also some disavantadges:
   Use gm-editor for that task.
 
 
+---
 
 Qt DFHack plugins, what sorcery is this?
 ----------------------------------------
@@ -45,12 +48,15 @@ He found a method for loading Qt inside DFHack, so you can create multiplatform 
 
 Think about that. You get access to all the abilities that DFHack provides for plugins, and you can show all that information graphically!
 
-
+---
 
 How do I install the plugin?
 ----------------------
 
-First, download the plugin from github. You need to download the plugin for the dfhack version that you have installed in your computer.
+First, download the plugin from github. https://github.com/ragundo/DwarfExplorer/releases
+You need to download the plugin for the dfhack version that you have installed in your computer.
+
+### Windows
 
 Extract all the files to the Dwarf Fortress installation directory.
 
@@ -68,6 +74,26 @@ The first and second ones are the dfhack plugin libraries and are installed in t
 Qt5Core, Qt5Gui and Qt5Widgets are installed in the Dwarf Fortress directory.
 
 qwindows.dll is installed in a subdirectory called `platforms`.
+
+### Linux
+
+Install Qt using your package manager. For example, In Ubuntu type:
+
+`sudo apt-get install qt5-default`
+
+After that, extract all the files to the Dwarf Fortress installation directory.
+
+You will get two files:
+
+* `dwarfexplorer.plug.dll`
+* `qapplication.dll`
+
+These files are the dfhack plugin libraries and are installed in the subdirectory `/hack/plugins`.
+
+**NOTE:** If you are using the Lazy Newcomers Pack for Linux http://dffd.bay12games.com/file.php?id=12762 the you must download the plugin compiled for GCC4.8. If you install the GCC8 version of the plugin, it will not work
+
+---
+
 
 How do I run the plugin?
 ----------------------
@@ -100,6 +126,8 @@ You can now browse all the data, view memory, open new windows, etc. When you ar
 
 ![](images/6.gif)
 
+---
+
 Where's the data?
 ----------------------
 The most important global variable is world (df.global.world). This structure has all the data that your fortress uses. So, navigate to the bottom of the windows and locate world.
@@ -109,6 +137,8 @@ Then expand the tree and marvel about all the glorious Dwarf Fortress data.
 If your tree gets convoluted with too much data, you can also open any structure in a new window by selecting it and using the menu `Window->Open in new window`.
 
 ![](images/3.gif)
+
+---
 
 Some DF data examples
 ----------------------
@@ -128,8 +158,10 @@ Some DF data examples
 * What's the tallest mountain in the world?<br>
   Look for the field height in df.global.world.world_data.mountain_peaks vector
 
+---
+
 The memory viewer
-----------------------  
+----------------------
 As you browse Dwarf Fortress data, you will encounter a lot of unknow structures (data where we know the C++ type of the field but we don't know its meaning related to the game).
 
 For every field or df structure, you can always see the Dwarf Fortress process memory where this data resides. To do that, select the field and click in the menu `Window->Open address in hex viewer`.
@@ -138,7 +170,7 @@ A memory viewer will open at the address where the field is stored.
 
 ![](images/4.gif)
 
-For some C++ structures like vectors or pointers, the data has a another level of indirection. 
+For some C++ structures like vectors or pointers, the data has a another level of indirection.
 
 If you open a memory viewer for a vector you will not get the real data. This is because the internal structure of a vector consists of three pointers, being the first pointer the one that points to the data beginning.
 
@@ -146,24 +178,36 @@ To do this operation easier, just select `Window->Open destination address in he
 
 ![](images/5.gif)
 
+---
+
 Does it run with the LNP (Lazy Newcomers Pack)?
 ----------------------------------------------
 Yes as long as your LNP version matches the plugin version.
 
 If the plugin is compiled for DFHack 0.44.12, your LNP must be 0.44.12 also.
 
+Linux users of the LNP must use the plugin compiled with GCC4.8
+
+---
+
 No MacOS?
 ----------------------------------------------
 I've zero knowledge of Macs. In theory the code should be portable across operating systems (Qt strenght). But it seems that there are problems in that platform.
+
+---
 
 What happens when Dwarf Fortress / DFHack changes?
 ----------------------
 The plugin code is generated automatically from DFHack `codegen.out.xml` file using a tool.<br>
 Each time that a new DFHack version will be released, I'll update the plugin accordingly.
 
+---
+
 Bugs, suggestion, etc
 ----------------------
 You can use github issues or contact me by irc in `#dfhack` in freenode.
+
+---
 
 Closing thoughts
 ----------------------
@@ -177,9 +221,7 @@ for providing that valuable info to the community.
 
 When you starts digging into Dwarf Fortress internals, you will be hooked. You can even try to advance to the next level and do some reverse engineering of Dwarf Fortress code using IDA or Ghidra.
 
-
-
-
+---
 
 Thanks
 ----------------------
