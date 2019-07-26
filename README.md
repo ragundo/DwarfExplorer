@@ -85,7 +85,7 @@ After that, extract all the files to the Dwarf Fortress installation directory.
 You will get two files:
 
 * `dwarfexplorer.plug.so`
-* `qapplication.so`
+* `qapplication.plug.so`
 
 These files are the dfhack plugin libraries and are installed in the subdirectory `/hack/plugins`.
 
