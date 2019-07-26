@@ -6,7 +6,6 @@ A DFHack plugin for browsing Dwarf Fortress internal structures (Windows/Linux).
 
 ![](images/dwarf_explorer.png)
 
-*NOTE:* Linux version is done but it will be out in a few weeks.
 
 Features
 --------
