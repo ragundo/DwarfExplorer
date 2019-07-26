@@ -7,6 +7,8 @@
 
 #define HEX_UNPRINTABLE_CHAR     '.'
 
+extern QByteArray to_hex(QByteArray& p_qbytearray, char p_separator); // QHexDocument.cpp
+
 QHexRenderer::QHexRenderer(QHexDocument* document, const QFontMetrics &fontmetrics, QObject *parent) : QObject(parent), m_document(document), m_fontmetrics(fontmetrics)
 {
     m_selectedarea = QHexRenderer::HexArea;
@@ -135,7 +137,8 @@ QString QHexRenderer::hexString(uint64_t p_line, QByteArray* p_rawline) const
     if(p_rawline)
         *p_rawline = lrawline;
 
-    return lrawline.toHex(' ').toUpper() + " ";
+    auto result = to_hex(lrawline, ' ').toUpper();
+    return result + " ";
 }
 
 QString QHexRenderer::asciiString(uint64_t p_line, QByteArray* p_rawline) const

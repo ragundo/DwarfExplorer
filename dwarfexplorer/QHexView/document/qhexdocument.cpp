@@ -7,6 +7,30 @@
 #include <QBuffer>
 #include <QFile>
 
+
+QByteArray to_hex(QByteArray& p_qbytearray, char p_separator)
+{
+    auto size = p_qbytearray.size();
+    if ( size == 0)
+        return QByteArray();
+
+    const int length = p_separator ? (size * 3 - 1) : (size * 2);
+    QByteArray hex(length, Qt::Uninitialized);
+    char *hexData = hex.data();
+    const uchar *data = (const uchar *)p_qbytearray.data();
+
+    for (int i = 0, o = 0; i < size; ++i)
+    {
+        auto value = data[i] >> 4;
+        hexData[o++] = "0123456789abcdef"[value & 0xF];
+        value = data[i] & 0xf;
+        hexData[o++] = "0123456789abcdef"[value & 0xF];
+        if ((p_separator) && (o < length))
+            hexData[o++] = p_separator;
+    }
+    return hex;
+}
+
 QHexDocument::QHexDocument(QHexBuffer *buffer, QObject *parent): QObject(parent), m_baseaddress(0)
 {
     m_buffer = buffer;
@@ -93,7 +117,8 @@ void QHexDocument::copy(bool hex)
     QByteArray bytes = this->selectedBytes();
 
     if(hex)
-        bytes = bytes.toHex(' ').toUpper();
+        //bytes = bytes.toHex(' ').toUpper();
+        bytes = to_hex(bytes, ' ').toUpper();
 
     c->setText(bytes);
 }

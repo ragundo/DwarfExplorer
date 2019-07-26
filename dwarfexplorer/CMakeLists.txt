@@ -1,7 +1,6 @@
 project(dwarfexplorer LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
-#set(CMAKE_AUTORCC ON)
 
 if(UNIX)
 add_definitions(

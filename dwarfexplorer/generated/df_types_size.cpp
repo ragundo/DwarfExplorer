@@ -29,11 +29,11 @@
 #include <VersionInfo.h>
 #include "df_all.h"
 #include "DF_Types.h"
-#include <unordered_map>
+#include <map>
 
 namespace rdf
 {
-std::map<DF_Type,size_t> DF_types_size_table = 
+std::map<DF_Type,size_t> DF_types_size_table =
 {
 	{ DF_Type::abstract_building, sizeof(df::abstract_building) },
 	{ DF_Type::abstract_building__T_inhabitants, sizeof(df::abstract_building::T_inhabitants) },
@@ -4562,4 +4562,3 @@ std::string DF_Type_to_string(DF_Type p_type)
 	return "";
 }
 }
-
