@@ -19,43 +19,41 @@
  *
  */
 
-
-
-#include <cstdint>
-#include <DataDefs.h>
-#include <Core.h>
-#include <Console.h>
-#include <Export.h>
-#include <PluginManager.h>
-#include <RemoteServer.h>
-#include <RemoteClient.h>
-#include <VersionInfo.h>
-#include "df_all.h"
 #include "node.h"
 #include "offsets_cache.h"
+#include <Console.h>
+#include <Core.h>
+#include <DataDefs.h>
+#include <Export.h>
+#include <PluginManager.h>
+#include <RemoteClient.h>
+#include <RemoteServer.h>
+#include <VersionInfo.h>
+#include <cstdint>
 
-
-
-#include "QtModel/df_proxy_model.h"
 #include "MainWindow.h"
-#include "ui_MainWindow.h"
-#include "dfstructure_window.h"
-#include "ui_dfstructure_window.h"
-#include "hexviewer_window.h"
 #include "QHexView/document/buffer/qmemorybuffer.h"
-
+#include "QtModel/df_proxy_model.h"
+#include "dfstructure_window.h"
+#include "hexviewer_window.h"
+#include "ui_MainWindow.h"
+#include "ui_dfstructure_window.h"
 
 #include <Core.h>
 
-#include <QSettings>
-#include <QDirModel>
 #include "EventProxy.h"
+#include <QDirModel>
+#include <QSettings>
 
 #include <QDebug>
 
+//#include "df_all.h"
 
+#include <modules/Gui.h>
 
-static constexpr struct in_place_t {} in_place;
+static constexpr struct in_place_t
+{
+} in_place;
 
 extern void        fill_globals(rdf::Node* p_node_parent);
 extern std::string to_hex(uint64_t p_dec);
@@ -63,31 +61,28 @@ extern std::string to_hex(uint64_t p_dec);
 //
 //---------------------------------------------------------------------------------------
 //
-MainWindow::MainWindow(std::shared_ptr<EventProxy> &&proxy, QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-    , event_proxy(std::move(proxy))
-    , m_core_suspender(nullptr)
-    , m_suspended(false)
+MainWindow::MainWindow(std::shared_ptr<EventProxy>&& proxy, QWidget* parent)
+    : QMainWindow(parent), ui(new Ui::MainWindow), event_proxy(std::move(proxy)), m_core_suspender(nullptr), m_suspended(false)
 {
     ui->setupUi(this);
 
-//    connect(ui->treeView, &QTreeView::expanded,
-//            this, &MainWindow::updateUnitModel);
+    //    connect(ui->treeView, &QTreeView::expanded,
+    //            this, &MainWindow::updateUnitModel);
 
-//    connect(ui->filter_edit, &QLineEdit::textChanged,
-//            this, &MainWindow::on_filter_textChanged);
+    //    connect(ui->filter_edit, &QLineEdit::textChanged,
+    //            this, &MainWindow::on_filter_textChanged);
 
     setWindowTitle("DwarfExplorer - df.global");
 
-//    connect(event_proxy.get(), &EventProxy::mapLoaded,
-//            this, &MainWindow::updateUnitModel);
-//    connect(event_proxy.get(), &EventProxy::mapUnloaded,
-//            this, &MainWindow::clearUnitModel);
-//    connect(event_proxy.get(), &EventProxy::embarkScreenOpened,
-//            this, &MainWindow::updateUnitModel);
-//    connect(event_proxy.get(), &EventProxy::embarkScreenClosed,
-//            this, &MainWindow::updateUnitModel);
+    //    connect(event_proxy.get(), &EventProxy::mapLoaded,
+    //            this, &MainWindow::updateUnitModel);
+    //    connect(event_proxy.get(), &EventProxy::mapUnloaded,
+    //            this, &MainWindow::clearUnitModel);
+    //    connect(event_proxy.get(), &EventProxy::embarkScreenOpened,
+    //            this, &MainWindow::updateUnitModel);
+    //    connect(event_proxy.get(), &EventProxy::embarkScreenClosed,
+    //            this, &MainWindow::updateUnitModel);
+    connect(ui->actionLocate_in_fortress, SIGNAL(triggered()), this, SLOT(on_actionLocate_in_fortress()));
 }
 
 //
@@ -118,7 +113,6 @@ void MainWindow::on_suspend_action_triggered()
     ui->suspend_action->setEnabled(false);
     ui->resume_action->setEnabled(true);
 
-
     if (m_model == nullptr)
     {
         // Model
@@ -131,7 +125,7 @@ void MainWindow::on_suspend_action_triggered()
         //m_proxy_model->setSourceModel(m_model.get());
         //m_proxy_model->setRecursiveFilteringEnabled(true);
 
-        auto node = new rdf::NodeRoot;
+        auto node    = new rdf::NodeRoot;
         node->m_path = "df.global";
         fill_globals(node);
         m_model->set_root(node);
@@ -139,7 +133,7 @@ void MainWindow::on_suspend_action_triggered()
     }
     else
     {
-        auto new_node = new rdf::NodeRoot;
+        auto new_node    = new rdf::NodeRoot;
         new_node->m_path = "df.global";
         fill_globals(new_node);
         m_model->reset(new_node);
@@ -151,9 +145,9 @@ void MainWindow::on_suspend_action_triggered()
 //
 void MainWindow::on_resume_action_triggered()
 {
-//    for (DFStructure_Window* child_window: m_child_window_list)
-//        if (child_window != nullptr)
-//            child_window->set_outdated();
+    //    for (DFStructure_Window* child_window: m_child_window_list)
+    //        if (child_window != nullptr)
+    //            child_window->set_outdated();
     emit resumed_signal();
 
     ui->stackedWidget->setCurrentIndex(0);
@@ -176,16 +170,16 @@ void MainWindow::on_treeView_expanded(const QModelIndex& p_index)
     using namespace rdf;
     this->setCursor(Qt::WaitCursor);
 
-    auto l_model =  ui->treeView->model();
+    auto      l_model        = ui->treeView->model();
     DF_Model* l_global_model = static_cast<DF_Model*>(l_model);
-    NodeBase* l_node_base = l_global_model->nodeFromIndex(p_index);
-    Node* l_node = dynamic_cast<Node*>(l_node_base);
+    NodeBase* l_node_base    = l_global_model->nodeFromIndex(p_index);
+    Node*     l_node         = dynamic_cast<Node*>(l_node_base);
     if (l_node != nullptr)
         if ((l_node->m_children.size() == 0) ||
-                (l_node->m_node_type == rdf::NodeType::Vector) ||
-                (l_node->m_node_type == rdf::NodeType::Array) ||
-                (l_node->m_node_type == rdf::NodeType::Pointer))
-                    l_global_model->insert_child_nodes(l_node_base, p_index);
+            (l_node->m_node_type == rdf::NodeType::Vector) ||
+            (l_node->m_node_type == rdf::NodeType::Array) ||
+            (l_node->m_node_type == rdf::NodeType::Pointer))
+            l_global_model->insert_child_nodes(l_node_base, p_index);
     this->setCursor(Qt::ArrowCursor);
 }
 
@@ -203,7 +197,7 @@ void MainWindow::on_actionOpen_in_new_window_triggered()
     DFStructure_Window* new_window = new DFStructure_Window(this);
 
     // Get the selected node index
-    QTreeView* treeview = ui->treeView;
+    QTreeView*      treeview       = ui->treeView;
     QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
     if (selected_nodes.size() == 0)
         return;
@@ -222,13 +216,13 @@ void MainWindow::on_actionOpen_in_new_window_triggered()
     DF_Model* new_model = new DF_Model(new_window);
 
     // Create the root node for this subtree
-    NodeRoot* n_root         = new NodeRoot;
+    NodeRoot* n_root = new NodeRoot;
     // This is not "the real root"
-    n_root->m_parent     = nullptr;
+    n_root->m_parent      = nullptr;
     std::string path_name = node->path();
     path_name.append(".");
     path_name.append(node->m_field_name);
-    n_root->m_path       =  path_name;
+    n_root->m_path       = path_name;
     n_root->m_field_name = node->m_field_name;
     n_root->m_rdf_type   = node->m_rdf_type;
     n_root->m_df_type    = node->m_df_type;
@@ -265,7 +259,7 @@ void MainWindow::on_actionOpen_in_hex_viewer_triggered()
         return;
 
     // Get the selected node index
-    QTreeView* treeview = ui->treeView;
+    QTreeView*      treeview       = ui->treeView;
     QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
     if (selected_nodes.size() == 0)
         return;
@@ -296,7 +290,7 @@ void MainWindow::on_actionOpenPointer_in_hex_viewer_triggered()
         return;
 
     // Get the selected node index
-    QTreeView* treeview = ui->treeView;
+    QTreeView*      treeview       = ui->treeView;
     QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
     if (selected_nodes.size() == 0)
         return;
@@ -313,18 +307,55 @@ void MainWindow::on_actionOpenPointer_in_hex_viewer_triggered()
 
     auto the_data = reinterpret_cast<char*>(the_address);
     auto the_size = std::min(std::size_t(4096), size_of_DF_Type(node_base->m_df_type));
-    the_size = std::max(std::size_t(4096), the_size);
+    the_size      = std::max(std::size_t(4096), the_size);
 
     // Create the window and show it
     auto hexview = new QHexViewer_Window(this, the_address, the_data, the_size);
     hexview->show();
 }
 
-void MainWindow::on_filter_textChanged(const QString &arg1)
+void MainWindow::on_filter_textChanged(const QString& arg1)
 {
     //m_proxy_model->setFilterFixedString(arg1);
 }
 
+void MainWindow::on_actionLocate_in_fortress()
+{
+    if (!m_suspended)
+        return;
+
+    using namespace rdf;
+
+    // Get the selected node index
+    QTreeView*      treeview       = ui->treeView;
+    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    if (selected_nodes.size() == 0)
+        return;
+    QModelIndex selected_node = selected_nodes.first();
+
+    // Get the model
+    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+
+    // Get the selected node
+    Node* node = dynamic_cast<Node*>(model->nodeFromIndex(selected_node));
+
+    if (node->m_df_type == rdf::DF_Type::coord)
+    {
+        df::coord* l_coord = (df::coord*)(node->m_address);
+        if (l_coord)
+        {
+            if ((l_coord->x != -3000) && (l_coord->y != -3000) && (l_coord->z != -3000))
+            {
+                // Center window and cursor
+                DFHack::Gui::revealInDwarfmodeMap(*l_coord, true);
+
+                DFHack::Gui::setCursorCoords(l_coord->x,
+                                             l_coord->y,
+                                             l_coord->z);
+            }
+        }
+    }
+}
 
 void MainWindow::closeEvent(QCloseEvent* p_event)
 {

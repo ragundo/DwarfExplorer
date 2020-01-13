@@ -19,35 +19,33 @@
  */
 
 #include "dfstructure_window.h"
-#include "ui_dfstructure_window.h"
-#include "df_model.h"
-#include "node.h"
-#include "hexviewer_window.h"
-#include "QHexView/document/buffer/qmemorybuffer.h"
 #include "MainWindow.h"
+#include "QHexView/document/buffer/qmemorybuffer.h"
+#include "df_model.h"
+#include "hexviewer_window.h"
+#include "node.h"
+#include "ui_dfstructure_window.h"
 #include <QDebug>
+
+#include <modules/Gui.h>
 
 using namespace rdf;
 
 extern void        fill_globals(rdf::Node* p_node_parent);
 extern std::string to_hex(uint64_t p_dec);
 
-
-
 //
 //---------------------------------------------------------------------------------------
 //
-DFStructure_Window::DFStructure_Window(QWidget *parent) :
-    QMainWindow(parent)
-    , ui(new Ui::DFStructure_Window)
-    , m_outdated(false)
+DFStructure_Window::DFStructure_Window(QWidget* parent)
+    : QMainWindow(parent), ui(new Ui::DFStructure_Window), m_outdated(false)
 {
     ui->setupUi(this);
 
-    MainWindow *mw = dynamic_cast<MainWindow*>(parent);
-    bool ok = QObject::connect(mw, &MainWindow::resumed_signal, this, &DFStructure_Window::on_MainWindow_resumed);
+    MainWindow* mw = dynamic_cast<MainWindow*>(parent);
+    bool        ok = QObject::connect(mw, &MainWindow::resumed_signal, this, &DFStructure_Window::on_MainWindow_resumed);
+    connect(ui->actionLocate_in_fortress, SIGNAL(triggered()), this, SLOT(on_actionLocate_in_fortress()));
 }
-
 
 //
 //---------------------------------------------------------------------------------------
@@ -56,7 +54,6 @@ DFStructure_Window::~DFStructure_Window()
 {
     delete ui;
 }
-
 
 //
 //---------------------------------------------------------------------------------------
@@ -75,7 +72,7 @@ void DFStructure_Window::set_outdated()
 
     // Get the model
     QTreeView* treeview = ui->treeView;
-    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+    DF_Model*  model    = dynamic_cast<DF_Model*>(treeview->model());
     model->set_outdated();
 }
 
@@ -98,7 +95,7 @@ void DFStructure_Window::on_actionOpen_in_new_window_triggered()
     //main_window->add_child_window(new_window);
 
     // Get the selected node index
-    QTreeView* l_treeview = ui->treeView;
+    QTreeView*      l_treeview       = ui->treeView;
     QModelIndexList l_selected_nodes = l_treeview->selectionModel()->selectedIndexes();
     if (l_selected_nodes.size() == 0)
         return;
@@ -117,7 +114,7 @@ void DFStructure_Window::on_actionOpen_in_new_window_triggered()
     DF_Model* l_new_model = new DF_Model(new_window);
 
     // Create the root node for this subtree
-    NodeRoot* n_root         = new NodeRoot;
+    NodeRoot* n_root = new NodeRoot;
 
     // This is not "the real root"
     std::string path_name = l_node->get_root_node()->m_path;
@@ -154,7 +151,7 @@ void DFStructure_Window::on_actionOpen_in_new_window_triggered()
 //
 //---------------------------------------------------------------------------------------
 //
-void DFStructure_Window::on_treeView_expanded(const QModelIndex &p_index)
+void DFStructure_Window::on_treeView_expanded(const QModelIndex& p_index)
 {
     if (m_outdated)
         return;
@@ -162,16 +159,16 @@ void DFStructure_Window::on_treeView_expanded(const QModelIndex &p_index)
     using namespace rdf;
     this->setCursor(Qt::WaitCursor);
 
-    auto l_model =  ui->treeView->model();
+    auto      l_model        = ui->treeView->model();
     DF_Model* l_global_model = static_cast<DF_Model*>(l_model);
-    NodeBase* l_node_base = l_global_model->nodeFromIndex(p_index);
-    Node* l_node = dynamic_cast<Node*>(l_node_base);
+    NodeBase* l_node_base    = l_global_model->nodeFromIndex(p_index);
+    Node*     l_node         = dynamic_cast<Node*>(l_node_base);
     if (l_node != nullptr)
         if ((l_node->m_children.size() == 0) ||
-                (l_node->m_node_type == rdf::NodeType::Vector) ||
-                (l_node->m_node_type == rdf::NodeType::Array) ||
-                (l_node->m_node_type == rdf::NodeType::Pointer))
-                    l_global_model->insert_child_nodes(l_node_base, p_index);
+            (l_node->m_node_type == rdf::NodeType::Vector) ||
+            (l_node->m_node_type == rdf::NodeType::Array) ||
+            (l_node->m_node_type == rdf::NodeType::Pointer))
+            l_global_model->insert_child_nodes(l_node_base, p_index);
     this->setCursor(Qt::ArrowCursor);
 }
 
@@ -184,7 +181,7 @@ void DFStructure_Window::on_actionOpen_in_hex_viewer_triggered()
         return;
 
     // Get the selected node index
-    QTreeView* treeview = ui->treeView;
+    QTreeView*      treeview       = ui->treeView;
     QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
     if (selected_nodes.size() == 0)
         return;
@@ -196,14 +193,14 @@ void DFStructure_Window::on_actionOpen_in_hex_viewer_triggered()
     // Get the selected node
     rdf::NodeBase* node = dynamic_cast<rdf::NodeBase*>(model->nodeFromIndex(selected_node));
 
-    uint64_t the_address = node->m_address;
-    char*    the_data    = reinterpret_cast<char*>(node->m_address);
-    std::size_t the_size = std::min(std::size_t(4096), size_of_DF_Type(node->m_df_type));
-    the_size = std::max(std::size_t(4096), the_size);
+    uint64_t    the_address = node->m_address;
+    char*       the_data    = reinterpret_cast<char*>(node->m_address);
+    std::size_t the_size    = std::min(std::size_t(4096), size_of_DF_Type(node->m_df_type));
+    the_size                = std::max(std::size_t(4096), the_size);
 
     // Create the window and show it
-    MainWindow *mw = dynamic_cast<MainWindow *>(parent());
-    auto hexview = new QHexViewer_Window(mw, the_address, the_data, the_size);
+    MainWindow* mw      = dynamic_cast<MainWindow*>(parent());
+    auto        hexview = new QHexViewer_Window(mw, the_address, the_data, the_size);
     hexview->show();
 }
 
@@ -216,32 +213,32 @@ void DFStructure_Window::on_actionOpenPointer_in_hex_viewer_triggered()
         return;
 
     // Get the selected node index
-    QTreeView *treeview = ui->treeView;
+    QTreeView*      treeview       = ui->treeView;
     QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
     if (selected_nodes.size() == 0)
         return;
     QModelIndex selected_node = selected_nodes.first();
 
     // Get the model
-    DF_Model *model = dynamic_cast<DF_Model *>(treeview->model());
+    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
 
     // Get the selected node
-    rdf::NodeBase *node_base = model->nodeFromIndex(selected_node);
+    rdf::NodeBase* node_base = model->nodeFromIndex(selected_node);
 
     // Get the address and the size of the data to be visualized
-    uint64_t *pointer_address = reinterpret_cast<uint64_t *>(node_base->m_address);
-    uint64_t the_address = *pointer_address;
-    char *the_data = reinterpret_cast<char *>(the_address);
-    std::size_t the_size = std::min(std::size_t(4096), size_of_DF_Type(node_base->m_df_type));
-    the_size = std::max(std::size_t(4096), the_size);
+    uint64_t*   pointer_address = reinterpret_cast<uint64_t*>(node_base->m_address);
+    uint64_t    the_address     = *pointer_address;
+    char*       the_data        = reinterpret_cast<char*>(the_address);
+    std::size_t the_size        = std::min(std::size_t(4096), size_of_DF_Type(node_base->m_df_type));
+    the_size                    = std::max(std::size_t(4096), the_size);
 
     // Create the window and show it
-    MainWindow* mw = dynamic_cast<MainWindow*>(parent());
-    auto hexview = new QHexViewer_Window(mw, the_address, the_data, the_size);
+    MainWindow* mw      = dynamic_cast<MainWindow*>(parent());
+    auto        hexview = new QHexViewer_Window(mw, the_address, the_data, the_size);
     hexview->show();
 }
 
-void DFStructure_Window::closeEvent (QCloseEvent* p_event)
+void DFStructure_Window::closeEvent(QCloseEvent* p_event)
 {
     // Do the thing
     p_event->accept();
@@ -250,9 +247,44 @@ void DFStructure_Window::closeEvent (QCloseEvent* p_event)
 void DFStructure_Window::on_MainWindow_resumed()
 {
     QString new_name = "OUTDATED -";
-    auto name = this->windowTitle();
+    auto    name     = this->windowTitle();
     new_name.append(name);
     this->setWindowTitle(new_name);
 
     set_outdated();
+}
+
+void DFStructure_Window::on_actionLocate_in_fortress()
+{
+    using namespace rdf;
+
+    // Get the selected node index
+    QTreeView*      treeview       = ui->treeView;
+    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    if (selected_nodes.size() == 0)
+        return;
+    QModelIndex selected_node = selected_nodes.first();
+
+    // Get the model
+    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+
+    // Get the selected node
+    Node* node = dynamic_cast<Node*>(model->nodeFromIndex(selected_node));
+
+    if (node->m_df_type == rdf::DF_Type::coord)
+    {
+        df::coord* l_coord = (df::coord*)(node->m_address);
+        if (l_coord)
+        {
+            if ((l_coord->x != -3000) && (l_coord->y != -3000) && (l_coord->z != -3000))
+            {
+                // Center window and cursor
+                DFHack::Gui::revealInDwarfmodeMap(*l_coord, true);
+
+                DFHack::Gui::setCursorCoords(l_coord->x,
+                                             l_coord->y,
+                                             l_coord->z);
+            }
+        }
+    }
 }

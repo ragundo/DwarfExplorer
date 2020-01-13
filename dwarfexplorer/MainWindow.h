@@ -27,48 +27,51 @@
 #include <QCloseEvent>
 #include <QSortFilterProxyModel>
 
+#include "QtModel/df_proxy_model.h"
+#include "df_model.h"
 #include <memory>
 #include <utility>
 #include <vector>
-#include "df_model.h"
-#include "QtModel/df_proxy_model.h"
 
-    class EventProxy;
+class EventProxy;
 
-    namespace Ui
-    {
-        class MainWindow;
-    }
+namespace Ui
+{
+class MainWindow;
+}
 
-    class DFStructure_Window;
+class DFStructure_Window;
 
-    class MainWindow: public QMainWindow
-    {
-        Q_OBJECT
-    public:
-        explicit MainWindow(std::shared_ptr<EventProxy> &&proxy, QWidget *parent = nullptr);
-        ~MainWindow() override;
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+  public:
+    explicit MainWindow(std::shared_ptr<EventProxy>&& proxy, QWidget* parent = nullptr);
+    ~MainWindow() override;
 
-    signals:
-        void resumed_signal();
+  signals:
+    void resumed_signal();
 
-    private slots:
-        void on_suspend_action_triggered();
-        void on_resume_action_triggered();
-        void on_treeView_expanded(const QModelIndex& p_index);
-        void on_actionOpen_in_new_window_triggered();
-        void on_actionOpen_in_hex_viewer_triggered();
-        void on_actionOpenPointer_in_hex_viewer_triggered();
-        void on_filter_textChanged(const QString &arg1);
-    protected:
-        void closeEvent(QCloseEvent* p_close_event);
-    private:
-        std::unique_ptr<Ui::MainWindow>        ui;
-        std::shared_ptr<EventProxy>            event_proxy;
-        std::unique_ptr<DF_Model>              m_model;
-        std::unique_ptr<QSortFilterProxyModel> m_proxy_model;
-        DFHack::CoreSuspender*                 m_core_suspender;
-        bool                                   m_suspended;
-    };
+  private slots:
+    void on_suspend_action_triggered();
+    void on_resume_action_triggered();
+    void on_treeView_expanded(const QModelIndex& p_index);
+    void on_actionOpen_in_new_window_triggered();
+    void on_actionOpen_in_hex_viewer_triggered();
+    void on_actionOpenPointer_in_hex_viewer_triggered();
+    void on_filter_textChanged(const QString& arg1);
+    void on_actionLocate_in_fortress();
+
+  protected:
+    void closeEvent(QCloseEvent* p_close_event);
+
+  private:
+    std::unique_ptr<Ui::MainWindow>        ui;
+    std::shared_ptr<EventProxy>            event_proxy;
+    std::unique_ptr<DF_Model>              m_model;
+    std::unique_ptr<QSortFilterProxyModel> m_proxy_model;
+    DFHack::CoreSuspender*                 m_core_suspender;
+    bool                                   m_suspended;
+};
 
 #endif
