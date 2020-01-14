@@ -65,37 +65,44 @@
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>932</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>932</width>
+        <height>25</height>
+      </rect>
     </property>
-    <addaction name="actionExit"/>
-   </widget>
-   <widget class="QMenu" name="menuWindow">
-    <property name="title">
-     <string>Window</string>
-    </property>
-    <addaction name="actionOpen_in_new_window"/>
-    <addaction name="actionOpen_in_hex_viewer"/>
-    <addaction name="actionOpenPointer_in_hex_viewer"/>
-   </widget>
-   <widget class="QMenu" name="menuCoordinate">
-       <property name="title">
-     <string>Coordinate</string>
-    </property>
-    <addaction name="actionLocate_in_fortress"/>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuWindow"/>
-   <addaction name="menuCoordinate"/>
+    <widget class="QMenu" name="menuFile">
+      <property name="title">
+        <string>File</string>
+      </property>
+      <addaction name="actionExit"/>
+    </widget>
+    <widget class="QMenu" name="menuWindow">
+      <property name="title">
+        <string>Window</string>
+      </property>
+      <addaction name="actionOpen_in_new_window"/>
+      <addaction name="actionOpen_in_hex_viewer"/>
+      <addaction name="actionOpenPointer_in_hex_viewer"/>
+    </widget>
+    <widget class="QMenu" name="menuCoordinate">
+      <property name="title">
+        <string>Coordinate</string>
+      </property>
+      <addaction name="actionLocate_in_fortress"/>
+    </widget>
+    <widget class="QMenu" name="menuBuilding">
+      <property name="title">
+        <string>Building</string>
+      </property>
+      <addaction name="actionLocate_building_in_fortress"/>
+    </widget>
+    <addaction name="menuFile"/>
+    <addaction name="menuWindow"/>
+    <addaction name="menuCoordinate"/>
+    <addaction name="menuBuilding"/>
   </widget>
   <widget class="QToolBar" name="tool_bar">
    <property name="windowTitle">
@@ -163,6 +170,11 @@
    </property>
   </action>
   <action name="actionLocate_in_fortress">
+   <property name="text">
+    <string>Locate in fortress</string>
+   </property>
+  </action>
+  <action name="actionLocate_building_in_fortress">
    <property name="text">
     <string>Locate in fortress</string>
    </property>

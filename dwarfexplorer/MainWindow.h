@@ -61,6 +61,7 @@ class MainWindow : public QMainWindow
     void on_actionOpenPointer_in_hex_viewer_triggered();
     void on_filter_textChanged(const QString& arg1);
     void on_actionLocate_in_fortress();
+    void on_actionLocate_building_in_fortress();
 
   protected:
     void closeEvent(QCloseEvent* p_close_event);

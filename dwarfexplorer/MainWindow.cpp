@@ -48,7 +48,7 @@
 #include <QDebug>
 
 //#include "df_all.h"
-
+#include <df/building.h>
 #include <modules/Gui.h>
 
 static constexpr struct in_place_t
@@ -83,6 +83,7 @@ MainWindow::MainWindow(std::shared_ptr<EventProxy>&& proxy, QWidget* parent)
     //    connect(event_proxy.get(), &EventProxy::embarkScreenClosed,
     //            this, &MainWindow::updateUnitModel);
     connect(ui->actionLocate_in_fortress, SIGNAL(triggered()), this, SLOT(on_actionLocate_in_fortress()));
+    connect(ui->actionLocate_building_in_fortress, SIGNAL(triggered()), this, SLOT(on_actionLocate_building_in_fortress()));
 }
 
 //
@@ -366,3 +367,181 @@ void MainWindow::closeEvent(QCloseEvent* p_event)
 //void MainWindow::resumed_signal()
 //{
 //}
+
+// TODO cambiar esto a switch
+bool is_building_subtype(rdf::DF_Type p_df_type)
+{
+    using namespace rdf;
+
+    if (p_df_type == DF_Type::building_stockpilest)
+        return true;
+    if (p_df_type == DF_Type::building_civzonest)
+        return true;
+    if (p_df_type == DF_Type::building_actual)
+        return true;
+    if (p_df_type == DF_Type::building_furnacest)
+        return true;
+    if (p_df_type == DF_Type::building_workshopst)
+        return true;
+    if (p_df_type == DF_Type::building_animaltrapst)
+        return true;
+    if (p_df_type == DF_Type::building_archerytargetst)
+        return true;
+    if (p_df_type == DF_Type::building_armorstandst)
+        return true;
+    if (p_df_type == DF_Type::building_bars_verticalst)
+        return true;
+    if (p_df_type == DF_Type::building_bars_floorst)
+        return true;
+    if (p_df_type == DF_Type::building_bedst)
+        return true;
+    if (p_df_type == DF_Type::building_bookcasest)
+        return true;
+    if (p_df_type == DF_Type::building_boxst)
+        return true;
+    if (p_df_type == DF_Type::building_bridgest)
+        return true;
+    if (p_df_type == DF_Type::building_cabinetst)
+        return true;
+    if (p_df_type == DF_Type::building_cagest)
+        return true;
+    if (p_df_type == DF_Type::building_chainst)
+        return true;
+    if (p_df_type == DF_Type::building_chairst)
+        return true;
+    if (p_df_type == DF_Type::building_coffinst)
+        return true;
+    if (p_df_type == DF_Type::building_constructionst)
+        return true;
+    if (p_df_type == DF_Type::building_display_furniturest)
+        return true;
+    if (p_df_type == DF_Type::building_doorst)
+        return true;
+    if (p_df_type == DF_Type::building_farmplotst)
+        return true;
+    if (p_df_type == DF_Type::building_floodgatest)
+        return true;
+    if (p_df_type == DF_Type::building_grate_floorst)
+        return true;
+    if (p_df_type == DF_Type::building_grate_wallst)
+        return true;
+    if (p_df_type == DF_Type::building_hatchst)
+        return true;
+    if (p_df_type == DF_Type::building_hivest)
+        return true;
+    if (p_df_type == DF_Type::building_instrumentst)
+        return true;
+    if (p_df_type == DF_Type::building_nestst)
+        return true;
+    if (p_df_type == DF_Type::building_nest_boxst)
+        return true;
+    if (p_df_type == DF_Type::building_roadst)
+        return true;
+    if (p_df_type == DF_Type::building_road_dirtst)
+        return true;
+    if (p_df_type == DF_Type::building_road_pavedst)
+        return true;
+    if (p_df_type == DF_Type::building_shopst)
+        return true;
+    if (p_df_type == DF_Type::building_siegeenginest)
+        return true;
+    if (p_df_type == DF_Type::building_slabst)
+        return true;
+    if (p_df_type == DF_Type::building_statuest)
+        return true;
+    if (p_df_type == DF_Type::building_supportst)
+        return true;
+    if (p_df_type == DF_Type::building_tablest)
+        return true;
+    if (p_df_type == DF_Type::building_traction_benchst)
+        return true;
+    if (p_df_type == DF_Type::building_tradedepotst)
+        return true;
+    if (p_df_type == DF_Type::building_trapst)
+        return true;
+    if (p_df_type == DF_Type::building_wagonst)
+        return true;
+    if (p_df_type == DF_Type::building_weaponst)
+        return true;
+    if (p_df_type == DF_Type::building_weaponrackst)
+        return true;
+    if (p_df_type == DF_Type::building_wellst)
+        return true;
+    if (p_df_type == DF_Type::building_windowst)
+        return true;
+    if (p_df_type == DF_Type::building_window_glassst)
+        return true;
+    if (p_df_type == DF_Type::building_window_gemst)
+        return true;
+    if (p_df_type == DF_Type::building_axle_horizontalst)
+        return true;
+    if (p_df_type == DF_Type::building_axle_verticalst)
+        return true;
+    if (p_df_type == DF_Type::building_gear_assemblyst)
+        return true;
+    if (p_df_type == DF_Type::building_windmillst)
+        return true;
+    if (p_df_type == DF_Type::building_water_wheelst)
+        return true;
+    if (p_df_type == DF_Type::building_screw_pumpst)
+        return true;
+    if (p_df_type == DF_Type::building_rollersst)
+        return true;
+
+    return false;
+}
+
+void MainWindow::on_actionLocate_building_in_fortress()
+{
+    if (!m_suspended)
+        return;
+
+    using namespace rdf;
+
+    // Get the selected node index
+    QTreeView*      treeview       = ui->treeView;
+    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    if (selected_nodes.size() == 0)
+        return;
+    QModelIndex selected_node = selected_nodes.first();
+
+    // Get the model
+    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+
+    // Get the selected node
+    Node* node = dynamic_cast<Node*>(model->nodeFromIndex(selected_node));
+
+    if (is_building_subtype(node->m_df_type))
+    {
+        df::building* l_building = nullptr;
+        if (node->m_address != 0)
+        {
+            if (node->m_rdf_type == rdf::RDF_Type::Pointer)
+            {
+                uint64_t* l_ptr       = (uint64_t*)(node->m_address);
+                uint64_t  l_ptr_value = *l_ptr;
+                void*     l_void      = (void*)(l_ptr_value);
+                l_building            = static_cast<df::building*>(l_void);
+            }
+            else
+            {
+                void* l_void = (void*)(node->m_address);
+                l_building   = static_cast<df::building*>(l_void);
+            }
+            if (l_building)
+            {
+                df::coord l_building_position;
+                l_building_position.x = l_building->centerx;
+                l_building_position.y = l_building->centery;
+                l_building_position.z = l_building->z;
+
+                // Center window and cursor
+                DFHack::Gui::revealInDwarfmodeMap(l_building_position, true);
+
+                DFHack::Gui::setCursorCoords(l_building_position.x,
+                                             l_building_position.y,
+                                             l_building_position.z);
+            }
+        }
+    }
+}
