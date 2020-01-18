@@ -1,23 +1,3 @@
-/*
- * Copyright 2019 Rafael Agundo
- *
- * This file is part of dwarfexplorer plugin for DFHack
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- */
-
 #include <cstdint>
 #include <DataDefs.h>
 #include <Core.h>
@@ -29,61 +9,61 @@
 #include <VersionInfo.h>
 #include "df_all.h"
 #include "DF_Types.h"
-#include <map>
+#include <unordered_map>
 
 namespace rdf
 {
-void generate_text_info_elementst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_text_info_elementst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::text_info_elementst*>(p_df_structure);
 
 }
 
-void generate_text_info_element_longst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_text_info_element_longst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::text_info_element_longst*>(p_df_structure);
 
 	p_table["val"] = reinterpret_cast<uint64_t>(&(df_structure->val)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_text_info_element_stringst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_text_info_element_stringst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::text_info_element_stringst*>(p_df_structure);
 
 	p_table["val"] = reinterpret_cast<uint64_t>(&(df_structure->val)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_optionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_optionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_optionst*>(p_df_structure);
 
 }
 
-void generate_adventure_item_interact_choicest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_item_interact_choicest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_item_interact_choicest*>(p_df_structure);
 
 }
 
-void generate_adventure_item_interact_pull_outst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_item_interact_pull_outst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_item_interact_pull_outst*>(p_df_structure);
 
 }
 
-void generate_adventure_item_interact_readst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_item_interact_readst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_item_interact_readst*>(p_df_structure);
 
 }
 
-void generate_adventure_item_interact_strugglest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_item_interact_strugglest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_item_interact_strugglest*>(p_df_structure);
 
 }
 
-void generate_popup_message_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_popup_message_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::popup_message*>(p_df_structure);
 
@@ -92,14 +72,14 @@ void generate_popup_message_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["bright"] = reinterpret_cast<uint64_t>(&(df_structure->bright)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_element_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_element_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_element*>(p_df_structure);
 
 	p_table["count"] = reinterpret_cast<uint64_t>(&(df_structure->count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_element_creaturest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_element_creaturest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_element_creaturest*>(p_df_structure);
 
@@ -108,21 +88,21 @@ void generate_art_image_element_creaturest_offsets(void* p_df_structure, std::ma
 	p_table["histfig"] = reinterpret_cast<uint64_t>(&(df_structure->histfig)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_element_plantst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_element_plantst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_element_plantst*>(p_df_structure);
 
 	p_table["plant_id"] = reinterpret_cast<uint64_t>(&(df_structure->plant_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_element_treest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_element_treest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_element_treest*>(p_df_structure);
 
 	p_table["plant_id"] = reinterpret_cast<uint64_t>(&(df_structure->plant_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_element_shapest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_element_shapest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_element_shapest*>(p_df_structure);
 
@@ -130,14 +110,14 @@ void generate_art_image_element_shapest_offsets(void* p_df_structure, std::map<s
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_property_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_property_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_property*>(p_df_structure);
 
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_ref_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_ref_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_ref*>(p_df_structure);
 
@@ -147,7 +127,7 @@ void generate_art_image_ref_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["site_id"] = reinterpret_cast<uint64_t>(&(df_structure->site_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_poetic_form_perspective_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_poetic_form_perspective_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::poetic_form_perspective*>(p_df_structure);
 
@@ -156,7 +136,7 @@ void generate_poetic_form_perspective_offsets(void* p_df_structure, std::map<std
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_sub4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_musical_form_sub4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::musical_form_sub4*>(p_df_structure);
 
@@ -168,7 +148,7 @@ void generate_musical_form_sub4_offsets(void* p_df_structure, std::map<std::stri
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_interval_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_musical_form_interval_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::musical_form_interval*>(p_df_structure);
 
@@ -176,7 +156,7 @@ void generate_musical_form_interval_offsets(void* p_df_structure, std::map<std::
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_dance_form_sub1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_dance_form_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::dance_form_sub1*>(p_df_structure);
 
@@ -201,7 +181,7 @@ void generate_dance_form_sub1_offsets(void* p_df_structure, std::map<std::string
 	p_table["anon_19"] = reinterpret_cast<uint64_t>(&(df_structure->anon_19)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_dance_form_sub2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_dance_form_sub2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::dance_form_sub2*>(p_df_structure);
 
@@ -213,7 +193,7 @@ void generate_dance_form_sub2_offsets(void* p_df_structure, std::map<std::string
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_scale_sub1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_scale_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::scale_sub1*>(p_df_structure);
 
@@ -223,7 +203,7 @@ void generate_scale_sub1_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_scale_sub2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_scale_sub2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::scale_sub2*>(p_df_structure);
 
@@ -235,7 +215,7 @@ void generate_scale_sub2_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_rhythm_sub2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_rhythm_sub2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::rhythm_sub2*>(p_df_structure);
 
@@ -245,7 +225,7 @@ void generate_rhythm_sub2_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_occupation_sub1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_occupation_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::occupation_sub1*>(p_df_structure);
 
@@ -270,7 +250,7 @@ void generate_occupation_sub1_offsets(void* p_df_structure, std::map<std::string
 	p_table["anon_19"] = reinterpret_cast<uint64_t>(&(df_structure->anon_19)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_extents_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_extents_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_extents*>(p_df_structure);
 
@@ -281,7 +261,7 @@ void generate_building_extents_offsets(void* p_df_structure, std::map<std::strin
 	p_table["height"] = reinterpret_cast<uint64_t>(&(df_structure->height)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_drawbuffer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_drawbuffer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_drawbuffer*>(p_df_structure);
 
@@ -295,7 +275,7 @@ void generate_building_drawbuffer_offsets(void* p_df_structure, std::map<std::st
 	p_table["y2"] = reinterpret_cast<uint64_t>(&(df_structure->y2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_hospital_supplies_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_hospital_supplies_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::hospital_supplies*>(p_df_structure);
 
@@ -317,7 +297,7 @@ void generate_hospital_supplies_offsets(void* p_df_structure, std::map<std::stri
 	p_table["supply_recheck_timer"] = reinterpret_cast<uint64_t>(&(df_structure->supply_recheck_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_users_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_users_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_users*>(p_df_structure);
 
@@ -325,7 +305,7 @@ void generate_building_users_offsets(void* p_df_structure, std::map<std::string,
 	p_table["mode"] = reinterpret_cast<uint64_t>(&(df_structure->mode)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_pressure_plate_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_pressure_plate_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::pressure_plate_info*>(p_df_structure);
 
@@ -340,7 +320,7 @@ void generate_pressure_plate_info_offsets(void* p_df_structure, std::map<std::st
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_body_part_layer_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_body_part_layer_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::body_part_layer_raw*>(p_df_structure);
 
@@ -363,7 +343,7 @@ void generate_body_part_layer_raw_offsets(void* p_df_structure, std::map<std::st
 	p_table["styleable_id"] = reinterpret_cast<uint64_t>(&(df_structure->styleable_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_color_modifier_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_color_modifier_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::color_modifier_raw*>(p_df_structure);
 
@@ -384,7 +364,7 @@ void generate_color_modifier_raw_offsets(void* p_df_structure, std::map<std::str
 	p_table["unk_88"] = reinterpret_cast<uint64_t>(&(df_structure->unk_88)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_gait_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_gait_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::gait_info*>(p_df_structure);
 
@@ -398,7 +378,7 @@ void generate_gait_info_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["stealth_slows"] = reinterpret_cast<uint64_t>(&(df_structure->stealth_slows)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_graphics_appointment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_graphics_appointment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_graphics_appointment*>(p_df_structure);
 
@@ -408,7 +388,7 @@ void generate_creature_graphics_appointment_offsets(void* p_df_structure, std::m
 	p_table["add_color"] = reinterpret_cast<uint64_t>(&(df_structure->add_color)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_variation_convert_tag_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_variation_convert_tag_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_variation_convert_tag*>(p_df_structure);
 
@@ -419,7 +399,7 @@ void generate_creature_variation_convert_tag_offsets(void* p_df_structure, std::
 	p_table["unk_v40_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_body_detail_plan_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_body_detail_plan_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::body_detail_plan*>(p_df_structure);
 
@@ -451,7 +431,7 @@ void generate_body_detail_plan_offsets(void* p_df_structure, std::map<std::strin
 	p_table["bp_relation_extent"] = reinterpret_cast<uint64_t>(&(df_structure->bp_relation_extent)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_descriptor_color_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_descriptor_color_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::descriptor_color*>(p_df_structure);
 
@@ -466,7 +446,7 @@ void generate_descriptor_color_offsets(void* p_df_structure, std::map<std::strin
 	p_table["blue"] = reinterpret_cast<uint64_t>(&(df_structure->blue)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_descriptor_shape_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_descriptor_shape_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::descriptor_shape*>(p_df_structure);
 
@@ -480,7 +460,7 @@ void generate_descriptor_shape_offsets(void* p_df_structure, std::map<std::strin
 	p_table["tile"] = reinterpret_cast<uint64_t>(&(df_structure->tile)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_activity_statistics__T_food_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_activity_statistics__T_food_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_activity_statistics::T_food*>(p_df_structure);
 
@@ -493,7 +473,7 @@ void generate_entity_activity_statistics__T_food_offsets(void* p_df_structure, s
 	p_table["drink"] = reinterpret_cast<uint64_t>(&(df_structure->drink)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_activity_statistics__T_wealth_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_activity_statistics__T_wealth_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_activity_statistics::T_wealth*>(p_df_structure);
 
@@ -510,7 +490,7 @@ void generate_entity_activity_statistics__T_wealth_offsets(void* p_df_structure,
 	p_table["exported"] = reinterpret_cast<uint64_t>(&(df_structure->exported)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_activity_statistics_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_activity_statistics_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_activity_statistics*>(p_df_structure);
 
@@ -552,14 +532,14 @@ void generate_entity_activity_statistics_offsets(void* p_df_structure, std::map<
 	p_table["found_misc"] = reinterpret_cast<uint64_t>(&(df_structure->found_misc)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_sell_requests_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_sell_requests_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_sell_requests*>(p_df_structure);
 
 	p_table["priority"] = reinterpret_cast<uint64_t>(&(df_structure->priority)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_tissue_style_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_tissue_style_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_tissue_style*>(p_df_structure);
 
@@ -571,7 +551,7 @@ void generate_entity_tissue_style_offsets(void* p_df_structure, std::map<std::st
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_position_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_position_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_position*>(p_df_structure);
 
@@ -617,7 +597,7 @@ void generate_entity_position_offsets(void* p_df_structure, std::map<std::string
 	p_table["demand_max"] = reinterpret_cast<uint64_t>(&(df_structure->demand_max)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_position_assignment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_position_assignment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_position_assignment*>(p_df_structure);
 
@@ -634,7 +614,7 @@ void generate_entity_position_assignment_offsets(void* p_df_structure, std::map<
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_animal_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_animal_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_animal_raw*>(p_df_structure);
 
@@ -645,7 +625,7 @@ void generate_entity_animal_raw_offsets(void* p_df_structure, std::map<std::stri
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_large_integer__T_u_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_large_integer__T_u_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::large_integer::T_u*>(p_df_structure);
 
@@ -653,7 +633,7 @@ void generate_large_integer__T_u_offsets(void* p_df_structure, std::map<std::str
 	p_table["high_part"] = reinterpret_cast<uint64_t>(&(df_structure->high_part)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_large_integer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_large_integer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::large_integer*>(p_df_structure);
 
@@ -663,7 +643,7 @@ void generate_large_integer_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["quad_part"] = reinterpret_cast<uint64_t>(&(df_structure->quad_part)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_renderer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_renderer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::renderer*>(p_df_structure);
 
@@ -681,7 +661,7 @@ void generate_renderer_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["screentexpos_cbr_old"] = reinterpret_cast<uint64_t>(&(df_structure->screentexpos_cbr_old)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_identity_unk_94_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_identity_unk_94_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::identity_unk_94*>(p_df_structure);
 
@@ -693,14 +673,14 @@ void generate_identity_unk_94_offsets(void* p_df_structure, std::map<std::string
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_propertyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_propertyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_propertyst*>(p_df_structure);
 
 	p_table["unk_0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_0)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_datest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_datest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_datest*>(p_df_structure);
 
@@ -708,7 +688,7 @@ void generate_mental_picture_property_datest_offsets(void* p_df_structure, std::
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_actionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_actionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_actionst*>(p_df_structure);
 
@@ -718,7 +698,7 @@ void generate_mental_picture_property_actionst_offsets(void* p_df_structure, std
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_toolst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_toolst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_toolst*>(p_df_structure);
 
@@ -727,7 +707,7 @@ void generate_mental_picture_property_toolst_offsets(void* p_df_structure, std::
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_emotionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_emotionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_emotionst*>(p_df_structure);
 
@@ -735,7 +715,7 @@ void generate_mental_picture_property_emotionst_offsets(void* p_df_structure, st
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_color_patternst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_color_patternst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_color_patternst*>(p_df_structure);
 
@@ -743,7 +723,7 @@ void generate_mental_picture_property_color_patternst_offsets(void* p_df_structu
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_shapest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_shapest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_shapest*>(p_df_structure);
 
@@ -751,7 +731,7 @@ void generate_mental_picture_property_shapest_offsets(void* p_df_structure, std:
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_adjectivest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_adjectivest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_adjectivest*>(p_df_structure);
 
@@ -759,7 +739,7 @@ void generate_mental_picture_property_adjectivest_offsets(void* p_df_structure, 
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_positionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_positionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_positionst*>(p_df_structure);
 
@@ -768,7 +748,7 @@ void generate_mental_picture_property_positionst_offsets(void* p_df_structure, s
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_property_timest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_property_timest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_property_timest*>(p_df_structure);
 
@@ -777,35 +757,35 @@ void generate_mental_picture_property_timest_offsets(void* p_df_structure, std::
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_elementst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_elementst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_elementst*>(p_df_structure);
 
 	p_table["unk_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_element_hfst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_element_hfst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_element_hfst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_element_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_element_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_element_sitest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_element_regionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_element_regionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture_element_regionst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_context_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_context_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_context*>(p_df_structure);
 
@@ -815,7 +795,7 @@ void generate_history_event_context_offsets(void* p_df_structure, std::map<std::
 	p_table["histfig_id_listener"] = reinterpret_cast<uint64_t>(&(df_structure->histfig_id_listener)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event*>(p_df_structure);
 
@@ -825,7 +805,7 @@ void generate_history_event_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_attacked_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_attacked_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_attacked_sitest*>(p_df_structure);
 
@@ -837,7 +817,7 @@ void generate_history_event_war_attacked_sitest_offsets(void* p_df_structure, st
 	p_table["defender_general_hf"] = reinterpret_cast<uint64_t>(&(df_structure->defender_general_hf)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_destroyed_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_destroyed_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_destroyed_sitest*>(p_df_structure);
 
@@ -847,7 +827,7 @@ void generate_history_event_war_destroyed_sitest_offsets(void* p_df_structure, s
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_created_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_created_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_created_sitest*>(p_df_structure);
 
@@ -857,7 +837,7 @@ void generate_history_event_created_sitest_offsets(void* p_df_structure, std::ma
 	p_table["builder_hf"] = reinterpret_cast<uint64_t>(&(df_structure->builder_hf)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_expels_hfst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_expels_hfst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_expels_hfst*>(p_df_structure);
 
@@ -866,7 +846,7 @@ void generate_history_event_entity_expels_hfst_offsets(void* p_df_structure, std
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_first_contactst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_first_contactst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_first_contactst*>(p_df_structure);
 
@@ -875,7 +855,7 @@ void generate_history_event_first_contactst_offsets(void* p_df_structure, std::m
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_first_contact_failedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_first_contact_failedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_first_contact_failedst*>(p_df_structure);
 
@@ -884,7 +864,7 @@ void generate_history_event_first_contact_failedst_offsets(void* p_df_structure,
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_diplomat_lostst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_diplomat_lostst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_diplomat_lostst*>(p_df_structure);
 
@@ -893,7 +873,7 @@ void generate_history_event_diplomat_lostst_offsets(void* p_df_structure, std::m
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_agreements_voidedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_agreements_voidedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_agreements_voidedst*>(p_df_structure);
 
@@ -901,7 +881,7 @@ void generate_history_event_agreements_voidedst_offsets(void* p_df_structure, st
 	p_table["destination"] = reinterpret_cast<uint64_t>(&(df_structure->destination)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_merchantst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_merchantst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_merchantst*>(p_df_structure);
 
@@ -911,7 +891,7 @@ void generate_history_event_merchantst_offsets(void* p_df_structure, std::map<st
 	p_table["flags2"] = reinterpret_cast<uint64_t>(&(df_structure->flags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_hiddenst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_hiddenst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_hiddenst*>(p_df_structure);
 
@@ -921,7 +901,7 @@ void generate_history_event_artifact_hiddenst_offsets(void* p_df_structure, std:
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_createdst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_createdst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_createdst*>(p_df_structure);
 
@@ -936,7 +916,7 @@ void generate_history_event_artifact_createdst_offsets(void* p_df_structure, std
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_lostst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_lostst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_lostst*>(p_df_structure);
 
@@ -946,7 +926,7 @@ void generate_history_event_artifact_lostst_offsets(void* p_df_structure, std::m
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_foundst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_foundst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_foundst*>(p_df_structure);
 
@@ -956,7 +936,7 @@ void generate_history_event_artifact_foundst_offsets(void* p_df_structure, std::
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_recoveredst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_recoveredst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_recoveredst*>(p_df_structure);
 
@@ -969,7 +949,7 @@ void generate_history_event_artifact_recoveredst_offsets(void* p_df_structure, s
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_droppedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_droppedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_droppedst*>(p_df_structure);
 
@@ -980,7 +960,7 @@ void generate_history_event_artifact_droppedst_offsets(void* p_df_structure, std
 	p_table["flags2"] = reinterpret_cast<uint64_t>(&(df_structure->flags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_reclaim_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_reclaim_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_reclaim_sitest*>(p_df_structure);
 
@@ -990,7 +970,7 @@ void generate_history_event_reclaim_sitest_offsets(void* p_df_structure, std::ma
 	p_table["flags2"] = reinterpret_cast<uint64_t>(&(df_structure->flags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_destroyed_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_destroyed_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_destroyed_sitest*>(p_df_structure);
 
@@ -1000,7 +980,7 @@ void generate_history_event_hf_destroyed_sitest_offsets(void* p_df_structure, st
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_site_diedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_site_diedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_site_diedst*>(p_df_structure);
 
@@ -1010,7 +990,7 @@ void generate_history_event_site_diedst_offsets(void* p_df_structure, std::map<s
 	p_table["flags2"] = reinterpret_cast<uint64_t>(&(df_structure->flags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_site_retiredst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_site_retiredst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_site_retiredst*>(p_df_structure);
 
@@ -1020,7 +1000,7 @@ void generate_history_event_site_retiredst_offsets(void* p_df_structure, std::ma
 	p_table["flags2"] = reinterpret_cast<uint64_t>(&(df_structure->flags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_createdst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_createdst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_createdst*>(p_df_structure);
 
@@ -1029,7 +1009,7 @@ void generate_history_event_entity_createdst_offsets(void* p_df_structure, std::
 	p_table["structure"] = reinterpret_cast<uint64_t>(&(df_structure->structure)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_incorporatedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_incorporatedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_incorporatedst*>(p_df_structure);
 
@@ -1038,7 +1018,7 @@ void generate_history_event_entity_incorporatedst_offsets(void* p_df_structure, 
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_created_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_created_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_created_buildingst*>(p_df_structure);
 
@@ -1049,7 +1029,7 @@ void generate_history_event_created_buildingst_offsets(void* p_df_structure, std
 	p_table["builder_hf"] = reinterpret_cast<uint64_t>(&(df_structure->builder_hf)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_replaced_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_replaced_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_replaced_buildingst*>(p_df_structure);
 
@@ -1060,7 +1040,7 @@ void generate_history_event_replaced_buildingst_offsets(void* p_df_structure, st
 	p_table["new_structure"] = reinterpret_cast<uint64_t>(&(df_structure->new_structure)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_razed_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_razed_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_razed_buildingst*>(p_df_structure);
 
@@ -1069,7 +1049,7 @@ void generate_history_event_entity_razed_buildingst_offsets(void* p_df_structure
 	p_table["structure"] = reinterpret_cast<uint64_t>(&(df_structure->structure)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_createdst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_createdst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_createdst*>(p_df_structure);
 
@@ -1078,7 +1058,7 @@ void generate_history_event_masterpiece_createdst_offsets(void* p_df_structure, 
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_created_arch_designst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_created_arch_designst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_created_arch_designst*>(p_df_structure);
 
@@ -1089,7 +1069,7 @@ void generate_history_event_masterpiece_created_arch_designst_offsets(void* p_df
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_created_arch_constructst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_created_arch_constructst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_created_arch_constructst*>(p_df_structure);
 
@@ -1100,7 +1080,7 @@ void generate_history_event_masterpiece_created_arch_constructst_offsets(void* p
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_created_foodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_created_foodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_created_foodst*>(p_df_structure);
 
@@ -1108,7 +1088,7 @@ void generate_history_event_masterpiece_created_foodst_offsets(void* p_df_struct
 	p_table["item_id"] = reinterpret_cast<uint64_t>(&(df_structure->item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_plundered_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_plundered_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_plundered_sitest*>(p_df_structure);
 
@@ -1118,7 +1098,7 @@ void generate_history_event_war_plundered_sitest_offsets(void* p_df_structure, s
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_site_new_leaderst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_site_new_leaderst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_site_new_leaderst*>(p_df_structure);
 
@@ -1130,7 +1110,7 @@ void generate_history_event_war_site_new_leaderst_offsets(void* p_df_structure, 
 	p_table["new_leaders"] = reinterpret_cast<uint64_t>(&(df_structure->new_leaders)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_site_tribute_forcedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_site_tribute_forcedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_site_tribute_forcedst*>(p_df_structure);
 
@@ -1142,7 +1122,7 @@ void generate_history_event_war_site_tribute_forcedst_offsets(void* p_df_structu
 	p_table["tribute_flags"] = reinterpret_cast<uint64_t>(&(df_structure->tribute_flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_site_taken_overst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_site_taken_overst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_site_taken_overst*>(p_df_structure);
 
@@ -1153,7 +1133,7 @@ void generate_history_event_war_site_taken_overst_offsets(void* p_df_structure, 
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_site_surrenderedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_site_surrenderedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_site_surrenderedst*>(p_df_structure);
 
@@ -1163,7 +1143,7 @@ void generate_history_event_site_surrenderedst_offsets(void* p_df_structure, std
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_abductedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_abductedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_abductedst*>(p_df_structure);
 
@@ -1174,7 +1154,7 @@ void generate_history_event_hist_figure_abductedst_offsets(void* p_df_structure,
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_razed_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_razed_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_razed_buildingst*>(p_df_structure);
 
@@ -1183,7 +1163,7 @@ void generate_history_event_hf_razed_buildingst_offsets(void* p_df_structure, st
 	p_table["structure"] = reinterpret_cast<uint64_t>(&(df_structure->structure)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_creature_devouredst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_creature_devouredst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_creature_devouredst*>(p_df_structure);
 
@@ -1197,7 +1177,7 @@ void generate_history_event_creature_devouredst_offsets(void* p_df_structure, st
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_woundedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_woundedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_woundedst*>(p_df_structure);
 
@@ -1213,7 +1193,7 @@ void generate_history_event_hist_figure_woundedst_offsets(void* p_df_structure, 
 	p_table["part_lost"] = reinterpret_cast<uint64_t>(&(df_structure->part_lost)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_created_world_constructionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_created_world_constructionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_created_world_constructionst*>(p_df_structure);
 
@@ -1225,7 +1205,7 @@ void generate_history_event_created_world_constructionst_offsets(void* p_df_stru
 	p_table["site2"] = reinterpret_cast<uint64_t>(&(df_structure->site2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_reunionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_reunionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_reunionst*>(p_df_structure);
 
@@ -1237,7 +1217,7 @@ void generate_history_event_hist_figure_reunionst_offsets(void* p_df_structure, 
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_assume_identityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_assume_identityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_assume_identityst*>(p_df_structure);
 
@@ -1246,7 +1226,7 @@ void generate_history_event_assume_identityst_offsets(void* p_df_structure, std:
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_create_entity_positionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_create_entity_positionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_create_entity_positionst*>(p_df_structure);
 
@@ -1257,7 +1237,7 @@ void generate_history_event_create_entity_positionst_offsets(void* p_df_structur
 	p_table["reason"] = reinterpret_cast<uint64_t>(&(df_structure->reason)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_change_creature_typest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_change_creature_typest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_change_creature_typest*>(p_df_structure);
 
@@ -1269,7 +1249,7 @@ void generate_history_event_change_creature_typest_offsets(void* p_df_structure,
 	p_table["new_caste"] = reinterpret_cast<uint64_t>(&(df_structure->new_caste)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_learns_secretst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_learns_secretst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_learns_secretst*>(p_df_structure);
 
@@ -1280,7 +1260,7 @@ void generate_history_event_hf_learns_secretst_offsets(void* p_df_structure, std
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_act_on_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_act_on_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_act_on_buildingst*>(p_df_structure);
 
@@ -1290,7 +1270,7 @@ void generate_history_event_hf_act_on_buildingst_offsets(void* p_df_structure, s
 	p_table["structure"] = reinterpret_cast<uint64_t>(&(df_structure->structure)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_does_interactionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_does_interactionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_does_interactionst*>(p_df_structure);
 
@@ -1303,7 +1283,7 @@ void generate_history_event_hf_does_interactionst_offsets(void* p_df_structure, 
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_lawst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_lawst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_lawst*>(p_df_structure);
 
@@ -1313,7 +1293,7 @@ void generate_history_event_entity_lawst_offsets(void* p_df_structure, std::map<
 	p_table["remove_flags"] = reinterpret_cast<uint64_t>(&(df_structure->remove_flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_storedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_storedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_storedst*>(p_df_structure);
 
@@ -1324,14 +1304,14 @@ void generate_history_event_artifact_storedst_offsets(void* p_df_structure, std:
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_agreement_formedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_agreement_formedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_agreement_formedst*>(p_df_structure);
 
 	p_table["agreement_id"] = reinterpret_cast<uint64_t>(&(df_structure->agreement_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_insurrection_startedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_insurrection_startedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_insurrection_startedst*>(p_df_structure);
 
@@ -1339,7 +1319,7 @@ void generate_history_event_insurrection_startedst_offsets(void* p_df_structure,
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_attacked_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_attacked_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_attacked_sitest*>(p_df_structure);
 
@@ -1349,7 +1329,7 @@ void generate_history_event_hf_attacked_sitest_offsets(void* p_df_structure, std
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_performancest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_performancest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_performancest*>(p_df_structure);
 
@@ -1361,7 +1341,7 @@ void generate_history_event_performancest_offsets(void* p_df_structure, std::map
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_competitionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_competitionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_competitionst*>(p_df_structure);
 
@@ -1375,7 +1355,7 @@ void generate_history_event_competitionst_offsets(void* p_df_structure, std::map
 	p_table["winner_hf"] = reinterpret_cast<uint64_t>(&(df_structure->winner_hf)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_processionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_processionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_processionst*>(p_df_structure);
 
@@ -1387,7 +1367,7 @@ void generate_history_event_processionst_offsets(void* p_df_structure, std::map<
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_ceremonyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_ceremonyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_ceremonyst*>(p_df_structure);
 
@@ -1399,7 +1379,7 @@ void generate_history_event_ceremonyst_offsets(void* p_df_structure, std::map<st
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_transformedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_transformedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_transformedst*>(p_df_structure);
 
@@ -1410,7 +1390,7 @@ void generate_history_event_artifact_transformedst_offsets(void* p_df_structure,
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_destroyedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_destroyedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_destroyedst*>(p_df_structure);
 
@@ -1420,7 +1400,7 @@ void generate_history_event_artifact_destroyedst_offsets(void* p_df_structure, s
 	p_table["destroyer_civ"] = reinterpret_cast<uint64_t>(&(df_structure->destroyer_civ)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_regionpop_incorporated_into_entityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_regionpop_incorporated_into_entityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_regionpop_incorporated_into_entityst*>(p_df_structure);
 
@@ -1432,7 +1412,7 @@ void generate_history_event_regionpop_incorporated_into_entityst_offsets(void* p
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_act_on_artifactst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_act_on_artifactst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_act_on_artifactst*>(p_df_structure);
 
@@ -1443,7 +1423,7 @@ void generate_history_event_hf_act_on_artifactst_offsets(void* p_df_structure, s
 	p_table["structure"] = reinterpret_cast<uint64_t>(&(df_structure->structure)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_copiedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_copiedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_copiedst*>(p_df_structure);
 
@@ -1457,7 +1437,7 @@ void generate_history_event_artifact_copiedst_offsets(void* p_df_structure, std:
 	p_table["flags2"] = reinterpret_cast<uint64_t>(&(df_structure->flags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_sneak_into_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_sneak_into_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_sneak_into_sitest*>(p_df_structure);
 
@@ -1467,7 +1447,7 @@ void generate_history_event_sneak_into_sitest_offsets(void* p_df_structure, std:
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_spotted_leaving_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_spotted_leaving_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_spotted_leaving_sitest*>(p_df_structure);
 
@@ -1477,7 +1457,7 @@ void generate_history_event_spotted_leaving_sitest_offsets(void* p_df_structure,
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_searched_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_searched_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_searched_sitest*>(p_df_structure);
 
@@ -1486,7 +1466,7 @@ void generate_history_event_entity_searched_sitest_offsets(void* p_df_structure,
 	p_table["result"] = reinterpret_cast<uint64_t>(&(df_structure->result)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_freedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_freedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_freedst*>(p_df_structure);
 
@@ -1498,7 +1478,7 @@ void generate_history_event_hf_freedst_offsets(void* p_df_structure, std::map<st
 	p_table["rescued_hfs"] = reinterpret_cast<uint64_t>(&(df_structure->rescued_hfs)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_simple_actionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_simple_actionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_simple_actionst*>(p_df_structure);
 
@@ -1510,7 +1490,7 @@ void generate_history_event_hist_figure_simple_actionst_offsets(void* p_df_struc
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_rampaged_in_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_rampaged_in_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_rampaged_in_sitest*>(p_df_structure);
 
@@ -1518,7 +1498,7 @@ void generate_history_event_entity_rampaged_in_sitest_offsets(void* p_df_structu
 	p_table["site_id"] = reinterpret_cast<uint64_t>(&(df_structure->site_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_fled_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_fled_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_fled_sitest*>(p_df_structure);
 
@@ -1526,7 +1506,7 @@ void generate_history_event_entity_fled_sitest_offsets(void* p_df_structure, std
 	p_table["site_id"] = reinterpret_cast<uint64_t>(&(df_structure->site_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_squad_vs_squadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_squad_vs_squadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_squad_vs_squadst*>(p_df_structure);
 
@@ -1554,7 +1534,7 @@ void generate_history_event_squad_vs_squadst_offsets(void* p_df_structure, std::
 	p_table["feature_layer"] = reinterpret_cast<uint64_t>(&(df_structure->feature_layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection*>(p_df_structure);
 
@@ -1568,7 +1548,7 @@ void generate_history_event_collection_offsets(void* p_df_structure, std::map<st
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_site_conqueredst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_site_conqueredst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_site_conqueredst*>(p_df_structure);
 
@@ -1580,7 +1560,7 @@ void generate_history_event_collection_site_conqueredst_offsets(void* p_df_struc
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_journeyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_journeyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_journeyst*>(p_df_structure);
 
@@ -1588,7 +1568,7 @@ void generate_history_event_collection_journeyst_offsets(void* p_df_structure, s
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_insurrectionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_insurrectionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_insurrectionst*>(p_df_structure);
 
@@ -1597,7 +1577,7 @@ void generate_history_event_collection_insurrectionst_offsets(void* p_df_structu
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_occasionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_occasionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_occasionst*>(p_df_structure);
 
@@ -1606,7 +1586,7 @@ void generate_history_event_collection_occasionst_offsets(void* p_df_structure, 
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_performancest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_performancest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_performancest*>(p_df_structure);
 
@@ -1617,7 +1597,7 @@ void generate_history_event_collection_performancest_offsets(void* p_df_structur
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_competitionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_competitionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_competitionst*>(p_df_structure);
 
@@ -1628,7 +1608,7 @@ void generate_history_event_collection_competitionst_offsets(void* p_df_structur
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_processionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_processionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_processionst*>(p_df_structure);
 
@@ -1639,7 +1619,7 @@ void generate_history_event_collection_processionst_offsets(void* p_df_structure
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_ceremonyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_ceremonyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_ceremonyst*>(p_df_structure);
 
@@ -1650,7 +1630,7 @@ void generate_history_event_collection_ceremonyst_offsets(void* p_df_structure, 
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_purgest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_purgest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_purgest*>(p_df_structure);
 
@@ -1659,7 +1639,7 @@ void generate_history_event_collection_purgest_offsets(void* p_df_structure, std
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_init_media_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_init_media_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::init_media*>(p_df_structure);
 
@@ -1667,7 +1647,7 @@ void generate_init_media_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["volume"] = reinterpret_cast<uint64_t>(&(df_structure->volume)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_init_input_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_init_input_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::init_input*>(p_df_structure);
 
@@ -1681,14 +1661,14 @@ void generate_init_input_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["repeat_accel_limit"] = reinterpret_cast<uint64_t>(&(df_structure->repeat_accel_limit)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_init_window_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_init_window_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::init_window*>(p_df_structure);
 
 	p_table["flag"] = reinterpret_cast<uint64_t>(&(df_structure->flag)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_tile_page_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_tile_page_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::tile_page*>(p_df_structure);
 
@@ -1705,7 +1685,7 @@ void generate_tile_page_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["loaded"] = reinterpret_cast<uint64_t>(&(df_structure->loaded)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source*>(p_df_structure);
 
@@ -1716,7 +1696,7 @@ void generate_interaction_source_offsets(void* p_df_structure, std::map<std::str
 	p_table["hist_string_2"] = reinterpret_cast<uint64_t>(&(df_structure->hist_string_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_regionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_regionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source_regionst*>(p_df_structure);
 
@@ -1724,41 +1704,41 @@ void generate_interaction_source_regionst_offsets(void* p_df_structure, std::map
 	p_table["regions"] = reinterpret_cast<uint64_t>(&(df_structure->regions)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_disturbancest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_disturbancest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source_disturbancest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_attackst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_attackst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source_attackst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_ingestionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_ingestionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source_ingestionst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_creature_actionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_creature_actionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source_creature_actionst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_underground_specialst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_underground_specialst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source_underground_specialst*>(p_df_structure);
 
 }
 
-void generate_interaction_target_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_target_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_target_info*>(p_df_structure);
 
@@ -1776,7 +1756,7 @@ void generate_interaction_target_info_offsets(void* p_df_structure, std::map<std
 	p_table["restrictions"] = reinterpret_cast<uint64_t>(&(df_structure->restrictions)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_instance_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_instance_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_instance*>(p_df_structure);
 
@@ -1787,7 +1767,7 @@ void generate_interaction_instance_offsets(void* p_df_structure, std::map<std::s
 	p_table["affected_units"] = reinterpret_cast<uint64_t>(&(df_structure->affected_units)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_weapon_attack_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_weapon_attack_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::weapon_attack*>(p_df_structure);
 
@@ -1803,7 +1783,7 @@ void generate_weapon_attack_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef*>(p_df_structure);
 
@@ -1815,7 +1795,7 @@ void generate_itemdef_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["raw_strings"] = reinterpret_cast<uint64_t>(&(df_structure->raw_strings)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_armor_properties_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_armor_properties_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::armor_properties*>(p_df_structure);
 
@@ -1826,7 +1806,7 @@ void generate_armor_properties_offsets(void* p_df_structure, std::map<std::strin
 	p_table["coverage"] = reinterpret_cast<uint64_t>(&(df_structure->coverage)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_foodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_foodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_foodst*>(p_df_structure);
 
@@ -1834,7 +1814,7 @@ void generate_itemdef_foodst_offsets(void* p_df_structure, std::map<std::string,
 	p_table["level"] = reinterpret_cast<uint64_t>(&(df_structure->level)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_instrument_piece_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_instrument_piece_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::instrument_piece*>(p_df_structure);
 
@@ -1846,7 +1826,7 @@ void generate_instrument_piece_offsets(void* p_df_structure, std::map<std::strin
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_shieldst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_shieldst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_shieldst*>(p_df_structure);
 
@@ -1860,7 +1840,7 @@ void generate_itemdef_shieldst_offsets(void* p_df_structure, std::map<std::strin
 	p_table["material_size"] = reinterpret_cast<uint64_t>(&(df_structure->material_size)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_siegeammost_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_siegeammost_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_siegeammost*>(p_df_structure);
 
@@ -1869,7 +1849,7 @@ void generate_itemdef_siegeammost_offsets(void* p_df_structure, std::map<std::st
 	p_table["ammo_class"] = reinterpret_cast<uint64_t>(&(df_structure->ammo_class)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_toyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_toyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_toyst*>(p_df_structure);
 
@@ -1878,7 +1858,7 @@ void generate_itemdef_toyst_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_temperaturest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_temperaturest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::temperaturest*>(p_df_structure);
 
@@ -1886,7 +1866,7 @@ void generate_temperaturest_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["fraction"] = reinterpret_cast<uint64_t>(&(df_structure->fraction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_body_size_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_body_size_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::body_size_info*>(p_df_structure);
 
@@ -1898,7 +1878,7 @@ void generate_body_size_info_offsets(void* p_df_structure, std::map<std::string,
 	p_table["length_base"] = reinterpret_cast<uint64_t>(&(df_structure->length_base)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_stockpile_ref_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_stockpile_ref_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_stockpile_ref*>(p_df_structure);
 
@@ -1907,7 +1887,7 @@ void generate_item_stockpile_ref_offsets(void* p_df_structure, std::map<std::str
 	p_table["y"] = reinterpret_cast<uint64_t>(&(df_structure->y)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_art_specification_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_art_specification_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job_art_specification*>(p_df_structure);
 
@@ -1916,7 +1896,7 @@ void generate_job_art_specification_offsets(void* p_df_structure, std::map<std::
 	p_table["subid"] = reinterpret_cast<uint64_t>(&(df_structure->subid)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_manager_order_condition_order_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_manager_order_condition_order_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::manager_order_condition_order*>(p_df_structure);
 
@@ -1925,7 +1905,7 @@ void generate_manager_order_condition_order_offsets(void* p_df_structure, std::m
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_training_assignment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_training_assignment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::training_assignment*>(p_df_structure);
 
@@ -1934,7 +1914,7 @@ void generate_training_assignment_offsets(void* p_df_structure, std::map<std::st
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_language_translation_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_language_translation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::language_translation*>(p_df_structure);
 
@@ -1946,7 +1926,7 @@ void generate_language_translation_offsets(void* p_df_structure, std::map<std::s
 	p_table["str"] = reinterpret_cast<uint64_t>(&(df_structure->str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_language_symbol_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_language_symbol_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::language_symbol*>(p_df_structure);
 
@@ -1957,7 +1937,7 @@ void generate_language_symbol_offsets(void* p_df_structure, std::map<std::string
 	p_table["str"] = reinterpret_cast<uint64_t>(&(df_structure->str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_invasion_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_invasion_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::invasion_info*>(p_df_structure);
 
@@ -1976,7 +1956,7 @@ void generate_invasion_info_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_machine_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_machine_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::machine_info*>(p_df_structure);
 
@@ -1984,7 +1964,7 @@ void generate_machine_info_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_power_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_power_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::power_info*>(p_df_structure);
 
@@ -1992,7 +1972,7 @@ void generate_power_info_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["consumed"] = reinterpret_cast<uint64_t>(&(df_structure->consumed)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_coord2d_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_coord2d_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::coord2d*>(p_df_structure);
 
@@ -2000,7 +1980,7 @@ void generate_coord2d_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["y"] = reinterpret_cast<uint64_t>(&(df_structure->y)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_coord2d_path_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_coord2d_path_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::coord2d_path*>(p_df_structure);
 
@@ -2008,7 +1988,7 @@ void generate_coord2d_path_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["y"] = reinterpret_cast<uint64_t>(&(df_structure->y)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_coord_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_coord_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::coord*>(p_df_structure);
 
@@ -2017,7 +1997,7 @@ void generate_coord_offsets(void* p_df_structure, std::map<std::string, std::siz
 	p_table["z"] = reinterpret_cast<uint64_t>(&(df_structure->z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_coord_path_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_coord_path_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::coord_path*>(p_df_structure);
 
@@ -2026,14 +2006,14 @@ void generate_coord_path_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["z"] = reinterpret_cast<uint64_t>(&(df_structure->z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_tile_bitmask_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_tile_bitmask_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::tile_bitmask*>(p_df_structure);
 
 	p_table["bits"] = reinterpret_cast<uint64_t>(&(df_structure->bits)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_cave_column_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_cave_column_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::cave_column*>(p_df_structure);
 
@@ -2043,7 +2023,7 @@ void generate_cave_column_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_cave_column_rectangle_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_cave_column_rectangle_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::cave_column_rectangle*>(p_df_structure);
 
@@ -2059,13 +2039,13 @@ void generate_cave_column_rectangle_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_square_event_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event*>(p_df_structure);
 
 }
 
-void generate_block_square_event_material_spatterst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_material_spatterst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event_material_spatterst*>(p_df_structure);
 
@@ -2077,7 +2057,7 @@ void generate_block_square_event_material_spatterst_offsets(void* p_df_structure
 	p_table["max_temperature"] = reinterpret_cast<uint64_t>(&(df_structure->max_temperature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_square_event_grassst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_grassst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event_grassst*>(p_df_structure);
 
@@ -2085,7 +2065,7 @@ void generate_block_square_event_grassst_offsets(void* p_df_structure, std::map<
 	p_table["amount"] = reinterpret_cast<uint64_t>(&(df_structure->amount)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_square_event_spoorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_spoorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event_spoorst*>(p_df_structure);
 
@@ -2099,20 +2079,20 @@ void generate_block_square_event_spoorst_offsets(void* p_df_structure, std::map<
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_square_event_designation_priorityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_designation_priorityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event_designation_priorityst*>(p_df_structure);
 
 	p_table["priority"] = reinterpret_cast<uint64_t>(&(df_structure->priority)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_alteration_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_alteration_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_alteration*>(p_df_structure);
 
 }
 
-void generate_feature_alteration_new_pop_maxst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_alteration_new_pop_maxst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_alteration_new_pop_maxst*>(p_df_structure);
 
@@ -2120,14 +2100,14 @@ void generate_feature_alteration_new_pop_maxst_offsets(void* p_df_structure, std
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_alteration_new_lava_fill_zst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_alteration_new_lava_fill_zst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_alteration_new_lava_fill_zst*>(p_df_structure);
 
 	p_table["magma_fill_z"] = reinterpret_cast<uint64_t>(&(df_structure->magma_fill_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_flow_reuse_pool_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_flow_reuse_pool_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::flow_reuse_pool*>(p_df_structure);
 
@@ -2135,7 +2115,7 @@ void generate_flow_reuse_pool_offsets(void* p_df_structure, std::map<std::string
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_flow_guide_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_flow_guide_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::flow_guide*>(p_df_structure);
 
@@ -2143,20 +2123,20 @@ void generate_flow_guide_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["unk_8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_region_block_eventst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_region_block_eventst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::region_block_eventst*>(p_df_structure);
 
 }
 
-void generate_region_block_event_sphere_fieldst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_region_block_event_sphere_fieldst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::region_block_event_sphere_fieldst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_material_vec_ref_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_material_vec_ref_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::material_vec_ref*>(p_df_structure);
 
@@ -2164,14 +2144,14 @@ void generate_material_vec_ref_offsets(void* p_df_structure, std::map<std::strin
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_stepst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_stepst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_stepst*>(p_df_structure);
 
 	p_table["next_step_idx"] = reinterpret_cast<uint64_t>(&(df_structure->next_step_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_setvarst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_setvarst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_setvarst*>(p_df_structure);
 
@@ -2181,7 +2161,7 @@ void generate_script_step_setvarst_offsets(void* p_df_structure, std::map<std::s
 	p_table["src_name"] = reinterpret_cast<uint64_t>(&(df_structure->src_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_simpleactionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_simpleactionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_simpleactionst*>(p_df_structure);
 
@@ -2189,7 +2169,7 @@ void generate_script_step_simpleactionst_offsets(void* p_df_structure, std::map<
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_conditionalst__T_condition_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_conditionalst__T_condition_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_conditionalst::T_condition*>(p_df_structure);
 
@@ -2200,7 +2180,7 @@ void generate_script_step_conditionalst__T_condition_offsets(void* p_df_structur
 	p_table["var2_name"] = reinterpret_cast<uint64_t>(&(df_structure->var2_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_conditionalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_conditionalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_conditionalst*>(p_df_structure);
 
@@ -2208,7 +2188,7 @@ void generate_script_step_conditionalst_offsets(void* p_df_structure, std::map<s
 	p_table["conditional_next_step_idx"] = reinterpret_cast<uint64_t>(&(df_structure->conditional_next_step_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_textviewerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_textviewerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_textviewerst*>(p_df_structure);
 
@@ -2216,39 +2196,39 @@ void generate_script_step_textviewerst_offsets(void* p_df_structure, std::map<st
 	p_table["outvar_name"] = reinterpret_cast<uint64_t>(&(df_structure->outvar_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_diphistoryst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_diphistoryst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_diphistoryst*>(p_df_structure);
 
 	p_table["event"] = reinterpret_cast<uint64_t>(&(df_structure->event)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_discussst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_discussst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_discussst*>(p_df_structure);
 
 	p_table["event"] = reinterpret_cast<uint64_t>(&(df_structure->event)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_topicdiscussionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_topicdiscussionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_topicdiscussionst*>(p_df_structure);
 
 }
 
-void generate_script_step_constructtopiclistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_constructtopiclistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_constructtopiclistst*>(p_df_structure);
 
 }
 
-void generate_script_step_eventst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_eventst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_eventst*>(p_df_structure);
 
 }
 
-void generate_script_step_dipeventst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_dipeventst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_dipeventst*>(p_df_structure);
 
@@ -2259,47 +2239,47 @@ void generate_script_step_dipeventst_offsets(void* p_df_structure, std::map<std:
 	p_table["parm5"] = reinterpret_cast<uint64_t>(&(df_structure->parm5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_step_invasionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_step_invasionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_step_invasionst*>(p_df_structure);
 
 	p_table["parm"] = reinterpret_cast<uint64_t>(&(df_structure->parm)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_varst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_varst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_varst*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_script_var_unitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_var_unitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_var_unitst*>(p_df_structure);
 
 }
 
-void generate_script_var_longst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_script_var_longst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::script_var_longst*>(p_df_structure);
 
 }
 
-void generate_active_script_varst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_active_script_varst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::active_script_varst*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_active_script_var_longst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_active_script_var_longst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::active_script_var_longst*>(p_df_structure);
 
 	p_table["value"] = reinterpret_cast<uint64_t>(&(df_structure->value)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_participants_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_participants_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_participants*>(p_df_structure);
 
@@ -2311,7 +2291,7 @@ void generate_activity_event_participants_offsets(void* p_df_structure, std::map
 	p_table["event_id"] = reinterpret_cast<uint64_t>(&(df_structure->event_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_schedule_slot_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_schedule_slot_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::schedule_slot*>(p_df_structure);
 
@@ -2322,7 +2302,7 @@ void generate_schedule_slot_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["processed"] = reinterpret_cast<uint64_t>(&(df_structure->processed)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order*>(p_df_structure);
 
@@ -2334,7 +2314,7 @@ void generate_squad_order_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["unk_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_kill_listst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_kill_listst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_kill_listst*>(p_df_structure);
 
@@ -2343,27 +2323,27 @@ void generate_squad_order_kill_listst_offsets(void* p_df_structure, std::map<std
 	p_table["title"] = reinterpret_cast<uint64_t>(&(df_structure->title)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_defend_burrowsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_defend_burrowsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_defend_burrowsst*>(p_df_structure);
 
 	p_table["burrows"] = reinterpret_cast<uint64_t>(&(df_structure->burrows)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_patrol_routest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_patrol_routest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_patrol_routest*>(p_df_structure);
 
 	p_table["route_id"] = reinterpret_cast<uint64_t>(&(df_structure->route_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_trainst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_trainst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_trainst*>(p_df_structure);
 
 }
 
-void generate_squad_order_drive_entity_off_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_drive_entity_off_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_drive_entity_off_sitest*>(p_df_structure);
 
@@ -2372,7 +2352,7 @@ void generate_squad_order_drive_entity_off_sitest_offsets(void* p_df_structure, 
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_cause_trouble_for_entityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_cause_trouble_for_entityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_cause_trouble_for_entityst*>(p_df_structure);
 
@@ -2380,7 +2360,7 @@ void generate_squad_order_cause_trouble_for_entityst_offsets(void* p_df_structur
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_kill_hfst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_kill_hfst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_kill_hfst*>(p_df_structure);
 
@@ -2388,7 +2368,7 @@ void generate_squad_order_kill_hfst_offsets(void* p_df_structure, std::map<std::
 	p_table["title"] = reinterpret_cast<uint64_t>(&(df_structure->title)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_drive_armies_from_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_drive_armies_from_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_drive_armies_from_sitest*>(p_df_structure);
 
@@ -2397,7 +2377,7 @@ void generate_squad_order_drive_armies_from_sitest_offsets(void* p_df_structure,
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub1*>(p_df_structure);
 
@@ -2406,7 +2386,7 @@ void generate_army_controller_sub1_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub4*>(p_df_structure);
 
@@ -2414,7 +2394,7 @@ void generate_army_controller_sub4_offsets(void* p_df_structure, std::map<std::s
 	p_table["unk_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub5_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub5_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub5*>(p_df_structure);
 
@@ -2425,7 +2405,7 @@ void generate_army_controller_sub5_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub6_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub6_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub6*>(p_df_structure);
 
@@ -2440,14 +2420,14 @@ void generate_army_controller_sub6_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub16_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub16_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub16*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub17_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub17_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub17*>(p_df_structure);
 
@@ -2455,7 +2435,7 @@ void generate_army_controller_sub17_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub18_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub18_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub18*>(p_df_structure);
 
@@ -2463,7 +2443,7 @@ void generate_army_controller_sub18_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_plant_growth_print_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_plant_growth_print_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::plant_growth_print*>(p_df_structure);
 
@@ -2475,7 +2455,7 @@ void generate_plant_growth_print_offsets(void* p_df_structure, std::map<std::str
 	p_table["timing_end"] = reinterpret_cast<uint64_t>(&(df_structure->timing_end)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_category_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_category_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_category*>(p_df_structure);
 
@@ -2486,7 +2466,7 @@ void generate_reaction_category_offsets(void* p_df_structure, std::map<std::stri
 	p_table["description"] = reinterpret_cast<uint64_t>(&(df_structure->description)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_product_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_product_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_product*>(p_df_structure);
 
@@ -2494,27 +2474,27 @@ void generate_reaction_product_offsets(void* p_df_structure, std::map<std::strin
 	p_table["product_to_container"] = reinterpret_cast<uint64_t>(&(df_structure->product_to_container)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref*>(p_df_structure);
 
 }
 
-void generate_general_ref_artifact_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_artifact_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_artifact*>(p_df_structure);
 
 	p_table["artifact_id"] = reinterpret_cast<uint64_t>(&(df_structure->artifact_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_nemesis_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_nemesis_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_nemesis*>(p_df_structure);
 
 	p_table["nemesis_id"] = reinterpret_cast<uint64_t>(&(df_structure->nemesis_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_item*>(p_df_structure);
 
@@ -2522,14 +2502,14 @@ void generate_general_ref_item_offsets(void* p_df_structure, std::map<std::strin
 	p_table["cached_index"] = reinterpret_cast<uint64_t>(&(df_structure->cached_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_coinbatch_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_coinbatch_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_coinbatch*>(p_df_structure);
 
 	p_table["batch"] = reinterpret_cast<uint64_t>(&(df_structure->batch)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_entity_art_image_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_entity_art_image_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_entity_art_image*>(p_df_structure);
 
@@ -2537,14 +2517,14 @@ void generate_general_ref_entity_art_image_offsets(void* p_df_structure, std::ma
 	p_table["index"] = reinterpret_cast<uint64_t>(&(df_structure->index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_projectile_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_projectile_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_projectile*>(p_df_structure);
 
 	p_table["projectile_id"] = reinterpret_cast<uint64_t>(&(df_structure->projectile_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_unit_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit*>(p_df_structure);
 
@@ -2552,21 +2532,21 @@ void generate_general_ref_unit_offsets(void* p_df_structure, std::map<std::strin
 	p_table["cached_index"] = reinterpret_cast<uint64_t>(&(df_structure->cached_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_building_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building*>(p_df_structure);
 
 	p_table["building_id"] = reinterpret_cast<uint64_t>(&(df_structure->building_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_entity_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_entity_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_entity*>(p_df_structure);
 
 	p_table["entity_id"] = reinterpret_cast<uint64_t>(&(df_structure->entity_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_locationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_locationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_locationst*>(p_df_structure);
 
@@ -2575,7 +2555,7 @@ void generate_general_ref_locationst_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_interactionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_interactionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_interactionst*>(p_df_structure);
 
@@ -2585,7 +2565,7 @@ void generate_general_ref_interactionst_offsets(void* p_df_structure, std::map<s
 	p_table["unk_0c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_0c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_abstract_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_abstract_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_abstract_buildingst*>(p_df_structure);
 
@@ -2593,42 +2573,42 @@ void generate_general_ref_abstract_buildingst_offsets(void* p_df_structure, std:
 	p_table["building_id"] = reinterpret_cast<uint64_t>(&(df_structure->building_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_historical_eventst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_historical_eventst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_historical_eventst*>(p_df_structure);
 
 	p_table["event_id"] = reinterpret_cast<uint64_t>(&(df_structure->event_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_sitest*>(p_df_structure);
 
 	p_table["site_id"] = reinterpret_cast<uint64_t>(&(df_structure->site_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_subregionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_subregionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_subregionst*>(p_df_structure);
 
 	p_table["region_id"] = reinterpret_cast<uint64_t>(&(df_structure->region_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_feature_layerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_feature_layerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_feature_layerst*>(p_df_structure);
 
 	p_table["underground_region_id"] = reinterpret_cast<uint64_t>(&(df_structure->underground_region_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_historical_figurest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_historical_figurest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_historical_figurest*>(p_df_structure);
 
 	p_table["hist_figure_id"] = reinterpret_cast<uint64_t>(&(df_structure->hist_figure_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_entity_popst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_entity_popst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_entity_popst*>(p_df_structure);
 
@@ -2638,7 +2618,7 @@ void generate_general_ref_entity_popst_offsets(void* p_df_structure, std::map<st
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_creaturest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_creaturest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_creaturest*>(p_df_structure);
 
@@ -2649,7 +2629,7 @@ void generate_general_ref_creaturest_offsets(void* p_df_structure, std::map<std:
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_activity_eventst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_activity_eventst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_activity_eventst*>(p_df_structure);
 
@@ -2657,278 +2637,278 @@ void generate_general_ref_activity_eventst_offsets(void* p_df_structure, std::ma
 	p_table["event_id"] = reinterpret_cast<uint64_t>(&(df_structure->event_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_languagest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_languagest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_languagest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_written_contentst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_written_contentst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_written_contentst*>(p_df_structure);
 
 	p_table["written_content_id"] = reinterpret_cast<uint64_t>(&(df_structure->written_content_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_poetic_formst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_poetic_formst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_poetic_formst*>(p_df_structure);
 
 	p_table["poetic_form_id"] = reinterpret_cast<uint64_t>(&(df_structure->poetic_form_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_musical_formst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_musical_formst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_musical_formst*>(p_df_structure);
 
 	p_table["musical_form_id"] = reinterpret_cast<uint64_t>(&(df_structure->musical_form_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_dance_formst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_dance_formst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_dance_formst*>(p_df_structure);
 
 	p_table["dance_form_id"] = reinterpret_cast<uint64_t>(&(df_structure->dance_form_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_is_artifactst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_is_artifactst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_is_artifactst*>(p_df_structure);
 
 }
 
-void generate_general_ref_is_nemesisst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_is_nemesisst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_is_nemesisst*>(p_df_structure);
 
 }
 
-void generate_general_ref_contains_unitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_contains_unitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_contains_unitst*>(p_df_structure);
 
 }
 
-void generate_general_ref_contains_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_contains_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_contains_itemst*>(p_df_structure);
 
 }
 
-void generate_general_ref_contained_in_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_contained_in_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_contained_in_itemst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_milkeest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_milkeest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_milkeest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_traineest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_traineest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_traineest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_itemownerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_itemownerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_itemownerst*>(p_df_structure);
 
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_unit_tradebringerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_tradebringerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_tradebringerst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_holderst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_holderst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_holderst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_workerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_workerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_workerst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_cageest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_cageest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_cageest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_beateest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_beateest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_beateest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_foodreceiverst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_foodreceiverst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_foodreceiverst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_kidnapeest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_kidnapeest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_kidnapeest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_patientst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_patientst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_patientst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_infantst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_infantst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_infantst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_slaughtereest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_slaughtereest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_slaughtereest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_sheareest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_sheareest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_sheareest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_suckeest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_suckeest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_suckeest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_reporteest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_reporteest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_reporteest*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_riderst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_riderst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_riderst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_climberst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_climberst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_climberst*>(p_df_structure);
 
 }
 
-void generate_general_ref_unit_geldeest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_unit_geldeest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_unit_geldeest*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_civzone_assignedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_civzone_assignedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_civzone_assignedst*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_triggerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_triggerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_triggerst*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_triggertargetst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_triggertargetst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_triggertargetst*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_chainst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_chainst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_chainst*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_cagedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_cagedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_cagedst*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_holderst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_holderst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_holderst*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_well_tag_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_well_tag_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_well_tag*>(p_df_structure);
 
 	p_table["direction"] = reinterpret_cast<uint64_t>(&(df_structure->direction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_building_use_target_1st_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_use_target_1st_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_use_target_1st*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_use_target_2st_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_use_target_2st_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_use_target_2st*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_destinationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_destinationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_destinationst*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_nest_boxst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_nest_boxst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_nest_boxst*>(p_df_structure);
 
 }
 
-void generate_general_ref_building_display_furniturest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_building_display_furniturest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_building_display_furniturest*>(p_df_structure);
 
 }
 
-void generate_general_ref_entity_stolenst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_entity_stolenst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_entity_stolenst*>(p_df_structure);
 
 }
 
-void generate_general_ref_entity_offeredst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_entity_offeredst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_entity_offeredst*>(p_df_structure);
 
 }
 
-void generate_general_ref_entity_itemownerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_entity_itemownerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_entity_itemownerst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link*>(p_df_structure);
 
@@ -2936,67 +2916,67 @@ void generate_histfig_entity_link_offsets(void* p_df_structure, std::map<std::st
 	p_table["link_strength"] = reinterpret_cast<uint64_t>(&(df_structure->link_strength)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_entity_link_memberst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_memberst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_memberst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_former_memberst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_former_memberst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_former_memberst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_mercenaryst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_mercenaryst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_mercenaryst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_former_mercenaryst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_former_mercenaryst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_former_mercenaryst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_slavest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_slavest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_slavest*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_former_slavest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_former_slavest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_former_slavest*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_prisonerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_prisonerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_prisonerst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_former_prisonerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_former_prisonerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_former_prisonerst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_enemyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_enemyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_enemyst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_criminalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_criminalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_criminalst*>(p_df_structure);
 
 }
 
-void generate_histfig_entity_link_positionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_positionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_positionst*>(p_df_structure);
 
@@ -3004,7 +2984,7 @@ void generate_histfig_entity_link_positionst_offsets(void* p_df_structure, std::
 	p_table["start_year"] = reinterpret_cast<uint64_t>(&(df_structure->start_year)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_entity_link_former_positionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_former_positionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_former_positionst*>(p_df_structure);
 
@@ -3013,7 +2993,7 @@ void generate_histfig_entity_link_former_positionst_offsets(void* p_df_structure
 	p_table["end_year"] = reinterpret_cast<uint64_t>(&(df_structure->end_year)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_entity_link_position_claimst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_position_claimst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_position_claimst*>(p_df_structure);
 
@@ -3021,7 +3001,7 @@ void generate_histfig_entity_link_position_claimst_offsets(void* p_df_structure,
 	p_table["start_year"] = reinterpret_cast<uint64_t>(&(df_structure->start_year)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_entity_link_squadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_squadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_squadst*>(p_df_structure);
 
@@ -3030,7 +3010,7 @@ void generate_histfig_entity_link_squadst_offsets(void* p_df_structure, std::map
 	p_table["start_year"] = reinterpret_cast<uint64_t>(&(df_structure->start_year)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_entity_link_former_squadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_former_squadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_former_squadst*>(p_df_structure);
 
@@ -3039,7 +3019,7 @@ void generate_histfig_entity_link_former_squadst_offsets(void* p_df_structure, s
 	p_table["end_year"] = reinterpret_cast<uint64_t>(&(df_structure->end_year)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_entity_link_occupationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_occupationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_occupationst*>(p_df_structure);
 
@@ -3047,7 +3027,7 @@ void generate_histfig_entity_link_occupationst_offsets(void* p_df_structure, std
 	p_table["start_year"] = reinterpret_cast<uint64_t>(&(df_structure->start_year)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_entity_link_former_occupationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_entity_link_former_occupationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_entity_link_former_occupationst*>(p_df_structure);
 
@@ -3056,7 +3036,7 @@ void generate_histfig_entity_link_former_occupationst_offsets(void* p_df_structu
 	p_table["end_year"] = reinterpret_cast<uint64_t>(&(df_structure->end_year)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_site_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link*>(p_df_structure);
 
@@ -3065,56 +3045,56 @@ void generate_histfig_site_link_offsets(void* p_df_structure, std::map<std::stri
 	p_table["entity"] = reinterpret_cast<uint64_t>(&(df_structure->entity)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_site_link_seat_of_powerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_seat_of_powerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link_seat_of_powerst*>(p_df_structure);
 
 }
 
-void generate_histfig_site_link_hangoutst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_hangoutst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link_hangoutst*>(p_df_structure);
 
 }
 
-void generate_histfig_site_link_home_site_abstract_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_home_site_abstract_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link_home_site_abstract_buildingst*>(p_df_structure);
 
 }
 
-void generate_histfig_site_link_home_site_realization_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_home_site_realization_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link_home_site_realization_buildingst*>(p_df_structure);
 
 }
 
-void generate_histfig_site_link_lairst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_lairst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link_lairst*>(p_df_structure);
 
 }
 
-void generate_histfig_site_link_home_site_realization_sulst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_home_site_realization_sulst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link_home_site_realization_sulst*>(p_df_structure);
 
 }
 
-void generate_histfig_site_link_home_site_saved_civzonest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_home_site_saved_civzonest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link_home_site_saved_civzonest*>(p_df_structure);
 
 }
 
-void generate_histfig_site_link_occupationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_site_link_occupationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_site_link_occupationst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_hf_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link*>(p_df_structure);
 
@@ -3122,67 +3102,67 @@ void generate_histfig_hf_link_offsets(void* p_df_structure, std::map<std::string
 	p_table["link_strength"] = reinterpret_cast<uint64_t>(&(df_structure->link_strength)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_hf_link_motherst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_motherst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_motherst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_fatherst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_fatherst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_fatherst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_spousest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_spousest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_spousest*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_childst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_childst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_childst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_deityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_deityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_deityst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_loverst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_loverst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_loverst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_prisonerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_prisonerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_prisonerst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_imprisonerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_imprisonerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_imprisonerst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_masterst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_masterst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_masterst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_apprenticest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_apprenticest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_apprenticest*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_companionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_companionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_companionst*>(p_df_structure);
 
@@ -3190,25 +3170,25 @@ void generate_histfig_hf_link_companionst_offsets(void* p_df_structure, std::map
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_histfig_hf_link_former_apprenticest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_former_apprenticest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_former_apprenticest*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_former_masterst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_former_masterst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_former_masterst*>(p_df_structure);
 
 }
 
-void generate_histfig_hf_link_pet_ownerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_histfig_hf_link_pet_ownerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::histfig_hf_link_pet_ownerst*>(p_df_structure);
 
 }
 
-void generate_resource_allotment_specifier_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier*>(p_df_structure);
 
@@ -3217,7 +3197,7 @@ void generate_resource_allotment_specifier_offsets(void* p_df_structure, std::ma
 	p_table["unk_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_cropst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_cropst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_cropst*>(p_df_structure);
 
@@ -3227,7 +3207,7 @@ void generate_resource_allotment_specifier_cropst_offsets(void* p_df_structure, 
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_stonest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_stonest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_stonest*>(p_df_structure);
 
@@ -3238,7 +3218,7 @@ void generate_resource_allotment_specifier_stonest_offsets(void* p_df_structure,
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_metalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_metalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_metalst*>(p_df_structure);
 
@@ -3248,7 +3228,7 @@ void generate_resource_allotment_specifier_metalst_offsets(void* p_df_structure,
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_woodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_woodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_woodst*>(p_df_structure);
 
@@ -3262,7 +3242,7 @@ void generate_resource_allotment_specifier_woodst_offsets(void* p_df_structure, 
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_armor_bodyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_armor_bodyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_armor_bodyst*>(p_df_structure);
 
@@ -3270,7 +3250,7 @@ void generate_resource_allotment_specifier_armor_bodyst_offsets(void* p_df_struc
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_armor_pantsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_armor_pantsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_armor_pantsst*>(p_df_structure);
 
@@ -3278,7 +3258,7 @@ void generate_resource_allotment_specifier_armor_pantsst_offsets(void* p_df_stru
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_armor_glovesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_armor_glovesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_armor_glovesst*>(p_df_structure);
 
@@ -3286,7 +3266,7 @@ void generate_resource_allotment_specifier_armor_glovesst_offsets(void* p_df_str
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_armor_bootsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_armor_bootsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_armor_bootsst*>(p_df_structure);
 
@@ -3294,7 +3274,7 @@ void generate_resource_allotment_specifier_armor_bootsst_offsets(void* p_df_stru
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_armor_helmst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_armor_helmst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_armor_helmst*>(p_df_structure);
 
@@ -3302,7 +3282,7 @@ void generate_resource_allotment_specifier_armor_helmst_offsets(void* p_df_struc
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_clothing_bodyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_clothing_bodyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_clothing_bodyst*>(p_df_structure);
 
@@ -3310,7 +3290,7 @@ void generate_resource_allotment_specifier_clothing_bodyst_offsets(void* p_df_st
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_clothing_pantsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_clothing_pantsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_clothing_pantsst*>(p_df_structure);
 
@@ -3318,7 +3298,7 @@ void generate_resource_allotment_specifier_clothing_pantsst_offsets(void* p_df_s
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_clothing_glovesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_clothing_glovesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_clothing_glovesst*>(p_df_structure);
 
@@ -3326,7 +3306,7 @@ void generate_resource_allotment_specifier_clothing_glovesst_offsets(void* p_df_
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_clothing_bootsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_clothing_bootsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_clothing_bootsst*>(p_df_structure);
 
@@ -3334,7 +3314,7 @@ void generate_resource_allotment_specifier_clothing_bootsst_offsets(void* p_df_s
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_clothing_helmst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_clothing_helmst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_clothing_helmst*>(p_df_structure);
 
@@ -3342,7 +3322,7 @@ void generate_resource_allotment_specifier_clothing_helmst_offsets(void* p_df_st
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_weapon_meleest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_weapon_meleest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_weapon_meleest*>(p_df_structure);
 
@@ -3350,7 +3330,7 @@ void generate_resource_allotment_specifier_weapon_meleest_offsets(void* p_df_str
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_weapon_rangedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_weapon_rangedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_weapon_rangedst*>(p_df_structure);
 
@@ -3358,7 +3338,7 @@ void generate_resource_allotment_specifier_weapon_rangedst_offsets(void* p_df_st
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_ammost_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_ammost_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_ammost*>(p_df_structure);
 
@@ -3366,7 +3346,7 @@ void generate_resource_allotment_specifier_ammost_offsets(void* p_df_structure, 
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_anvilst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_anvilst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_anvilst*>(p_df_structure);
 
@@ -3374,7 +3354,7 @@ void generate_resource_allotment_specifier_anvilst_offsets(void* p_df_structure,
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_gemsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_gemsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_gemsst*>(p_df_structure);
 
@@ -3382,7 +3362,7 @@ void generate_resource_allotment_specifier_gemsst_offsets(void* p_df_structure, 
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_threadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_threadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_threadst*>(p_df_structure);
 
@@ -3391,7 +3371,7 @@ void generate_resource_allotment_specifier_threadst_offsets(void* p_df_structure
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_clothst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_clothst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_clothst*>(p_df_structure);
 
@@ -3404,7 +3384,7 @@ void generate_resource_allotment_specifier_clothst_offsets(void* p_df_structure,
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_leatherst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_leatherst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_leatherst*>(p_df_structure);
 
@@ -3422,7 +3402,7 @@ void generate_resource_allotment_specifier_leatherst_offsets(void* p_df_structur
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_quiverst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_quiverst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_quiverst*>(p_df_structure);
 
@@ -3430,7 +3410,7 @@ void generate_resource_allotment_specifier_quiverst_offsets(void* p_df_structure
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_backpackst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_backpackst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_backpackst*>(p_df_structure);
 
@@ -3438,7 +3418,7 @@ void generate_resource_allotment_specifier_backpackst_offsets(void* p_df_structu
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_flaskst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_flaskst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_flaskst*>(p_df_structure);
 
@@ -3446,7 +3426,7 @@ void generate_resource_allotment_specifier_flaskst_offsets(void* p_df_structure,
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_bagst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_bagst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_bagst*>(p_df_structure);
 
@@ -3454,7 +3434,7 @@ void generate_resource_allotment_specifier_bagst_offsets(void* p_df_structure, s
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_tablest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_tablest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_tablest*>(p_df_structure);
 
@@ -3462,7 +3442,7 @@ void generate_resource_allotment_specifier_tablest_offsets(void* p_df_structure,
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_cabinetst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_cabinetst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_cabinetst*>(p_df_structure);
 
@@ -3470,7 +3450,7 @@ void generate_resource_allotment_specifier_cabinetst_offsets(void* p_df_structur
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_chairst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_chairst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_chairst*>(p_df_structure);
 
@@ -3478,7 +3458,7 @@ void generate_resource_allotment_specifier_chairst_offsets(void* p_df_structure,
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_boxst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_boxst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_boxst*>(p_df_structure);
 
@@ -3486,7 +3466,7 @@ void generate_resource_allotment_specifier_boxst_offsets(void* p_df_structure, s
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_bedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_bedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_bedst*>(p_df_structure);
 
@@ -3494,7 +3474,7 @@ void generate_resource_allotment_specifier_bedst_offsets(void* p_df_structure, s
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_craftsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_craftsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_craftsst*>(p_df_structure);
 
@@ -3502,7 +3482,7 @@ void generate_resource_allotment_specifier_craftsst_offsets(void* p_df_structure
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_meatst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_meatst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_meatst*>(p_df_structure);
 
@@ -3510,7 +3490,7 @@ void generate_resource_allotment_specifier_meatst_offsets(void* p_df_structure, 
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_bonest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_bonest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_bonest*>(p_df_structure);
 
@@ -3519,7 +3499,7 @@ void generate_resource_allotment_specifier_bonest_offsets(void* p_df_structure, 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_hornst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_hornst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_hornst*>(p_df_structure);
 
@@ -3528,7 +3508,7 @@ void generate_resource_allotment_specifier_hornst_offsets(void* p_df_structure, 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_shellst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_shellst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_shellst*>(p_df_structure);
 
@@ -3537,7 +3517,7 @@ void generate_resource_allotment_specifier_shellst_offsets(void* p_df_structure,
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_tallowst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_tallowst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_tallowst*>(p_df_structure);
 
@@ -3545,7 +3525,7 @@ void generate_resource_allotment_specifier_tallowst_offsets(void* p_df_structure
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_toothst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_toothst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_toothst*>(p_df_structure);
 
@@ -3554,7 +3534,7 @@ void generate_resource_allotment_specifier_toothst_offsets(void* p_df_structure,
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_pearlst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_pearlst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_pearlst*>(p_df_structure);
 
@@ -3562,7 +3542,7 @@ void generate_resource_allotment_specifier_pearlst_offsets(void* p_df_structure,
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_soapst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_soapst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_soapst*>(p_df_structure);
 
@@ -3570,7 +3550,7 @@ void generate_resource_allotment_specifier_soapst_offsets(void* p_df_structure, 
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_extractst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_extractst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_extractst*>(p_df_structure);
 
@@ -3582,7 +3562,7 @@ void generate_resource_allotment_specifier_extractst_offsets(void* p_df_structur
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_cheesest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_cheesest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_cheesest*>(p_df_structure);
 
@@ -3590,7 +3570,7 @@ void generate_resource_allotment_specifier_cheesest_offsets(void* p_df_structure
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_skinst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_skinst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_skinst*>(p_df_structure);
 
@@ -3601,7 +3581,7 @@ void generate_resource_allotment_specifier_skinst_offsets(void* p_df_structure, 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_specifier_powderst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_specifier_powderst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_specifier_powderst*>(p_df_structure);
 
@@ -3610,7 +3590,7 @@ void generate_resource_allotment_specifier_powderst_offsets(void* p_df_structure
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_route_stockpile_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_route_stockpile_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::route_stockpile_link*>(p_df_structure);
 
@@ -3618,14 +3598,14 @@ void generate_route_stockpile_link_offsets(void* p_df_structure, std::map<std::s
 	p_table["mode"] = reinterpret_cast<uint64_t>(&(df_structure->mode)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_build_req_choicest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_build_req_choicest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::build_req_choicest*>(p_df_structure);
 
 	p_table["distance"] = reinterpret_cast<uint64_t>(&(df_structure->distance)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_burrow_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_burrow_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::burrow*>(p_df_structure);
 
@@ -3641,7 +3621,7 @@ void generate_burrow_offsets(void* p_df_structure, std::map<std::string, std::si
 	p_table["limit_workshops"] = reinterpret_cast<uint64_t>(&(df_structure->limit_workshops)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_hotkey_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_hotkey_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_hotkey*>(p_df_structure);
 
@@ -3654,7 +3634,7 @@ void generate_ui_hotkey_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["item_id"] = reinterpret_cast<uint64_t>(&(df_structure->item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_map_viewport_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_map_viewport_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::map_viewport*>(p_df_structure);
 
@@ -3670,7 +3650,7 @@ void generate_map_viewport_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["window_z"] = reinterpret_cast<uint64_t>(&(df_structure->window_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_genes_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_genes_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_genes*>(p_df_structure);
 
@@ -3678,7 +3658,7 @@ void generate_unit_genes_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["colors"] = reinterpret_cast<uint64_t>(&(df_structure->colors)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_attribute_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_attribute_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_attribute*>(p_df_structure);
 
@@ -3691,7 +3671,7 @@ void generate_unit_attribute_offsets(void* p_df_structure, std::map<std::string,
 	p_table["demotion_counter"] = reinterpret_cast<uint64_t>(&(df_structure->demotion_counter)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_curse_attr_change_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_curse_attr_change_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::curse_attr_change*>(p_df_structure);
 
@@ -3701,7 +3681,7 @@ void generate_curse_attr_change_offsets(void* p_df_structure, std::map<std::stri
 	p_table["ment_att_add"] = reinterpret_cast<uint64_t>(&(df_structure->ment_att_add)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_item_wrestle_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_item_wrestle_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_item_wrestle*>(p_df_structure);
 
@@ -3717,7 +3697,7 @@ void generate_unit_item_wrestle_offsets(void* p_df_structure, std::map<std::stri
 	p_table["unk_20"] = reinterpret_cast<uint64_t>(&(df_structure->unk_20)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_item_use_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_item_use_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_item_use*>(p_df_structure);
 
@@ -3727,7 +3707,7 @@ void generate_unit_item_use_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["affection_level"] = reinterpret_cast<uint64_t>(&(df_structure->affection_level)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_unk_138_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_unk_138_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_unk_138*>(p_df_structure);
 
@@ -3737,7 +3717,7 @@ void generate_unit_unk_138_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_coin_debt_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_coin_debt_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_coin_debt*>(p_df_structure);
 
@@ -3745,7 +3725,7 @@ void generate_unit_coin_debt_offsets(void* p_df_structure, std::map<std::string,
 	p_table["amount"] = reinterpret_cast<uint64_t>(&(df_structure->amount)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_file_compressorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_file_compressorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::file_compressorst*>(p_df_structure);
 
@@ -3760,7 +3740,7 @@ void generate_file_compressorst_offsets(void* p_df_structure, std::map<std::stri
 	p_table["out_buffer_amount_written"] = reinterpret_cast<uint64_t>(&(df_structure->out_buffer_amount_written)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_layer_object_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_layer_object_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::layer_object*>(p_df_structure);
 
@@ -3768,7 +3748,7 @@ void generate_layer_object_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["active"] = reinterpret_cast<uint64_t>(&(df_structure->active)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_layer_object_buttonst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_layer_object_buttonst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::layer_object_buttonst*>(p_df_structure);
 
@@ -3790,7 +3770,7 @@ void generate_layer_object_buttonst_offsets(void* p_df_structure, std::map<std::
 	p_table["handle_mouserbtndown"] = reinterpret_cast<uint64_t>(&(df_structure->handle_mouserbtndown)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_widget_menu_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_widget_menu_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::widget_menu*>(p_df_structure);
 
@@ -3801,7 +3781,7 @@ void generate_widget_menu_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_widget_textbox_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_widget_textbox_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::widget_textbox*>(p_df_structure);
 
@@ -3809,7 +3789,7 @@ void generate_widget_textbox_offsets(void* p_df_structure, std::map<std::string,
 	p_table["keep"] = reinterpret_cast<uint64_t>(&(df_structure->keep)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_log_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_log_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_log_item*>(p_df_structure);
 
@@ -3820,21 +3800,21 @@ void generate_adventure_log_item_offsets(void* p_df_structure, std::map<std::str
 	p_table["info"] = reinterpret_cast<uint64_t>(&(df_structure->info)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_gen_param_basest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_gen_param_basest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_gen_param_basest*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_gen_param_seedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_gen_param_seedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_gen_param_seedst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_gen_param_valuest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_gen_param_valuest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_gen_param_valuest*>(p_df_structure);
 
@@ -3843,7 +3823,7 @@ void generate_world_gen_param_valuest_offsets(void* p_df_structure, std::map<std
 	p_table["unk_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_gen_param_charst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_gen_param_charst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_gen_param_charst*>(p_df_structure);
 
@@ -3854,7 +3834,7 @@ void generate_world_gen_param_charst_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_gen_param_memberst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_gen_param_memberst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_gen_param_memberst*>(p_df_structure);
 
@@ -3865,7 +3845,7 @@ void generate_world_gen_param_memberst_offsets(void* p_df_structure, std::map<st
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_matgloss_list_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_matgloss_list_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::matgloss_list*>(p_df_structure);
 
@@ -3900,7 +3880,7 @@ void generate_matgloss_list_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_population_ref_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_population_ref_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_population_ref*>(p_df_structure);
 
@@ -3913,7 +3893,7 @@ void generate_world_population_ref_offsets(void* p_df_structure, std::map<std::s
 	p_table["depth"] = reinterpret_cast<uint64_t>(&(df_structure->depth)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_scribejob_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_scribejob_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::scribejob*>(p_df_structure);
 
@@ -3928,7 +3908,7 @@ void generate_scribejob_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["locationmaybe"] = reinterpret_cast<uint64_t>(&(df_structure->locationmaybe)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_reputation_report_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_reputation_report_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_reputation_report*>(p_df_structure);
 
@@ -3948,7 +3928,7 @@ void generate_site_reputation_report_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_contents_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_contents_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_contents*>(p_df_structure);
 
@@ -3964,7 +3944,7 @@ void generate_abstract_building_contents_offsets(void* p_df_structure, std::map<
 	p_table["building_ids"] = reinterpret_cast<uint64_t>(&(df_structure->building_ids)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_inhabitant_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_inhabitant_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_inhabitant*>(p_df_structure);
 
@@ -3981,26 +3961,26 @@ void generate_world_site_inhabitant_offsets(void* p_df_structure, std::map<std::
 	p_table["unk_28"] = reinterpret_cast<uint64_t>(&(df_structure->unk_28)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_infost_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_infost_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_infost*>(p_df_structure);
 
 }
 
-void generate_site_realization_building_info_castle_courtyardst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_castle_courtyardst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_castle_courtyardst*>(p_df_structure);
 
 }
 
-void generate_creation_zone_pwg_alterationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creation_zone_pwg_alterationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creation_zone_pwg_alterationst*>(p_df_structure);
 
 	p_table["unk_0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_0)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creation_zone_pwg_alteration_campst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creation_zone_pwg_alteration_campst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creation_zone_pwg_alteration_campst*>(p_df_structure);
 
@@ -4016,7 +3996,7 @@ void generate_creation_zone_pwg_alteration_campst_offsets(void* p_df_structure, 
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creation_zone_pwg_alteration_srb_ruinedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creation_zone_pwg_alteration_srb_ruinedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creation_zone_pwg_alteration_srb_ruinedst*>(p_df_structure);
 
@@ -4024,7 +4004,7 @@ void generate_creation_zone_pwg_alteration_srb_ruinedst_offsets(void* p_df_struc
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creation_zone_pwg_alteration_srp_ruinedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creation_zone_pwg_alteration_srp_ruinedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creation_zone_pwg_alteration_srp_ruinedst*>(p_df_structure);
 
@@ -4032,7 +4012,7 @@ void generate_creation_zone_pwg_alteration_srp_ruinedst_offsets(void* p_df_struc
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident_hfid_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident_hfid_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident_hfid*>(p_df_structure);
 
@@ -4042,7 +4022,7 @@ void generate_incident_hfid_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["unk_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mission_campaign_report_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mission_campaign_report_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mission_campaign_report*>(p_df_structure);
 
@@ -4057,7 +4037,7 @@ void generate_mission_campaign_report_offsets(void* p_df_structure, std::map<std
 	p_table["events_count"] = reinterpret_cast<uint64_t>(&(df_structure->events_count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_coord_rect_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_coord_rect_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::coord_rect*>(p_df_structure);
 
@@ -4068,7 +4048,7 @@ void generate_coord_rect_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["z"] = reinterpret_cast<uint64_t>(&(df_structure->z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_unk_a8_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_unk_a8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_unk_a8*>(p_df_structure);
 
@@ -4080,7 +4060,7 @@ void generate_world_unk_a8_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_unk_b4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_unk_b4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_unk_b4*>(p_df_structure);
 
@@ -4094,7 +4074,7 @@ void generate_world_unk_b4_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ocean_wave_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ocean_wave_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ocean_wave*>(p_df_structure);
 
@@ -4108,7 +4088,7 @@ void generate_ocean_wave_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_coin_batch__T_image_front_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_coin_batch__T_image_front_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::coin_batch::T_image_front*>(p_df_structure);
 
@@ -4116,7 +4096,7 @@ void generate_coin_batch__T_image_front_offsets(void* p_df_structure, std::map<s
 	p_table["subid"] = reinterpret_cast<uint64_t>(&(df_structure->subid)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_coin_batch__T_image_back_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_coin_batch__T_image_back_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::coin_batch::T_image_back*>(p_df_structure);
 
@@ -4124,7 +4104,7 @@ void generate_coin_batch__T_image_back_offsets(void* p_df_structure, std::map<st
 	p_table["subid"] = reinterpret_cast<uint64_t>(&(df_structure->subid)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_coin_batch_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_coin_batch_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::coin_batch*>(p_df_structure);
 
@@ -4137,7 +4117,7 @@ void generate_coin_batch_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["image_back"] = reinterpret_cast<uint64_t>(&(df_structure->image_back)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_conversation__T_speech_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_conversation__T_speech_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::conversation::T_speech*>(p_df_structure);
 
@@ -4150,7 +4130,7 @@ void generate_conversation__T_speech_offsets(void* p_df_structure, std::map<std:
 	p_table["bright"] = reinterpret_cast<uint64_t>(&(df_structure->bright)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_conversation_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_conversation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::conversation*>(p_df_structure);
 
@@ -4181,7 +4161,7 @@ void generate_conversation_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["speech"] = reinterpret_cast<uint64_t>(&(df_structure->speech)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_talk_choice__T_unk_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_talk_choice__T_unk_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::talk_choice::T_unk*>(p_df_structure);
 
@@ -4190,7 +4170,7 @@ void generate_talk_choice__T_unk_offsets(void* p_df_structure, std::map<std::str
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_talk_choice_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_talk_choice_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::talk_choice*>(p_df_structure);
 
@@ -4202,7 +4182,7 @@ void generate_talk_choice_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_option_eat_item_contaminantst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_option_eat_item_contaminantst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_option_eat_item_contaminantst*>(p_df_structure);
 
@@ -4211,7 +4191,7 @@ void generate_adventure_option_eat_item_contaminantst_offsets(void* p_df_structu
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_environment_optionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_optionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_optionst*>(p_df_structure);
 
@@ -4219,14 +4199,14 @@ void generate_adventure_environment_optionst_offsets(void* p_df_structure, std::
 	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_environment_place_in_it_containerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_place_in_it_containerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_place_in_it_containerst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_environment_ingest_from_containerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_ingest_from_containerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_ingest_from_containerst*>(p_df_structure);
 
@@ -4234,14 +4214,14 @@ void generate_adventure_environment_ingest_from_containerst_offsets(void* p_df_s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_environment_pickup_ignite_vegst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_pickup_ignite_vegst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_pickup_ignite_vegst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_environment_ingest_materialst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_ingest_materialst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_ingest_materialst*>(p_df_structure);
 
@@ -4250,40 +4230,40 @@ void generate_adventure_environment_ingest_materialst_offsets(void* p_df_structu
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_environment_pickup_make_campfirest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_pickup_make_campfirest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_pickup_make_campfirest*>(p_df_structure);
 
 }
 
-void generate_adventure_environment_place_in_bld_containerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_place_in_bld_containerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_place_in_bld_containerst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_environment_pickup_vermin_eventst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_pickup_vermin_eventst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_pickup_vermin_eventst*>(p_df_structure);
 
 	p_table["vermin_idx"] = reinterpret_cast<uint64_t>(&(df_structure->vermin_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_environment_pickup_chop_treest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_pickup_chop_treest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_pickup_chop_treest*>(p_df_structure);
 
 }
 
-void generate_adventure_environment_unit_suck_bloodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_environment_unit_suck_bloodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_environment_unit_suck_bloodst*>(p_df_structure);
 
 	p_table["unit_id"] = reinterpret_cast<uint64_t>(&(df_structure->unit_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_optionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_optionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_optionst*>(p_df_structure);
 
@@ -4291,33 +4271,33 @@ void generate_adventure_movement_optionst_offsets(void* p_df_structure, std::map
 	p_table["source"] = reinterpret_cast<uint64_t>(&(df_structure->source)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_release_hold_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_release_hold_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_release_hold_itemst*>(p_df_structure);
 
 }
 
-void generate_adventure_movement_release_hold_tilest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_release_hold_tilest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_release_hold_tilest*>(p_df_structure);
 
 }
 
-void generate_adventure_movement_attack_creaturest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_attack_creaturest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_attack_creaturest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_hold_tilest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_hold_tilest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_hold_tilest*>(p_df_structure);
 
 	p_table["grab"] = reinterpret_cast<uint64_t>(&(df_structure->grab)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_movest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_movest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_movest*>(p_df_structure);
 
@@ -4325,53 +4305,53 @@ void generate_adventure_movement_movest_offsets(void* p_df_structure, std::map<s
 	p_table["unk_bitfield"] = reinterpret_cast<uint64_t>(&(df_structure->unk_bitfield)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_climbst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_climbst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_climbst*>(p_df_structure);
 
 	p_table["grab"] = reinterpret_cast<uint64_t>(&(df_structure->grab)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_hold_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_hold_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_hold_itemst*>(p_df_structure);
 
 	p_table["item_id"] = reinterpret_cast<uint64_t>(&(df_structure->item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_building_interactst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_building_interactst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_building_interactst*>(p_df_structure);
 
 	p_table["building_id"] = reinterpret_cast<uint64_t>(&(df_structure->building_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_item_interactst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_item_interactst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_item_interactst*>(p_df_structure);
 
 	p_table["item_id"] = reinterpret_cast<uint64_t>(&(df_structure->item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_movement_item_interact_guidest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_item_interact_guidest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_item_interact_guidest*>(p_df_structure);
 
 }
 
-void generate_adventure_movement_item_interact_ridest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_item_interact_ridest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_item_interact_ridest*>(p_df_structure);
 
 }
 
-void generate_adventure_movement_item_interact_pushst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_movement_item_interact_pushst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_movement_item_interact_pushst*>(p_df_structure);
 
 }
 
-void generate_adventure_item_interact_heat_from_tilest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_item_interact_heat_from_tilest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_item_interact_heat_from_tilest*>(p_df_structure);
 
@@ -4380,7 +4360,7 @@ void generate_adventure_item_interact_heat_from_tilest_offsets(void* p_df_struct
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_item_interact_fill_from_containerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_item_interact_fill_from_containerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_item_interact_fill_from_containerst*>(p_df_structure);
 
@@ -4390,7 +4370,7 @@ void generate_adventure_item_interact_fill_from_containerst_offsets(void* p_df_s
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_item_interact_fill_with_materialst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_item_interact_fill_with_materialst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_item_interact_fill_with_materialst*>(p_df_structure);
 
@@ -4402,14 +4382,14 @@ void generate_adventure_item_interact_fill_with_materialst_offsets(void* p_df_st
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_item_interact_give_namest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_item_interact_give_namest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_item_interact_give_namest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_announcements_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_announcements_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::announcements*>(p_df_structure);
 
@@ -4417,7 +4397,7 @@ void generate_announcements_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["unused"] = reinterpret_cast<uint64_t>(&(df_structure->unused)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_report_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_report_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::report*>(p_df_structure);
 
@@ -4440,7 +4420,7 @@ void generate_report_offsets(void* p_df_structure, std::map<std::string, std::si
 	p_table["speaker_id"] = reinterpret_cast<uint64_t>(&(df_structure->speaker_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_element_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_element_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_element_itemst*>(p_df_structure);
 
@@ -4452,7 +4432,7 @@ void generate_art_image_element_itemst_offsets(void* p_df_structure, std::map<st
 	p_table["item_id"] = reinterpret_cast<uint64_t>(&(df_structure->item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_property_transitive_verbst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_property_transitive_verbst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_property_transitive_verbst*>(p_df_structure);
 
@@ -4461,7 +4441,7 @@ void generate_art_image_property_transitive_verbst_offsets(void* p_df_structure,
 	p_table["verb"] = reinterpret_cast<uint64_t>(&(df_structure->verb)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_property_intransitive_verbst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_property_intransitive_verbst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_property_intransitive_verbst*>(p_df_structure);
 
@@ -4469,7 +4449,7 @@ void generate_art_image_property_intransitive_verbst_offsets(void* p_df_structur
 	p_table["verb"] = reinterpret_cast<uint64_t>(&(df_structure->verb)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_chunk_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_chunk_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image_chunk*>(p_df_structure);
 
@@ -4477,7 +4457,7 @@ void generate_art_image_chunk_offsets(void* p_df_structure, std::map<std::string
 	p_table["images"] = reinterpret_cast<uint64_t>(&(df_structure->images)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_poetic_form_part__T_line_subject_targets_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_poetic_form_part__T_line_subject_targets_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::poetic_form_part::T_line_subject_targets*>(p_df_structure);
 
@@ -4485,7 +4465,7 @@ void generate_poetic_form_part__T_line_subject_targets_offsets(void* p_df_struct
 	p_table["subject_topic"] = reinterpret_cast<uint64_t>(&(df_structure->subject_topic)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_poetic_form_part_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_poetic_form_part_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::poetic_form_part*>(p_df_structure);
 
@@ -4522,7 +4502,7 @@ void generate_poetic_form_part_offsets(void* p_df_structure, std::map<std::strin
 	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_vocals_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_musical_form_vocals_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::musical_form_vocals*>(p_df_structure);
 
@@ -4553,7 +4533,7 @@ void generate_musical_form_vocals_offsets(void* p_df_structure, std::map<std::st
 	p_table["anon_23"] = reinterpret_cast<uint64_t>(&(df_structure->anon_23)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_instruments_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_musical_form_instruments_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::musical_form_instruments*>(p_df_structure);
 
@@ -4566,7 +4546,7 @@ void generate_musical_form_instruments_offsets(void* p_df_structure, std::map<st
 	p_table["overall_style"] = reinterpret_cast<uint64_t>(&(df_structure->overall_style)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_melodies_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_musical_form_melodies_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::musical_form_melodies*>(p_df_structure);
 
@@ -4576,7 +4556,7 @@ void generate_musical_form_melodies_offsets(void* p_df_structure, std::map<std::
 	p_table["features"] = reinterpret_cast<uint64_t>(&(df_structure->features)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_scale__T_unk1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_scale__T_unk1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::scale::T_unk1*>(p_df_structure);
 
@@ -4587,7 +4567,7 @@ void generate_scale__T_unk1_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_scale_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_scale_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::scale*>(p_df_structure);
 
@@ -4601,7 +4581,7 @@ void generate_scale_offsets(void* p_df_structure, std::map<std::string, std::siz
 	p_table["unk1"] = reinterpret_cast<uint64_t>(&(df_structure->unk1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_rhythm_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_rhythm_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::rhythm*>(p_df_structure);
 
@@ -4611,7 +4591,7 @@ void generate_rhythm_offsets(void* p_df_structure, std::map<std::string, std::si
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_rhythm_sub1__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_rhythm_sub1__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::rhythm_sub1::T_anon_1*>(p_df_structure);
 
@@ -4619,7 +4599,7 @@ void generate_rhythm_sub1__T_anon_1_offsets(void* p_df_structure, std::map<std::
 	p_table["length"] = reinterpret_cast<uint64_t>(&(df_structure->length)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_rhythm_sub1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_rhythm_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::rhythm_sub1*>(p_df_structure);
 
@@ -4630,7 +4610,7 @@ void generate_rhythm_sub1_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_occupation_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_occupation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::occupation*>(p_df_structure);
 
@@ -4647,7 +4627,7 @@ void generate_occupation_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_def_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_def_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_def*>(p_df_structure);
 
@@ -4672,7 +4652,7 @@ void generate_building_def_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["build_stages"] = reinterpret_cast<uint64_t>(&(df_structure->build_stages)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_def_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_def_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_def_item*>(p_df_structure);
 
@@ -4696,19 +4676,19 @@ void generate_building_def_item_offsets(void* p_df_structure, std::map<std::stri
 	p_table["metal_ore_str"] = reinterpret_cast<uint64_t>(&(df_structure->metal_ore_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_def_workshopst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_def_workshopst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_def_workshopst*>(p_df_structure);
 
 }
 
-void generate_building_def_furnacest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_def_furnacest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_def_furnacest*>(p_df_structure);
 
 }
 
-void generate_building__T_job_claim_suppress_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building__T_job_claim_suppress_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building::T_job_claim_suppress*>(p_df_structure);
 
@@ -4716,7 +4696,7 @@ void generate_building__T_job_claim_suppress_offsets(void* p_df_structure, std::
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building__T_activities_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building__T_activities_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building::T_activities*>(p_df_structure);
 
@@ -4724,7 +4704,7 @@ void generate_building__T_activities_offsets(void* p_df_structure, std::map<std:
 	p_table["event_id"] = reinterpret_cast<uint64_t>(&(df_structure->event_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building*>(p_df_structure);
 
@@ -4761,7 +4741,7 @@ void generate_building_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["unk_v40_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_links_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_links_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_links*>(p_df_structure);
 
@@ -4771,7 +4751,7 @@ void generate_stockpile_links_offsets(void* p_df_structure, std::map<std::string
 	p_table["take_from_workshop"] = reinterpret_cast<uint64_t>(&(df_structure->take_from_workshop)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_civzonest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_civzonest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_civzonest*>(p_df_structure);
 
@@ -4791,7 +4771,7 @@ void generate_building_civzonest_offsets(void* p_df_structure, std::map<std::str
 	p_table["unk_v43_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_actual__T_contained_items_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_actual__T_contained_items_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_actual::T_contained_items*>(p_df_structure);
 
@@ -4799,7 +4779,7 @@ void generate_building_actual__T_contained_items_offsets(void* p_df_structure, s
 	p_table["use_mode"] = reinterpret_cast<uint64_t>(&(df_structure->use_mode)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_actual_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_actual_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_actual*>(p_df_structure);
 
@@ -4808,7 +4788,7 @@ void generate_building_actual_offsets(void* p_df_structure, std::map<std::string
 	p_table["design"] = reinterpret_cast<uint64_t>(&(df_structure->design)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_design_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_design_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_design*>(p_df_structure);
 
@@ -4828,7 +4808,7 @@ void generate_building_design_offsets(void* p_df_structure, std::map<std::string
 	p_table["max_hitpoints"] = reinterpret_cast<uint64_t>(&(df_structure->max_hitpoints)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_workshop_profile_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_workshop_profile_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::workshop_profile*>(p_df_structure);
 
@@ -4842,7 +4822,7 @@ void generate_workshop_profile_offsets(void* p_df_structure, std::map<std::strin
 	p_table["blocked_labors"] = reinterpret_cast<uint64_t>(&(df_structure->blocked_labors)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_furnacest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_furnacest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_furnacest*>(p_df_structure);
 
@@ -4853,7 +4833,7 @@ void generate_building_furnacest_offsets(void* p_df_structure, std::map<std::str
 	p_table["custom_type"] = reinterpret_cast<uint64_t>(&(df_structure->custom_type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_workshopst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_workshopst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_workshopst*>(p_df_structure);
 
@@ -4863,7 +4843,7 @@ void generate_building_workshopst_offsets(void* p_df_structure, std::map<std::st
 	p_table["custom_type"] = reinterpret_cast<uint64_t>(&(df_structure->custom_type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_animaltrapst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_animaltrapst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_animaltrapst*>(p_df_structure);
 
@@ -4871,14 +4851,14 @@ void generate_building_animaltrapst_offsets(void* p_df_structure, std::map<std::
 	p_table["fill_timer"] = reinterpret_cast<uint64_t>(&(df_structure->fill_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_archerytargetst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_archerytargetst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_archerytargetst*>(p_df_structure);
 
 	p_table["archery_direction"] = reinterpret_cast<uint64_t>(&(df_structure->archery_direction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_armorstandst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_armorstandst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_armorstandst*>(p_df_structure);
 
@@ -4888,7 +4868,7 @@ void generate_building_armorstandst_offsets(void* p_df_structure, std::map<std::
 	p_table["specific_position"] = reinterpret_cast<uint64_t>(&(df_structure->specific_position)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_bars_verticalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_bars_verticalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_bars_verticalst*>(p_df_structure);
 
@@ -4896,7 +4876,7 @@ void generate_building_bars_verticalst_offsets(void* p_df_structure, std::map<st
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_bars_floorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_bars_floorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_bars_floorst*>(p_df_structure);
 
@@ -4904,7 +4884,7 @@ void generate_building_bars_floorst_offsets(void* p_df_structure, std::map<std::
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_bedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_bedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_bedst*>(p_df_structure);
 
@@ -4915,13 +4895,13 @@ void generate_building_bedst_offsets(void* p_df_structure, std::map<std::string,
 	p_table["users"] = reinterpret_cast<uint64_t>(&(df_structure->users)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_bookcasest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_bookcasest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_bookcasest*>(p_df_structure);
 
 }
 
-void generate_building_boxst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_boxst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_boxst*>(p_df_structure);
 
@@ -4931,7 +4911,7 @@ void generate_building_boxst_offsets(void* p_df_structure, std::map<std::string,
 	p_table["specific_position"] = reinterpret_cast<uint64_t>(&(df_structure->specific_position)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_bridgest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_bridgest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_bridgest*>(p_df_structure);
 
@@ -4941,7 +4921,7 @@ void generate_building_bridgest_offsets(void* p_df_structure, std::map<std::stri
 	p_table["material_amount"] = reinterpret_cast<uint64_t>(&(df_structure->material_amount)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_cabinetst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_cabinetst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_cabinetst*>(p_df_structure);
 
@@ -4951,7 +4931,7 @@ void generate_building_cabinetst_offsets(void* p_df_structure, std::map<std::str
 	p_table["specific_position"] = reinterpret_cast<uint64_t>(&(df_structure->specific_position)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_cagest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_cagest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_cagest*>(p_df_structure);
 
@@ -4961,7 +4941,7 @@ void generate_building_cagest_offsets(void* p_df_structure, std::map<std::string
 	p_table["fill_timer"] = reinterpret_cast<uint64_t>(&(df_structure->fill_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_chainst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_chainst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_chainst*>(p_df_structure);
 
@@ -4970,7 +4950,7 @@ void generate_building_chainst_offsets(void* p_df_structure, std::map<std::strin
 	p_table["chain_flags"] = reinterpret_cast<uint64_t>(&(df_structure->chain_flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_chairst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_chairst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_chairst*>(p_df_structure);
 
@@ -4978,28 +4958,28 @@ void generate_building_chairst_offsets(void* p_df_structure, std::map<std::strin
 	p_table["users"] = reinterpret_cast<uint64_t>(&(df_structure->users)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_coffinst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_coffinst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_coffinst*>(p_df_structure);
 
 	p_table["burial_mode"] = reinterpret_cast<uint64_t>(&(df_structure->burial_mode)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_constructionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_constructionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_constructionst*>(p_df_structure);
 
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_display_furniturest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_display_furniturest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_display_furniturest*>(p_df_structure);
 
 	p_table["displayed_items"] = reinterpret_cast<uint64_t>(&(df_structure->displayed_items)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_doorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_doorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_doorst*>(p_df_structure);
 
@@ -5007,7 +4987,7 @@ void generate_building_doorst_offsets(void* p_df_structure, std::map<std::string
 	p_table["close_timer"] = reinterpret_cast<uint64_t>(&(df_structure->close_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_farmplotst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_farmplotst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_farmplotst*>(p_df_structure);
 
@@ -5020,7 +5000,7 @@ void generate_building_farmplotst_offsets(void* p_df_structure, std::map<std::st
 	p_table["terrain_purge_timer"] = reinterpret_cast<uint64_t>(&(df_structure->terrain_purge_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_floodgatest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_floodgatest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_floodgatest*>(p_df_structure);
 
@@ -5028,7 +5008,7 @@ void generate_building_floodgatest_offsets(void* p_df_structure, std::map<std::s
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_grate_floorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_grate_floorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_grate_floorst*>(p_df_structure);
 
@@ -5036,7 +5016,7 @@ void generate_building_grate_floorst_offsets(void* p_df_structure, std::map<std:
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_grate_wallst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_grate_wallst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_grate_wallst*>(p_df_structure);
 
@@ -5044,7 +5024,7 @@ void generate_building_grate_wallst_offsets(void* p_df_structure, std::map<std::
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_hatchst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_hatchst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_hatchst*>(p_df_structure);
 
@@ -5052,7 +5032,7 @@ void generate_building_hatchst_offsets(void* p_df_structure, std::map<std::strin
 	p_table["close_timer"] = reinterpret_cast<uint64_t>(&(df_structure->close_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_hivest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_hivest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_hivest*>(p_df_structure);
 
@@ -5063,20 +5043,20 @@ void generate_building_hivest_offsets(void* p_df_structure, std::map<std::string
 	p_table["gather_timer"] = reinterpret_cast<uint64_t>(&(df_structure->gather_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_instrumentst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_instrumentst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_instrumentst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_nestst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_nestst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_nestst*>(p_df_structure);
 
 }
 
-void generate_building_nest_boxst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_nest_boxst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_nest_boxst*>(p_df_structure);
 
@@ -5084,20 +5064,20 @@ void generate_building_nest_boxst_offsets(void* p_df_structure, std::map<std::st
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_roadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_roadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_roadst*>(p_df_structure);
 
 }
 
-void generate_building_road_dirtst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_road_dirtst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_road_dirtst*>(p_df_structure);
 
 	p_table["material_amount"] = reinterpret_cast<uint64_t>(&(df_structure->material_amount)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_road_pavedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_road_pavedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_road_pavedst*>(p_df_structure);
 
@@ -5105,7 +5085,7 @@ void generate_building_road_pavedst_offsets(void* p_df_structure, std::map<std::
 	p_table["terrain_purge_timer"] = reinterpret_cast<uint64_t>(&(df_structure->terrain_purge_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_shopst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_shopst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_shopst*>(p_df_structure);
 
@@ -5115,7 +5095,7 @@ void generate_building_shopst_offsets(void* p_df_structure, std::map<std::string
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_siegeenginest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_siegeenginest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_siegeenginest*>(p_df_structure);
 
@@ -5126,28 +5106,28 @@ void generate_building_siegeenginest_offsets(void* p_df_structure, std::map<std:
 	p_table["fill_timer"] = reinterpret_cast<uint64_t>(&(df_structure->fill_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_slabst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_slabst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_slabst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_statuest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_statuest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_statuest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_supportst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_supportst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_supportst*>(p_df_structure);
 
 	p_table["support_flags"] = reinterpret_cast<uint64_t>(&(df_structure->support_flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_tablest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_tablest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_tablest*>(p_df_structure);
 
@@ -5155,7 +5135,7 @@ void generate_building_tablest_offsets(void* p_df_structure, std::map<std::strin
 	p_table["users"] = reinterpret_cast<uint64_t>(&(df_structure->users)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_traction_benchst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_traction_benchst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_traction_benchst*>(p_df_structure);
 
@@ -5163,7 +5143,7 @@ void generate_building_traction_benchst_offsets(void* p_df_structure, std::map<s
 	p_table["users"] = reinterpret_cast<uint64_t>(&(df_structure->users)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_tradedepotst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_tradedepotst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_tradedepotst*>(p_df_structure);
 
@@ -5171,7 +5151,7 @@ void generate_building_tradedepotst_offsets(void* p_df_structure, std::map<std::
 	p_table["accessible"] = reinterpret_cast<uint64_t>(&(df_structure->accessible)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_trapst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_trapst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_trapst*>(p_df_structure);
 
@@ -5191,13 +5171,13 @@ void generate_building_trapst_offsets(void* p_df_structure, std::map<std::string
 	p_table["stop_trigger_timer"] = reinterpret_cast<uint64_t>(&(df_structure->stop_trigger_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_wagonst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_wagonst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_wagonst*>(p_df_structure);
 
 }
 
-void generate_building_weaponst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_weaponst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_weaponst*>(p_df_structure);
 
@@ -5205,7 +5185,7 @@ void generate_building_weaponst_offsets(void* p_df_structure, std::map<std::stri
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_squad_use_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_squad_use_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_squad_use*>(p_df_structure);
 
@@ -5213,7 +5193,7 @@ void generate_building_squad_use_offsets(void* p_df_structure, std::map<std::str
 	p_table["mode"] = reinterpret_cast<uint64_t>(&(df_structure->mode)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_weaponrackst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_weaponrackst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_weaponrackst*>(p_df_structure);
 
@@ -5222,7 +5202,7 @@ void generate_building_weaponrackst_offsets(void* p_df_structure, std::map<std::
 	p_table["specific_squad"] = reinterpret_cast<uint64_t>(&(df_structure->specific_squad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_wellst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_wellst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_wellst*>(p_df_structure);
 
@@ -5233,26 +5213,26 @@ void generate_building_wellst_offsets(void* p_df_structure, std::map<std::string
 	p_table["check_water_timer"] = reinterpret_cast<uint64_t>(&(df_structure->check_water_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_windowst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_windowst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_windowst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_window_glassst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_window_glassst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_window_glassst*>(p_df_structure);
 
 }
 
-void generate_building_window_gemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_window_gemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_window_gemst*>(p_df_structure);
 
 }
 
-void generate_body_part_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_body_part_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::body_part_raw*>(p_df_structure);
 
@@ -5283,7 +5263,7 @@ void generate_body_part_raw_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["clothing_item_id"] = reinterpret_cast<uint64_t>(&(df_structure->clothing_item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_body_appearance_modifier_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_body_appearance_modifier_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::body_appearance_modifier*>(p_df_structure);
 
@@ -5304,7 +5284,7 @@ void generate_body_appearance_modifier_offsets(void* p_df_structure, std::map<st
 	p_table["id2"] = reinterpret_cast<uint64_t>(&(df_structure->id2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_bp_appearance_modifier_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_bp_appearance_modifier_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::bp_appearance_modifier*>(p_df_structure);
 
@@ -5327,7 +5307,7 @@ void generate_bp_appearance_modifier_offsets(void* p_df_structure, std::map<std:
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_clothing_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_clothing_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_clothing_item*>(p_df_structure);
 
@@ -5340,7 +5320,7 @@ void generate_caste_clothing_item_offsets(void* p_df_structure, std::map<std::st
 	p_table["unk_38"] = reinterpret_cast<uint64_t>(&(df_structure->unk_38)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_attack_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_attack_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_attack*>(p_df_structure);
 
@@ -5369,7 +5349,7 @@ void generate_caste_attack_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["unk_v40_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction*>(p_df_structure);
 
@@ -5404,7 +5384,7 @@ void generate_creature_interaction_offsets(void* p_df_structure, std::map<std::s
 	p_table["wait_period"] = reinterpret_cast<uint64_t>(&(df_structure->wait_period)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_body_info__T_interactions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_body_info__T_interactions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_body_info::T_interactions*>(p_df_structure);
 
@@ -5412,7 +5392,7 @@ void generate_caste_body_info__T_interactions_offsets(void* p_df_structure, std:
 	p_table["interaction"] = reinterpret_cast<uint64_t>(&(df_structure->interaction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_body_info__T_extra_butcher_objects_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_body_info__T_extra_butcher_objects_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_body_info::T_extra_butcher_objects*>(p_df_structure);
 
@@ -5431,7 +5411,7 @@ void generate_caste_body_info__T_extra_butcher_objects_offsets(void* p_df_struct
 	p_table["anon_13"] = reinterpret_cast<uint64_t>(&(df_structure->anon_13)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_body_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_body_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_body_info*>(p_df_structure);
 
@@ -5455,7 +5435,7 @@ void generate_caste_body_info_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk_v40_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_misc_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_misc_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_misc*>(p_df_structure);
 
@@ -5504,7 +5484,7 @@ void generate_caste_raw__T_misc_offsets(void* p_df_structure, std::map<std::stri
 	p_table["unk6"] = reinterpret_cast<uint64_t>(&(df_structure->unk6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_personality_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_personality_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_personality*>(p_df_structure);
 
@@ -5513,7 +5493,7 @@ void generate_caste_raw__T_personality_offsets(void* p_df_structure, std::map<st
 	p_table["c"] = reinterpret_cast<uint64_t>(&(df_structure->c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_attributes_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_attributes_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_attributes*>(p_df_structure);
 
@@ -5525,7 +5505,7 @@ void generate_caste_raw__T_attributes_offsets(void* p_df_structure, std::map<std
 	p_table["ment_att_cap_perc"] = reinterpret_cast<uint64_t>(&(df_structure->ment_att_cap_perc)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_bp_appearance_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_bp_appearance_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_bp_appearance*>(p_df_structure);
 
@@ -5538,7 +5518,7 @@ void generate_caste_raw__T_bp_appearance_offsets(void* p_df_structure, std::map<
 	p_table["style_list_idx"] = reinterpret_cast<uint64_t>(&(df_structure->style_list_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_shearable_tissue_layer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_shearable_tissue_layer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_shearable_tissue_layer*>(p_df_structure);
 
@@ -5550,7 +5530,7 @@ void generate_caste_raw__T_shearable_tissue_layer_offsets(void* p_df_structure, 
 	p_table["bp_modifiers_idx"] = reinterpret_cast<uint64_t>(&(df_structure->bp_modifiers_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_caste_profession_name_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_caste_profession_name_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_caste_profession_name*>(p_df_structure);
 
@@ -5558,7 +5538,7 @@ void generate_caste_raw__T_caste_profession_name_offsets(void* p_df_structure, s
 	p_table["plural"] = reinterpret_cast<uint64_t>(&(df_structure->plural)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_extracts_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_extracts_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_extracts*>(p_df_structure);
 
@@ -5601,7 +5581,7 @@ void generate_caste_raw__T_extracts_offsets(void* p_df_structure, std::map<std::
 	p_table["lays_unusual_eggs_str"] = reinterpret_cast<uint64_t>(&(df_structure->lays_unusual_eggs_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_secretion_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_secretion_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_secretion*>(p_df_structure);
 
@@ -5616,7 +5596,7 @@ void generate_caste_raw__T_secretion_offsets(void* p_df_structure, std::map<std:
 	p_table["cause"] = reinterpret_cast<uint64_t>(&(df_structure->cause)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw__T_unknown2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw__T_unknown2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw::T_unknown2*>(p_df_structure);
 
@@ -5646,7 +5626,7 @@ void generate_caste_raw__T_unknown2_offsets(void* p_df_structure, std::map<std::
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caste_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caste_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caste_raw*>(p_df_structure);
 
@@ -5726,7 +5706,7 @@ void generate_caste_raw_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["sense_creature_class_5"] = reinterpret_cast<uint64_t>(&(df_structure->sense_creature_class_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_tissue_style_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_tissue_style_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::tissue_style_raw*>(p_df_structure);
 
@@ -5740,7 +5720,7 @@ void generate_tissue_style_raw_offsets(void* p_df_structure, std::map<std::strin
 	p_table["word_type"] = reinterpret_cast<uint64_t>(&(df_structure->word_type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_raw__T_graphics_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_raw__T_graphics_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_raw::T_graphics*>(p_df_structure);
 
@@ -5759,7 +5739,7 @@ void generate_creature_raw__T_graphics_offsets(void* p_df_structure, std::map<st
 	p_table["appointments"] = reinterpret_cast<uint64_t>(&(df_structure->appointments)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_raw__T_profession_name_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_raw__T_profession_name_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_raw::T_profession_name*>(p_df_structure);
 
@@ -5767,7 +5747,7 @@ void generate_creature_raw__T_profession_name_offsets(void* p_df_structure, std:
 	p_table["plural"] = reinterpret_cast<uint64_t>(&(df_structure->plural)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_raw__T_hive_product_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_raw__T_hive_product_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_raw::T_hive_product*>(p_df_structure);
 
@@ -5779,7 +5759,7 @@ void generate_creature_raw__T_hive_product_offsets(void* p_df_structure, std::ma
 	p_table["tmpstr"] = reinterpret_cast<uint64_t>(&(df_structure->tmpstr)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_raw*>(p_df_structure);
 
@@ -5825,7 +5805,7 @@ void generate_creature_raw_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["raws"] = reinterpret_cast<uint64_t>(&(df_structure->raws)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_variation_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_variation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_variation*>(p_df_structure);
 
@@ -5839,7 +5819,7 @@ void generate_creature_variation_offsets(void* p_df_structure, std::map<std::str
 	p_table["cv_remove_unk_v40_2"] = reinterpret_cast<uint64_t>(&(df_structure->cv_remove_unk_v40_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_body_part_template_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_body_part_template_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::body_part_template*>(p_df_structure);
 
@@ -5855,7 +5835,7 @@ void generate_body_part_template_offsets(void* p_df_structure, std::map<std::str
 	p_table["name_plural"] = reinterpret_cast<uint64_t>(&(df_structure->name_plural)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_body_template_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_body_template_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::body_template*>(p_df_structure);
 
@@ -5863,7 +5843,7 @@ void generate_body_template_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["parts"] = reinterpret_cast<uint64_t>(&(df_structure->parts)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_tissue_template_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_tissue_template_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::tissue_template*>(p_df_structure);
 
@@ -5886,7 +5866,7 @@ void generate_tissue_template_offsets(void* p_df_structure, std::map<std::string
 	p_table["tissue_shape_str"] = reinterpret_cast<uint64_t>(&(df_structure->tissue_shape_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_tissue_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_tissue_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::tissue*>(p_df_structure);
 
@@ -5916,7 +5896,7 @@ void generate_tissue_offsets(void* p_df_structure, std::map<std::string, std::si
 	p_table["tissue_shape_str"] = reinterpret_cast<uint64_t>(&(df_structure->tissue_shape_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_d_init__T_wound_color_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_d_init__T_wound_color_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::d_init::T_wound_color*>(p_df_structure);
 
@@ -5928,7 +5908,7 @@ void generate_d_init__T_wound_color_offsets(void* p_df_structure, std::map<std::
 	p_table["missing"] = reinterpret_cast<uint64_t>(&(df_structure->missing)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_d_init__T_store_dist_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_d_init__T_store_dist_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::d_init::T_store_dist*>(p_df_structure);
 
@@ -5939,7 +5919,7 @@ void generate_d_init__T_store_dist_offsets(void* p_df_structure, std::map<std::s
 	p_table["bin_combine"] = reinterpret_cast<uint64_t>(&(df_structure->bin_combine)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_d_init_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_d_init_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::d_init*>(p_df_structure);
 
@@ -5982,7 +5962,7 @@ void generate_d_init_offsets(void* p_df_structure, std::map<std::string, std::si
 	p_table["announcements"] = reinterpret_cast<uint64_t>(&(df_structure->announcements)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_descriptor_pattern_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_descriptor_pattern_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::descriptor_pattern*>(p_df_structure);
 
@@ -5992,7 +5972,7 @@ void generate_descriptor_pattern_offsets(void* p_df_structure, std::map<std::str
 	p_table["cp_color"] = reinterpret_cast<uint64_t>(&(df_structure->cp_color)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_occasion_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_occasion_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_occasion_info*>(p_df_structure);
 
@@ -6002,7 +5982,7 @@ void generate_entity_occasion_info_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_occasion_schedule_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_occasion_schedule_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_occasion_schedule*>(p_df_structure);
 
@@ -6017,7 +5997,7 @@ void generate_entity_occasion_schedule_offsets(void* p_df_structure, std::map<st
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_occasion_schedule_feature_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_occasion_schedule_feature_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_occasion_schedule_feature*>(p_df_structure);
 
@@ -6028,7 +6008,7 @@ void generate_entity_occasion_schedule_feature_offsets(void* p_df_structure, std
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_caravan_state_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_caravan_state_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::caravan_state*>(p_df_structure);
 
@@ -6052,7 +6032,7 @@ void generate_caravan_state_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_buy_prices_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_buy_prices_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_buy_prices*>(p_df_structure);
 
@@ -6060,7 +6040,7 @@ void generate_entity_buy_prices_offsets(void* p_df_structure, std::map<std::stri
 	p_table["price"] = reinterpret_cast<uint64_t>(&(df_structure->price)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_buy_requests_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_buy_requests_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_buy_requests*>(p_df_structure);
 
@@ -6072,7 +6052,7 @@ void generate_entity_buy_requests_offsets(void* p_df_structure, std::map<std::st
 	p_table["priority"] = reinterpret_cast<uint64_t>(&(df_structure->priority)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_sell_prices_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_sell_prices_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_sell_prices*>(p_df_structure);
 
@@ -6080,7 +6060,7 @@ void generate_entity_sell_prices_offsets(void* p_df_structure, std::map<std::str
 	p_table["price"] = reinterpret_cast<uint64_t>(&(df_structure->price)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_recipe_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_recipe_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_recipe*>(p_df_structure);
 
@@ -6091,7 +6071,7 @@ void generate_entity_recipe_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["mat_indices"] = reinterpret_cast<uint64_t>(&(df_structure->mat_indices)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_uniform_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_uniform_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_uniform_item*>(p_df_structure);
 
@@ -6109,7 +6089,7 @@ void generate_entity_uniform_item_offsets(void* p_df_structure, std::map<std::st
 	p_table["material_class"] = reinterpret_cast<uint64_t>(&(df_structure->material_class)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_uniform_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_uniform_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_uniform*>(p_df_structure);
 
@@ -6122,7 +6102,7 @@ void generate_entity_uniform_offsets(void* p_df_structure, std::map<std::string,
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_invasion_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_invasion_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_invasion*>(p_df_structure);
 
@@ -6132,7 +6112,7 @@ void generate_entity_event__T_data__T_invasion_offsets(void* p_df_structure, std
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_abduction_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_abduction_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_abduction*>(p_df_structure);
 
@@ -6142,7 +6122,7 @@ void generate_entity_event__T_data__T_abduction_offsets(void* p_df_structure, st
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_incident_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_incident_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_incident*>(p_df_structure);
 
@@ -6150,7 +6130,7 @@ void generate_entity_event__T_data__T_incident_offsets(void* p_df_structure, std
 	p_table["incident_id"] = reinterpret_cast<uint64_t>(&(df_structure->incident_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_occupation_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_occupation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_occupation*>(p_df_structure);
 
@@ -6160,7 +6140,7 @@ void generate_entity_event__T_data__T_occupation_offsets(void* p_df_structure, s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_beast_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_beast_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_beast*>(p_df_structure);
 
@@ -6169,7 +6149,7 @@ void generate_entity_event__T_data__T_beast_offsets(void* p_df_structure, std::m
 	p_table["region_id"] = reinterpret_cast<uint64_t>(&(df_structure->region_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_group_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_group_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_group*>(p_df_structure);
 
@@ -6177,7 +6157,7 @@ void generate_entity_event__T_data__T_group_offsets(void* p_df_structure, std::m
 	p_table["site_id"] = reinterpret_cast<uint64_t>(&(df_structure->site_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_harass_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_harass_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_harass*>(p_df_structure);
 
@@ -6186,7 +6166,7 @@ void generate_entity_event__T_data__T_harass_offsets(void* p_df_structure, std::
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_flee_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_flee_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_flee*>(p_df_structure);
 
@@ -6196,7 +6176,7 @@ void generate_entity_event__T_data__T_flee_offsets(void* p_df_structure, std::ma
 	p_table["army_leader_hf_id"] = reinterpret_cast<uint64_t>(&(df_structure->army_leader_hf_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_abandon_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_abandon_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_abandon*>(p_df_structure);
 
@@ -6205,7 +6185,7 @@ void generate_entity_event__T_data__T_abandon_offsets(void* p_df_structure, std:
 	p_table["parent_entity_id"] = reinterpret_cast<uint64_t>(&(df_structure->parent_entity_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_reclaimed_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_reclaimed_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_reclaimed*>(p_df_structure);
 
@@ -6215,7 +6195,7 @@ void generate_entity_event__T_data__T_reclaimed_offsets(void* p_df_structure, st
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_founded_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_founded_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_founded*>(p_df_structure);
 
@@ -6225,7 +6205,7 @@ void generate_entity_event__T_data__T_founded_offsets(void* p_df_structure, std:
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_reclaiming_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_reclaiming_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_reclaiming*>(p_df_structure);
 
@@ -6235,7 +6215,7 @@ void generate_entity_event__T_data__T_reclaiming_offsets(void* p_df_structure, s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_founding_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_founding_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_founding*>(p_df_structure);
 
@@ -6245,7 +6225,7 @@ void generate_entity_event__T_data__T_founding_offsets(void* p_df_structure, std
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_leave_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_leave_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_leave*>(p_df_structure);
 
@@ -6253,7 +6233,7 @@ void generate_entity_event__T_data__T_leave_offsets(void* p_df_structure, std::m
 	p_table["site_id"] = reinterpret_cast<uint64_t>(&(df_structure->site_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_insurrection_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_insurrection_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_insurrection*>(p_df_structure);
 
@@ -6261,7 +6241,7 @@ void generate_entity_event__T_data__T_insurrection_offsets(void* p_df_structure,
 	p_table["entity_id"] = reinterpret_cast<uint64_t>(&(df_structure->entity_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_insurrection_end_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_insurrection_end_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_insurrection_end*>(p_df_structure);
 
@@ -6270,7 +6250,7 @@ void generate_entity_event__T_data__T_insurrection_end_offsets(void* p_df_struct
 	p_table["result"] = reinterpret_cast<uint64_t>(&(df_structure->result)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_succession_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_succession_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_succession*>(p_df_structure);
 
@@ -6280,7 +6260,7 @@ void generate_entity_event__T_data__T_succession_offsets(void* p_df_structure, s
 	p_table["position_assignment_id"] = reinterpret_cast<uint64_t>(&(df_structure->position_assignment_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_claim_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_claim_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_claim*>(p_df_structure);
 
@@ -6289,7 +6269,7 @@ void generate_entity_event__T_data__T_claim_offsets(void* p_df_structure, std::m
 	p_table["histfig_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_accept_tribute_offer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_accept_tribute_offer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_accept_tribute_offer*>(p_df_structure);
 
@@ -6299,7 +6279,7 @@ void generate_entity_event__T_data__T_accept_tribute_offer_offsets(void* p_df_st
 	p_table["histfig2_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig2_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_refuse_tribute_offer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_refuse_tribute_offer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_refuse_tribute_offer*>(p_df_structure);
 
@@ -6309,7 +6289,7 @@ void generate_entity_event__T_data__T_refuse_tribute_offer_offsets(void* p_df_st
 	p_table["histfig2_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig2_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_accept_tribute_demand_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_accept_tribute_demand_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_accept_tribute_demand*>(p_df_structure);
 
@@ -6319,7 +6299,7 @@ void generate_entity_event__T_data__T_accept_tribute_demand_offsets(void* p_df_s
 	p_table["histfig2_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig2_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_refuse_tribute_demand_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_refuse_tribute_demand_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_refuse_tribute_demand*>(p_df_structure);
 
@@ -6329,7 +6309,7 @@ void generate_entity_event__T_data__T_refuse_tribute_demand_offsets(void* p_df_s
 	p_table["histfig2_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig2_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_accept_peace_offer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_accept_peace_offer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_accept_peace_offer*>(p_df_structure);
 
@@ -6339,7 +6319,7 @@ void generate_entity_event__T_data__T_accept_peace_offer_offsets(void* p_df_stru
 	p_table["histfig2_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig2_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_refuse_peace_offer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_refuse_peace_offer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_refuse_peace_offer*>(p_df_structure);
 
@@ -6349,7 +6329,7 @@ void generate_entity_event__T_data__T_refuse_peace_offer_offsets(void* p_df_stru
 	p_table["histfig2_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig2_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_cease_tribute_offer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_cease_tribute_offer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_cease_tribute_offer*>(p_df_structure);
 
@@ -6359,7 +6339,7 @@ void generate_entity_event__T_data__T_cease_tribute_offer_offsets(void* p_df_str
 	p_table["histfig2_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig2_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_in_site_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_in_site_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_in_site*>(p_df_structure);
 
@@ -6369,7 +6349,7 @@ void generate_entity_event__T_data__T_artifact_in_site_offsets(void* p_df_struct
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_in_subregion_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_in_subregion_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_in_subregion*>(p_df_structure);
 
@@ -6379,7 +6359,7 @@ void generate_entity_event__T_data__T_artifact_in_subregion_offsets(void* p_df_s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_in_feature_layer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_in_feature_layer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_in_feature_layer*>(p_df_structure);
 
@@ -6389,7 +6369,7 @@ void generate_entity_event__T_data__T_artifact_in_feature_layer_offsets(void* p_
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_in_inventory_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_in_inventory_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_in_inventory*>(p_df_structure);
 
@@ -6399,7 +6379,7 @@ void generate_entity_event__T_data__T_artifact_in_inventory_offsets(void* p_df_s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_not_in_site_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_not_in_site_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_not_in_site*>(p_df_structure);
 
@@ -6409,7 +6389,7 @@ void generate_entity_event__T_data__T_artifact_not_in_site_offsets(void* p_df_st
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_not_in_subregion_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_not_in_subregion_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_not_in_subregion*>(p_df_structure);
 
@@ -6419,7 +6399,7 @@ void generate_entity_event__T_data__T_artifact_not_in_subregion_offsets(void* p_
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_not_in_feature_layer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_not_in_feature_layer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_not_in_feature_layer*>(p_df_structure);
 
@@ -6429,7 +6409,7 @@ void generate_entity_event__T_data__T_artifact_not_in_feature_layer_offsets(void
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_not_in_inventory_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_not_in_inventory_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_not_in_inventory*>(p_df_structure);
 
@@ -6439,7 +6419,7 @@ void generate_entity_event__T_data__T_artifact_not_in_inventory_offsets(void* p_
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data__T_artifact_destroyed_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data__T_artifact_destroyed_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data::T_artifact_destroyed*>(p_df_structure);
 
@@ -6449,7 +6429,7 @@ void generate_entity_event__T_data__T_artifact_destroyed_offsets(void* p_df_stru
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event__T_data_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event__T_data_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event::T_data*>(p_df_structure);
 
@@ -6489,7 +6469,7 @@ void generate_entity_event__T_data_offsets(void* p_df_structure, std::map<std::s
 	p_table["artifact_destroyed"] = reinterpret_cast<uint64_t>(&(df_structure->artifact_destroyed)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_event_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_event_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_event*>(p_df_structure);
 
@@ -6502,7 +6482,7 @@ void generate_entity_event_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_agreement__T_parties__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_agreement__T_parties__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::agreement::T_parties::T_anon_1*>(p_df_structure);
 
@@ -6512,7 +6492,7 @@ void generate_agreement__T_parties__T_anon_1_offsets(void* p_df_structure, std::
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_agreement__T_parties_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_agreement__T_parties_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::agreement::T_parties*>(p_df_structure);
 
@@ -6522,7 +6502,7 @@ void generate_agreement__T_parties_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_agreement__T_details__T_data__T_data0_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_agreement__T_details__T_data__T_data0_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::agreement::T_details::T_data::T_data0*>(p_df_structure);
 
@@ -6534,7 +6514,7 @@ void generate_agreement__T_details__T_data__T_data0_offsets(void* p_df_structure
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_agreement__T_details__T_data__T_data1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_agreement__T_details__T_data__T_data1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::agreement::T_details::T_data::T_data1*>(p_df_structure);
 
@@ -6546,7 +6526,7 @@ void generate_agreement__T_details__T_data__T_data1_offsets(void* p_df_structure
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_agreement__T_details__T_data_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_agreement__T_details__T_data_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::agreement::T_details::T_data*>(p_df_structure);
 
@@ -6554,7 +6534,7 @@ void generate_agreement__T_details__T_data_offsets(void* p_df_structure, std::ma
 	p_table["data1"] = reinterpret_cast<uint64_t>(&(df_structure->data1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_agreement__T_details_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_agreement__T_details_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::agreement::T_details*>(p_df_structure);
 
@@ -6565,7 +6545,7 @@ void generate_agreement__T_details_offsets(void* p_df_structure, std::map<std::s
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_agreement_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_agreement_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::agreement*>(p_df_structure);
 
@@ -6579,7 +6559,7 @@ void generate_agreement_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_position_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_position_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_position_raw*>(p_df_structure);
 
@@ -6629,7 +6609,7 @@ void generate_entity_position_raw_offsets(void* p_df_structure, std::map<std::st
 	p_table["demand_max"] = reinterpret_cast<uint64_t>(&(df_structure->demand_max)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_graphic_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_graphic_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::graphic*>(p_df_structure);
 
@@ -6660,7 +6640,7 @@ void generate_graphic_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["screen_limit"] = reinterpret_cast<uint64_t>(&(df_structure->screen_limit)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_kills_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_kills_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_kills*>(p_df_structure);
 
@@ -6674,7 +6654,7 @@ void generate_historical_kills_offsets(void* p_df_structure, std::map<std::strin
 	p_table["killed_count"] = reinterpret_cast<uint64_t>(&(df_structure->killed_count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_hit_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_hit_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_hit_item*>(p_df_structure);
 
@@ -6690,7 +6670,7 @@ void generate_history_hit_item_offsets(void* p_df_structure, std::map<std::strin
 	p_table["shooter_matindex"] = reinterpret_cast<uint64_t>(&(df_structure->shooter_matindex)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_diedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_diedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_diedst*>(p_df_structure);
 
@@ -6705,7 +6685,7 @@ void generate_history_event_hist_figure_diedst_offsets(void* p_df_structure, std
 	p_table["death_cause"] = reinterpret_cast<uint64_t>(&(df_structure->death_cause)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_add_hf_entity_linkst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_add_hf_entity_linkst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_add_hf_entity_linkst*>(p_df_structure);
 
@@ -6715,7 +6695,7 @@ void generate_history_event_add_hf_entity_linkst_offsets(void* p_df_structure, s
 	p_table["position_id"] = reinterpret_cast<uint64_t>(&(df_structure->position_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_remove_hf_entity_linkst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_remove_hf_entity_linkst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_remove_hf_entity_linkst*>(p_df_structure);
 
@@ -6725,7 +6705,7 @@ void generate_history_event_remove_hf_entity_linkst_offsets(void* p_df_structure
 	p_table["position_id"] = reinterpret_cast<uint64_t>(&(df_structure->position_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_topicagreement_concludedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_topicagreement_concludedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_topicagreement_concludedst*>(p_df_structure);
 
@@ -6736,7 +6716,7 @@ void generate_history_event_topicagreement_concludedst_offsets(void* p_df_struct
 	p_table["result"] = reinterpret_cast<uint64_t>(&(df_structure->result)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_topicagreement_rejectedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_topicagreement_rejectedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_topicagreement_rejectedst*>(p_df_structure);
 
@@ -6746,7 +6726,7 @@ void generate_history_event_topicagreement_rejectedst_offsets(void* p_df_structu
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_topicagreement_madest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_topicagreement_madest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_topicagreement_madest*>(p_df_structure);
 
@@ -6756,7 +6736,7 @@ void generate_history_event_topicagreement_madest_offsets(void* p_df_structure, 
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_peace_acceptedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_peace_acceptedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_peace_acceptedst*>(p_df_structure);
 
@@ -6766,7 +6746,7 @@ void generate_history_event_war_peace_acceptedst_offsets(void* p_df_structure, s
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_peace_rejectedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_peace_rejectedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_peace_rejectedst*>(p_df_structure);
 
@@ -6776,7 +6756,7 @@ void generate_history_event_war_peace_rejectedst_offsets(void* p_df_structure, s
 	p_table["site"] = reinterpret_cast<uint64_t>(&(df_structure->site)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_possessedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_possessedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_possessedst*>(p_df_structure);
 
@@ -6792,7 +6772,7 @@ void generate_history_event_artifact_possessedst_offsets(void* p_df_structure, s
 	p_table["reason_id"] = reinterpret_cast<uint64_t>(&(df_structure->reason_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_entity_actionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_entity_actionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_entity_actionst*>(p_df_structure);
 
@@ -6802,7 +6782,7 @@ void generate_history_event_entity_actionst_offsets(void* p_df_structure, std::m
 	p_table["action"] = reinterpret_cast<uint64_t>(&(df_structure->action)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_add_hf_site_linkst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_add_hf_site_linkst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_add_hf_site_linkst*>(p_df_structure);
 
@@ -6813,7 +6793,7 @@ void generate_history_event_add_hf_site_linkst_offsets(void* p_df_structure, std
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_remove_hf_site_linkst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_remove_hf_site_linkst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_remove_hf_site_linkst*>(p_df_structure);
 
@@ -6824,7 +6804,7 @@ void generate_history_event_remove_hf_site_linkst_offsets(void* p_df_structure, 
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_add_hf_hf_linkst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_add_hf_hf_linkst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_add_hf_hf_linkst*>(p_df_structure);
 
@@ -6833,7 +6813,7 @@ void generate_history_event_add_hf_hf_linkst_offsets(void* p_df_structure, std::
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_remove_hf_hf_linkst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_remove_hf_hf_linkst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_remove_hf_hf_linkst*>(p_df_structure);
 
@@ -6842,7 +6822,7 @@ void generate_history_event_remove_hf_hf_linkst_offsets(void* p_df_structure, st
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_created_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_created_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_created_itemst*>(p_df_structure);
 
@@ -6854,7 +6834,7 @@ void generate_history_event_masterpiece_created_itemst_offsets(void* p_df_struct
 	p_table["item_id"] = reinterpret_cast<uint64_t>(&(df_structure->item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_created_dye_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_created_dye_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_created_dye_itemst*>(p_df_structure);
 
@@ -6868,7 +6848,7 @@ void generate_history_event_masterpiece_created_dye_itemst_offsets(void* p_df_st
 	p_table["dye_mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->dye_mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_created_item_improvementst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_created_item_improvementst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_created_item_improvementst*>(p_df_structure);
 
@@ -6886,7 +6866,7 @@ void generate_history_event_masterpiece_created_item_improvementst_offsets(void*
 	p_table["art_subid"] = reinterpret_cast<uint64_t>(&(df_structure->art_subid)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_created_engravingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_created_engravingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_created_engravingst*>(p_df_structure);
 
@@ -6895,7 +6875,7 @@ void generate_history_event_masterpiece_created_engravingst_offsets(void* p_df_s
 	p_table["art_subid"] = reinterpret_cast<uint64_t>(&(df_structure->art_subid)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_masterpiece_lostst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_masterpiece_lostst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_masterpiece_lostst*>(p_df_structure);
 
@@ -6905,7 +6885,7 @@ void generate_history_event_masterpiece_lostst_offsets(void* p_df_structure, std
 	p_table["method"] = reinterpret_cast<uint64_t>(&(df_structure->method)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_change_hf_statest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_change_hf_statest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_change_hf_statest*>(p_df_structure);
 
@@ -6918,7 +6898,7 @@ void generate_history_event_change_hf_statest_offsets(void* p_df_structure, std:
 	p_table["region_pos"] = reinterpret_cast<uint64_t>(&(df_structure->region_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_change_hf_jobst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_change_hf_jobst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_change_hf_jobst*>(p_df_structure);
 
@@ -6930,7 +6910,7 @@ void generate_history_event_change_hf_jobst_offsets(void* p_df_structure, std::m
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_war_field_battlest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_war_field_battlest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_war_field_battlest*>(p_df_structure);
 
@@ -6943,7 +6923,7 @@ void generate_history_event_war_field_battlest_offsets(void* p_df_structure, std
 	p_table["defender_general_hf"] = reinterpret_cast<uint64_t>(&(df_structure->defender_general_hf)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_body_abusedst__T_props__T_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_body_abusedst__T_props__T_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_body_abusedst::T_props::T_item*>(p_df_structure);
 
@@ -6953,7 +6933,7 @@ void generate_history_event_body_abusedst__T_props__T_item_offsets(void* p_df_st
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_body_abusedst__T_props__T_hung_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_body_abusedst__T_props__T_hung_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_body_abusedst::T_props::T_hung*>(p_df_structure);
 
@@ -6962,7 +6942,7 @@ void generate_history_event_body_abusedst__T_props__T_hung_offsets(void* p_df_st
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_body_abusedst__T_props_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_body_abusedst__T_props_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_body_abusedst::T_props*>(p_df_structure);
 
@@ -6972,7 +6952,7 @@ void generate_history_event_body_abusedst__T_props_offsets(void* p_df_structure,
 	p_table["hung"] = reinterpret_cast<uint64_t>(&(df_structure->hung)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_body_abusedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_body_abusedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_body_abusedst*>(p_df_structure);
 
@@ -6988,7 +6968,7 @@ void generate_history_event_body_abusedst_offsets(void* p_df_structure, std::map
 	p_table["props"] = reinterpret_cast<uint64_t>(&(df_structure->props)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_item_stolenst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_item_stolenst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_item_stolenst*>(p_df_structure);
 
@@ -7012,7 +6992,7 @@ void generate_history_event_item_stolenst_offsets(void* p_df_structure, std::map
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_simple_battle_eventst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_simple_battle_eventst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_simple_battle_eventst*>(p_df_structure);
 
@@ -7024,7 +7004,7 @@ void generate_history_event_hist_figure_simple_battle_eventst_offsets(void* p_df
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_reach_summitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_reach_summitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_reach_summitst*>(p_df_structure);
 
@@ -7034,7 +7014,7 @@ void generate_history_event_hist_figure_reach_summitst_offsets(void* p_df_struct
 	p_table["region_pos"] = reinterpret_cast<uint64_t>(&(df_structure->region_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_travelst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_travelst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_travelst*>(p_df_structure);
 
@@ -7046,7 +7026,7 @@ void generate_history_event_hist_figure_travelst_offsets(void* p_df_structure, s
 	p_table["region_pos"] = reinterpret_cast<uint64_t>(&(df_structure->region_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_new_petst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_new_petst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_new_petst*>(p_df_structure);
 
@@ -7058,7 +7038,7 @@ void generate_history_event_hist_figure_new_petst_offsets(void* p_df_structure, 
 	p_table["region_pos"] = reinterpret_cast<uint64_t>(&(df_structure->region_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hist_figure_revivedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hist_figure_revivedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hist_figure_revivedst*>(p_df_structure);
 
@@ -7070,7 +7050,7 @@ void generate_history_event_hist_figure_revivedst_offsets(void* p_df_structure, 
 	p_table["flags2"] = reinterpret_cast<uint64_t>(&(df_structure->flags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_change_hf_body_statest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_change_hf_body_statest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_change_hf_body_statest*>(p_df_structure);
 
@@ -7083,7 +7063,7 @@ void generate_history_event_change_hf_body_statest_offsets(void* p_df_structure,
 	p_table["region_pos"] = reinterpret_cast<uint64_t>(&(df_structure->region_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_confrontedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_confrontedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_confrontedst*>(p_df_structure);
 
@@ -7096,7 +7076,7 @@ void generate_history_event_hf_confrontedst_offsets(void* p_df_structure, std::m
 	p_table["region_pos"] = reinterpret_cast<uint64_t>(&(df_structure->region_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_gains_secret_goalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_gains_secret_goalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_gains_secret_goalst*>(p_df_structure);
 
@@ -7104,7 +7084,7 @@ void generate_history_event_hf_gains_secret_goalst_offsets(void* p_df_structure,
 	p_table["goal"] = reinterpret_cast<uint64_t>(&(df_structure->goal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_site_disputest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_site_disputest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_site_disputest*>(p_df_structure);
 
@@ -7115,7 +7095,7 @@ void generate_history_event_site_disputest_offsets(void* p_df_structure, std::ma
 	p_table["site_2"] = reinterpret_cast<uint64_t>(&(df_structure->site_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_agreement_concludedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_agreement_concludedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_agreement_concludedst*>(p_df_structure);
 
@@ -7125,7 +7105,7 @@ void generate_history_event_agreement_concludedst_offsets(void* p_df_structure, 
 	p_table["concluder_hf"] = reinterpret_cast<uint64_t>(&(df_structure->concluder_hf)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_insurrection_endedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_insurrection_endedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_insurrection_endedst*>(p_df_structure);
 
@@ -7134,7 +7114,7 @@ void generate_history_event_insurrection_endedst_offsets(void* p_df_structure, s
 	p_table["outcome"] = reinterpret_cast<uint64_t>(&(df_structure->outcome)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_relationship_deniedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_relationship_deniedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_relationship_deniedst*>(p_df_structure);
 
@@ -7148,7 +7128,7 @@ void generate_history_event_hf_relationship_deniedst_offsets(void* p_df_structur
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_poetic_form_createdst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_poetic_form_createdst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_poetic_form_createdst*>(p_df_structure);
 
@@ -7163,7 +7143,7 @@ void generate_history_event_poetic_form_createdst_offsets(void* p_df_structure, 
 	p_table["reason_id"] = reinterpret_cast<uint64_t>(&(df_structure->reason_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_musical_form_createdst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_musical_form_createdst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_musical_form_createdst*>(p_df_structure);
 
@@ -7178,7 +7158,7 @@ void generate_history_event_musical_form_createdst_offsets(void* p_df_structure,
 	p_table["reason_id"] = reinterpret_cast<uint64_t>(&(df_structure->reason_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_dance_form_createdst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_dance_form_createdst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_dance_form_createdst*>(p_df_structure);
 
@@ -7193,7 +7173,7 @@ void generate_history_event_dance_form_createdst_offsets(void* p_df_structure, s
 	p_table["reason_id"] = reinterpret_cast<uint64_t>(&(df_structure->reason_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_written_content_composedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_written_content_composedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_written_content_composedst*>(p_df_structure);
 
@@ -7208,7 +7188,7 @@ void generate_history_event_written_content_composedst_offsets(void* p_df_struct
 	p_table["reason_id"] = reinterpret_cast<uint64_t>(&(df_structure->reason_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_change_hf_moodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_change_hf_moodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_change_hf_moodst*>(p_df_structure);
 
@@ -7221,7 +7201,7 @@ void generate_history_event_change_hf_moodst_offsets(void* p_df_structure, std::
 	p_table["region_pos"] = reinterpret_cast<uint64_t>(&(df_structure->region_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_claim_formedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_claim_formedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_claim_formedst*>(p_df_structure);
 
@@ -7236,7 +7216,7 @@ void generate_history_event_artifact_claim_formedst_offsets(void* p_df_structure
 	p_table["reason_id"] = reinterpret_cast<uint64_t>(&(df_structure->reason_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_artifact_givenst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_artifact_givenst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_artifact_givenst*>(p_df_structure);
 
@@ -7251,7 +7231,7 @@ void generate_history_event_artifact_givenst_offsets(void* p_df_structure, std::
 	p_table["reason_id"] = reinterpret_cast<uint64_t>(&(df_structure->reason_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hf_recruited_unit_type_for_entityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hf_recruited_unit_type_for_entityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hf_recruited_unit_type_for_entityst*>(p_df_structure);
 
@@ -7263,7 +7243,7 @@ void generate_history_event_hf_recruited_unit_type_for_entityst_offsets(void* p_
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_hfs_formed_reputation_relationshipst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_hfs_formed_reputation_relationshipst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_hfs_formed_reputation_relationshipst*>(p_df_structure);
 
@@ -7278,7 +7258,7 @@ void generate_history_event_hfs_formed_reputation_relationshipst_offsets(void* p
 	p_table["layer"] = reinterpret_cast<uint64_t>(&(df_structure->layer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_tactical_situationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_tactical_situationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_tactical_situationst*>(p_df_structure);
 
@@ -7294,7 +7274,7 @@ void generate_history_event_tactical_situationst_offsets(void* p_df_structure, s
 	p_table["tactics_flags"] = reinterpret_cast<uint64_t>(&(df_structure->tactics_flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_duelst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_duelst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_duelst*>(p_df_structure);
 
@@ -7309,7 +7289,7 @@ void generate_history_event_collection_duelst_offsets(void* p_df_structure, std:
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_abductionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_abductionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_abductionst*>(p_df_structure);
 
@@ -7326,7 +7306,7 @@ void generate_history_event_collection_abductionst_offsets(void* p_df_structure,
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_theftst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_theftst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_theftst*>(p_df_structure);
 
@@ -7353,7 +7333,7 @@ void generate_history_event_collection_theftst_offsets(void* p_df_structure, std
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_beast_attackst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_beast_attackst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_beast_attackst*>(p_df_structure);
 
@@ -7367,7 +7347,7 @@ void generate_history_event_collection_beast_attackst_offsets(void* p_df_structu
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_raidst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_raidst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_raidst*>(p_df_structure);
 
@@ -7382,7 +7362,7 @@ void generate_history_event_collection_raidst_offsets(void* p_df_structure, std:
 	p_table["ordinal"] = reinterpret_cast<uint64_t>(&(df_structure->ordinal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_era__T_title_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_era__T_title_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_era::T_title*>(p_df_structure);
 
@@ -7394,7 +7374,7 @@ void generate_history_era__T_title_offsets(void* p_df_structure, std::map<std::s
 	p_table["percent"] = reinterpret_cast<uint64_t>(&(df_structure->percent)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_era__T_details_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_era__T_details_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_era::T_details*>(p_df_structure);
 
@@ -7409,7 +7389,7 @@ void generate_history_era__T_details_offsets(void* p_df_structure, std::map<std:
 	p_table["civilized_mundane"] = reinterpret_cast<uint64_t>(&(df_structure->civilized_mundane)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_era_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_era_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_era*>(p_df_structure);
 
@@ -7418,7 +7398,7 @@ void generate_history_era_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["details"] = reinterpret_cast<uint64_t>(&(df_structure->details)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_init_display_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_init_display_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::init_display*>(p_df_structure);
 
@@ -7433,7 +7413,7 @@ void generate_init_display_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["partial_print_count"] = reinterpret_cast<uint64_t>(&(df_structure->partial_print_count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_init_font_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_init_font_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::init_font*>(p_df_structure);
 
@@ -7453,7 +7433,7 @@ void generate_init_font_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["ttf_limit"] = reinterpret_cast<uint64_t>(&(df_structure->ttf_limit)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_init_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_init_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::init*>(p_df_structure);
 
@@ -7464,7 +7444,7 @@ void generate_init_offsets(void* p_df_structure, std::map<std::string, std::size
 	p_table["window"] = reinterpret_cast<uint64_t>(&(df_structure->window)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_texture_handler_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_texture_handler_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::texture_handler*>(p_df_structure);
 
@@ -7473,7 +7453,7 @@ void generate_texture_handler_offsets(void* p_df_structure, std::map<std::string
 	p_table["datapos"] = reinterpret_cast<uint64_t>(&(df_structure->datapos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction*>(p_df_structure);
 
@@ -7488,7 +7468,7 @@ void generate_interaction_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["unk_v4201_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v4201_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_effect_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_effect_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_effect*>(p_df_structure);
 
@@ -7502,7 +7482,7 @@ void generate_interaction_effect_offsets(void* p_df_structure, std::map<std::str
 	p_table["arena_name"] = reinterpret_cast<uint64_t>(&(df_structure->arena_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_effect_animatest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_effect_animatest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_effect_animatest*>(p_df_structure);
 
@@ -7510,7 +7490,7 @@ void generate_interaction_effect_animatest_offsets(void* p_df_structure, std::ma
 	p_table["syndrome"] = reinterpret_cast<uint64_t>(&(df_structure->syndrome)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_effect_add_syndromest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_effect_add_syndromest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_effect_add_syndromest*>(p_df_structure);
 
@@ -7518,7 +7498,7 @@ void generate_interaction_effect_add_syndromest_offsets(void* p_df_structure, st
 	p_table["syndrome"] = reinterpret_cast<uint64_t>(&(df_structure->syndrome)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_effect_resurrectst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_effect_resurrectst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_effect_resurrectst*>(p_df_structure);
 
@@ -7526,7 +7506,7 @@ void generate_interaction_effect_resurrectst_offsets(void* p_df_structure, std::
 	p_table["syndrome"] = reinterpret_cast<uint64_t>(&(df_structure->syndrome)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_effect_cleanst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_effect_cleanst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_effect_cleanst*>(p_df_structure);
 
@@ -7535,28 +7515,28 @@ void generate_interaction_effect_cleanst_offsets(void* p_df_structure, std::map<
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_effect_contactst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_effect_contactst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_effect_contactst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_effect_material_emissionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_effect_material_emissionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_effect_material_emissionst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_effect_hidest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_effect_hidest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_effect_hidest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_secretst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_secretst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source_secretst*>(p_df_structure);
 
@@ -7569,7 +7549,7 @@ void generate_interaction_source_secretst_offsets(void* p_df_structure, std::map
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_source_deityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_source_deityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_source_deityst*>(p_df_structure);
 
@@ -7577,7 +7557,7 @@ void generate_interaction_source_deityst_offsets(void* p_df_structure, std::map<
 	p_table["usage_hint"] = reinterpret_cast<uint64_t>(&(df_structure->usage_hint)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_target_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_target_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_target*>(p_df_structure);
 
@@ -7587,21 +7567,21 @@ void generate_interaction_target_offsets(void* p_df_structure, std::map<std::str
 	p_table["location"] = reinterpret_cast<uint64_t>(&(df_structure->location)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_target_corpsest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_target_corpsest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_target_corpsest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_target_creaturest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_target_creaturest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_target_creaturest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_target_materialst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_target_materialst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_target_materialst*>(p_df_structure);
 
@@ -7613,13 +7593,13 @@ void generate_interaction_target_materialst_offsets(void* p_df_structure, std::m
 	p_table["restrictions"] = reinterpret_cast<uint64_t>(&(df_structure->restrictions)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interaction_target_locationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interaction_target_locationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interaction_target_locationst*>(p_df_structure);
 
 }
 
-void generate_itemdef_ammost_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_ammost_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_ammost*>(p_df_structure);
 
@@ -7633,7 +7613,7 @@ void generate_itemdef_ammost_offsets(void* p_df_structure, std::map<std::string,
 	p_table["attacks"] = reinterpret_cast<uint64_t>(&(df_structure->attacks)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_armorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_armorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_armorst*>(p_df_structure);
 
@@ -7651,7 +7631,7 @@ void generate_itemdef_armorst_offsets(void* p_df_structure, std::map<std::string
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_glovesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_glovesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_glovesst*>(p_df_structure);
 
@@ -7666,7 +7646,7 @@ void generate_itemdef_glovesst_offsets(void* p_df_structure, std::map<std::strin
 	p_table["props"] = reinterpret_cast<uint64_t>(&(df_structure->props)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_helmst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_helmst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_helmst*>(p_df_structure);
 
@@ -7680,7 +7660,7 @@ void generate_itemdef_helmst_offsets(void* p_df_structure, std::map<std::string,
 	p_table["props"] = reinterpret_cast<uint64_t>(&(df_structure->props)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_instrumentst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_instrumentst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_instrumentst*>(p_df_structure);
 
@@ -7715,7 +7695,7 @@ void generate_itemdef_instrumentst_offsets(void* p_df_structure, std::map<std::s
 	p_table["description"] = reinterpret_cast<uint64_t>(&(df_structure->description)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_instrument_register_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_instrument_register_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::instrument_register*>(p_df_structure);
 
@@ -7724,7 +7704,7 @@ void generate_instrument_register_offsets(void* p_df_structure, std::map<std::st
 	p_table["timbres"] = reinterpret_cast<uint64_t>(&(df_structure->timbres)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_pantsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_pantsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_pantsst*>(p_df_structure);
 
@@ -7741,7 +7721,7 @@ void generate_itemdef_pantsst_offsets(void* p_df_structure, std::map<std::string
 	p_table["props"] = reinterpret_cast<uint64_t>(&(df_structure->props)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_shoesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_shoesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_shoesst*>(p_df_structure);
 
@@ -7756,7 +7736,7 @@ void generate_itemdef_shoesst_offsets(void* p_df_structure, std::map<std::string
 	p_table["props"] = reinterpret_cast<uint64_t>(&(df_structure->props)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_toolst__T_default_improvements_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_toolst__T_default_improvements_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_toolst::T_default_improvements*>(p_df_structure);
 
@@ -7766,7 +7746,7 @@ void generate_itemdef_toolst__T_default_improvements_offsets(void* p_df_structur
 	p_table["restriction"] = reinterpret_cast<uint64_t>(&(df_structure->restriction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_toolst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_toolst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_toolst*>(p_df_structure);
 
@@ -7792,7 +7772,7 @@ void generate_itemdef_toolst_offsets(void* p_df_structure, std::map<std::string,
 	p_table["default_improvements"] = reinterpret_cast<uint64_t>(&(df_structure->default_improvements)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_trapcompst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_trapcompst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_trapcompst*>(p_df_structure);
 
@@ -7807,7 +7787,7 @@ void generate_itemdef_trapcompst_offsets(void* p_df_structure, std::map<std::str
 	p_table["attacks"] = reinterpret_cast<uint64_t>(&(df_structure->attacks)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemdef_weaponst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemdef_weaponst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemdef_weaponst*>(p_df_structure);
 
@@ -7828,7 +7808,7 @@ void generate_itemdef_weaponst_offsets(void* p_df_structure, std::map<std::strin
 	p_table["shoot_maxvel"] = reinterpret_cast<uint64_t>(&(df_structure->shoot_maxvel)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_dye_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_dye_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::dye_info*>(p_df_structure);
 
@@ -7840,7 +7820,7 @@ void generate_dye_info_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement*>(p_df_structure);
 
@@ -7853,14 +7833,14 @@ void generate_itemimprovement_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_art_imagest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_art_imagest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_art_imagest*>(p_df_structure);
 
 	p_table["image"] = reinterpret_cast<uint64_t>(&(df_structure->image)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_coveredst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_coveredst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_coveredst*>(p_df_structure);
 
@@ -7868,46 +7848,46 @@ void generate_itemimprovement_coveredst_offsets(void* p_df_structure, std::map<s
 	p_table["shape"] = reinterpret_cast<uint64_t>(&(df_structure->shape)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_rings_hangingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_rings_hangingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_rings_hangingst*>(p_df_structure);
 
 }
 
-void generate_itemimprovement_bandsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_bandsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_bandsst*>(p_df_structure);
 
 	p_table["shape"] = reinterpret_cast<uint64_t>(&(df_structure->shape)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_spikesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_spikesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_spikesst*>(p_df_structure);
 
 }
 
-void generate_itemimprovement_itemspecificst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_itemspecificst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_itemspecificst*>(p_df_structure);
 
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_threadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_threadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_threadst*>(p_df_structure);
 
 	p_table["dye"] = reinterpret_cast<uint64_t>(&(df_structure->dye)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_clothst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_clothst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_clothst*>(p_df_structure);
 
 }
 
-void generate_itemimprovement_sewn_imagest__T_cloth_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_sewn_imagest__T_cloth_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_sewn_imagest::T_cloth*>(p_df_structure);
 
@@ -7916,7 +7896,7 @@ void generate_itemimprovement_sewn_imagest__T_cloth_offsets(void* p_df_structure
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_sewn_imagest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_sewn_imagest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_sewn_imagest*>(p_df_structure);
 
@@ -7925,7 +7905,7 @@ void generate_itemimprovement_sewn_imagest_offsets(void* p_df_structure, std::ma
 	p_table["dye"] = reinterpret_cast<uint64_t>(&(df_structure->dye)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_pagesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_pagesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_pagesst*>(p_df_structure);
 
@@ -7933,7 +7913,7 @@ void generate_itemimprovement_pagesst_offsets(void* p_df_structure, std::map<std
 	p_table["contents"] = reinterpret_cast<uint64_t>(&(df_structure->contents)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_illustrationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_illustrationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_illustrationst*>(p_df_structure);
 
@@ -7941,21 +7921,21 @@ void generate_itemimprovement_illustrationst_offsets(void* p_df_structure, std::
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_instrument_piecest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_instrument_piecest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_instrument_piecest*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_itemimprovement_writingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_itemimprovement_writingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::itemimprovement_writingst*>(p_df_structure);
 
 	p_table["contents"] = reinterpret_cast<uint64_t>(&(df_structure->contents)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_written_content_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_written_content_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::written_content*>(p_df_structure);
 
@@ -7975,7 +7955,7 @@ void generate_written_content_offsets(void* p_df_structure, std::map<std::string
 	p_table["author_roll"] = reinterpret_cast<uint64_t>(&(df_structure->author_roll)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_engraving_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_engraving_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::engraving*>(p_df_structure);
 
@@ -7992,7 +7972,7 @@ void generate_engraving_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_magicness_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_magicness_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_magicness*>(p_df_structure);
 
@@ -8002,7 +7982,7 @@ void generate_item_magicness_offsets(void* p_df_structure, std::map<std::string,
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_spatter_common_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_spatter_common_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::spatter_common*>(p_df_structure);
 
@@ -8015,7 +7995,7 @@ void generate_spatter_common_offsets(void* p_df_structure, std::map<std::string,
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_option_eat_unit_contaminantst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_option_eat_unit_contaminantst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_option_eat_unit_contaminantst*>(p_df_structure);
 
@@ -8023,7 +8003,7 @@ void generate_adventure_option_eat_unit_contaminantst_offsets(void* p_df_structu
 	p_table["spatter"] = reinterpret_cast<uint64_t>(&(df_structure->spatter)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_adventure_option_view_contaminantst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_adventure_option_view_contaminantst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::adventure_option_view_contaminantst*>(p_df_structure);
 
@@ -8031,7 +8011,7 @@ void generate_adventure_option_view_contaminantst_offsets(void* p_df_structure, 
 	p_table["spatter"] = reinterpret_cast<uint64_t>(&(df_structure->spatter)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_spatter_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_spatter_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::spatter*>(p_df_structure);
 
@@ -8039,7 +8019,7 @@ void generate_spatter_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item*>(p_df_structure);
 
@@ -8068,7 +8048,7 @@ void generate_item_offsets(void* p_df_structure, std::map<std::string, std::size
 	p_table["weight_fraction"] = reinterpret_cast<uint64_t>(&(df_structure->weight_fraction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_kill_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_kill_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_kill_info*>(p_df_structure);
 
@@ -8077,7 +8057,7 @@ void generate_item_kill_info_offsets(void* p_df_structure, std::map<std::string,
 	p_table["slayer_kill_counts"] = reinterpret_cast<uint64_t>(&(df_structure->slayer_kill_counts)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_history_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_history_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_history_info*>(p_df_structure);
 
@@ -8086,7 +8066,7 @@ void generate_item_history_info_offsets(void* p_df_structure, std::map<std::stri
 	p_table["defence_counter"] = reinterpret_cast<uint64_t>(&(df_structure->defence_counter)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_actual_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_actual_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_actual*>(p_df_structure);
 
@@ -8101,7 +8081,7 @@ void generate_item_actual_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["temp_updated_frame"] = reinterpret_cast<uint64_t>(&(df_structure->temp_updated_frame)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_crafted_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_crafted_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_crafted*>(p_df_structure);
 
@@ -8114,14 +8094,14 @@ void generate_item_crafted_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["masterpiece_event"] = reinterpret_cast<uint64_t>(&(df_structure->masterpiece_event)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_constructed_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_constructed_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_constructed*>(p_df_structure);
 
 	p_table["improvements"] = reinterpret_cast<uint64_t>(&(df_structure->improvements)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_body_component_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_body_component_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::body_component_info*>(p_df_structure);
 
@@ -8135,7 +8115,7 @@ void generate_body_component_info_offsets(void* p_df_structure, std::map<std::st
 	p_table["layer_effect_fraction"] = reinterpret_cast<uint64_t>(&(df_structure->layer_effect_fraction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_body_component__T_body_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_body_component__T_body_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_body_component::T_body*>(p_df_structure);
 
@@ -8152,7 +8132,7 @@ void generate_item_body_component__T_body_offsets(void* p_df_structure, std::map
 	p_table["size_modifier"] = reinterpret_cast<uint64_t>(&(df_structure->size_modifier)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_body_component__T_appearance_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_body_component__T_appearance_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_body_component::T_appearance*>(p_df_structure);
 
@@ -8163,7 +8143,7 @@ void generate_item_body_component__T_appearance_offsets(void* p_df_structure, st
 	p_table["unk_218"] = reinterpret_cast<uint64_t>(&(df_structure->unk_218)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_body_component__T_bone1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_body_component__T_bone1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_body_component::T_bone1*>(p_df_structure);
 
@@ -8171,7 +8151,7 @@ void generate_item_body_component__T_bone1_offsets(void* p_df_structure, std::ma
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_body_component__T_bone2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_body_component__T_bone2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_body_component::T_bone2*>(p_df_structure);
 
@@ -8179,7 +8159,7 @@ void generate_item_body_component__T_bone2_offsets(void* p_df_structure, std::ma
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_body_component_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_body_component_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_body_component*>(p_df_structure);
 
@@ -8213,19 +8193,19 @@ void generate_item_body_component_offsets(void* p_df_structure, std::map<std::st
 	p_table["bone2"] = reinterpret_cast<uint64_t>(&(df_structure->bone2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_corpsest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_corpsest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_corpsest*>(p_df_structure);
 
 }
 
-void generate_item_corpsepiecest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_corpsepiecest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_corpsepiecest*>(p_df_structure);
 
 }
 
-void generate_item_liquipowder_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_liquipowder_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_liquipowder*>(p_df_structure);
 
@@ -8233,7 +8213,7 @@ void generate_item_liquipowder_offsets(void* p_df_structure, std::map<std::strin
 	p_table["dimension"] = reinterpret_cast<uint64_t>(&(df_structure->dimension)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_liquid_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_liquid_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_liquid*>(p_df_structure);
 
@@ -8241,7 +8221,7 @@ void generate_item_liquid_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_powder_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_powder_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_powder*>(p_df_structure);
 
@@ -8249,7 +8229,7 @@ void generate_item_powder_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_barst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_barst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_barst*>(p_df_structure);
 
@@ -8259,7 +8239,7 @@ void generate_item_barst_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["dimension"] = reinterpret_cast<uint64_t>(&(df_structure->dimension)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_smallgemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_smallgemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_smallgemst*>(p_df_structure);
 
@@ -8268,7 +8248,7 @@ void generate_item_smallgemst_offsets(void* p_df_structure, std::map<std::string
 	p_table["shape"] = reinterpret_cast<uint64_t>(&(df_structure->shape)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_blocksst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_blocksst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_blocksst*>(p_df_structure);
 
@@ -8276,7 +8256,7 @@ void generate_item_blocksst_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_roughst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_roughst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_roughst*>(p_df_structure);
 
@@ -8284,7 +8264,7 @@ void generate_item_roughst_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_boulderst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_boulderst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_boulderst*>(p_df_structure);
 
@@ -8292,7 +8272,7 @@ void generate_item_boulderst_offsets(void* p_df_structure, std::map<std::string,
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_woodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_woodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_woodst*>(p_df_structure);
 
@@ -8300,7 +8280,7 @@ void generate_item_woodst_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_branchst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_branchst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_branchst*>(p_df_structure);
 
@@ -8308,7 +8288,7 @@ void generate_item_branchst_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_rockst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_rockst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_rockst*>(p_df_structure);
 
@@ -8318,7 +8298,7 @@ void generate_item_rockst_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["unk_84"] = reinterpret_cast<uint64_t>(&(df_structure->unk_84)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_seedsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_seedsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_seedsst*>(p_df_structure);
 
@@ -8328,7 +8308,7 @@ void generate_item_seedsst_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["planting_skill"] = reinterpret_cast<uint64_t>(&(df_structure->planting_skill)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_skin_tannedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_skin_tannedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_skin_tannedst*>(p_df_structure);
 
@@ -8337,7 +8317,7 @@ void generate_item_skin_tannedst_offsets(void* p_df_structure, std::map<std::str
 	p_table["unk_80"] = reinterpret_cast<uint64_t>(&(df_structure->unk_80)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_meatst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_meatst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_meatst*>(p_df_structure);
 
@@ -8346,7 +8326,7 @@ void generate_item_meatst_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["rot_timer"] = reinterpret_cast<uint64_t>(&(df_structure->rot_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_plantst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_plantst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_plantst*>(p_df_structure);
 
@@ -8355,7 +8335,7 @@ void generate_item_plantst_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["rot_timer"] = reinterpret_cast<uint64_t>(&(df_structure->rot_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_plant_growthst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_plant_growthst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_plant_growthst*>(p_df_structure);
 
@@ -8366,7 +8346,7 @@ void generate_item_plant_growthst_offsets(void* p_df_structure, std::map<std::st
 	p_table["rot_timer"] = reinterpret_cast<uint64_t>(&(df_structure->rot_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_cheesest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_cheesest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_cheesest*>(p_df_structure);
 
@@ -8375,7 +8355,7 @@ void generate_item_cheesest_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["rot_timer"] = reinterpret_cast<uint64_t>(&(df_structure->rot_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_globst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_globst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_globst*>(p_df_structure);
 
@@ -8386,7 +8366,7 @@ void generate_item_globst_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_remainsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_remainsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_remainsst*>(p_df_structure);
 
@@ -8395,7 +8375,7 @@ void generate_item_remainsst_offsets(void* p_df_structure, std::map<std::string,
 	p_table["rot_timer"] = reinterpret_cast<uint64_t>(&(df_structure->rot_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_fishst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_fishst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_fishst*>(p_df_structure);
 
@@ -8404,7 +8384,7 @@ void generate_item_fishst_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["rot_timer"] = reinterpret_cast<uint64_t>(&(df_structure->rot_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_fish_rawst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_fish_rawst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_fish_rawst*>(p_df_structure);
 
@@ -8413,7 +8393,7 @@ void generate_item_fish_rawst_offsets(void* p_df_structure, std::map<std::string
 	p_table["rot_timer"] = reinterpret_cast<uint64_t>(&(df_structure->rot_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_foodst__T_ingredients_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_foodst__T_ingredients_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_foodst::T_ingredients*>(p_df_structure);
 
@@ -8428,7 +8408,7 @@ void generate_item_foodst__T_ingredients_offsets(void* p_df_structure, std::map<
 	p_table["unk_18"] = reinterpret_cast<uint64_t>(&(df_structure->unk_18)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_foodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_foodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_foodst*>(p_df_structure);
 
@@ -8439,26 +8419,26 @@ void generate_item_foodst_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["rot_timer"] = reinterpret_cast<uint64_t>(&(df_structure->rot_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_drinkst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_drinkst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_drinkst*>(p_df_structure);
 
 }
 
-void generate_item_powder_miscst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_powder_miscst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_powder_miscst*>(p_df_structure);
 
 }
 
-void generate_item_liquid_miscst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_liquid_miscst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_liquid_miscst*>(p_df_structure);
 
 	p_table["unk_88"] = reinterpret_cast<uint64_t>(&(df_structure->unk_88)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_threadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_threadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_threadst*>(p_df_structure);
 
@@ -8475,7 +8455,7 @@ void generate_item_threadst_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["dimension"] = reinterpret_cast<uint64_t>(&(df_structure->dimension)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_eggst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_eggst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_eggst*>(p_df_structure);
 
@@ -8505,271 +8485,271 @@ void generate_item_eggst_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["size"] = reinterpret_cast<uint64_t>(&(df_structure->size)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_doorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_doorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_doorst*>(p_df_structure);
 
 }
 
-void generate_item_floodgatest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_floodgatest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_floodgatest*>(p_df_structure);
 
 }
 
-void generate_item_bedst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_bedst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_bedst*>(p_df_structure);
 
 }
 
-void generate_item_chairst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_chairst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_chairst*>(p_df_structure);
 
 }
 
-void generate_item_chainst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_chainst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_chainst*>(p_df_structure);
 
 }
 
-void generate_item_flaskst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_flaskst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_flaskst*>(p_df_structure);
 
 }
 
-void generate_item_gobletst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_gobletst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_gobletst*>(p_df_structure);
 
 }
 
-void generate_item_windowst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_windowst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_windowst*>(p_df_structure);
 
 }
 
-void generate_item_cagest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_cagest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_cagest*>(p_df_structure);
 
 }
 
-void generate_item_bucketst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_bucketst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_bucketst*>(p_df_structure);
 
 }
 
-void generate_item_animaltrapst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_animaltrapst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_animaltrapst*>(p_df_structure);
 
 }
 
-void generate_item_tablest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_tablest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_tablest*>(p_df_structure);
 
 }
 
-void generate_item_coffinst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_coffinst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_coffinst*>(p_df_structure);
 
 }
 
-void generate_item_boxst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_boxst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_boxst*>(p_df_structure);
 
 }
 
-void generate_item_armorstandst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_armorstandst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_armorstandst*>(p_df_structure);
 
 }
 
-void generate_item_weaponrackst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_weaponrackst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_weaponrackst*>(p_df_structure);
 
 }
 
-void generate_item_cabinetst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_cabinetst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_cabinetst*>(p_df_structure);
 
 }
 
-void generate_item_amuletst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_amuletst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_amuletst*>(p_df_structure);
 
 }
 
-void generate_item_scepterst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_scepterst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_scepterst*>(p_df_structure);
 
 }
 
-void generate_item_crownst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_crownst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_crownst*>(p_df_structure);
 
 }
 
-void generate_item_ringst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_ringst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_ringst*>(p_df_structure);
 
 }
 
-void generate_item_earringst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_earringst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_earringst*>(p_df_structure);
 
 }
 
-void generate_item_braceletst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_braceletst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_braceletst*>(p_df_structure);
 
 }
 
-void generate_item_anvilst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_anvilst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_anvilst*>(p_df_structure);
 
 }
 
-void generate_item_backpackst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_backpackst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_backpackst*>(p_df_structure);
 
 }
 
-void generate_item_quiverst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_quiverst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_quiverst*>(p_df_structure);
 
 }
 
-void generate_item_catapultpartsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_catapultpartsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_catapultpartsst*>(p_df_structure);
 
 }
 
-void generate_item_ballistapartsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_ballistapartsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_ballistapartsst*>(p_df_structure);
 
 }
 
-void generate_item_trappartsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_trappartsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_trappartsst*>(p_df_structure);
 
 }
 
-void generate_item_pipe_sectionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_pipe_sectionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_pipe_sectionst*>(p_df_structure);
 
 }
 
-void generate_item_hatch_coverst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_hatch_coverst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_hatch_coverst*>(p_df_structure);
 
 }
 
-void generate_item_gratest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_gratest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_gratest*>(p_df_structure);
 
 }
 
-void generate_item_quernst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_quernst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_quernst*>(p_df_structure);
 
 }
 
-void generate_item_millstonest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_millstonest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_millstonest*>(p_df_structure);
 
 }
 
-void generate_item_splintst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_splintst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_splintst*>(p_df_structure);
 
 }
 
-void generate_item_crutchst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_crutchst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_crutchst*>(p_df_structure);
 
 }
 
-void generate_item_traction_benchst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_traction_benchst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_traction_benchst*>(p_df_structure);
 
 }
 
-void generate_item_instrumentst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_instrumentst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_instrumentst*>(p_df_structure);
 
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_toyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_toyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_toyst*>(p_df_structure);
 
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_armorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_armorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_armorst*>(p_df_structure);
 
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_shoesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_shoesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_shoesst*>(p_df_structure);
 
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_shieldst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_shieldst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_shieldst*>(p_df_structure);
 
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_helmst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_helmst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_helmst*>(p_df_structure);
 
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_glovesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_glovesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_glovesst*>(p_df_structure);
 
@@ -8777,14 +8757,14 @@ void generate_item_glovesst_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["handedness"] = reinterpret_cast<uint64_t>(&(df_structure->handedness)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_pantsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_pantsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_pantsst*>(p_df_structure);
 
 	p_table["subtype"] = reinterpret_cast<uint64_t>(&(df_structure->subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_siegeammost_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_siegeammost_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_siegeammost*>(p_df_structure);
 
@@ -8792,7 +8772,7 @@ void generate_item_siegeammost_offsets(void* p_df_structure, std::map<std::strin
 	p_table["sharpness"] = reinterpret_cast<uint64_t>(&(df_structure->sharpness)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_weaponst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_weaponst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_weaponst*>(p_df_structure);
 
@@ -8800,7 +8780,7 @@ void generate_item_weaponst_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["sharpness"] = reinterpret_cast<uint64_t>(&(df_structure->sharpness)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_ammost_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_ammost_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_ammost*>(p_df_structure);
 
@@ -8808,7 +8788,7 @@ void generate_item_ammost_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["sharpness"] = reinterpret_cast<uint64_t>(&(df_structure->sharpness)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_trapcompst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_trapcompst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_trapcompst*>(p_df_structure);
 
@@ -8816,7 +8796,7 @@ void generate_item_trapcompst_offsets(void* p_df_structure, std::map<std::string
 	p_table["sharpness"] = reinterpret_cast<uint64_t>(&(df_structure->sharpness)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_toolst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_toolst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_toolst*>(p_df_structure);
 
@@ -8826,28 +8806,28 @@ void generate_item_toolst_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["vehicle_id"] = reinterpret_cast<uint64_t>(&(df_structure->vehicle_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_barrelst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_barrelst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_barrelst*>(p_df_structure);
 
 	p_table["stockpile"] = reinterpret_cast<uint64_t>(&(df_structure->stockpile)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_binst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_binst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_binst*>(p_df_structure);
 
 	p_table["stockpile"] = reinterpret_cast<uint64_t>(&(df_structure->stockpile)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_gemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_gemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_gemst*>(p_df_structure);
 
 	p_table["shape"] = reinterpret_cast<uint64_t>(&(df_structure->shape)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_statuest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_statuest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_statuest*>(p_df_structure);
 
@@ -8855,7 +8835,7 @@ void generate_item_statuest_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["description"] = reinterpret_cast<uint64_t>(&(df_structure->description)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_figurinest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_figurinest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_figurinest*>(p_df_structure);
 
@@ -8863,7 +8843,7 @@ void generate_item_figurinest_offsets(void* p_df_structure, std::map<std::string
 	p_table["description"] = reinterpret_cast<uint64_t>(&(df_structure->description)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_slabst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_slabst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_slabst*>(p_df_structure);
 
@@ -8872,7 +8852,7 @@ void generate_item_slabst_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["engraving_type"] = reinterpret_cast<uint64_t>(&(df_structure->engraving_type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_orthopedic_castst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_orthopedic_castst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_orthopedic_castst*>(p_df_structure);
 
@@ -8880,14 +8860,14 @@ void generate_item_orthopedic_castst_offsets(void* p_df_structure, std::map<std:
 	p_table["material"] = reinterpret_cast<uint64_t>(&(df_structure->material)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_coinst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_coinst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_coinst*>(p_df_structure);
 
 	p_table["coin_batch"] = reinterpret_cast<uint64_t>(&(df_structure->coin_batch)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_totemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_totemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_totemst*>(p_df_structure);
 
@@ -8896,21 +8876,21 @@ void generate_item_totemst_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["body_part_idx"] = reinterpret_cast<uint64_t>(&(df_structure->body_part_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_clothst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_clothst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_clothst*>(p_df_structure);
 
 	p_table["dimension"] = reinterpret_cast<uint64_t>(&(df_structure->dimension)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_bookst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_bookst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_bookst*>(p_df_structure);
 
 	p_table["title"] = reinterpret_cast<uint64_t>(&(df_structure->title)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_ballistaarrowheadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_ballistaarrowheadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_ballistaarrowheadst*>(p_df_structure);
 
@@ -8919,7 +8899,7 @@ void generate_item_ballistaarrowheadst_offsets(void* p_df_structure, std::map<st
 	p_table["sharpness"] = reinterpret_cast<uint64_t>(&(df_structure->sharpness)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_sheetst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_sheetst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_sheetst*>(p_df_structure);
 
@@ -8927,7 +8907,7 @@ void generate_item_sheetst_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_list_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_list_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job_list_link*>(p_df_structure);
 
@@ -8936,7 +8916,7 @@ void generate_job_list_link_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["next"] = reinterpret_cast<uint64_t>(&(df_structure->next)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job*>(p_df_structure);
 
@@ -8973,7 +8953,7 @@ void generate_job_offsets(void* p_df_structure, std::map<std::string, std::size_
 	p_table["unk_v43_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_item_ref_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_item_ref_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job_item_ref*>(p_df_structure);
 
@@ -8983,7 +8963,7 @@ void generate_job_item_ref_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["job_item_idx"] = reinterpret_cast<uint64_t>(&(df_structure->job_item_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job_item*>(p_df_structure);
 
@@ -9012,7 +8992,7 @@ void generate_job_item_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["unk_v43_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_item_filter_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_item_filter_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job_item_filter*>(p_df_structure);
 
@@ -9055,7 +9035,7 @@ void generate_job_item_filter_offsets(void* p_df_structure, std::map<std::string
 	p_table["take_from"] = reinterpret_cast<uint64_t>(&(df_structure->take_from)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_manager_order_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_manager_order_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::manager_order*>(p_df_structure);
 
@@ -9083,7 +9063,7 @@ void generate_manager_order_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_manager_order_condition_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_manager_order_condition_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::manager_order_condition_item*>(p_df_structure);
 
@@ -9107,7 +9087,7 @@ void generate_manager_order_condition_item_offsets(void* p_df_structure, std::ma
 	p_table["has_tool_use"] = reinterpret_cast<uint64_t>(&(df_structure->has_tool_use)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_manager_order_template_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_manager_order_template_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::manager_order_template*>(p_df_structure);
 
@@ -9123,7 +9103,7 @@ void generate_manager_order_template_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mandate__T_punishment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mandate__T_punishment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mandate::T_punishment*>(p_df_structure);
 
@@ -9132,7 +9112,7 @@ void generate_mandate__T_punishment_offsets(void* p_df_structure, std::map<std::
 	p_table["give_beating"] = reinterpret_cast<uint64_t>(&(df_structure->give_beating)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mandate_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mandate_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mandate*>(p_df_structure);
 
@@ -9151,7 +9131,7 @@ void generate_mandate_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["unk4"] = reinterpret_cast<uint64_t>(&(df_structure->unk4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_demand_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_demand_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_demand*>(p_df_structure);
 
@@ -9165,7 +9145,7 @@ void generate_unit_demand_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["timeout_limit"] = reinterpret_cast<uint64_t>(&(df_structure->timeout_limit)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_knowledge_scholar_category_flag__T_flags_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_knowledge_scholar_category_flag__T_flags_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::knowledge_scholar_category_flag::T_flags*>(p_df_structure);
 
@@ -9186,7 +9166,7 @@ void generate_knowledge_scholar_category_flag__T_flags_offsets(void* p_df_struct
 	p_table["whole"] = reinterpret_cast<uint64_t>(&(df_structure->whole)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_knowledge_scholar_category_flag_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_knowledge_scholar_category_flag_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::knowledge_scholar_category_flag*>(p_df_structure);
 
@@ -9194,7 +9174,7 @@ void generate_knowledge_scholar_category_flag_offsets(void* p_df_structure, std:
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_knowledge_discoveredst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_knowledge_discoveredst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_knowledge_discoveredst*>(p_df_structure);
 
@@ -9203,7 +9183,7 @@ void generate_history_event_knowledge_discoveredst_offsets(void* p_df_structure,
 	p_table["first"] = reinterpret_cast<uint64_t>(&(df_structure->first)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_language_word_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_language_word_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::language_word*>(p_df_structure);
 
@@ -9215,7 +9195,7 @@ void generate_language_word_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["str"] = reinterpret_cast<uint64_t>(&(df_structure->str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_language_name_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_language_name_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::language_name*>(p_df_structure);
 
@@ -9228,7 +9208,7 @@ void generate_language_name_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["has_name"] = reinterpret_cast<uint64_t>(&(df_structure->has_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_v40_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_v40_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_v40_1*>(p_df_structure);
 
@@ -9239,7 +9219,7 @@ void generate_ui_advmode__T_unk_v40_1_offsets(void* p_df_structure, std::map<std
 	p_table["unk_s5"] = reinterpret_cast<uint64_t>(&(df_structure->unk_s5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_3170__T_unk_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_3170__T_unk_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_3170::T_unk_2*>(p_df_structure);
 
@@ -9247,7 +9227,7 @@ void generate_ui_advmode__T_unk_3170__T_unk_2_offsets(void* p_df_structure, std:
 	p_table["unk_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_3170_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_3170_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_3170*>(p_df_structure);
 
@@ -9255,7 +9235,7 @@ void generate_ui_advmode__T_unk_3170_offsets(void* p_df_structure, std::map<std:
 	p_table["unk_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_3124_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_3124_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_3124*>(p_df_structure);
 
@@ -9323,7 +9303,7 @@ void generate_ui_advmode__T_unk_3124_offsets(void* p_df_structure, std::map<std:
 	p_table["unk_62"] = reinterpret_cast<uint64_t>(&(df_structure->unk_62)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_conversation__T_choices_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_conversation__T_choices_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_conversation::T_choices*>(p_df_structure);
 
@@ -9334,7 +9314,7 @@ void generate_ui_advmode__T_conversation__T_choices_offsets(void* p_df_structure
 	p_table["ranking"] = reinterpret_cast<uint64_t>(&(df_structure->ranking)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_conversation__T_targets_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_conversation__T_targets_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_conversation::T_targets*>(p_df_structure);
 
@@ -9343,7 +9323,7 @@ void generate_ui_advmode__T_conversation__T_targets_offsets(void* p_df_structure
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_conversation_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_conversation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_conversation*>(p_df_structure);
 
@@ -9360,7 +9340,7 @@ void generate_ui_advmode__T_conversation_offsets(void* p_df_structure, std::map<
 	p_table["cursor_target"] = reinterpret_cast<uint64_t>(&(df_structure->cursor_target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_companions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_companions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_companions*>(p_df_structure);
 
@@ -9370,7 +9350,7 @@ void generate_ui_advmode__T_companions_offsets(void* p_df_structure, std::map<st
 	p_table["all_histfigs"] = reinterpret_cast<uint64_t>(&(df_structure->all_histfigs)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_interactions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_interactions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_interactions*>(p_df_structure);
 
@@ -9386,7 +9366,7 @@ void generate_ui_advmode__T_interactions_offsets(void* p_df_structure, std::map<
 	p_table["unk_200"] = reinterpret_cast<uint64_t>(&(df_structure->unk_200)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_v40_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_v40_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_v40_2*>(p_df_structure);
 
@@ -9399,7 +9379,7 @@ void generate_ui_advmode__T_unk_v40_2_offsets(void* p_df_structure, std::map<std
 	p_table["unk_s7"] = reinterpret_cast<uint64_t>(&(df_structure->unk_s7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_v40_3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_v40_3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_v40_3*>(p_df_structure);
 
@@ -9407,7 +9387,7 @@ void generate_ui_advmode__T_unk_v40_3_offsets(void* p_df_structure, std::map<std
 	p_table["unk_s2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_s2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_v40_4__T_unk_v40_4a_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_v40_4__T_unk_v40_4a_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_v40_4::T_unk_v40_4a*>(p_df_structure);
 
@@ -9423,7 +9403,7 @@ void generate_ui_advmode__T_unk_v40_4__T_unk_v40_4a_offsets(void* p_df_structure
 	p_table["unk_s10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_s10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_v40_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_v40_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_v40_4*>(p_df_structure);
 
@@ -9431,7 +9411,7 @@ void generate_ui_advmode__T_unk_v40_4_offsets(void* p_df_structure, std::map<std
 	p_table["unk_v40_4b"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_4b)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_v40_5_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_v40_5_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_v40_5*>(p_df_structure);
 
@@ -9443,7 +9423,7 @@ void generate_ui_advmode__T_unk_v40_5_offsets(void* p_df_structure, std::map<std
 	p_table["unk_s6"] = reinterpret_cast<uint64_t>(&(df_structure->unk_s6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_unk_v42_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_unk_v42_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_unk_v42_1*>(p_df_structure);
 
@@ -9458,7 +9438,7 @@ void generate_ui_advmode__T_unk_v42_1_offsets(void* p_df_structure, std::map<std
 	p_table["unk_s9"] = reinterpret_cast<uint64_t>(&(df_structure->unk_s9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode__T_assume_identity_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode__T_assume_identity_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode::T_assume_identity*>(p_df_structure);
 
@@ -9474,7 +9454,7 @@ void generate_ui_advmode__T_assume_identity_offsets(void* p_df_structure, std::m
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_advmode_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_advmode_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_advmode*>(p_df_structure);
 
@@ -9617,7 +9597,7 @@ void generate_ui_advmode_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["name_item"] = reinterpret_cast<uint64_t>(&(df_structure->name_item)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_art_image_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_art_image_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::art_image*>(p_df_structure);
 
@@ -9638,7 +9618,7 @@ void generate_art_image_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["subid"] = reinterpret_cast<uint64_t>(&(df_structure->subid)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_poetic_form_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_poetic_form_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::poetic_form*>(p_df_structure);
 
@@ -9663,7 +9643,7 @@ void generate_poetic_form_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["perspectives"] = reinterpret_cast<uint64_t>(&(df_structure->perspectives)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_musical_form_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_musical_form_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::musical_form*>(p_df_structure);
 
@@ -9692,7 +9672,7 @@ void generate_musical_form_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_dance_form_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_dance_form_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::dance_form*>(p_df_structure);
 
@@ -9726,7 +9706,7 @@ void generate_dance_form_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["anon_22"] = reinterpret_cast<uint64_t>(&(df_structure->anon_22)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_occasion_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_occasion_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_occasion*>(p_df_structure);
 
@@ -9744,7 +9724,7 @@ void generate_entity_occasion_offsets(void* p_df_structure, std::map<std::string
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_resources__T_metal_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_resources__T_metal_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_resources::T_metal*>(p_df_structure);
 
@@ -9757,7 +9737,7 @@ void generate_historical_entity__T_resources__T_metal_offsets(void* p_df_structu
 	p_table["anvil"] = reinterpret_cast<uint64_t>(&(df_structure->anvil)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_resources__T_organic_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_resources__T_organic_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_resources::T_organic*>(p_df_structure);
 
@@ -9769,7 +9749,7 @@ void generate_historical_entity__T_resources__T_organic_offsets(void* p_df_struc
 	p_table["wood"] = reinterpret_cast<uint64_t>(&(df_structure->wood)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_resources__T_refuse_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_resources__T_refuse_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_resources::T_refuse*>(p_df_structure);
 
@@ -9780,7 +9760,7 @@ void generate_historical_entity__T_resources__T_refuse_offsets(void* p_df_struct
 	p_table["horn"] = reinterpret_cast<uint64_t>(&(df_structure->horn)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_resources__T_misc_mat_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_resources__T_misc_mat_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_resources::T_misc_mat*>(p_df_structure);
 
@@ -9804,7 +9784,7 @@ void generate_historical_entity__T_resources__T_misc_mat_offsets(void* p_df_stru
 	p_table["meat"] = reinterpret_cast<uint64_t>(&(df_structure->meat)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_resources__T_wood_products_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_resources__T_wood_products_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_resources::T_wood_products*>(p_df_structure);
 
@@ -9813,7 +9793,7 @@ void generate_historical_entity__T_resources__T_wood_products_offsets(void* p_df
 	p_table["material"] = reinterpret_cast<uint64_t>(&(df_structure->material)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_resources__T_animals_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_resources__T_animals_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_resources::T_animals*>(p_df_structure);
 
@@ -9833,7 +9813,7 @@ void generate_historical_entity__T_resources__T_animals_offsets(void* p_df_struc
 	p_table["exotic_pet_castes"] = reinterpret_cast<uint64_t>(&(df_structure->exotic_pet_castes)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_resources__T_unk13_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_resources__T_unk13_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_resources::T_unk13*>(p_df_structure);
 
@@ -9841,7 +9821,7 @@ void generate_historical_entity__T_resources__T_unk13_offsets(void* p_df_structu
 	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_resources_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_resources_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_resources*>(p_df_structure);
 
@@ -9897,11 +9877,11 @@ void generate_historical_entity__T_resources_offsets(void* p_df_structure, std::
 	p_table["discovered_creatures"] = reinterpret_cast<uint64_t>(&(df_structure->discovered_creatures)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["discovered_plant_foods"] = reinterpret_cast<uint64_t>(&(df_structure->discovered_plant_foods)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["discovered_plants"] = reinterpret_cast<uint64_t>(&(df_structure->discovered_plants)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk23"] = reinterpret_cast<uint64_t>(&(df_structure->unk23)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk24"] = reinterpret_cast<uint64_t>(&(df_structure->unk24)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["foreground_color"] = reinterpret_cast<uint64_t>(&(df_structure->foreground_color)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["background_color"] = reinterpret_cast<uint64_t>(&(df_structure->background_color)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_unknown1b__T_unk32e_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_unknown1b__T_unk32e_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_unknown1b::T_unk32e*>(p_df_structure);
 
@@ -9914,7 +9894,7 @@ void generate_historical_entity__T_unknown1b__T_unk32e_offsets(void* p_df_struct
 	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_unknown1b__T_diplomacy_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_unknown1b__T_diplomacy_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_unknown1b::T_diplomacy*>(p_df_structure);
 
@@ -9926,7 +9906,7 @@ void generate_historical_entity__T_unknown1b__T_diplomacy_offsets(void* p_df_str
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_unknown1b_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_unknown1b_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_unknown1b*>(p_df_structure);
 
@@ -9944,7 +9924,7 @@ void generate_historical_entity__T_unknown1b_offsets(void* p_df_structure, std::
 	p_table["unk34e"] = reinterpret_cast<uint64_t>(&(df_structure->unk34e)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_positions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_positions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_positions*>(p_df_structure);
 
@@ -9961,7 +9941,7 @@ void generate_historical_entity__T_positions_offsets(void* p_df_structure, std::
 	p_table["unk_v40_5"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_tissue_styles_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_tissue_styles_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_tissue_styles*>(p_df_structure);
 
@@ -9969,7 +9949,7 @@ void generate_historical_entity__T_tissue_styles_offsets(void* p_df_structure, s
 	p_table["next_style_id"] = reinterpret_cast<uint64_t>(&(df_structure->next_style_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_unknown1d_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_unknown1d_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_unknown1d*>(p_df_structure);
 
@@ -9980,7 +9960,7 @@ void generate_historical_entity__T_unknown1d_offsets(void* p_df_structure, std::
 	p_table["unk44b"] = reinterpret_cast<uint64_t>(&(df_structure->unk44b)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_training_knowledge_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_training_knowledge_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_training_knowledge*>(p_df_structure);
 
@@ -9988,7 +9968,7 @@ void generate_historical_entity__T_training_knowledge_offsets(void* p_df_structu
 	p_table["unk_10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_unknown1e_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_unknown1e_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_unknown1e*>(p_df_structure);
 
@@ -10003,7 +9983,7 @@ void generate_historical_entity__T_unknown1e_offsets(void* p_df_structure, std::
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_derived_resources_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_derived_resources_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_derived_resources*>(p_df_structure);
 
@@ -10041,7 +10021,7 @@ void generate_historical_entity__T_derived_resources_offsets(void* p_df_structur
 	p_table["gloves_cover"] = reinterpret_cast<uint64_t>(&(df_structure->gloves_cover)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_claims_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_claims_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_claims*>(p_df_structure);
 
@@ -10050,7 +10030,7 @@ void generate_historical_entity__T_claims_offsets(void* p_df_structure, std::map
 	p_table["border"] = reinterpret_cast<uint64_t>(&(df_structure->border)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity__T_unknown2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity__T_unknown2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity::T_unknown2*>(p_df_structure);
 
@@ -10095,7 +10075,7 @@ void generate_historical_entity__T_unknown2_offsets(void* p_df_structure, std::m
 	p_table["unk29"] = reinterpret_cast<uint64_t>(&(df_structure->unk29)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_entity_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_entity_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_entity*>(p_df_structure);
 
@@ -10149,7 +10129,7 @@ void generate_historical_entity_offsets(void* p_df_structure, std::map<std::stri
 	p_table["unknown2"] = reinterpret_cast<uint64_t>(&(df_structure->unknown2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure__T_unk_fc_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure__T_unk_fc_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure::T_unk_fc*>(p_df_structure);
 
@@ -10157,7 +10137,7 @@ void generate_historical_figure__T_unk_fc_offsets(void* p_df_structure, std::map
 	p_table["unk_8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure*>(p_df_structure);
 
@@ -10182,7 +10162,7 @@ void generate_historical_figure_offsets(void* p_df_structure, std::map<std::stri
 	p_table["population_id"] = reinterpret_cast<uint64_t>(&(df_structure->population_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["breed_id"] = reinterpret_cast<uint64_t>(&(df_structure->breed_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["cultural_identity"] = reinterpret_cast<uint64_t>(&(df_structure->cultural_identity)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["family_head_id"] = reinterpret_cast<uint64_t>(&(df_structure->family_head_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unit_id"] = reinterpret_cast<uint64_t>(&(df_structure->unit_id)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unit_id2"] = reinterpret_cast<uint64_t>(&(df_structure->unit_id2)) - reinterpret_cast<uint64_t>(df_structure);
@@ -10198,10 +10178,10 @@ void generate_historical_figure_offsets(void* p_df_structure, std::map<std::stri
 	p_table["unk_fc"] = reinterpret_cast<uint64_t>(&(df_structure->unk_fc)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_100"] = reinterpret_cast<uint64_t>(&(df_structure->unk_100)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_v4019_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v4019_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_identity_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_identity_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::identity*>(p_df_structure);
 
@@ -10222,7 +10202,7 @@ void generate_identity_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_warst__T_unk_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_warst__T_unk_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_warst::T_unk*>(p_df_structure);
 
@@ -10243,7 +10223,7 @@ void generate_history_event_collection_warst__T_unk_offsets(void* p_df_structure
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_warst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_warst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_warst*>(p_df_structure);
 
@@ -10253,7 +10233,7 @@ void generate_history_event_collection_warst_offsets(void* p_df_structure, std::
 	p_table["unk"] = reinterpret_cast<uint64_t>(&(df_structure->unk)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_history_event_collection_battlest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_history_event_collection_battlest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::history_event_collection_battlest*>(p_df_structure);
 
@@ -10281,7 +10261,7 @@ void generate_history_event_collection_battlest_offsets(void* p_df_structure, st
 	p_table["outcome"] = reinterpret_cast<uint64_t>(&(df_structure->outcome)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_history__T_event_collections_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_history__T_event_collections_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_history::T_event_collections*>(p_df_structure);
 
@@ -10289,7 +10269,7 @@ void generate_world_history__T_event_collections_offsets(void* p_df_structure, s
 	p_table["other"] = reinterpret_cast<uint64_t>(&(df_structure->other)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_history_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_history_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_history*>(p_df_structure);
 
@@ -10329,7 +10309,7 @@ void generate_world_history_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_critter_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_critter_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_critter*>(p_df_structure);
 
@@ -10340,13 +10320,13 @@ void generate_item_critter_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_verminst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_verminst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_verminst*>(p_df_structure);
 
 }
 
-void generate_item_petst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_petst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_petst*>(p_df_structure);
 
@@ -10354,7 +10334,7 @@ void generate_item_petst_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["pet_flags"] = reinterpret_cast<uint64_t>(&(df_structure->pet_flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_language_word_table_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_language_word_table_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::language_word_table*>(p_df_structure);
 
@@ -10362,7 +10342,7 @@ void generate_language_word_table_offsets(void* p_df_structure, std::map<std::st
 	p_table["parts"] = reinterpret_cast<uint64_t>(&(df_structure->parts)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_raw__T_equipment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_raw__T_equipment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_raw::T_equipment*>(p_df_structure);
 
@@ -10401,7 +10381,7 @@ void generate_entity_raw__T_equipment_offsets(void* p_df_structure, std::map<std
 	p_table["tool_str"] = reinterpret_cast<uint64_t>(&(df_structure->tool_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_raw__T_symbols_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_raw__T_symbols_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_raw::T_symbols*>(p_df_structure);
 
@@ -10412,7 +10392,7 @@ void generate_entity_raw__T_symbols_offsets(void* p_df_structure, std::map<std::
 	p_table["cull_symbol"] = reinterpret_cast<uint64_t>(&(df_structure->cull_symbol)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_raw__T_progress_trigger_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_raw__T_progress_trigger_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_raw::T_progress_trigger*>(p_df_structure);
 
@@ -10424,7 +10404,7 @@ void generate_entity_raw__T_progress_trigger_offsets(void* p_df_structure, std::
 	p_table["trade_siege"] = reinterpret_cast<uint64_t>(&(df_structure->trade_siege)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_raw__T_jobs_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_raw__T_jobs_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_raw::T_jobs*>(p_df_structure);
 
@@ -10433,7 +10413,7 @@ void generate_entity_raw__T_jobs_offsets(void* p_df_structure, std::map<std::str
 	p_table["world_construction"] = reinterpret_cast<uint64_t>(&(df_structure->world_construction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_raw__T_tissue_styles_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_raw__T_tissue_styles_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_raw::T_tissue_styles*>(p_df_structure);
 
@@ -10443,7 +10423,7 @@ void generate_entity_raw__T_tissue_styles_offsets(void* p_df_structure, std::map
 	p_table["maintain_length_max"] = reinterpret_cast<uint64_t>(&(df_structure->maintain_length_max)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_raw__T_workshops_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_raw__T_workshops_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_raw::T_workshops*>(p_df_structure);
 
@@ -10453,7 +10433,7 @@ void generate_entity_raw__T_workshops_offsets(void* p_df_structure, std::map<std
 	p_table["permitted_reaction_id"] = reinterpret_cast<uint64_t>(&(df_structure->permitted_reaction_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_raw__T_land_holder_trigger_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_raw__T_land_holder_trigger_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_raw::T_land_holder_trigger*>(p_df_structure);
 
@@ -10462,7 +10442,7 @@ void generate_entity_raw__T_land_holder_trigger_offsets(void* p_df_structure, st
 	p_table["wealth"] = reinterpret_cast<uint64_t>(&(df_structure->wealth)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_raw*>(p_df_structure);
 
@@ -10518,7 +10498,7 @@ void generate_entity_raw_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["animal"] = reinterpret_cast<uint64_t>(&(df_structure->animal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_population_unk4__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_population_unk4__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_population_unk4::T_anon_1*>(p_df_structure);
 
@@ -10527,7 +10507,7 @@ void generate_entity_population_unk4__T_anon_1_offsets(void* p_df_structure, std
 	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_population_unk4__T_anon_3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_population_unk4__T_anon_3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_population_unk4::T_anon_3*>(p_df_structure);
 
@@ -10535,7 +10515,7 @@ void generate_entity_population_unk4__T_anon_3_offsets(void* p_df_structure, std
 	p_table["unk1"] = reinterpret_cast<uint64_t>(&(df_structure->unk1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_population_unk4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_population_unk4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_population_unk4*>(p_df_structure);
 
@@ -10544,7 +10524,7 @@ void generate_entity_population_unk4_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_population_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_population_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_population*>(p_df_structure);
 
@@ -10560,7 +10540,7 @@ void generate_entity_population_offsets(void* p_df_structure, std::map<std::stri
 	p_table["civ_id"] = reinterpret_cast<uint64_t>(&(df_structure->civ_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_nemesis_record_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_nemesis_record_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::nemesis_record*>(p_df_structure);
 
@@ -10578,7 +10558,7 @@ void generate_nemesis_record_offsets(void* p_df_structure, std::map<std::string,
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_artifact_record_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_artifact_record_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::artifact_record*>(p_df_structure);
 
@@ -10608,7 +10588,7 @@ void generate_artifact_record_offsets(void* p_df_structure, std::map<std::string
 	p_table["anon_12"] = reinterpret_cast<uint64_t>(&(df_structure->anon_12)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_machine_tile_set_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_machine_tile_set_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::machine_tile_set*>(p_df_structure);
 
@@ -10616,7 +10596,7 @@ void generate_machine_tile_set_offsets(void* p_df_structure, std::map<std::strin
 	p_table["can_connect"] = reinterpret_cast<uint64_t>(&(df_structure->can_connect)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_machine__T_components_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_machine__T_components_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::machine::T_components*>(p_df_structure);
 
@@ -10624,7 +10604,7 @@ void generate_machine__T_components_offsets(void* p_df_structure, std::map<std::
 	p_table["connections"] = reinterpret_cast<uint64_t>(&(df_structure->connections)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_machine_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_machine_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::machine*>(p_df_structure);
 
@@ -10640,13 +10620,13 @@ void generate_machine_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_machine_standardst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_machine_standardst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::machine_standardst*>(p_df_structure);
 
 }
 
-void generate_building_axle_horizontalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_axle_horizontalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_axle_horizontalst*>(p_df_structure);
 
@@ -10654,14 +10634,14 @@ void generate_building_axle_horizontalst_offsets(void* p_df_structure, std::map<
 	p_table["is_vertical"] = reinterpret_cast<uint64_t>(&(df_structure->is_vertical)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_axle_verticalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_axle_verticalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_axle_verticalst*>(p_df_structure);
 
 	p_table["machine"] = reinterpret_cast<uint64_t>(&(df_structure->machine)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_gear_assemblyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_gear_assemblyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_gear_assemblyst*>(p_df_structure);
 
@@ -10669,7 +10649,7 @@ void generate_building_gear_assemblyst_offsets(void* p_df_structure, std::map<st
 	p_table["gear_flags"] = reinterpret_cast<uint64_t>(&(df_structure->gear_flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_windmillst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_windmillst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_windmillst*>(p_df_structure);
 
@@ -10682,7 +10662,7 @@ void generate_building_windmillst_offsets(void* p_df_structure, std::map<std::st
 	p_table["orient_timer"] = reinterpret_cast<uint64_t>(&(df_structure->orient_timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_water_wheelst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_water_wheelst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_water_wheelst*>(p_df_structure);
 
@@ -10691,7 +10671,7 @@ void generate_building_water_wheelst_offsets(void* p_df_structure, std::map<std:
 	p_table["gives_power"] = reinterpret_cast<uint64_t>(&(df_structure->gives_power)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_screw_pumpst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_screw_pumpst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_screw_pumpst*>(p_df_structure);
 
@@ -10701,7 +10681,7 @@ void generate_building_screw_pumpst_offsets(void* p_df_structure, std::map<std::
 	p_table["pump_manually"] = reinterpret_cast<uint64_t>(&(df_structure->pump_manually)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_rollersst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_rollersst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_rollersst*>(p_df_structure);
 
@@ -10710,7 +10690,7 @@ void generate_building_rollersst_offsets(void* p_df_structure, std::map<std::str
 	p_table["speed"] = reinterpret_cast<uint64_t>(&(df_structure->speed)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_burrow_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_burrow_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_burrow*>(p_df_structure);
 
@@ -10719,7 +10699,7 @@ void generate_block_burrow_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["link"] = reinterpret_cast<uint64_t>(&(df_structure->link)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_burrow_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_burrow_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_burrow_link*>(p_df_structure);
 
@@ -10728,7 +10708,7 @@ void generate_block_burrow_link_offsets(void* p_df_structure, std::map<std::stri
 	p_table["next"] = reinterpret_cast<uint64_t>(&(df_structure->next)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_map_block_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_map_block_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::map_block*>(p_df_structure);
 
@@ -10761,7 +10741,7 @@ void generate_map_block_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["region_offset"] = reinterpret_cast<uint64_t>(&(df_structure->region_offset)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_cave_column_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_cave_column_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::cave_column_link*>(p_df_structure);
 
@@ -10770,7 +10750,7 @@ void generate_cave_column_link_offsets(void* p_df_structure, std::map<std::strin
 	p_table["next"] = reinterpret_cast<uint64_t>(&(df_structure->next)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_map_block_column__T_unmined_glyphs_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_map_block_column__T_unmined_glyphs_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::map_block_column::T_unmined_glyphs*>(p_df_structure);
 
@@ -10779,7 +10759,7 @@ void generate_map_block_column__T_unmined_glyphs_offsets(void* p_df_structure, s
 	p_table["tile"] = reinterpret_cast<uint64_t>(&(df_structure->tile)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_map_block_column_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_map_block_column_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::map_block_column*>(p_df_structure);
 
@@ -10799,7 +10779,7 @@ void generate_map_block_column_offsets(void* p_df_structure, std::map<std::strin
 	p_table["plants"] = reinterpret_cast<uint64_t>(&(df_structure->plants)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_square_event_mineralst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_mineralst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event_mineralst*>(p_df_structure);
 
@@ -10808,7 +10788,7 @@ void generate_block_square_event_mineralst_offsets(void* p_df_structure, std::ma
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_square_event_frozen_liquidst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_frozen_liquidst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event_frozen_liquidst*>(p_df_structure);
 
@@ -10816,7 +10796,7 @@ void generate_block_square_event_frozen_liquidst_offsets(void* p_df_structure, s
 	p_table["liquid_type"] = reinterpret_cast<uint64_t>(&(df_structure->liquid_type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_square_event_world_constructionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_world_constructionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event_world_constructionst*>(p_df_structure);
 
@@ -10824,7 +10804,7 @@ void generate_block_square_event_world_constructionst_offsets(void* p_df_structu
 	p_table["tile_bitmask"] = reinterpret_cast<uint64_t>(&(df_structure->tile_bitmask)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_block_square_event_item_spatterst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_block_square_event_item_spatterst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::block_square_event_item_spatterst*>(p_df_structure);
 
@@ -10839,7 +10819,7 @@ void generate_block_square_event_item_spatterst_offsets(void* p_df_structure, st
 	p_table["temp2"] = reinterpret_cast<uint64_t>(&(df_structure->temp2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature*>(p_df_structure);
 
@@ -10851,69 +10831,69 @@ void generate_feature_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["max_map_z"] = reinterpret_cast<uint64_t>(&(df_structure->max_map_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_outdoor_riverst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_outdoor_riverst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_outdoor_riverst*>(p_df_structure);
 
 }
 
-void generate_feature_cavest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_cavest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_cavest*>(p_df_structure);
 
 }
 
-void generate_feature_pitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_pitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_pitst*>(p_df_structure);
 
 }
 
-void generate_feature_magma_poolst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_magma_poolst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_magma_poolst*>(p_df_structure);
 
 	p_table["magma_fill_z"] = reinterpret_cast<uint64_t>(&(df_structure->magma_fill_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_volcanost_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_volcanost_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_volcanost*>(p_df_structure);
 
 	p_table["magma_fill_z"] = reinterpret_cast<uint64_t>(&(df_structure->magma_fill_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_deep_special_tubest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_deep_special_tubest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_deep_special_tubest*>(p_df_structure);
 
 }
 
-void generate_feature_deep_surface_portalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_deep_surface_portalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_deep_surface_portalst*>(p_df_structure);
 
 }
 
-void generate_feature_subterranean_from_layerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_subterranean_from_layerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_subterranean_from_layerst*>(p_df_structure);
 
 }
 
-void generate_feature_magma_core_from_layerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_magma_core_from_layerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_magma_core_from_layerst*>(p_df_structure);
 
 }
 
-void generate_feature_underworld_from_layerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_underworld_from_layerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_underworld_from_layerst*>(p_df_structure);
 
 }
 
-void generate_feature_init_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init*>(p_df_structure);
 
@@ -10927,42 +10907,42 @@ void generate_feature_init_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["end_depth"] = reinterpret_cast<uint64_t>(&(df_structure->end_depth)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_outdoor_riverst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_outdoor_riverst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_outdoor_riverst*>(p_df_structure);
 
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_cavest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_cavest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_cavest*>(p_df_structure);
 
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_pitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_pitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_pitst*>(p_df_structure);
 
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_magma_poolst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_magma_poolst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_magma_poolst*>(p_df_structure);
 
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_volcanost_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_volcanost_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_volcanost*>(p_df_structure);
 
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_deep_special_tubest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_deep_special_tubest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_deep_special_tubest*>(p_df_structure);
 
@@ -10971,7 +10951,7 @@ void generate_feature_init_deep_special_tubest_offsets(void* p_df_structure, std
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_deep_surface_portalst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_deep_surface_portalst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_deep_surface_portalst*>(p_df_structure);
 
@@ -10980,7 +10960,7 @@ void generate_feature_init_deep_surface_portalst_offsets(void* p_df_structure, s
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_subterranean_from_layerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_subterranean_from_layerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_subterranean_from_layerst*>(p_df_structure);
 
@@ -10988,7 +10968,7 @@ void generate_feature_init_subterranean_from_layerst_offsets(void* p_df_structur
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_magma_core_from_layerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_magma_core_from_layerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_magma_core_from_layerst*>(p_df_structure);
 
@@ -10996,7 +10976,7 @@ void generate_feature_init_magma_core_from_layerst_offsets(void* p_df_structure,
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_feature_init_underworld_from_layerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_feature_init_underworld_from_layerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::feature_init_underworld_from_layerst*>(p_df_structure);
 
@@ -11006,7 +10986,7 @@ void generate_feature_init_underworld_from_layerst_offsets(void* p_df_structure,
 	p_table["feature"] = reinterpret_cast<uint64_t>(&(df_structure->feature)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_square_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_square_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_square*>(p_df_structure);
 
@@ -11018,7 +10998,7 @@ void generate_world_construction_square_offsets(void* p_df_structure, std::map<s
 	p_table["embark_z"] = reinterpret_cast<uint64_t>(&(df_structure->embark_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_square_roadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_square_roadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_square_roadst*>(p_df_structure);
 
@@ -11028,13 +11008,13 @@ void generate_world_construction_square_roadst_offsets(void* p_df_structure, std
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_square_tunnelst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_square_tunnelst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_square_tunnelst*>(p_df_structure);
 
 }
 
-void generate_world_construction_square_bridgest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_square_bridgest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_square_bridgest*>(p_df_structure);
 
@@ -11045,7 +11025,7 @@ void generate_world_construction_square_bridgest_offsets(void* p_df_structure, s
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_square_wallst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_square_wallst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_square_wallst*>(p_df_structure);
 
@@ -11055,7 +11035,7 @@ void generate_world_construction_square_wallst_offsets(void* p_df_structure, std
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction*>(p_df_structure);
 
@@ -11064,35 +11044,35 @@ void generate_world_construction_offsets(void* p_df_structure, std::map<std::str
 	p_table["square_pos"] = reinterpret_cast<uint64_t>(&(df_structure->square_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_roadst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_roadst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_roadst*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_tunnelst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_tunnelst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_tunnelst*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_bridgest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_bridgest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_bridgest*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_construction_wallst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_construction_wallst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_construction_wallst*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_construction_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_construction_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::construction*>(p_df_structure);
 
@@ -11105,7 +11085,7 @@ void generate_construction_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["original_tile"] = reinterpret_cast<uint64_t>(&(df_structure->original_tile)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_flow_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_flow_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::flow_info*>(p_df_structure);
 
@@ -11120,14 +11100,14 @@ void generate_flow_info_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["guide_id"] = reinterpret_cast<uint64_t>(&(df_structure->guide_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_flow_guide_trailing_flowst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_flow_guide_trailing_flowst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::flow_guide_trailing_flowst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_flow_guide_item_cloudst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_flow_guide_item_cloudst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::flow_guide_item_cloudst*>(p_df_structure);
 
@@ -11140,7 +11120,7 @@ void generate_flow_guide_item_cloudst_offsets(void* p_df_structure, std::map<std
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_effect_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_effect_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::effect_info*>(p_df_structure);
 
@@ -11154,7 +11134,7 @@ void generate_effect_info_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_material_common__T_heat_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_material_common__T_heat_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::material_common::T_heat*>(p_df_structure);
 
@@ -11167,7 +11147,7 @@ void generate_material_common__T_heat_offsets(void* p_df_structure, std::map<std
 	p_table["mat_fixed_temp"] = reinterpret_cast<uint64_t>(&(df_structure->mat_fixed_temp)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_material_common__T_strength_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_material_common__T_strength_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::material_common::T_strength*>(p_df_structure);
 
@@ -11178,7 +11158,7 @@ void generate_material_common__T_strength_offsets(void* p_df_structure, std::map
 	p_table["max_edge"] = reinterpret_cast<uint64_t>(&(df_structure->max_edge)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_material_common__T_reaction_product_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_material_common__T_reaction_product_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::material_common::T_reaction_product*>(p_df_structure);
 
@@ -11189,7 +11169,7 @@ void generate_material_common__T_reaction_product_offsets(void* p_df_structure, 
 	p_table["str"] = reinterpret_cast<uint64_t>(&(df_structure->str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_material_common__T_hardens_with_water_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_material_common__T_hardens_with_water_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::material_common::T_hardens_with_water*>(p_df_structure);
 
@@ -11198,7 +11178,7 @@ void generate_material_common__T_hardens_with_water_offsets(void* p_df_structure
 	p_table["str"] = reinterpret_cast<uint64_t>(&(df_structure->str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_material_common_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_material_common_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::material_common*>(p_df_structure);
 
@@ -11236,7 +11216,7 @@ void generate_material_common_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk_41c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_41c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_material_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_material_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::material*>(p_df_structure);
 
@@ -11246,7 +11226,7 @@ void generate_material_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["state_color_str"] = reinterpret_cast<uint64_t>(&(df_structure->state_color_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_material_template_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_material_template_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::material_template*>(p_df_structure);
 
@@ -11254,7 +11234,7 @@ void generate_material_template_offsets(void* p_df_structure, std::map<std::stri
 	p_table["state_color_str"] = reinterpret_cast<uint64_t>(&(df_structure->state_color_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_inorganic_raw__T_metal_ore_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_inorganic_raw__T_metal_ore_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::inorganic_raw::T_metal_ore*>(p_df_structure);
 
@@ -11263,7 +11243,7 @@ void generate_inorganic_raw__T_metal_ore_offsets(void* p_df_structure, std::map<
 	p_table["probability"] = reinterpret_cast<uint64_t>(&(df_structure->probability)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_inorganic_raw__T_thread_metal_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_inorganic_raw__T_thread_metal_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::inorganic_raw::T_thread_metal*>(p_df_structure);
 
@@ -11272,7 +11252,7 @@ void generate_inorganic_raw__T_thread_metal_offsets(void* p_df_structure, std::m
 	p_table["probability"] = reinterpret_cast<uint64_t>(&(df_structure->probability)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_inorganic_raw__T_environment_spec_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_inorganic_raw__T_environment_spec_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::inorganic_raw::T_environment_spec*>(p_df_structure);
 
@@ -11282,7 +11262,7 @@ void generate_inorganic_raw__T_environment_spec_offsets(void* p_df_structure, st
 	p_table["probability"] = reinterpret_cast<uint64_t>(&(df_structure->probability)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_inorganic_raw__T_environment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_inorganic_raw__T_environment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::inorganic_raw::T_environment*>(p_df_structure);
 
@@ -11291,7 +11271,7 @@ void generate_inorganic_raw__T_environment_offsets(void* p_df_structure, std::ma
 	p_table["probability"] = reinterpret_cast<uint64_t>(&(df_structure->probability)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_inorganic_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_inorganic_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::inorganic_raw*>(p_df_structure);
 
@@ -11309,7 +11289,7 @@ void generate_inorganic_raw_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["material"] = reinterpret_cast<uint64_t>(&(df_structure->material)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_special_mat_table_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_special_mat_table_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::special_mat_table*>(p_df_structure);
 
@@ -11319,7 +11299,7 @@ void generate_special_mat_table_offsets(void* p_df_structure, std::map<std::stri
 	p_table["builtin"] = reinterpret_cast<uint64_t>(&(df_structure->builtin)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_dipscript_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_dipscript_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::dipscript_info*>(p_df_structure);
 
@@ -11330,7 +11310,7 @@ void generate_dipscript_info_offsets(void* p_df_structure, std::map<std::string,
 	p_table["code"] = reinterpret_cast<uint64_t>(&(df_structure->code)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_dipscript_popup_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_dipscript_popup_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::dipscript_popup*>(p_df_structure);
 
@@ -11339,14 +11319,14 @@ void generate_dipscript_popup_offsets(void* p_df_structure, std::map<std::string
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_active_script_var_unitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_active_script_var_unitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::active_script_var_unitst*>(p_df_structure);
 
 	p_table["unit"] = reinterpret_cast<uint64_t>(&(df_structure->unit)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_meeting_context_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_meeting_context_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::meeting_context*>(p_df_structure);
 
@@ -11356,7 +11336,7 @@ void generate_meeting_context_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_meeting_diplomat_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_meeting_diplomat_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::meeting_diplomat_info*>(p_df_structure);
 
@@ -11385,7 +11365,7 @@ void generate_meeting_diplomat_info_offsets(void* p_df_structure, std::map<std::
 	p_table["contact_tick"] = reinterpret_cast<uint64_t>(&(df_structure->contact_tick)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_meeting_event_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_meeting_event_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::meeting_event*>(p_df_structure);
 
@@ -11402,7 +11382,7 @@ void generate_meeting_event_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["buy_prices"] = reinterpret_cast<uint64_t>(&(df_structure->buy_prices)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_info*>(p_df_structure);
 
@@ -11416,7 +11396,7 @@ void generate_activity_info_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["tree_quota"] = reinterpret_cast<uint64_t>(&(df_structure->tree_quota)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_party_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_party_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::party_info*>(p_df_structure);
 
@@ -11426,7 +11406,7 @@ void generate_party_info_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_room_rent_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_room_rent_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::room_rent_info*>(p_df_structure);
 
@@ -11435,7 +11415,7 @@ void generate_room_rent_info_offsets(void* p_df_structure, std::map<std::string,
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_entry_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_entry_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_entry*>(p_df_structure);
 
@@ -11446,7 +11426,7 @@ void generate_activity_entry_offsets(void* p_df_structure, std::map<std::string,
 	p_table["army_controller"] = reinterpret_cast<uint64_t>(&(df_structure->army_controller)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event__T_unk_v42_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event__T_unk_v42_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event::T_unk_v42_1*>(p_df_structure);
 
@@ -11455,7 +11435,7 @@ void generate_activity_event__T_unk_v42_1_offsets(void* p_df_structure, std::map
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event__T_unk_v42_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event__T_unk_v42_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event::T_unk_v42_2*>(p_df_structure);
 
@@ -11465,7 +11445,7 @@ void generate_activity_event__T_unk_v42_2_offsets(void* p_df_structure, std::map
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event*>(p_df_structure);
 
@@ -11477,14 +11457,14 @@ void generate_activity_event_offsets(void* p_df_structure, std::map<std::string,
 	p_table["unk_v42_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v42_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_training_sessionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_training_sessionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_training_sessionst*>(p_df_structure);
 
 	p_table["participants"] = reinterpret_cast<uint64_t>(&(df_structure->participants)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_combat_trainingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_combat_trainingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_combat_trainingst*>(p_df_structure);
 
@@ -11495,7 +11475,7 @@ void generate_activity_event_combat_trainingst_offsets(void* p_df_structure, std
 	p_table["organize_counter"] = reinterpret_cast<uint64_t>(&(df_structure->organize_counter)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_skill_demonstrationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_skill_demonstrationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_skill_demonstrationst*>(p_df_structure);
 
@@ -11510,7 +11490,7 @@ void generate_activity_event_skill_demonstrationst_offsets(void* p_df_structure,
 	p_table["train_countdown"] = reinterpret_cast<uint64_t>(&(df_structure->train_countdown)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_individual_skill_drillst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_individual_skill_drillst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_individual_skill_drillst*>(p_df_structure);
 
@@ -11519,7 +11499,7 @@ void generate_activity_event_individual_skill_drillst_offsets(void* p_df_structu
 	p_table["countdown"] = reinterpret_cast<uint64_t>(&(df_structure->countdown)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_sparringst__T_groups_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_sparringst__T_groups_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_sparringst::T_groups*>(p_df_structure);
 
@@ -11528,7 +11508,7 @@ void generate_activity_event_sparringst__T_groups_offsets(void* p_df_structure, 
 	p_table["building_id"] = reinterpret_cast<uint64_t>(&(df_structure->building_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_sparringst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_sparringst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_sparringst*>(p_df_structure);
 
@@ -11538,7 +11518,7 @@ void generate_activity_event_sparringst_offsets(void* p_df_structure, std::map<s
 	p_table["countdown"] = reinterpret_cast<uint64_t>(&(df_structure->countdown)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_ranged_practicest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_ranged_practicest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_ranged_practicest*>(p_df_structure);
 
@@ -11547,7 +11527,7 @@ void generate_activity_event_ranged_practicest_offsets(void* p_df_structure, std
 	p_table["uniform_lock"] = reinterpret_cast<uint64_t>(&(df_structure->uniform_lock)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_harassmentst__T_anon_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_harassmentst__T_anon_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_harassmentst::T_anon_2*>(p_df_structure);
 
@@ -11566,7 +11546,7 @@ void generate_activity_event_harassmentst__T_anon_2_offsets(void* p_df_structure
 	p_table["anon_13"] = reinterpret_cast<uint64_t>(&(df_structure->anon_13)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_harassmentst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_harassmentst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_harassmentst*>(p_df_structure);
 
@@ -11580,7 +11560,7 @@ void generate_activity_event_harassmentst_offsets(void* p_df_structure, std::map
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conversationst__T_participants_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conversationst__T_participants_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conversationst::T_participants*>(p_df_structure);
 
@@ -11588,7 +11568,7 @@ void generate_activity_event_conversationst__T_participants_offsets(void* p_df_s
 	p_table["histfig_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conversationst__T_anon_6_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conversationst__T_anon_6_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conversationst::T_anon_6*>(p_df_structure);
 
@@ -11603,7 +11583,7 @@ void generate_activity_event_conversationst__T_anon_6_offsets(void* p_df_structu
 	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conversationst__T_unk_b4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conversationst__T_unk_b4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conversationst::T_unk_b4*>(p_df_structure);
 
@@ -11613,7 +11593,7 @@ void generate_activity_event_conversationst__T_unk_b4_offsets(void* p_df_structu
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conversationst__T_turns_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conversationst__T_turns_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conversationst::T_turns*>(p_df_structure);
 
@@ -11633,7 +11613,7 @@ void generate_activity_event_conversationst__T_turns_offsets(void* p_df_structur
 	p_table["unk_v4014_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v4014_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conversationst__T_unk2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conversationst__T_unk2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conversationst::T_unk2*>(p_df_structure);
 
@@ -11668,7 +11648,7 @@ void generate_activity_event_conversationst__T_unk2_offsets(void* p_df_structure
 	p_table["anon_29"] = reinterpret_cast<uint64_t>(&(df_structure->anon_29)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conversationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conversationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conversationst*>(p_df_structure);
 
@@ -11698,7 +11678,7 @@ void generate_activity_event_conversationst_offsets(void* p_df_structure, std::m
 	p_table["anon_11"] = reinterpret_cast<uint64_t>(&(df_structure->anon_11)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conflictst__T_sides__T_enemies_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conflictst__T_sides__T_enemies_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conflictst::T_sides::T_enemies*>(p_df_structure);
 
@@ -11706,7 +11686,7 @@ void generate_activity_event_conflictst__T_sides__T_enemies_offsets(void* p_df_s
 	p_table["conflict_level"] = reinterpret_cast<uint64_t>(&(df_structure->conflict_level)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conflictst__T_sides_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conflictst__T_sides_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conflictst::T_sides*>(p_df_structure);
 
@@ -11718,7 +11698,7 @@ void generate_activity_event_conflictst__T_sides_offsets(void* p_df_structure, s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_conflictst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_conflictst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_conflictst*>(p_df_structure);
 
@@ -11729,7 +11709,7 @@ void generate_activity_event_conflictst_offsets(void* p_df_structure, std::map<s
 	p_table["unk_v42_3"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v42_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_guardst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_guardst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_guardst*>(p_df_structure);
 
@@ -11740,7 +11720,7 @@ void generate_activity_event_guardst_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_reunionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_reunionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_reunionst*>(p_df_structure);
 
@@ -11753,7 +11733,7 @@ void generate_activity_event_reunionst_offsets(void* p_df_structure, std::map<st
 	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_prayerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_prayerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_prayerst*>(p_df_structure);
 
@@ -11766,7 +11746,7 @@ void generate_activity_event_prayerst_offsets(void* p_df_structure, std::map<std
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_socializest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_socializest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_socializest*>(p_df_structure);
 
@@ -11777,7 +11757,7 @@ void generate_activity_event_socializest_offsets(void* p_df_structure, std::map<
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_worshipst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_worshipst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_worshipst*>(p_df_structure);
 
@@ -11788,7 +11768,7 @@ void generate_activity_event_worshipst_offsets(void* p_df_structure, std::map<st
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_performancest__T_participant_actions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_performancest__T_participant_actions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_performancest::T_participant_actions*>(p_df_structure);
 
@@ -11807,7 +11787,7 @@ void generate_activity_event_performancest__T_participant_actions_offsets(void* 
 	p_table["unk_act_9"] = reinterpret_cast<uint64_t>(&(df_structure->unk_act_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_performancest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_performancest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_performancest*>(p_df_structure);
 
@@ -11848,7 +11828,7 @@ void generate_activity_event_performancest_offsets(void* p_df_structure, std::ma
 	p_table["unk_18"] = reinterpret_cast<uint64_t>(&(df_structure->unk_18)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_performance_play_orderst__T_anon_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_performance_play_orderst__T_anon_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::performance_play_orderst::T_anon_4*>(p_df_structure);
 
@@ -11856,7 +11836,7 @@ void generate_performance_play_orderst__T_anon_4_offsets(void* p_df_structure, s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_performance_play_orderst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_performance_play_orderst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::performance_play_orderst*>(p_df_structure);
 
@@ -11867,7 +11847,7 @@ void generate_performance_play_orderst_offsets(void* p_df_structure, std::map<st
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_researchst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_researchst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_researchst*>(p_df_structure);
 
@@ -11877,7 +11857,7 @@ void generate_activity_event_researchst_offsets(void* p_df_structure, std::map<s
 	p_table["building_id"] = reinterpret_cast<uint64_t>(&(df_structure->building_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_ponder_topicst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_ponder_topicst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_ponder_topicst*>(p_df_structure);
 
@@ -11890,7 +11870,7 @@ void generate_activity_event_ponder_topicst_offsets(void* p_df_structure, std::m
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_discuss_topicst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_discuss_topicst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_discuss_topicst*>(p_df_structure);
 
@@ -11905,7 +11885,7 @@ void generate_activity_event_discuss_topicst_offsets(void* p_df_structure, std::
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_readst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_readst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_readst*>(p_df_structure);
 
@@ -11917,7 +11897,7 @@ void generate_activity_event_readst_offsets(void* p_df_structure, std::map<std::
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_fill_service_orderst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_fill_service_orderst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_fill_service_orderst*>(p_df_structure);
 
@@ -11927,7 +11907,7 @@ void generate_activity_event_fill_service_orderst_offsets(void* p_df_structure, 
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_writest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_writest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_writest*>(p_df_structure);
 
@@ -11943,7 +11923,7 @@ void generate_activity_event_writest_offsets(void* p_df_structure, std::map<std:
 	p_table["knowledge"] = reinterpret_cast<uint64_t>(&(df_structure->knowledge)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_copy_written_contentst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_copy_written_contentst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_copy_written_contentst*>(p_df_structure);
 
@@ -11958,7 +11938,7 @@ void generate_activity_event_copy_written_contentst_offsets(void* p_df_structure
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_teach_topicst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_teach_topicst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_teach_topicst*>(p_df_structure);
 
@@ -11974,7 +11954,7 @@ void generate_activity_event_teach_topicst_offsets(void* p_df_structure, std::ma
 	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_playst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_playst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_playst*>(p_df_structure);
 
@@ -11986,7 +11966,7 @@ void generate_activity_event_playst_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_make_believest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_make_believest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_make_believest*>(p_df_structure);
 
@@ -12000,7 +11980,7 @@ void generate_activity_event_make_believest_offsets(void* p_df_structure, std::m
 	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_play_with_toyst__T_unk_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_play_with_toyst__T_unk_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_play_with_toyst::T_unk*>(p_df_structure);
 
@@ -12008,7 +11988,7 @@ void generate_activity_event_play_with_toyst__T_unk_offsets(void* p_df_structure
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_play_with_toyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_play_with_toyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_play_with_toyst*>(p_df_structure);
 
@@ -12022,7 +12002,7 @@ void generate_activity_event_play_with_toyst_offsets(void* p_df_structure, std::
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_encounterst__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_encounterst__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_encounterst::T_anon_1*>(p_df_structure);
 
@@ -12038,7 +12018,7 @@ void generate_activity_event_encounterst__T_anon_1_offsets(void* p_df_structure,
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_encounterst__T_anon_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_encounterst__T_anon_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_encounterst::T_anon_2*>(p_df_structure);
 
@@ -12052,7 +12032,7 @@ void generate_activity_event_encounterst__T_anon_2_offsets(void* p_df_structure,
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_encounterst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_encounterst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_encounterst*>(p_df_structure);
 
@@ -12067,7 +12047,7 @@ void generate_activity_event_encounterst_offsets(void* p_df_structure, std::map<
 	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_activity_event_store_objectst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_activity_event_store_objectst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::activity_event_store_objectst*>(p_df_structure);
 
@@ -12078,7 +12058,7 @@ void generate_activity_event_store_objectst_offsets(void* p_df_structure, std::m
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_schedule_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_schedule_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::schedule_info*>(p_df_structure);
 
@@ -12087,7 +12067,7 @@ void generate_schedule_info_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["slots"] = reinterpret_cast<uint64_t>(&(df_structure->slots)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_item_filter_spec_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_item_filter_spec_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::item_filter_spec*>(p_df_structure);
 
@@ -12098,7 +12078,7 @@ void generate_item_filter_spec_offsets(void* p_df_structure, std::map<std::strin
 	p_table["matindex"] = reinterpret_cast<uint64_t>(&(df_structure->matindex)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_uniform_spec_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_uniform_spec_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_uniform_spec*>(p_df_structure);
 
@@ -12109,7 +12089,7 @@ void generate_squad_uniform_spec_offsets(void* p_df_structure, std::map<std::str
 	p_table["indiv_choice"] = reinterpret_cast<uint64_t>(&(df_structure->indiv_choice)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_ammo_spec_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_ammo_spec_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_ammo_spec*>(p_df_structure);
 
@@ -12119,7 +12099,7 @@ void generate_squad_ammo_spec_offsets(void* p_df_structure, std::map<std::string
 	p_table["assigned"] = reinterpret_cast<uint64_t>(&(df_structure->assigned)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_position_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_position_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_position*>(p_df_structure);
 
@@ -12139,7 +12119,7 @@ void generate_squad_position_offsets(void* p_df_structure, std::map<std::string,
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_schedule_order_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_schedule_order_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_schedule_order*>(p_df_structure);
 
@@ -12148,7 +12128,7 @@ void generate_squad_schedule_order_offsets(void* p_df_structure, std::map<std::s
 	p_table["positions"] = reinterpret_cast<uint64_t>(&(df_structure->positions)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_schedule_entry_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_schedule_entry_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_schedule_entry*>(p_df_structure);
 
@@ -12159,7 +12139,7 @@ void generate_squad_schedule_entry_offsets(void* p_df_structure, std::map<std::s
 	p_table["order_assignments"] = reinterpret_cast<uint64_t>(&(df_structure->order_assignments)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad__T_rooms_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad__T_rooms_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad::T_rooms*>(p_df_structure);
 
@@ -12167,7 +12147,7 @@ void generate_squad__T_rooms_offsets(void* p_df_structure, std::map<std::string,
 	p_table["mode"] = reinterpret_cast<uint64_t>(&(df_structure->mode)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad*>(p_df_structure);
 
@@ -12196,7 +12176,7 @@ void generate_squad_offsets(void* p_df_structure, std::map<std::string, std::siz
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_movest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_movest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_movest*>(p_df_structure);
 
@@ -12204,7 +12184,7 @@ void generate_squad_order_movest_offsets(void* p_df_structure, std::map<std::str
 	p_table["point_id"] = reinterpret_cast<uint64_t>(&(df_structure->point_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_retrieve_artifactst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_retrieve_artifactst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_retrieve_artifactst*>(p_df_structure);
 
@@ -12212,7 +12192,7 @@ void generate_squad_order_retrieve_artifactst_offsets(void* p_df_structure, std:
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_raid_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_raid_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_raid_sitest*>(p_df_structure);
 
@@ -12220,7 +12200,7 @@ void generate_squad_order_raid_sitest_offsets(void* p_df_structure, std::map<std
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_squad_order_rescue_hfst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_squad_order_rescue_hfst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::squad_order_rescue_hfst*>(p_df_structure);
 
@@ -12228,7 +12208,7 @@ void generate_squad_order_rescue_hfst_offsets(void* p_df_structure, std::map<std
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller__T_unk_64_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller__T_unk_64_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller::T_unk_64*>(p_df_structure);
 
@@ -12248,7 +12228,7 @@ void generate_army_controller__T_unk_64_offsets(void* p_df_structure, std::map<s
 	p_table["t18"] = reinterpret_cast<uint64_t>(&(df_structure->t18)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller*>(p_df_structure);
 
@@ -12276,7 +12256,7 @@ void generate_army_controller_offsets(void* p_df_structure, std::map<std::string
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub2__T_anon_5_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub2__T_anon_5_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub2::T_anon_5*>(p_df_structure);
 
@@ -12288,7 +12268,7 @@ void generate_army_controller_sub2__T_anon_5_offsets(void* p_df_structure, std::
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub2*>(p_df_structure);
 
@@ -12304,7 +12284,7 @@ void generate_army_controller_sub2_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub7__T_anon_3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub7__T_anon_3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub7::T_anon_3*>(p_df_structure);
 
@@ -12316,7 +12296,7 @@ void generate_army_controller_sub7__T_anon_3_offsets(void* p_df_structure, std::
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub7_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub7*>(p_df_structure);
 
@@ -12332,7 +12312,7 @@ void generate_army_controller_sub7_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub11__T_anon_3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub11__T_anon_3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub11::T_anon_3*>(p_df_structure);
 
@@ -12344,7 +12324,7 @@ void generate_army_controller_sub11__T_anon_3_offsets(void* p_df_structure, std:
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub11_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub11_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub11*>(p_df_structure);
 
@@ -12353,7 +12333,7 @@ void generate_army_controller_sub11_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub12__T_anon_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub12__T_anon_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub12::T_anon_4*>(p_df_structure);
 
@@ -12365,7 +12345,7 @@ void generate_army_controller_sub12__T_anon_4_offsets(void* p_df_structure, std:
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub12_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub12_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub12*>(p_df_structure);
 
@@ -12379,7 +12359,7 @@ void generate_army_controller_sub12_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub13__T_anon_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub13__T_anon_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub13::T_anon_4*>(p_df_structure);
 
@@ -12391,7 +12371,7 @@ void generate_army_controller_sub13__T_anon_4_offsets(void* p_df_structure, std:
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub13_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub13_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub13*>(p_df_structure);
 
@@ -12401,7 +12381,7 @@ void generate_army_controller_sub13_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub14__T_anon_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub14__T_anon_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub14::T_anon_4*>(p_df_structure);
 
@@ -12413,7 +12393,7 @@ void generate_army_controller_sub14__T_anon_4_offsets(void* p_df_structure, std:
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub14_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub14_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub14*>(p_df_structure);
 
@@ -12423,7 +12403,7 @@ void generate_army_controller_sub14_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub15__T_anon_3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub15__T_anon_3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub15::T_anon_3*>(p_df_structure);
 
@@ -12435,7 +12415,7 @@ void generate_army_controller_sub15__T_anon_3_offsets(void* p_df_structure, std:
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_controller_sub15_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_controller_sub15_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army_controller_sub15*>(p_df_structure);
 
@@ -12454,7 +12434,7 @@ void generate_army_controller_sub15_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_13"] = reinterpret_cast<uint64_t>(&(df_structure->anon_13)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army__T_members_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army__T_members_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army::T_members*>(p_df_structure);
 
@@ -12477,7 +12457,7 @@ void generate_army__T_members_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk_v42_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v42_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army__T_unk_2c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army__T_unk_2c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army::T_unk_2c*>(p_df_structure);
 
@@ -12494,7 +12474,7 @@ void generate_army__T_unk_2c_offsets(void* p_df_structure, std::map<std::string,
 	p_table["unk_28"] = reinterpret_cast<uint64_t>(&(df_structure->unk_28)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_army_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_army_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::army*>(p_df_structure);
 
@@ -12530,7 +12510,7 @@ void generate_army_offsets(void* p_df_structure, std::map<std::string, std::size
 	p_table["unk_4407_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_4407_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_plant_raw__T_tiles_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_plant_raw__T_tiles_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::plant_raw::T_tiles*>(p_df_structure);
 
@@ -12547,7 +12527,7 @@ void generate_plant_raw__T_tiles_offsets(void* p_df_structure, std::map<std::str
 	p_table["tree_tiles"] = reinterpret_cast<uint64_t>(&(df_structure->tree_tiles)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_plant_raw__T_colors_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_plant_raw__T_colors_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::plant_raw::T_colors*>(p_df_structure);
 
@@ -12565,7 +12545,7 @@ void generate_plant_raw__T_colors_offsets(void* p_df_structure, std::map<std::st
 	p_table["grass_colors_2"] = reinterpret_cast<uint64_t>(&(df_structure->grass_colors_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_plant_raw__T_material_defs_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_plant_raw__T_material_defs_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::plant_raw::T_material_defs*>(p_df_structure);
 
@@ -12598,7 +12578,7 @@ void generate_plant_raw__T_material_defs_offsets(void* p_df_structure, std::map<
 	p_table["str_extract_still_vial"] = reinterpret_cast<uint64_t>(&(df_structure->str_extract_still_vial)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_plant_raw_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_plant_raw_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::plant_raw*>(p_df_structure);
 
@@ -12656,7 +12636,7 @@ void generate_plant_raw_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["stockpile_growth_flags"] = reinterpret_cast<uint64_t>(&(df_structure->stockpile_growth_flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_plant_growth_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_plant_growth_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::plant_growth*>(p_df_structure);
 
@@ -12678,7 +12658,7 @@ void generate_plant_growth_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["trunk_height_perc_2"] = reinterpret_cast<uint64_t>(&(df_structure->trunk_height_perc_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_plant_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_plant_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::plant*>(p_df_structure);
 
@@ -12695,7 +12675,7 @@ void generate_plant_offsets(void* p_df_structure, std::map<std::string, std::siz
 	p_table["tree_info"] = reinterpret_cast<uint64_t>(&(df_structure->tree_info)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_plant_tree_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_plant_tree_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::plant_tree_info*>(p_df_structure);
 
@@ -12712,7 +12692,7 @@ void generate_plant_tree_info_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk6"] = reinterpret_cast<uint64_t>(&(df_structure->unk6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_proj_list_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_proj_list_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::proj_list_link*>(p_df_structure);
 
@@ -12721,7 +12701,7 @@ void generate_proj_list_link_offsets(void* p_df_structure, std::map<std::string,
 	p_table["next"] = reinterpret_cast<uint64_t>(&(df_structure->next)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_projectile_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_projectile_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::projectile*>(p_df_structure);
 
@@ -12757,28 +12737,28 @@ void generate_projectile_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["accel_z"] = reinterpret_cast<uint64_t>(&(df_structure->accel_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_proj_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_proj_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::proj_itemst*>(p_df_structure);
 
 	p_table["item"] = reinterpret_cast<uint64_t>(&(df_structure->item)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_proj_unitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_proj_unitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::proj_unitst*>(p_df_structure);
 
 	p_table["unit"] = reinterpret_cast<uint64_t>(&(df_structure->unit)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_proj_magicst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_proj_magicst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::proj_magicst*>(p_df_structure);
 
 	p_table["unk"] = reinterpret_cast<uint64_t>(&(df_structure->unk)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_handler_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_handler_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_handler*>(p_df_structure);
 
@@ -12790,7 +12770,7 @@ void generate_creature_handler_offsets(void* p_df_structure, std::map<std::strin
 	p_table["action_strings"] = reinterpret_cast<uint64_t>(&(df_structure->action_strings)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_plants_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_plants_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_plants*>(p_df_structure);
 
@@ -12803,7 +12783,7 @@ void generate_world_raws__T_plants_offsets(void* p_df_structure, std::map<std::s
 	p_table["grasses_idx"] = reinterpret_cast<uint64_t>(&(df_structure->grasses_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_bodyglosses_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_bodyglosses_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_bodyglosses*>(p_df_structure);
 
@@ -12814,7 +12794,7 @@ void generate_world_raws__T_bodyglosses_offsets(void* p_df_structure, std::map<s
 	p_table["new_plural"] = reinterpret_cast<uint64_t>(&(df_structure->new_plural)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_itemdefs_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_itemdefs_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_itemdefs*>(p_df_structure);
 
@@ -12836,7 +12816,7 @@ void generate_world_raws__T_itemdefs_offsets(void* p_df_structure, std::map<std:
 	p_table["food"] = reinterpret_cast<uint64_t>(&(df_structure->food)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_language_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_language_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_language*>(p_df_structure);
 
@@ -12846,7 +12826,7 @@ void generate_world_raws__T_language_offsets(void* p_df_structure, std::map<std:
 	p_table["word_table"] = reinterpret_cast<uint64_t>(&(df_structure->word_table)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_descriptors_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_descriptors_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_descriptors*>(p_df_structure);
 
@@ -12855,7 +12835,7 @@ void generate_world_raws__T_descriptors_offsets(void* p_df_structure, std::map<s
 	p_table["patterns"] = reinterpret_cast<uint64_t>(&(df_structure->patterns)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_reactions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_reactions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_reactions*>(p_df_structure);
 
@@ -12863,7 +12843,7 @@ void generate_world_raws__T_reactions_offsets(void* p_df_structure, std::map<std
 	p_table["reaction_categories"] = reinterpret_cast<uint64_t>(&(df_structure->reaction_categories)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_buildings_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_buildings_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_buildings*>(p_df_structure);
 
@@ -12873,7 +12853,7 @@ void generate_world_raws__T_buildings_offsets(void* p_df_structure, std::map<std
 	p_table["next_id"] = reinterpret_cast<uint64_t>(&(df_structure->next_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_syndromes_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_syndromes_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_syndromes*>(p_df_structure);
 
@@ -12883,7 +12863,7 @@ void generate_world_raws__T_syndromes_offsets(void* p_df_structure, std::map<std
 	p_table["all"] = reinterpret_cast<uint64_t>(&(df_structure->all)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws__T_effects_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws__T_effects_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws::T_effects*>(p_df_structure);
 
@@ -12893,7 +12873,7 @@ void generate_world_raws__T_effects_offsets(void* p_df_structure, std::map<std::
 	p_table["all"] = reinterpret_cast<uint64_t>(&(df_structure->all)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_raws_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_raws_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_raws*>(p_df_structure);
 
@@ -12922,7 +12902,7 @@ void generate_world_raws_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction__T_building_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction__T_building_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction::T_building*>(p_df_structure);
 
@@ -12933,7 +12913,7 @@ void generate_reaction__T_building_offsets(void* p_df_structure, std::map<std::s
 	p_table["hotkey"] = reinterpret_cast<uint64_t>(&(df_structure->hotkey)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction*>(p_df_structure);
 
@@ -12953,7 +12933,7 @@ void generate_reaction_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["descriptions"] = reinterpret_cast<uint64_t>(&(df_structure->descriptions)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_description_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_description_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_description*>(p_df_structure);
 
@@ -12962,7 +12942,7 @@ void generate_reaction_description_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_reagent_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_reagent_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_reagent*>(p_df_structure);
 
@@ -12971,7 +12951,7 @@ void generate_reaction_reagent_offsets(void* p_df_structure, std::map<std::strin
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_reagent_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_reagent_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_reagent_itemst*>(p_df_structure);
 
@@ -12996,7 +12976,7 @@ void generate_reaction_reagent_itemst_offsets(void* p_df_structure, std::map<std
 	p_table["contains_str"] = reinterpret_cast<uint64_t>(&(df_structure->contains_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_product_itemst__T_get_material_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_product_itemst__T_get_material_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_product_itemst::T_get_material*>(p_df_structure);
 
@@ -13004,7 +12984,7 @@ void generate_reaction_product_itemst__T_get_material_offsets(void* p_df_structu
 	p_table["product_code"] = reinterpret_cast<uint64_t>(&(df_structure->product_code)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_product_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_product_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_product_itemst*>(p_df_structure);
 
@@ -13021,7 +13001,7 @@ void generate_reaction_product_itemst_offsets(void* p_df_structure, std::map<std
 	p_table["material_str"] = reinterpret_cast<uint64_t>(&(df_structure->material_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_product_item_improvementst__T_get_material_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_product_item_improvementst__T_get_material_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_product_item_improvementst::T_get_material*>(p_df_structure);
 
@@ -13029,7 +13009,7 @@ void generate_reaction_product_item_improvementst__T_get_material_offsets(void* 
 	p_table["product_code"] = reinterpret_cast<uint64_t>(&(df_structure->product_code)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_reaction_product_item_improvementst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_reaction_product_item_improvementst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::reaction_product_item_improvementst*>(p_df_structure);
 
@@ -13045,7 +13025,7 @@ void generate_reaction_product_item_improvementst_offsets(void* p_df_structure, 
 	p_table["unk_v4201_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v4201_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_item_type_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_item_type_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_item_type*>(p_df_structure);
 
@@ -13055,7 +13035,7 @@ void generate_general_ref_item_type_offsets(void* p_df_structure, std::map<std::
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_mapsquare_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_mapsquare_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_mapsquare*>(p_df_structure);
 
@@ -13064,21 +13044,21 @@ void generate_general_ref_mapsquare_offsets(void* p_df_structure, std::map<std::
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_spherest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_spherest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_spherest*>(p_df_structure);
 
 	p_table["sphere_type"] = reinterpret_cast<uint64_t>(&(df_structure->sphere_type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_knowledge_scholar_flagst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_knowledge_scholar_flagst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_knowledge_scholar_flagst*>(p_df_structure);
 
 	p_table["knowledge"] = reinterpret_cast<uint64_t>(&(df_structure->knowledge)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_general_ref_value_levelst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_general_ref_value_levelst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::general_ref_value_levelst*>(p_df_structure);
 
@@ -13086,14 +13066,14 @@ void generate_general_ref_value_levelst_offsets(void* p_df_structure, std::map<s
 	p_table["level"] = reinterpret_cast<uint64_t>(&(df_structure->level)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_specific_ref__T_arg2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_specific_ref__T_arg2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::specific_ref::T_arg2*>(p_df_structure);
 
 	p_table["wrestle"] = reinterpret_cast<uint64_t>(&(df_structure->wrestle)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_specific_ref_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_specific_ref_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::specific_ref*>(p_df_structure);
 
@@ -13108,7 +13088,7 @@ void generate_specific_ref_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["arg2"] = reinterpret_cast<uint64_t>(&(df_structure->arg2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_meeting_variable_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_meeting_variable_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::meeting_variable*>(p_df_structure);
 
@@ -13117,7 +13097,7 @@ void generate_meeting_variable_offsets(void* p_df_structure, std::map<std::strin
 	p_table["active_var"] = reinterpret_cast<uint64_t>(&(df_structure->active_var)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_entity_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_entity_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_entity_link*>(p_df_structure);
 
@@ -13126,7 +13106,7 @@ void generate_entity_entity_link_offsets(void* p_df_structure, std::map<std::str
 	p_table["strength"] = reinterpret_cast<uint64_t>(&(df_structure->strength)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_site_link__T_anon_8_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_site_link__T_anon_8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_site_link::T_anon_8*>(p_df_structure);
 
@@ -13134,7 +13114,7 @@ void generate_entity_site_link__T_anon_8_offsets(void* p_df_structure, std::map<
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_site_link_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_site_link_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_site_link*>(p_df_structure);
 
@@ -13156,7 +13136,7 @@ void generate_entity_site_link_offsets(void* p_df_structure, std::map<std::strin
 	p_table["unk_v43_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_data__T_unk_654_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_data__T_unk_654_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_data::T_unk_654*>(p_df_structure);
 
@@ -13166,7 +13146,7 @@ void generate_resource_allotment_data__T_unk_654_offsets(void* p_df_structure, s
 	p_table["unk_24"] = reinterpret_cast<uint64_t>(&(df_structure->unk_24)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_resource_allotment_data_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_resource_allotment_data_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::resource_allotment_data*>(p_df_structure);
 
@@ -13179,7 +13159,7 @@ void generate_resource_allotment_data_offsets(void* p_df_structure, std::map<std
 	p_table["unk_654"] = reinterpret_cast<uint64_t>(&(df_structure->unk_654)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_animals_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_animals_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_animals*>(p_df_structure);
 
@@ -13188,7 +13168,7 @@ void generate_stockpile_settings__T_animals_offsets(void* p_df_structure, std::m
 	p_table["enabled"] = reinterpret_cast<uint64_t>(&(df_structure->enabled)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_food_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_food_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_food*>(p_df_structure);
 
@@ -13214,7 +13194,7 @@ void generate_stockpile_settings__T_food_offsets(void* p_df_structure, std::map<
 	p_table["prepared_meals"] = reinterpret_cast<uint64_t>(&(df_structure->prepared_meals)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_furniture_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_furniture_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_furniture*>(p_df_structure);
 
@@ -13226,7 +13206,7 @@ void generate_stockpile_settings__T_furniture_offsets(void* p_df_structure, std:
 	p_table["sand_bags"] = reinterpret_cast<uint64_t>(&(df_structure->sand_bags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_refuse_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_refuse_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_refuse*>(p_df_structure);
 
@@ -13243,21 +13223,21 @@ void generate_stockpile_settings__T_refuse_offsets(void* p_df_structure, std::ma
 	p_table["rotten_raw_hide"] = reinterpret_cast<uint64_t>(&(df_structure->rotten_raw_hide)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_stone_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_stone_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_stone*>(p_df_structure);
 
 	p_table["mats"] = reinterpret_cast<uint64_t>(&(df_structure->mats)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_ore_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_ore_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_ore*>(p_df_structure);
 
 	p_table["mats"] = reinterpret_cast<uint64_t>(&(df_structure->mats)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_ammo_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_ammo_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_ammo*>(p_df_structure);
 
@@ -13268,14 +13248,14 @@ void generate_stockpile_settings__T_ammo_offsets(void* p_df_structure, std::map<
 	p_table["quality_total"] = reinterpret_cast<uint64_t>(&(df_structure->quality_total)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_coins_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_coins_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_coins*>(p_df_structure);
 
 	p_table["mats"] = reinterpret_cast<uint64_t>(&(df_structure->mats)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_bars_blocks_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_bars_blocks_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_bars_blocks*>(p_df_structure);
 
@@ -13285,7 +13265,7 @@ void generate_stockpile_settings__T_bars_blocks_offsets(void* p_df_structure, st
 	p_table["blocks_mats"] = reinterpret_cast<uint64_t>(&(df_structure->blocks_mats)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_gems_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_gems_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_gems*>(p_df_structure);
 
@@ -13295,7 +13275,7 @@ void generate_stockpile_settings__T_gems_offsets(void* p_df_structure, std::map<
 	p_table["cut_mats"] = reinterpret_cast<uint64_t>(&(df_structure->cut_mats)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_finished_goods_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_finished_goods_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_finished_goods*>(p_df_structure);
 
@@ -13306,14 +13286,14 @@ void generate_stockpile_settings__T_finished_goods_offsets(void* p_df_structure,
 	p_table["quality_total"] = reinterpret_cast<uint64_t>(&(df_structure->quality_total)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_leather_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_leather_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_leather*>(p_df_structure);
 
 	p_table["mats"] = reinterpret_cast<uint64_t>(&(df_structure->mats)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_cloth_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_cloth_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_cloth*>(p_df_structure);
 
@@ -13327,14 +13307,14 @@ void generate_stockpile_settings__T_cloth_offsets(void* p_df_structure, std::map
 	p_table["cloth_metal"] = reinterpret_cast<uint64_t>(&(df_structure->cloth_metal)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_wood_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_wood_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_wood*>(p_df_structure);
 
 	p_table["mats"] = reinterpret_cast<uint64_t>(&(df_structure->mats)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_weapons_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_weapons_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_weapons*>(p_df_structure);
 
@@ -13348,7 +13328,7 @@ void generate_stockpile_settings__T_weapons_offsets(void* p_df_structure, std::m
 	p_table["unusable"] = reinterpret_cast<uint64_t>(&(df_structure->unusable)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_armor_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_armor_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_armor*>(p_df_structure);
 
@@ -13366,7 +13346,7 @@ void generate_stockpile_settings__T_armor_offsets(void* p_df_structure, std::map
 	p_table["unusable"] = reinterpret_cast<uint64_t>(&(df_structure->unusable)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings__T_sheet_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings__T_sheet_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings::T_sheet*>(p_df_structure);
 
@@ -13374,7 +13354,7 @@ void generate_stockpile_settings__T_sheet_offsets(void* p_df_structure, std::map
 	p_table["parchment"] = reinterpret_cast<uint64_t>(&(df_structure->parchment)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stockpile_settings_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stockpile_settings_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stockpile_settings*>(p_df_structure);
 
@@ -13401,7 +13381,7 @@ void generate_stockpile_settings_offsets(void* p_df_structure, std::map<std::str
 	p_table["allow_inorganic"] = reinterpret_cast<uint64_t>(&(df_structure->allow_inorganic)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_stockpilest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_stockpilest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_stockpilest*>(p_df_structure);
 
@@ -13419,7 +13399,7 @@ void generate_building_stockpilest_offsets(void* p_df_structure, std::map<std::s
 	p_table["linked_stops"] = reinterpret_cast<uint64_t>(&(df_structure->linked_stops)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_hauling_route_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_hauling_route_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::hauling_route*>(p_df_structure);
 
@@ -13430,7 +13410,7 @@ void generate_hauling_route_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["vehicle_stops"] = reinterpret_cast<uint64_t>(&(df_structure->vehicle_stops)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_hauling_stop_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_hauling_stop_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::hauling_stop*>(p_df_structure);
 
@@ -13444,7 +13424,7 @@ void generate_hauling_stop_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["cart_id"] = reinterpret_cast<uint64_t>(&(df_structure->cart_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_stop_depart_condition_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_stop_depart_condition_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::stop_depart_condition*>(p_df_structure);
 
@@ -13456,7 +13436,7 @@ void generate_stop_depart_condition_offsets(void* p_df_structure, std::map<std::
 	p_table["guide_path"] = reinterpret_cast<uint64_t>(&(df_structure->guide_path)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_vehicle_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_vehicle_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::vehicle*>(p_df_structure);
 
@@ -13477,7 +13457,7 @@ void generate_vehicle_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["time_stopped"] = reinterpret_cast<uint64_t>(&(df_structure->time_stopped)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_target_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_target_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_target*>(p_df_structure);
 
@@ -13486,7 +13466,7 @@ void generate_creature_interaction_effect_target_offsets(void* p_df_structure, s
 	p_table["tissue"] = reinterpret_cast<uint64_t>(&(df_structure->tissue)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect__T_counter_trigger_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect__T_counter_trigger_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect::T_counter_trigger*>(p_df_structure);
 
@@ -13496,7 +13476,7 @@ void generate_creature_interaction_effect__T_counter_trigger_offsets(void* p_df_
 	p_table["required"] = reinterpret_cast<uint64_t>(&(df_structure->required)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect*>(p_df_structure);
 
@@ -13514,7 +13494,7 @@ void generate_creature_interaction_effect_offsets(void* p_df_structure, std::map
 	p_table["counter_trigger"] = reinterpret_cast<uint64_t>(&(df_structure->counter_trigger)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_painst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_painst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_painst*>(p_df_structure);
 
@@ -13522,7 +13502,7 @@ void generate_creature_interaction_effect_painst_offsets(void* p_df_structure, s
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_swellingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_swellingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_swellingst*>(p_df_structure);
 
@@ -13530,7 +13510,7 @@ void generate_creature_interaction_effect_swellingst_offsets(void* p_df_structur
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_oozingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_oozingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_oozingst*>(p_df_structure);
 
@@ -13538,7 +13518,7 @@ void generate_creature_interaction_effect_oozingst_offsets(void* p_df_structure,
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_bruisingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_bruisingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_bruisingst*>(p_df_structure);
 
@@ -13546,7 +13526,7 @@ void generate_creature_interaction_effect_bruisingst_offsets(void* p_df_structur
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_blistersst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_blistersst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_blistersst*>(p_df_structure);
 
@@ -13554,7 +13534,7 @@ void generate_creature_interaction_effect_blistersst_offsets(void* p_df_structur
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_numbnessst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_numbnessst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_numbnessst*>(p_df_structure);
 
@@ -13562,7 +13542,7 @@ void generate_creature_interaction_effect_numbnessst_offsets(void* p_df_structur
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_paralysisst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_paralysisst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_paralysisst*>(p_df_structure);
 
@@ -13570,14 +13550,14 @@ void generate_creature_interaction_effect_paralysisst_offsets(void* p_df_structu
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_feverst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_feverst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_feverst*>(p_df_structure);
 
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_bleedingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_bleedingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_bleedingst*>(p_df_structure);
 
@@ -13585,35 +13565,35 @@ void generate_creature_interaction_effect_bleedingst_offsets(void* p_df_structur
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_cough_bloodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_cough_bloodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_cough_bloodst*>(p_df_structure);
 
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_vomit_bloodst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_vomit_bloodst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_vomit_bloodst*>(p_df_structure);
 
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_nauseast_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_nauseast_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_nauseast*>(p_df_structure);
 
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_unconsciousnessst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_unconsciousnessst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_unconsciousnessst*>(p_df_structure);
 
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_necrosisst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_necrosisst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_necrosisst*>(p_df_structure);
 
@@ -13621,7 +13601,7 @@ void generate_creature_interaction_effect_necrosisst_offsets(void* p_df_structur
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_impair_functionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_impair_functionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_impair_functionst*>(p_df_structure);
 
@@ -13629,21 +13609,21 @@ void generate_creature_interaction_effect_impair_functionst_offsets(void* p_df_s
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_drowsinessst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_drowsinessst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_drowsinessst*>(p_df_structure);
 
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_dizzinessst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_dizzinessst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_dizzinessst*>(p_df_structure);
 
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_display_namest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_display_namest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_display_namest*>(p_df_structure);
 
@@ -13653,7 +13633,7 @@ void generate_creature_interaction_effect_display_namest_offsets(void* p_df_stru
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_body_appearance_modifierst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_body_appearance_modifierst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_body_appearance_modifierst*>(p_df_structure);
 
@@ -13661,7 +13641,7 @@ void generate_creature_interaction_effect_body_appearance_modifierst_offsets(voi
 	p_table["unk_64"] = reinterpret_cast<uint64_t>(&(df_structure->unk_64)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_bp_appearance_modifierst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_bp_appearance_modifierst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_bp_appearance_modifierst*>(p_df_structure);
 
@@ -13670,7 +13650,7 @@ void generate_creature_interaction_effect_bp_appearance_modifierst_offsets(void*
 	p_table["target"] = reinterpret_cast<uint64_t>(&(df_structure->target)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_body_transformationst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_body_transformationst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_body_transformationst*>(p_df_structure);
 
@@ -13681,7 +13661,7 @@ void generate_creature_interaction_effect_body_transformationst_offsets(void* p_
 	p_table["caste"] = reinterpret_cast<uint64_t>(&(df_structure->caste)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_skill_roll_adjustst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_skill_roll_adjustst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_skill_roll_adjustst*>(p_df_structure);
 
@@ -13689,7 +13669,7 @@ void generate_creature_interaction_effect_skill_roll_adjustst_offsets(void* p_df
 	p_table["chance"] = reinterpret_cast<uint64_t>(&(df_structure->chance)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_display_symbolst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_display_symbolst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_display_symbolst*>(p_df_structure);
 
@@ -13697,7 +13677,7 @@ void generate_creature_interaction_effect_display_symbolst_offsets(void* p_df_st
 	p_table["color"] = reinterpret_cast<uint64_t>(&(df_structure->color)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_flash_symbolst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_flash_symbolst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_flash_symbolst*>(p_df_structure);
 
@@ -13707,7 +13687,7 @@ void generate_creature_interaction_effect_flash_symbolst_offsets(void* p_df_stru
 	p_table["unk_78"] = reinterpret_cast<uint64_t>(&(df_structure->unk_78)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_phys_att_changest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_phys_att_changest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_phys_att_changest*>(p_df_structure);
 
@@ -13715,7 +13695,7 @@ void generate_creature_interaction_effect_phys_att_changest_offsets(void* p_df_s
 	p_table["phys_att_add"] = reinterpret_cast<uint64_t>(&(df_structure->phys_att_add)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_ment_att_changest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_ment_att_changest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_ment_att_changest*>(p_df_structure);
 
@@ -13723,7 +13703,7 @@ void generate_creature_interaction_effect_ment_att_changest_offsets(void* p_df_s
 	p_table["ment_att_add"] = reinterpret_cast<uint64_t>(&(df_structure->ment_att_add)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_add_simple_flagst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_add_simple_flagst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_add_simple_flagst*>(p_df_structure);
 
@@ -13731,7 +13711,7 @@ void generate_creature_interaction_effect_add_simple_flagst_offsets(void* p_df_s
 	p_table["tags2"] = reinterpret_cast<uint64_t>(&(df_structure->tags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_remove_simple_flagst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_remove_simple_flagst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_remove_simple_flagst*>(p_df_structure);
 
@@ -13739,7 +13719,7 @@ void generate_creature_interaction_effect_remove_simple_flagst_offsets(void* p_d
 	p_table["tags2"] = reinterpret_cast<uint64_t>(&(df_structure->tags2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_speed_changest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_speed_changest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_speed_changest*>(p_df_structure);
 
@@ -13747,7 +13727,7 @@ void generate_creature_interaction_effect_speed_changest_offsets(void* p_df_stru
 	p_table["bonus_perc"] = reinterpret_cast<uint64_t>(&(df_structure->bonus_perc)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_body_mat_interactionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_body_mat_interactionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_body_mat_interactionst*>(p_df_structure);
 
@@ -13758,7 +13738,7 @@ void generate_creature_interaction_effect_body_mat_interactionst_offsets(void* p
 	p_table["unk_94"] = reinterpret_cast<uint64_t>(&(df_structure->unk_94)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_material_force_adjustst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_material_force_adjustst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_material_force_adjustst*>(p_df_structure);
 
@@ -13771,14 +13751,14 @@ void generate_creature_interaction_effect_material_force_adjustst_offsets(void* 
 	p_table["fraction_div"] = reinterpret_cast<uint64_t>(&(df_structure->fraction_div)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_can_do_interactionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_can_do_interactionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_can_do_interactionst*>(p_df_structure);
 
 	p_table["interaction"] = reinterpret_cast<uint64_t>(&(df_structure->interaction)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_sense_creature_classst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_sense_creature_classst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_sense_creature_classst*>(p_df_structure);
 
@@ -13789,7 +13769,7 @@ void generate_creature_interaction_effect_sense_creature_classst_offsets(void* p
 	p_table["unk_8e"] = reinterpret_cast<uint64_t>(&(df_structure->unk_8e)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_feel_emotionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_feel_emotionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_feel_emotionst*>(p_df_structure);
 
@@ -13797,21 +13777,21 @@ void generate_creature_interaction_effect_feel_emotionst_offsets(void* p_df_stru
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_change_personalityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_change_personalityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_change_personalityst*>(p_df_structure);
 
 	p_table["facets"] = reinterpret_cast<uint64_t>(&(df_structure->facets)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creature_interaction_effect_erratic_behaviorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creature_interaction_effect_erratic_behaviorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creature_interaction_effect_erratic_behaviorst*>(p_df_structure);
 
 	p_table["sev"] = reinterpret_cast<uint64_t>(&(df_structure->sev)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_syndrome_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_syndrome_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::syndrome*>(p_df_structure);
 
@@ -13830,7 +13810,7 @@ void generate_syndrome_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_build_item_req_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_build_item_req_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_build_item_req*>(p_df_structure);
 
@@ -13844,7 +13824,7 @@ void generate_ui_build_item_req_offsets(void* p_df_structure, std::map<std::stri
 	p_table["count_provided"] = reinterpret_cast<uint64_t>(&(df_structure->count_provided)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_build_req_choice_genst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_build_req_choice_genst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::build_req_choice_genst*>(p_df_structure);
 
@@ -13856,7 +13836,7 @@ void generate_build_req_choice_genst_offsets(void* p_df_structure, std::map<std:
 	p_table["used_count"] = reinterpret_cast<uint64_t>(&(df_structure->used_count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_build_req_choice_specst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_build_req_choice_specst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::build_req_choice_specst*>(p_df_structure);
 
@@ -13864,7 +13844,7 @@ void generate_build_req_choice_specst_offsets(void* p_df_structure, std::map<std
 	p_table["candidate_id"] = reinterpret_cast<uint64_t>(&(df_structure->candidate_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_build_selector_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_build_selector_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_build_selector*>(p_df_structure);
 
@@ -13892,7 +13872,7 @@ void generate_ui_build_selector_offsets(void* p_df_structure, std::map<std::stri
 	p_table["speed"] = reinterpret_cast<uint64_t>(&(df_structure->speed)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button*>(p_df_structure);
 
@@ -13901,14 +13881,14 @@ void generate_interface_button_offsets(void* p_df_structure, std::map<std::strin
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_buildingst*>(p_df_structure);
 
 	p_table["building"] = reinterpret_cast<uint64_t>(&(df_structure->building)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_building_category_selectorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_building_category_selectorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_building_category_selectorst*>(p_df_structure);
 
@@ -13916,7 +13896,7 @@ void generate_interface_button_building_category_selectorst_offsets(void* p_df_s
 	p_table["unk_14"] = reinterpret_cast<uint64_t>(&(df_structure->unk_14)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_building_material_selectorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_building_material_selectorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_building_material_selectorst*>(p_df_structure);
 
@@ -13926,7 +13906,7 @@ void generate_interface_button_building_material_selectorst_offsets(void* p_df_s
 	p_table["unk_1c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_building_new_jobst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_building_new_jobst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_building_new_jobst*>(p_df_structure);
 
@@ -13943,34 +13923,34 @@ void generate_interface_button_building_new_jobst_offsets(void* p_df_structure, 
 	p_table["is_custom"] = reinterpret_cast<uint64_t>(&(df_structure->is_custom)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_building_custom_category_selectorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_building_custom_category_selectorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_building_custom_category_selectorst*>(p_df_structure);
 
 	p_table["category"] = reinterpret_cast<uint64_t>(&(df_structure->category)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_constructionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_constructionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_constructionst*>(p_df_structure);
 
 	p_table["unused_c"] = reinterpret_cast<uint64_t>(&(df_structure->unused_c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_construction_donest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_construction_donest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_construction_donest*>(p_df_structure);
 
 }
 
-void generate_interface_button_construction_category_selectorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_construction_category_selectorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_construction_category_selectorst*>(p_df_structure);
 
 	p_table["category_id"] = reinterpret_cast<uint64_t>(&(df_structure->category_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interface_button_construction_building_selectorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interface_button_construction_building_selectorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interface_button_construction_building_selectorst*>(p_df_structure);
 
@@ -13980,7 +13960,7 @@ void generate_interface_button_construction_building_selectorst_offsets(void* p_
 	p_table["existing_count"] = reinterpret_cast<uint64_t>(&(df_structure->existing_count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_designation_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_designation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_designation*>(p_df_structure);
 
@@ -13990,7 +13970,7 @@ void generate_ui_sidebar_menus__T_designation_offsets(void* p_df_structure, std:
 	p_table["mine_mode"] = reinterpret_cast<uint64_t>(&(df_structure->mine_mode)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_workshop_job_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_workshop_job_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_workshop_job*>(p_df_structure);
 
@@ -14005,7 +13985,7 @@ void generate_ui_sidebar_menus__T_workshop_job_offsets(void* p_df_structure, std
 	p_table["use_tooltip_lines"] = reinterpret_cast<uint64_t>(&(df_structure->use_tooltip_lines)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_building_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_building_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_building*>(p_df_structure);
 
@@ -14015,7 +13995,7 @@ void generate_ui_sidebar_menus__T_building_offsets(void* p_df_structure, std::ma
 	p_table["cursor"] = reinterpret_cast<uint64_t>(&(df_structure->cursor)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_zone_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_zone_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_zone*>(p_df_structure);
 
@@ -14025,7 +14005,7 @@ void generate_ui_sidebar_menus__T_zone_offsets(void* p_df_structure, std::map<st
 	p_table["selected"] = reinterpret_cast<uint64_t>(&(df_structure->selected)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_unit_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_unit_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_unit*>(p_df_structure);
 
@@ -14055,7 +14035,7 @@ void generate_ui_sidebar_menus__T_unit_offsets(void* p_df_structure, std::map<st
 	p_table["expel_error"] = reinterpret_cast<uint64_t>(&(df_structure->expel_error)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_hospital_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_hospital_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_hospital*>(p_df_structure);
 
@@ -14066,7 +14046,7 @@ void generate_ui_sidebar_menus__T_hospital_offsets(void* p_df_structure, std::ma
 	p_table["containers"] = reinterpret_cast<uint64_t>(&(df_structure->containers)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_location_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_location_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_location*>(p_df_structure);
 
@@ -14078,7 +14058,7 @@ void generate_ui_sidebar_menus__T_location_offsets(void* p_df_structure, std::ma
 	p_table["in_choose_deity"] = reinterpret_cast<uint64_t>(&(df_structure->in_choose_deity)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_job_details_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_job_details_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_job_details*>(p_df_structure);
 
@@ -14111,7 +14091,7 @@ void generate_ui_sidebar_menus__T_job_details_offsets(void* p_df_structure, std:
 	p_table["displayed_items_cursor"] = reinterpret_cast<uint64_t>(&(df_structure->displayed_items_cursor)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_unit_cursor_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_unit_cursor_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_unit_cursor*>(p_df_structure);
 
@@ -14120,7 +14100,7 @@ void generate_ui_sidebar_menus__T_unit_cursor_offsets(void* p_df_structure, std:
 	p_table["unk_a1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_a1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_unit_skills_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_unit_skills_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_unit_skills*>(p_df_structure);
 
@@ -14129,7 +14109,7 @@ void generate_ui_sidebar_menus__T_unit_skills_offsets(void* p_df_structure, std:
 	p_table["skill_subtype"] = reinterpret_cast<uint64_t>(&(df_structure->skill_subtype)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_barracks_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_barracks_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_barracks*>(p_df_structure);
 
@@ -14144,7 +14124,7 @@ void generate_ui_sidebar_menus__T_barracks_offsets(void* p_df_structure, std::ma
 	p_table["position_squad_cursor"] = reinterpret_cast<uint64_t>(&(df_structure->position_squad_cursor)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_minimap_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_minimap_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_minimap*>(p_df_structure);
 
@@ -14158,7 +14138,7 @@ void generate_ui_sidebar_menus__T_minimap_offsets(void* p_df_structure, std::map
 	p_table["tile_bold"] = reinterpret_cast<uint64_t>(&(df_structure->tile_bold)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus__T_command_line_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus__T_command_line_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus::T_command_line*>(p_df_structure);
 
@@ -14171,7 +14151,7 @@ void generate_ui_sidebar_menus__T_command_line_offsets(void* p_df_structure, std
 	p_table["use_param"] = reinterpret_cast<uint64_t>(&(df_structure->use_param)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_sidebar_menus_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_sidebar_menus_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_sidebar_menus*>(p_df_structure);
 
@@ -14198,7 +14178,7 @@ void generate_ui_sidebar_menus_offsets(void* p_df_structure, std::map<std::strin
 	p_table["unk_17d8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_17d8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_look_list__T_items_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_look_list__T_items_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_look_list::T_items*>(p_df_structure);
 
@@ -14219,21 +14199,21 @@ void generate_ui_look_list__T_items_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_look_list_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_look_list_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_look_list*>(p_df_structure);
 
 	p_table["items"] = reinterpret_cast<uint64_t>(&(df_structure->items)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_unit_view_mode_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_unit_view_mode_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui_unit_view_mode*>(p_df_structure);
 
 	p_table["value"] = reinterpret_cast<uint64_t>(&(df_structure->value)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_punishment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_punishment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::punishment*>(p_df_structure);
 
@@ -14247,7 +14227,7 @@ void generate_punishment_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["victims"] = reinterpret_cast<uint64_t>(&(df_structure->victims)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_timed_event_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_timed_event_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::timed_event*>(p_df_structure);
 
@@ -14261,7 +14241,7 @@ void generate_timed_event_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_map_renderer__T_anon_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_map_renderer__T_anon_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::map_renderer::T_anon_4*>(p_df_structure);
 
@@ -14269,7 +14249,7 @@ void generate_map_renderer__T_anon_4_offsets(void* p_df_structure, std::map<std:
 	p_table["y"] = reinterpret_cast<uint64_t>(&(df_structure->y)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_map_renderer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_map_renderer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::map_renderer*>(p_df_structure);
 
@@ -14299,7 +14279,7 @@ void generate_map_renderer_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_path_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_path_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_path*>(p_df_structure);
 
@@ -14308,7 +14288,7 @@ void generate_unit__T_path_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["path"] = reinterpret_cast<uint64_t>(&(df_structure->path)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_meeting_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_meeting_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_meeting*>(p_df_structure);
 
@@ -14318,7 +14298,7 @@ void generate_unit__T_meeting_offsets(void* p_df_structure, std::map<std::string
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_military_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_military_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_military*>(p_df_structure);
 
@@ -14335,7 +14315,7 @@ void generate_unit__T_military_offsets(void* p_df_structure, std::map<std::strin
 	p_table["individual_drills"] = reinterpret_cast<uint64_t>(&(df_structure->individual_drills)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_animal_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_animal_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_animal*>(p_df_structure);
 
@@ -14344,7 +14324,7 @@ void generate_unit__T_animal_offsets(void* p_df_structure, std::map<std::string,
 	p_table["vanish_countdown"] = reinterpret_cast<uint64_t>(&(df_structure->vanish_countdown)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_opponent_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_opponent_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_opponent*>(p_df_structure);
 
@@ -14353,7 +14333,7 @@ void generate_unit__T_opponent_offsets(void* p_df_structure, std::map<std::strin
 	p_table["unk_c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_job_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_job_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_job*>(p_df_structure);
 
@@ -14376,7 +14356,7 @@ void generate_unit__T_job_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["unk_39c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_39c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_body_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_body_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_body*>(p_df_structure);
 
@@ -14394,7 +14374,7 @@ void generate_unit__T_body_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["spatters"] = reinterpret_cast<uint64_t>(&(df_structure->spatters)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_appearance_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_appearance_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_appearance*>(p_df_structure);
 
@@ -14410,7 +14390,7 @@ void generate_unit__T_appearance_offsets(void* p_df_structure, std::map<std::str
 	p_table["colors"] = reinterpret_cast<uint64_t>(&(df_structure->colors)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_counters_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_counters_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_counters*>(p_df_structure);
 
@@ -14433,7 +14413,7 @@ void generate_unit__T_counters_offsets(void* p_df_structure, std::map<std::strin
 	p_table["dizziness"] = reinterpret_cast<uint64_t>(&(df_structure->dizziness)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_curse_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_curse_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_curse*>(p_df_structure);
 
@@ -14465,7 +14445,7 @@ void generate_unit__T_curse_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["own_interaction_delay"] = reinterpret_cast<uint64_t>(&(df_structure->own_interaction_delay)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_counters2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_counters2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_counters2*>(p_df_structure);
 
@@ -14482,7 +14462,7 @@ void generate_unit__T_counters2_offsets(void* p_df_structure, std::map<std::stri
 	p_table["stored_fat"] = reinterpret_cast<uint64_t>(&(df_structure->stored_fat)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_status__T_eat_history__T_food_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_status__T_eat_history__T_food_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_status::T_eat_history::T_food*>(p_df_structure);
 
@@ -14493,7 +14473,7 @@ void generate_unit__T_status__T_eat_history__T_food_offsets(void* p_df_structure
 	p_table["year_time"] = reinterpret_cast<uint64_t>(&(df_structure->year_time)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_status__T_eat_history__T_drink_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_status__T_eat_history__T_drink_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_status::T_eat_history::T_drink*>(p_df_structure);
 
@@ -14504,7 +14484,7 @@ void generate_unit__T_status__T_eat_history__T_drink_offsets(void* p_df_structur
 	p_table["year_time"] = reinterpret_cast<uint64_t>(&(df_structure->year_time)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_status__T_eat_history_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_status__T_eat_history_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_status::T_eat_history*>(p_df_structure);
 
@@ -14512,7 +14492,7 @@ void generate_unit__T_status__T_eat_history_offsets(void* p_df_structure, std::m
 	p_table["drink"] = reinterpret_cast<uint64_t>(&(df_structure->drink)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_status_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_status_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_status*>(p_df_structure);
 
@@ -14539,7 +14519,7 @@ void generate_unit__T_status_offsets(void* p_df_structure, std::map<std::string,
 	p_table["recent_jobs"] = reinterpret_cast<uint64_t>(&(df_structure->recent_jobs)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_status2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_status2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_status2*>(p_df_structure);
 
@@ -14556,7 +14536,7 @@ void generate_unit__T_status2_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk_7c0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_7c0)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_unknown7_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_unknown7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_unknown7*>(p_df_structure);
 
@@ -14564,7 +14544,7 @@ void generate_unit__T_unknown7_offsets(void* p_df_structure, std::map<std::strin
 	p_table["unk_c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_syndromes_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_syndromes_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_syndromes*>(p_df_structure);
 
@@ -14573,7 +14553,7 @@ void generate_unit__T_syndromes_offsets(void* p_df_structure, std::map<std::stri
 	p_table["reinfection_count"] = reinterpret_cast<uint64_t>(&(df_structure->reinfection_count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_reports_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_reports_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_reports*>(p_df_structure);
 
@@ -14582,7 +14562,7 @@ void generate_unit__T_reports_offsets(void* p_df_structure, std::map<std::string
 	p_table["last_year_tick"] = reinterpret_cast<uint64_t>(&(df_structure->last_year_tick)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_undead_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_undead_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_undead*>(p_df_structure);
 
@@ -14597,7 +14577,7 @@ void generate_unit__T_enemy__T_undead_offsets(void* p_df_structure, std::map<std
 	p_table["unk_v43_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_witness_reports_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_witness_reports_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_witness_reports*>(p_df_structure);
 
@@ -14609,7 +14589,7 @@ void generate_unit__T_enemy__T_witness_reports_offsets(void* p_df_structure, std
 	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_unk_448__T_unk_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_unk_448__T_unk_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_unk_448::T_unk*>(p_df_structure);
 
@@ -14625,7 +14605,7 @@ void generate_unit__T_enemy__T_unk_448__T_unk_offsets(void* p_df_structure, std:
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_unk_448_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_unk_448_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_unk_448*>(p_df_structure);
 
@@ -14635,7 +14615,7 @@ void generate_unit__T_enemy__T_unk_448_offsets(void* p_df_structure, std::map<st
 	p_table["unk"] = reinterpret_cast<uint64_t>(&(df_structure->unk)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_unk_44c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_unk_44c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_unk_44c*>(p_df_structure);
 
@@ -14653,7 +14633,7 @@ void generate_unit__T_enemy__T_unk_44c_offsets(void* p_df_structure, std::map<st
 	p_table["anon_12"] = reinterpret_cast<uint64_t>(&(df_structure->anon_12)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_unk_v40_sub3::T_unk_2*>(p_df_structure);
 
@@ -14663,7 +14643,7 @@ void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_2_offsets(void* p_df_structur
 	p_table["unk_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_6_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_6_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_unk_v40_sub3::T_unk_6*>(p_df_structure);
 
@@ -14671,7 +14651,7 @@ void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_6_offsets(void* p_df_structur
 	p_table["unk_10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_7__T_unk_sub1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_7__T_unk_sub1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_unk_v40_sub3::T_unk_7::T_unk_sub1*>(p_df_structure);
 
@@ -14686,7 +14666,7 @@ void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_7__T_unk_sub1_offsets(void* p
 	p_table["unk_sub1_9"] = reinterpret_cast<uint64_t>(&(df_structure->unk_sub1_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_7_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_unk_v40_sub3::T_unk_7*>(p_df_structure);
 
@@ -14700,7 +14680,7 @@ void generate_unit__T_enemy__T_unk_v40_sub3__T_unk_7_offsets(void* p_df_structur
 	p_table["unk_7"] = reinterpret_cast<uint64_t>(&(df_structure->unk_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy__T_unk_v40_sub3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy__T_unk_v40_sub3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy::T_unk_v40_sub3*>(p_df_structure);
 
@@ -14713,7 +14693,7 @@ void generate_unit__T_enemy__T_unk_v40_sub3_offsets(void* p_df_structure, std::m
 	p_table["unk_7"] = reinterpret_cast<uint64_t>(&(df_structure->unk_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit__T_enemy_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit__T_enemy_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit::T_enemy*>(p_df_structure);
 
@@ -14756,7 +14736,7 @@ void generate_unit__T_enemy_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["unk_8f8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_8f8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit*>(p_df_structure);
 
@@ -14793,7 +14773,7 @@ void generate_unit_offsets(void* p_df_structure, std::map<std::string, std::size
 	p_table["general_refs"] = reinterpret_cast<uint64_t>(&(df_structure->general_refs)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["military"] = reinterpret_cast<uint64_t>(&(df_structure->military)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["social_activities"] = reinterpret_cast<uint64_t>(&(df_structure->social_activities)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["unk_1d0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1d0)) - reinterpret_cast<uint64_t>(df_structure);
+	p_table["conversations"] = reinterpret_cast<uint64_t>(&(df_structure->conversations)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["activities"] = reinterpret_cast<uint64_t>(&(df_structure->activities)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["unk_1e8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1e8)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["animal"] = reinterpret_cast<uint64_t>(&(df_structure->animal)) - reinterpret_cast<uint64_t>(df_structure);
@@ -14856,7 +14836,7 @@ void generate_unit_offsets(void* p_df_structure, std::map<std::string, std::size
 	p_table["adjective"] = reinterpret_cast<uint64_t>(&(df_structure->adjective)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_ghost_info__T_target_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_ghost_info__T_target_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_ghost_info::T_target*>(p_df_structure);
 
@@ -14865,7 +14845,7 @@ void generate_unit_ghost_info__T_target_offsets(void* p_df_structure, std::map<s
 	p_table["building"] = reinterpret_cast<uint64_t>(&(df_structure->building)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_ghost_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_ghost_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_ghost_info*>(p_df_structure);
 
@@ -14882,7 +14862,7 @@ void generate_unit_ghost_info_offsets(void* p_df_structure, std::map<std::string
 	p_table["death_z"] = reinterpret_cast<uint64_t>(&(df_structure->death_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_inventory_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_inventory_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_inventory_item*>(p_df_structure);
 
@@ -14893,7 +14873,7 @@ void generate_unit_inventory_item_offsets(void* p_df_structure, std::map<std::st
 	p_table["wound_id"] = reinterpret_cast<uint64_t>(&(df_structure->wound_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_syndrome__T_symptoms_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_syndrome__T_symptoms_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_syndrome::T_symptoms*>(p_df_structure);
 
@@ -14908,7 +14888,7 @@ void generate_unit_syndrome__T_symptoms_offsets(void* p_df_structure, std::map<s
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_syndrome_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_syndrome_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_syndrome*>(p_df_structure);
 
@@ -14924,7 +14904,7 @@ void generate_unit_syndrome_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["unk4"] = reinterpret_cast<uint64_t>(&(df_structure->unk4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_wound__T_parts_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_wound__T_parts_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_wound::T_parts*>(p_df_structure);
 
@@ -14957,7 +14937,7 @@ void generate_unit_wound__T_parts_offsets(void* p_df_structure, std::map<std::st
 	p_table["unk_v406_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v406_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_wound_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_wound_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_wound*>(p_df_structure);
 
@@ -14979,7 +14959,7 @@ void generate_unit_wound_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["unk_v42_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v42_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_wound_curse_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_wound_curse_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::wound_curse_info*>(p_df_structure);
 
@@ -15011,7 +14991,7 @@ void generate_wound_curse_info_offsets(void* p_df_structure, std::map<std::strin
 	p_table["bp_appearance"] = reinterpret_cast<uint64_t>(&(df_structure->bp_appearance)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_misc_trait_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_misc_trait_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_misc_trait*>(p_df_structure);
 
@@ -15019,7 +14999,7 @@ void generate_unit_misc_trait_offsets(void* p_df_structure, std::map<std::string
 	p_table["value"] = reinterpret_cast<uint64_t>(&(df_structure->value)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_health_info__T_op_history__T_info__T_crutch_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_health_info__T_op_history__T_info__T_crutch_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_health_info::T_op_history::T_info::T_crutch*>(p_df_structure);
 
@@ -15030,7 +15010,7 @@ void generate_unit_health_info__T_op_history__T_info__T_crutch_offsets(void* p_d
 	p_table["item_id"] = reinterpret_cast<uint64_t>(&(df_structure->item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_health_info__T_op_history__T_info__T_bandage_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_health_info__T_op_history__T_info__T_bandage_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_health_info::T_op_history::T_info::T_bandage*>(p_df_structure);
 
@@ -15040,7 +15020,7 @@ void generate_unit_health_info__T_op_history__T_info__T_bandage_offsets(void* p_
 	p_table["item_id"] = reinterpret_cast<uint64_t>(&(df_structure->item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_health_info__T_op_history__T_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_health_info__T_op_history__T_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_health_info::T_op_history::T_info*>(p_df_structure);
 
@@ -15049,7 +15029,7 @@ void generate_unit_health_info__T_op_history__T_info_offsets(void* p_df_structur
 	p_table["bandage"] = reinterpret_cast<uint64_t>(&(df_structure->bandage)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_health_info__T_op_history_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_health_info__T_op_history_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_health_info::T_op_history*>(p_df_structure);
 
@@ -15060,7 +15040,7 @@ void generate_unit_health_info__T_op_history_offsets(void* p_df_structure, std::
 	p_table["doctor_id"] = reinterpret_cast<uint64_t>(&(df_structure->doctor_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_health_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_health_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_health_info*>(p_df_structure);
 
@@ -15076,7 +15056,7 @@ void generate_unit_health_info_offsets(void* p_df_structure, std::map<std::strin
 	p_table["unk_34"] = reinterpret_cast<uint64_t>(&(df_structure->unk_34)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_instrument_skill_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_instrument_skill_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_instrument_skill*>(p_df_structure);
 
@@ -15085,7 +15065,7 @@ void generate_unit_instrument_skill_offsets(void* p_df_structure, std::map<std::
 	p_table["experience"] = reinterpret_cast<uint64_t>(&(df_structure->experience)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_poetic_skill_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_poetic_skill_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_poetic_skill*>(p_df_structure);
 
@@ -15094,7 +15074,7 @@ void generate_unit_poetic_skill_offsets(void* p_df_structure, std::map<std::stri
 	p_table["experience"] = reinterpret_cast<uint64_t>(&(df_structure->experience)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_musical_skill_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_musical_skill_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_musical_skill*>(p_df_structure);
 
@@ -15103,7 +15083,7 @@ void generate_unit_musical_skill_offsets(void* p_df_structure, std::map<std::str
 	p_table["experience"] = reinterpret_cast<uint64_t>(&(df_structure->experience)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_dance_skill_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_dance_skill_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_dance_skill*>(p_df_structure);
 
@@ -15112,7 +15092,7 @@ void generate_unit_dance_skill_offsets(void* p_df_structure, std::map<std::strin
 	p_table["experience"] = reinterpret_cast<uint64_t>(&(df_structure->experience)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_personality__T_values_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_personality__T_values_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_personality::T_values*>(p_df_structure);
 
@@ -15120,7 +15100,7 @@ void generate_unit_personality__T_values_offsets(void* p_df_structure, std::map<
 	p_table["strength"] = reinterpret_cast<uint64_t>(&(df_structure->strength)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_personality__T_unk_v40_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_personality__T_unk_v40_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_personality::T_unk_v40_2*>(p_df_structure);
 
@@ -15128,7 +15108,7 @@ void generate_unit_personality__T_unk_v40_2_offsets(void* p_df_structure, std::m
 	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_personality__T_emotions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_personality__T_emotions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_personality::T_emotions*>(p_df_structure);
 
@@ -15144,7 +15124,7 @@ void generate_unit_personality__T_emotions_offsets(void* p_df_structure, std::ma
 	p_table["year_tick"] = reinterpret_cast<uint64_t>(&(df_structure->year_tick)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_personality__T_dreams_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_personality__T_dreams_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_personality::T_dreams*>(p_df_structure);
 
@@ -15155,7 +15135,7 @@ void generate_unit_personality__T_dreams_offsets(void* p_df_structure, std::map<
 	p_table["unk8"] = reinterpret_cast<uint64_t>(&(df_structure->unk8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_personality__T_unk_v40_6_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_personality__T_unk_v40_6_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_personality::T_unk_v40_6*>(p_df_structure);
 
@@ -15167,7 +15147,7 @@ void generate_unit_personality__T_unk_v40_6_offsets(void* p_df_structure, std::m
 	p_table["unk6"] = reinterpret_cast<uint64_t>(&(df_structure->unk6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_personality__T_unk5_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_personality__T_unk5_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_personality::T_unk5*>(p_df_structure);
 
@@ -15175,7 +15155,7 @@ void generate_unit_personality__T_unk5_offsets(void* p_df_structure, std::map<st
 	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_personality__T_needs_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_personality__T_needs_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_personality::T_needs*>(p_df_structure);
 
@@ -15185,7 +15165,7 @@ void generate_unit_personality__T_needs_offsets(void* p_df_structure, std::map<s
 	p_table["need_level"] = reinterpret_cast<uint64_t>(&(df_structure->need_level)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_personality_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_personality_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_personality*>(p_df_structure);
 
@@ -15215,7 +15195,7 @@ void generate_unit_personality_offsets(void* p_df_structure, std::map<std::strin
 	p_table["undistracted_focus"] = reinterpret_cast<uint64_t>(&(df_structure->undistracted_focus)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_skills_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_skills_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_skills*>(p_df_structure);
 
@@ -15227,7 +15207,7 @@ void generate_historical_figure_info__T_skills_offsets(void* p_df_structure, std
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_personality_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_personality_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_personality*>(p_df_structure);
 
@@ -15235,7 +15215,7 @@ void generate_historical_figure_info__T_personality_offsets(void* p_df_structure
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_masterpieces_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_masterpieces_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_masterpieces*>(p_df_structure);
 
@@ -15245,7 +15225,7 @@ void generate_historical_figure_info__T_masterpieces_offsets(void* p_df_structur
 	p_table["unk_v43_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_unk_14_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_unk_14_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_unk_14*>(p_df_structure);
 
@@ -15267,7 +15247,7 @@ void generate_historical_figure_info__T_unk_14_offsets(void* p_df_structure, std
 	p_table["unk_3a"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3a)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_wounds_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_wounds_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_wounds*>(p_df_structure);
 
@@ -15278,7 +15258,7 @@ void generate_historical_figure_info__T_wounds_offsets(void* p_df_structure, std
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_secret__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_secret__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_secret::T_anon_1*>(p_df_structure);
 
@@ -15290,7 +15270,7 @@ void generate_historical_figure_info__T_secret__T_anon_1_offsets(void* p_df_stru
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_secret__T_anon_7_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_secret__T_anon_7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_secret::T_anon_7*>(p_df_structure);
 
@@ -15301,7 +15281,7 @@ void generate_historical_figure_info__T_secret__T_anon_7_offsets(void* p_df_stru
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_secret__T_knowledge_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_secret__T_knowledge_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_secret::T_knowledge*>(p_df_structure);
 
@@ -15329,7 +15309,7 @@ void generate_historical_figure_info__T_secret__T_knowledge_offsets(void* p_df_s
 	p_table["times_pondered"] = reinterpret_cast<uint64_t>(&(df_structure->times_pondered)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_secret__T_unk_a8_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_secret__T_unk_a8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_secret::T_unk_a8*>(p_df_structure);
 
@@ -15342,7 +15322,7 @@ void generate_historical_figure_info__T_secret__T_unk_a8_offsets(void* p_df_stru
 	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_secret_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_secret_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_secret*>(p_df_structure);
 
@@ -15365,7 +15345,7 @@ void generate_historical_figure_info__T_secret_offsets(void* p_df_structure, std
 	p_table["unk_a8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_a8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_curse_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_curse_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_curse*>(p_df_structure);
 
@@ -15393,7 +15373,7 @@ void generate_historical_figure_info__T_curse_offsets(void* p_df_structure, std:
 	p_table["unk_fc"] = reinterpret_cast<uint64_t>(&(df_structure->unk_fc)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_books_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_books_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_books*>(p_df_structure);
 
@@ -15405,7 +15385,7 @@ void generate_historical_figure_info__T_books_offsets(void* p_df_structure, std:
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_reputation__T_wanted_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_reputation__T_wanted_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_reputation::T_wanted*>(p_df_structure);
 
@@ -15417,7 +15397,7 @@ void generate_historical_figure_info__T_reputation__T_wanted_offsets(void* p_df_
 	p_table["unsolved_murders"] = reinterpret_cast<uint64_t>(&(df_structure->unsolved_murders)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_reputation__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_reputation__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_reputation::T_anon_1*>(p_df_structure);
 
@@ -15429,7 +15409,7 @@ void generate_historical_figure_info__T_reputation__T_anon_1_offsets(void* p_df_
 	p_table["unsolved_murders"] = reinterpret_cast<uint64_t>(&(df_structure->unsolved_murders)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_reputation__T_unk_2c__T_anon_12_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_reputation__T_unk_2c__T_anon_12_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_reputation::T_unk_2c::T_anon_12*>(p_df_structure);
 
@@ -15441,7 +15421,7 @@ void generate_historical_figure_info__T_reputation__T_unk_2c__T_anon_12_offsets(
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_reputation__T_unk_2c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_reputation__T_unk_2c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_reputation::T_unk_2c*>(p_df_structure);
 
@@ -15460,7 +15440,7 @@ void generate_historical_figure_info__T_reputation__T_unk_2c_offsets(void* p_df_
 	p_table["anon_13"] = reinterpret_cast<uint64_t>(&(df_structure->anon_13)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_reputation_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_reputation_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_reputation*>(p_df_structure);
 
@@ -15472,7 +15452,7 @@ void generate_historical_figure_info__T_reputation_offsets(void* p_df_structure,
 	p_table["unk_2c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_relationships__T_list_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_relationships__T_list_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_relationships::T_list*>(p_df_structure);
 
@@ -15489,7 +15469,7 @@ void generate_historical_figure_info__T_relationships__T_list_offsets(void* p_df
 	p_table["unk_3c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_relationships__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_relationships__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_relationships::T_anon_1*>(p_df_structure);
 
@@ -15499,7 +15479,7 @@ void generate_historical_figure_info__T_relationships__T_anon_1_offsets(void* p_
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_relationships__T_anon_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_relationships__T_anon_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_relationships::T_anon_2*>(p_df_structure);
 
@@ -15508,7 +15488,7 @@ void generate_historical_figure_info__T_relationships__T_anon_2_offsets(void* p_
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_relationships__T_anon_3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_relationships__T_anon_3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_relationships::T_anon_3*>(p_df_structure);
 
@@ -15519,7 +15499,7 @@ void generate_historical_figure_info__T_relationships__T_anon_3_offsets(void* p_
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info__T_relationships_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info__T_relationships_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info::T_relationships*>(p_df_structure);
 
@@ -15530,7 +15510,7 @@ void generate_historical_figure_info__T_relationships_offsets(void* p_df_structu
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_historical_figure_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_historical_figure_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::historical_figure_info*>(p_df_structure);
 
@@ -15549,7 +15529,7 @@ void generate_historical_figure_info_offsets(void* p_df_structure, std::map<std:
 	p_table["relationships"] = reinterpret_cast<uint64_t>(&(df_structure->relationships)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_soul__T_performance_skills_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_soul__T_performance_skills_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_soul::T_performance_skills*>(p_df_structure);
 
@@ -15559,7 +15539,7 @@ void generate_unit_soul__T_performance_skills_offsets(void* p_df_structure, std:
 	p_table["dance_forms"] = reinterpret_cast<uint64_t>(&(df_structure->dance_forms)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_soul_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_soul_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_soul*>(p_df_structure);
 
@@ -15584,7 +15564,7 @@ void generate_unit_soul_offsets(void* p_df_structure, std::map<std::string, std:
 	p_table["performance_skills"] = reinterpret_cast<uint64_t>(&(df_structure->performance_skills)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_move_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_move_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_move*>(p_df_structure);
 
@@ -15597,7 +15577,7 @@ void generate_unit_action__T_data__T_move_offsets(void* p_df_structure, std::map
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_attack__T_unk_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_attack__T_unk_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_attack::T_unk_4*>(p_df_structure);
 
@@ -15610,7 +15590,7 @@ void generate_unit_action__T_data__T_attack__T_unk_4_offsets(void* p_df_structur
 	p_table["unk_14"] = reinterpret_cast<uint64_t>(&(df_structure->unk_14)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_attack_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_attack_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_attack*>(p_df_structure);
 
@@ -15630,7 +15610,7 @@ void generate_unit_action__T_data__T_attack_offsets(void* p_df_structure, std::m
 	p_table["timer2"] = reinterpret_cast<uint64_t>(&(df_structure->timer2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_jump_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_jump_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_jump*>(p_df_structure);
 
@@ -15642,7 +15622,7 @@ void generate_unit_action__T_data__T_jump_offsets(void* p_df_structure, std::map
 	p_table["z2"] = reinterpret_cast<uint64_t>(&(df_structure->z2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_holdterrain_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_holdterrain_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_holdterrain*>(p_df_structure);
 
@@ -15659,7 +15639,7 @@ void generate_unit_action__T_data__T_holdterrain_offsets(void* p_df_structure, s
 	p_table["fatigue"] = reinterpret_cast<uint64_t>(&(df_structure->fatigue)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_releaseterrain_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_releaseterrain_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_releaseterrain*>(p_df_structure);
 
@@ -15668,7 +15648,7 @@ void generate_unit_action__T_data__T_releaseterrain_offsets(void* p_df_structure
 	p_table["z"] = reinterpret_cast<uint64_t>(&(df_structure->z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_climb_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_climb_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_climb*>(p_df_structure);
 
@@ -15686,7 +15666,7 @@ void generate_unit_action__T_data__T_climb_offsets(void* p_df_structure, std::ma
 	p_table["fatigue"] = reinterpret_cast<uint64_t>(&(df_structure->fatigue)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_job_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_job_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_job*>(p_df_structure);
 
@@ -15696,7 +15676,7 @@ void generate_unit_action__T_data__T_job_offsets(void* p_df_structure, std::map<
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_talk_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_talk_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_talk*>(p_df_structure);
 
@@ -15715,14 +15695,14 @@ void generate_unit_action__T_data__T_talk_offsets(void* p_df_structure, std::map
 	p_table["unk_54"] = reinterpret_cast<uint64_t>(&(df_structure->unk_54)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_unsteady_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_unsteady_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_unsteady*>(p_df_structure);
 
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_parry_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_parry_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_parry*>(p_df_structure);
 
@@ -15731,7 +15711,7 @@ void generate_unit_action__T_data__T_parry_offsets(void* p_df_structure, std::ma
 	p_table["parry_item_id"] = reinterpret_cast<uint64_t>(&(df_structure->parry_item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_block_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_block_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_block*>(p_df_structure);
 
@@ -15740,7 +15720,7 @@ void generate_unit_action__T_data__T_block_offsets(void* p_df_structure, std::ma
 	p_table["block_item_id"] = reinterpret_cast<uint64_t>(&(df_structure->block_item_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_dodge_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_dodge_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_dodge*>(p_df_structure);
 
@@ -15753,7 +15733,7 @@ void generate_unit_action__T_data__T_dodge_offsets(void* p_df_structure, std::ma
 	p_table["z2"] = reinterpret_cast<uint64_t>(&(df_structure->z2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_recover_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_recover_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_recover*>(p_df_structure);
 
@@ -15761,28 +15741,28 @@ void generate_unit_action__T_data__T_recover_offsets(void* p_df_structure, std::
 	p_table["unk_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_standup_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_standup_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_standup*>(p_df_structure);
 
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_liedown_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_liedown_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_liedown*>(p_df_structure);
 
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_job2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_job2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_job2*>(p_df_structure);
 
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_pushobject_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_pushobject_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_pushobject*>(p_df_structure);
 
@@ -15799,7 +15779,7 @@ void generate_unit_action__T_data__T_pushobject_offsets(void* p_df_structure, st
 	p_table["unk_18"] = reinterpret_cast<uint64_t>(&(df_structure->unk_18)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_suckblood_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_suckblood_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_suckblood*>(p_df_structure);
 
@@ -15807,7 +15787,7 @@ void generate_unit_action__T_data__T_suckblood_offsets(void* p_df_structure, std
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_holditem_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_holditem_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_holditem*>(p_df_structure);
 
@@ -15822,14 +15802,14 @@ void generate_unit_action__T_data__T_holditem_offsets(void* p_df_structure, std:
 	p_table["unk_14"] = reinterpret_cast<uint64_t>(&(df_structure->unk_14)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data__T_releaseitem_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data__T_releaseitem_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data::T_releaseitem*>(p_df_structure);
 
 	p_table["unk_0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_0)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action__T_data_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action__T_data_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action::T_data*>(p_df_structure);
 
@@ -15856,7 +15836,7 @@ void generate_unit_action__T_data_offsets(void* p_df_structure, std::map<std::st
 	p_table["raw_data"] = reinterpret_cast<uint64_t>(&(df_structure->raw_data)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_action_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_action_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_action*>(p_df_structure);
 
@@ -15865,7 +15845,7 @@ void generate_unit_action_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["data"] = reinterpret_cast<uint64_t>(&(df_structure->data)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_skill_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_skill_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_skill*>(p_df_structure);
 
@@ -15879,7 +15859,7 @@ void generate_unit_skill_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["natural_skill_lvl"] = reinterpret_cast<uint64_t>(&(df_structure->natural_skill_lvl)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_preference_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_preference_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_preference*>(p_df_structure);
 
@@ -15900,7 +15880,7 @@ void generate_unit_preference_offsets(void* p_df_structure, std::map<std::string
 	p_table["prefstring_seed"] = reinterpret_cast<uint64_t>(&(df_structure->prefstring_seed)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_complaint_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_complaint_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_complaint*>(p_df_structure);
 
@@ -15909,7 +15889,7 @@ void generate_unit_complaint_offsets(void* p_df_structure, std::map<std::string,
 	p_table["age"] = reinterpret_cast<uint64_t>(&(df_structure->age)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_request_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_request_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_request*>(p_df_structure);
 
@@ -15918,7 +15898,7 @@ void generate_unit_request_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["count"] = reinterpret_cast<uint64_t>(&(df_structure->count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_chunk__T_units_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_chunk__T_units_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_chunk::T_units*>(p_df_structure);
 
@@ -15926,7 +15906,7 @@ void generate_unit_chunk__T_units_offsets(void* p_df_structure, std::map<std::st
 	p_table["unit"] = reinterpret_cast<uint64_t>(&(df_structure->unit)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_chunk_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_chunk_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_chunk*>(p_df_structure);
 
@@ -15934,7 +15914,7 @@ void generate_unit_chunk_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["units"] = reinterpret_cast<uint64_t>(&(df_structure->units)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_unit_appearance_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_appearance_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_appearance*>(p_df_structure);
 
@@ -15958,7 +15938,7 @@ void generate_unit_appearance_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk_19"] = reinterpret_cast<uint64_t>(&(df_structure->unk_19)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_vermin_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_vermin_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::vermin*>(p_df_structure);
 
@@ -15975,7 +15955,7 @@ void generate_vermin_offsets(void* p_df_structure, std::map<std::string, std::si
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen*>(p_df_structure);
 
@@ -15985,14 +15965,14 @@ void generate_viewscreen_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["option_key_pressed"] = reinterpret_cast<uint64_t>(&(df_structure->option_key_pressed)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer*>(p_df_structure);
 
 	p_table["layer_objects"] = reinterpret_cast<uint64_t>(&(df_structure->layer_objects)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_interfacest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_interfacest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::interfacest*>(p_df_structure);
 
@@ -16015,7 +15995,7 @@ void generate_interfacest_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["movie_file"] = reinterpret_cast<uint64_t>(&(df_structure->movie_file)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_layer_object_listst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_layer_object_listst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::layer_object_listst*>(p_df_structure);
 
@@ -16034,7 +16014,7 @@ void generate_layer_object_listst_offsets(void* p_df_structure, std::map<std::st
 	p_table["key_rclick"] = reinterpret_cast<uint64_t>(&(df_structure->key_rclick)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_KeybindingScreen_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_KeybindingScreen_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::KeybindingScreen*>(p_df_structure);
 
@@ -16046,7 +16026,7 @@ void generate_KeybindingScreen_offsets(void* p_df_structure, std::map<std::strin
 	p_table["keyRegister"] = reinterpret_cast<uint64_t>(&(df_structure->keyRegister)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_MacroScreenLoad_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_MacroScreenLoad_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::MacroScreenLoad*>(p_df_structure);
 
@@ -16055,14 +16035,14 @@ void generate_MacroScreenLoad_offsets(void* p_df_structure, std::map<std::string
 	p_table["height"] = reinterpret_cast<uint64_t>(&(df_structure->height)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_MacroScreenSave_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_MacroScreenSave_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::MacroScreenSave*>(p_df_structure);
 
 	p_table["id"] = reinterpret_cast<uint64_t>(&(df_structure->id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_dat_summary_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_dat_summary_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_dat_summary*>(p_df_structure);
 
@@ -16073,7 +16053,7 @@ void generate_world_dat_summary_offsets(void* p_df_structure, std::map<std::stri
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_adopt_regionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_adopt_regionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_adopt_regionst*>(p_df_structure);
 
@@ -16085,7 +16065,7 @@ void generate_viewscreen_adopt_regionst_offsets(void* p_df_structure, std::map<s
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_adventure_logst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_adventure_logst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_adventure_logst*>(p_df_structure);
 
@@ -16122,7 +16102,7 @@ void generate_viewscreen_adventure_logst_offsets(void* p_df_structure, std::map<
 	p_table["filtered_items"] = reinterpret_cast<uint64_t>(&(df_structure->filtered_items)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_announcelistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_announcelistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_announcelistst*>(p_df_structure);
 
@@ -16132,7 +16112,7 @@ void generate_viewscreen_announcelistst_offsets(void* p_df_structure, std::map<s
 	p_table["reports"] = reinterpret_cast<uint64_t>(&(df_structure->reports)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_assign_display_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_assign_display_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_assign_display_itemst*>(p_df_structure);
 
@@ -16150,7 +16130,7 @@ void generate_viewscreen_assign_display_itemst_offsets(void* p_df_structure, std
 	p_table["description"] = reinterpret_cast<uint64_t>(&(df_structure->description)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_barterst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_barterst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_barterst*>(p_df_structure);
 
@@ -16182,14 +16162,14 @@ void generate_viewscreen_barterst_offsets(void* p_df_structure, std::map<std::st
 	p_table["anon_22"] = reinterpret_cast<uint64_t>(&(df_structure->anon_22)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_buildingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_buildingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_buildingst*>(p_df_structure);
 
 	p_table["building"] = reinterpret_cast<uint64_t>(&(df_structure->building)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_buildinglistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_buildinglistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_buildinglistst*>(p_df_structure);
 
@@ -16201,7 +16181,7 @@ void generate_viewscreen_buildinglistst_offsets(void* p_df_structure, std::map<s
 	p_table["room_value2"] = reinterpret_cast<uint64_t>(&(df_structure->room_value2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_embark_location_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_embark_location_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::embark_location*>(p_df_structure);
 
@@ -16214,7 +16194,7 @@ void generate_embark_location_offsets(void* p_df_structure, std::map<std::string
 	p_table["embark_biome_rgn"] = reinterpret_cast<uint64_t>(&(df_structure->embark_biome_rgn)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_choose_start_sitest__T_finder_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_choose_start_sitest__T_finder_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_choose_start_sitest::T_finder*>(p_df_structure);
 
@@ -16233,7 +16213,7 @@ void generate_viewscreen_choose_start_sitest__T_finder_offsets(void* p_df_struct
 	p_table["unk_128"] = reinterpret_cast<uint64_t>(&(df_structure->unk_128)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_choose_start_sitest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_choose_start_sitest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_choose_start_sitest*>(p_df_structure);
 
@@ -16269,7 +16249,7 @@ void generate_viewscreen_choose_start_sitest_offsets(void* p_df_structure, std::
 	p_table["unk_15c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_15c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mission__T_details__T_raid_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mission__T_details__T_raid_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mission::T_details::T_raid*>(p_df_structure);
 
@@ -16307,7 +16287,7 @@ void generate_mission__T_details__T_raid_offsets(void* p_df_structure, std::map<
 	p_table["anon_27"] = reinterpret_cast<uint64_t>(&(df_structure->anon_27)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mission__T_details__T_recovery_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mission__T_details__T_recovery_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mission::T_details::T_recovery*>(p_df_structure);
 
@@ -16315,7 +16295,7 @@ void generate_mission__T_details__T_recovery_offsets(void* p_df_structure, std::
 	p_table["unk_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mission__T_details__T_rescue_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mission__T_details__T_rescue_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mission::T_details::T_rescue*>(p_df_structure);
 
@@ -16323,7 +16303,7 @@ void generate_mission__T_details__T_rescue_offsets(void* p_df_structure, std::ma
 	p_table["unk_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mission__T_details__T_request_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mission__T_details__T_request_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mission::T_details::T_request*>(p_df_structure);
 
@@ -16334,7 +16314,7 @@ void generate_mission__T_details__T_request_offsets(void* p_df_structure, std::m
 	p_table["unk_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mission__T_details_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mission__T_details_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mission::T_details*>(p_df_structure);
 
@@ -16344,7 +16324,7 @@ void generate_mission__T_details_offsets(void* p_df_structure, std::map<std::str
 	p_table["request"] = reinterpret_cast<uint64_t>(&(df_structure->request)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mission_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mission_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mission*>(p_df_structure);
 
@@ -16385,7 +16365,7 @@ void generate_mission_offsets(void* p_df_structure, std::map<std::string, std::s
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_civlistst__T_artifact_details_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_civlistst__T_artifact_details_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_civlistst::T_artifact_details*>(p_df_structure);
 
@@ -16401,7 +16381,7 @@ void generate_viewscreen_civlistst__T_artifact_details_offsets(void* p_df_struct
 	p_table["unk_10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_civlistst__T_rumors_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_civlistst__T_rumors_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_civlistst::T_rumors*>(p_df_structure);
 
@@ -16417,7 +16397,7 @@ void generate_viewscreen_civlistst__T_rumors_offsets(void* p_df_structure, std::
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_civlistst__T_unk_cache__T_tmp1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_civlistst__T_unk_cache__T_tmp1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_civlistst::T_unk_cache::T_tmp1*>(p_df_structure);
 
@@ -16425,14 +16405,14 @@ void generate_viewscreen_civlistst__T_unk_cache__T_tmp1_offsets(void* p_df_struc
 	p_table["count"] = reinterpret_cast<uint64_t>(&(df_structure->count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_civlistst__T_unk_cache__T_tmp2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_civlistst__T_unk_cache__T_tmp2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_civlistst::T_unk_cache::T_tmp2*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_civlistst__T_unk_cache_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_civlistst__T_unk_cache_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_civlistst::T_unk_cache*>(p_df_structure);
 
@@ -16440,7 +16420,7 @@ void generate_viewscreen_civlistst__T_unk_cache_offsets(void* p_df_structure, st
 	p_table["tmp2"] = reinterpret_cast<uint64_t>(&(df_structure->tmp2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_civlistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_civlistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_civlistst*>(p_df_structure);
 
@@ -16498,7 +16478,7 @@ void generate_viewscreen_civlistst_offsets(void* p_df_structure, std::map<std::s
 	p_table["show_legend"] = reinterpret_cast<uint64_t>(&(df_structure->show_legend)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_createquotast_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_createquotast_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_createquotast*>(p_df_structure);
 
@@ -16512,7 +16492,7 @@ void generate_viewscreen_createquotast_offsets(void* p_df_structure, std::map<st
 	p_table["workshop_profile_orders"] = reinterpret_cast<uint64_t>(&(df_structure->workshop_profile_orders)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_customize_unitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_customize_unitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_customize_unitst*>(p_df_structure);
 
@@ -16523,7 +16503,7 @@ void generate_viewscreen_customize_unitst_offsets(void* p_df_structure, std::map
 	p_table["has_name"] = reinterpret_cast<uint64_t>(&(df_structure->has_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_dungeon_monsterstatusst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_dungeon_monsterstatusst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_dungeon_monsterstatusst*>(p_df_structure);
 
@@ -16540,7 +16520,7 @@ void generate_viewscreen_dungeon_monsterstatusst_offsets(void* p_df_structure, s
 	p_table["spatters"] = reinterpret_cast<uint64_t>(&(df_structure->spatters)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_dungeon_wrestlest__T_unk1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_dungeon_wrestlest__T_unk1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_dungeon_wrestlest::T_unk1*>(p_df_structure);
 
@@ -16564,7 +16544,7 @@ void generate_viewscreen_dungeon_wrestlest__T_unk1_offsets(void* p_df_structure,
 	p_table["anon_17"] = reinterpret_cast<uint64_t>(&(df_structure->anon_17)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_dungeon_wrestlest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_dungeon_wrestlest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_dungeon_wrestlest*>(p_df_structure);
 
@@ -16582,7 +16562,7 @@ void generate_viewscreen_dungeon_wrestlest_offsets(void* p_df_structure, std::ma
 	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_dungeonmodest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_dungeonmodest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_dungeonmodest*>(p_df_structure);
 
@@ -16594,7 +16574,7 @@ void generate_viewscreen_dungeonmodest_offsets(void* p_df_structure, std::map<st
 	p_table["announce_more"] = reinterpret_cast<uint64_t>(&(df_structure->announce_more)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_dwarfmodest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_dwarfmodest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_dwarfmodest*>(p_df_structure);
 
@@ -16613,7 +16593,7 @@ void generate_viewscreen_dwarfmodest_offsets(void* p_df_structure, std::map<std:
 	p_table["number_assigned_war"] = reinterpret_cast<uint64_t>(&(df_structure->number_assigned_war)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_entityst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_entityst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_entityst*>(p_df_structure);
 
@@ -16629,7 +16609,7 @@ void generate_viewscreen_entityst_offsets(void* p_df_structure, std::map<std::st
 	p_table["page"] = reinterpret_cast<uint64_t>(&(df_structure->page)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_export_graphical_mapst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_export_graphical_mapst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_export_graphical_mapst*>(p_df_structure);
 
@@ -16648,7 +16628,7 @@ void generate_viewscreen_export_graphical_mapst_offsets(void* p_df_structure, st
 	p_table["sel_idx"] = reinterpret_cast<uint64_t>(&(df_structure->sel_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_export_regionst__T_unk1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_export_regionst__T_unk1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_export_regionst::T_unk1*>(p_df_structure);
 
@@ -16660,7 +16640,7 @@ void generate_viewscreen_export_regionst__T_unk1_offsets(void* p_df_structure, s
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_export_regionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_export_regionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_export_regionst*>(p_df_structure);
 
@@ -16670,14 +16650,14 @@ void generate_viewscreen_export_regionst_offsets(void* p_df_structure, std::map<
 	p_table["compressor"] = reinterpret_cast<uint64_t>(&(df_structure->compressor)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_game_cleanerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_game_cleanerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_game_cleanerst*>(p_df_structure);
 
 	p_table["state"] = reinterpret_cast<uint64_t>(&(df_structure->state)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst__T_descriptions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst__T_descriptions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst::T_descriptions*>(p_df_structure);
 
@@ -16685,7 +16665,7 @@ void generate_viewscreen_image_creatorst__T_descriptions_offsets(void* p_df_stru
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst__T_sites_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst__T_sites_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst::T_sites*>(p_df_structure);
 
@@ -16694,7 +16674,7 @@ void generate_viewscreen_image_creatorst__T_sites_offsets(void* p_df_structure, 
 	p_table["trans_name"] = reinterpret_cast<uint64_t>(&(df_structure->trans_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst__T_entities_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst__T_entities_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst::T_entities*>(p_df_structure);
 
@@ -16703,7 +16683,7 @@ void generate_viewscreen_image_creatorst__T_entities_offsets(void* p_df_structur
 	p_table["trans_name"] = reinterpret_cast<uint64_t>(&(df_structure->trans_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst__T_plants_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst__T_plants_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst::T_plants*>(p_df_structure);
 
@@ -16711,7 +16691,7 @@ void generate_viewscreen_image_creatorst__T_plants_offsets(void* p_df_structure,
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst__T_trees_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst__T_trees_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst::T_trees*>(p_df_structure);
 
@@ -16719,7 +16699,7 @@ void generate_viewscreen_image_creatorst__T_trees_offsets(void* p_df_structure, 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst__T_shapes_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst__T_shapes_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst::T_shapes*>(p_df_structure);
 
@@ -16728,7 +16708,7 @@ void generate_viewscreen_image_creatorst__T_shapes_offsets(void* p_df_structure,
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst__T_objects_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst__T_objects_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst::T_objects*>(p_df_structure);
 
@@ -16737,7 +16717,7 @@ void generate_viewscreen_image_creatorst__T_objects_offsets(void* p_df_structure
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst__T_artifacts_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst__T_artifacts_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst::T_artifacts*>(p_df_structure);
 
@@ -16746,7 +16726,7 @@ void generate_viewscreen_image_creatorst__T_artifacts_offsets(void* p_df_structu
 	p_table["trans_name"] = reinterpret_cast<uint64_t>(&(df_structure->trans_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_image_creatorst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_image_creatorst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_image_creatorst*>(p_df_structure);
 
@@ -16811,7 +16791,7 @@ void generate_viewscreen_image_creatorst_offsets(void* p_df_structure, std::map<
 	p_table["unk_50"] = reinterpret_cast<uint64_t>(&(df_structure->unk_50)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_itemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_itemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_itemst*>(p_df_structure);
 
@@ -16826,14 +16806,14 @@ void generate_viewscreen_itemst_offsets(void* p_df_structure, std::map<std::stri
 	p_table["caption_contents"] = reinterpret_cast<uint64_t>(&(df_structure->caption_contents)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_jobst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_jobst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_jobst*>(p_df_structure);
 
 	p_table["job"] = reinterpret_cast<uint64_t>(&(df_structure->job)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_joblistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_joblistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_joblistst*>(p_df_structure);
 
@@ -16843,7 +16823,7 @@ void generate_viewscreen_joblistst_offsets(void* p_df_structure, std::map<std::s
 	p_table["units"] = reinterpret_cast<uint64_t>(&(df_structure->units)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_jobmanagementst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_jobmanagementst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_jobmanagementst*>(p_df_structure);
 
@@ -16852,7 +16832,7 @@ void generate_viewscreen_jobmanagementst_offsets(void* p_df_structure, std::map<
 	p_table["max_workshops"] = reinterpret_cast<uint64_t>(&(df_structure->max_workshops)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_justicest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_justicest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_justicest*>(p_df_structure);
 
@@ -16873,7 +16853,7 @@ void generate_viewscreen_justicest_offsets(void* p_df_structure, std::map<std::s
 	p_table["convict_choices"] = reinterpret_cast<uint64_t>(&(df_structure->convict_choices)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_kitchenprefst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_kitchenprefst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_kitchenprefst*>(p_df_structure);
 
@@ -16889,7 +16869,7 @@ void generate_viewscreen_kitchenprefst_offsets(void* p_df_structure, std::map<st
 	p_table["item_str"] = reinterpret_cast<uint64_t>(&(df_structure->item_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_arena_creaturest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_arena_creaturest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_arena_creaturest*>(p_df_structure);
 
@@ -16905,7 +16885,7 @@ void generate_viewscreen_layer_arena_creaturest_offsets(void* p_df_structure, st
 	p_table["caste"] = reinterpret_cast<uint64_t>(&(df_structure->caste)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_assign_trade_status_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_assign_trade_status_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::assign_trade_status*>(p_df_structure);
 
@@ -16917,7 +16897,7 @@ void generate_assign_trade_status_offsets(void* p_df_structure, std::map<std::st
 	p_table["weight"] = reinterpret_cast<uint64_t>(&(df_structure->weight)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_assigntradest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_assigntradest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_assigntradest*>(p_df_structure);
 
@@ -16931,7 +16911,7 @@ void generate_viewscreen_layer_assigntradest_offsets(void* p_df_structure, std::
 	p_table["filter"] = reinterpret_cast<uint64_t>(&(df_structure->filter)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_choose_language_namest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_choose_language_namest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_choose_language_namest*>(p_df_structure);
 
@@ -16946,7 +16926,7 @@ void generate_viewscreen_layer_choose_language_namest_offsets(void* p_df_structu
 	p_table["selector"] = reinterpret_cast<uint64_t>(&(df_structure->selector)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_currencyst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_currencyst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_currencyst*>(p_df_structure);
 
@@ -16955,7 +16935,7 @@ void generate_viewscreen_layer_currencyst_offsets(void* p_df_structure, std::map
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_export_play_mapst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_export_play_mapst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_export_play_mapst*>(p_df_structure);
 
@@ -16965,7 +16945,7 @@ void generate_viewscreen_layer_export_play_mapst_offsets(void* p_df_structure, s
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_squads_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_squads_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_squads*>(p_df_structure);
 
@@ -16975,7 +16955,7 @@ void generate_viewscreen_layer_militaryst__T_squads_offsets(void* p_df_structure
 	p_table["can_appoint"] = reinterpret_cast<uint64_t>(&(df_structure->can_appoint)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_positions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_positions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_positions*>(p_df_structure);
 
@@ -16986,7 +16966,7 @@ void generate_viewscreen_layer_militaryst__T_positions_offsets(void* p_df_struct
 	p_table["candidates"] = reinterpret_cast<uint64_t>(&(df_structure->candidates)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_squad_members_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_squad_members_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_squad_members*>(p_df_structure);
 
@@ -16995,7 +16975,7 @@ void generate_viewscreen_layer_militaryst__T_squad_members_offsets(void* p_df_st
 	p_table["max_count"] = reinterpret_cast<uint64_t>(&(df_structure->max_count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_equip__T_assigned_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_equip__T_assigned_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_equip::T_assigned*>(p_df_structure);
 
@@ -17004,7 +16984,7 @@ void generate_viewscreen_layer_militaryst__T_equip__T_assigned_offsets(void* p_d
 	p_table["index"] = reinterpret_cast<uint64_t>(&(df_structure->index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_equip__T_uniform_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_equip__T_uniform_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_equip::T_uniform*>(p_df_structure);
 
@@ -17015,7 +16995,7 @@ void generate_viewscreen_layer_militaryst__T_equip__T_uniform_offsets(void* p_df
 	p_table["info"] = reinterpret_cast<uint64_t>(&(df_structure->info)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_equip__T_add_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_equip__T_add_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_equip::T_add_item*>(p_df_structure);
 
@@ -17025,7 +17005,7 @@ void generate_viewscreen_layer_militaryst__T_equip__T_add_item_offsets(void* p_d
 	p_table["foreign"] = reinterpret_cast<uint64_t>(&(df_structure->foreign)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_equip__T_material_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_equip__T_material_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_equip::T_material*>(p_df_structure);
 
@@ -17033,7 +17013,7 @@ void generate_viewscreen_layer_militaryst__T_equip__T_material_offsets(void* p_d
 	p_table["specific"] = reinterpret_cast<uint64_t>(&(df_structure->specific)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_equip__T_color_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_equip__T_color_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_equip::T_color*>(p_df_structure);
 
@@ -17041,7 +17021,7 @@ void generate_viewscreen_layer_militaryst__T_equip__T_color_offsets(void* p_df_s
 	p_table["dye"] = reinterpret_cast<uint64_t>(&(df_structure->dye)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_equip_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_equip_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_equip*>(p_df_structure);
 
@@ -17063,7 +17043,7 @@ void generate_viewscreen_layer_militaryst__T_equip_offsets(void* p_df_structure,
 	p_table["in_name_uniform"] = reinterpret_cast<uint64_t>(&(df_structure->in_name_uniform)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_ammo__T_add_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_ammo__T_add_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_ammo::T_add_item*>(p_df_structure);
 
@@ -17072,7 +17052,7 @@ void generate_viewscreen_layer_militaryst__T_ammo__T_add_item_offsets(void* p_df
 	p_table["foreign"] = reinterpret_cast<uint64_t>(&(df_structure->foreign)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_ammo__T_material_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_ammo__T_material_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_ammo::T_material*>(p_df_structure);
 
@@ -17080,7 +17060,7 @@ void generate_viewscreen_layer_militaryst__T_ammo__T_material_offsets(void* p_df
 	p_table["specific"] = reinterpret_cast<uint64_t>(&(df_structure->specific)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst__T_ammo_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst__T_ammo_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst::T_ammo*>(p_df_structure);
 
@@ -17091,7 +17071,7 @@ void generate_viewscreen_layer_militaryst__T_ammo_offsets(void* p_df_structure, 
 	p_table["material"] = reinterpret_cast<uint64_t>(&(df_structure->material)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_militaryst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_militaryst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_militaryst*>(p_df_structure);
 
@@ -17117,13 +17097,13 @@ void generate_viewscreen_layer_militaryst_offsets(void* p_df_structure, std::map
 	p_table["supplies_squads"] = reinterpret_cast<uint64_t>(&(df_structure->supplies_squads)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_musicsoundst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_musicsoundst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_musicsoundst*>(p_df_structure);
 
 }
 
-void generate_unit_storage_status_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_unit_storage_status_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::unit_storage_status*>(p_df_structure);
 
@@ -17143,7 +17123,7 @@ void generate_unit_storage_status_offsets(void* p_df_structure, std::map<std::st
 	p_table["num_owned_armorstands"] = reinterpret_cast<uint64_t>(&(df_structure->num_owned_armorstands)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_noblelistst__T_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_noblelistst__T_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_noblelistst::T_info*>(p_df_structure);
 
@@ -17156,7 +17136,7 @@ void generate_viewscreen_layer_noblelistst__T_info_offsets(void* p_df_structure,
 	p_table["precedence"] = reinterpret_cast<uint64_t>(&(df_structure->precedence)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_noblelistst__T_candidates_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_noblelistst__T_candidates_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_noblelistst::T_candidates*>(p_df_structure);
 
@@ -17164,7 +17144,7 @@ void generate_viewscreen_layer_noblelistst__T_candidates_offsets(void* p_df_stru
 	p_table["weight"] = reinterpret_cast<uint64_t>(&(df_structure->weight)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_noblelistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_noblelistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_noblelistst*>(p_df_structure);
 
@@ -17176,7 +17156,7 @@ void generate_viewscreen_layer_noblelistst_offsets(void* p_df_structure, std::ma
 	p_table["groups"] = reinterpret_cast<uint64_t>(&(df_structure->groups)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_overall_healthst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_overall_healthst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_overall_healthst*>(p_df_structure);
 
@@ -17188,7 +17168,7 @@ void generate_viewscreen_layer_overall_healthst_offsets(void* p_df_structure, st
 	p_table["x_cursor_pos"] = reinterpret_cast<uint64_t>(&(df_structure->x_cursor_pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_reactionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_reactionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_reactionst*>(p_df_structure);
 
@@ -17198,7 +17178,7 @@ void generate_viewscreen_layer_reactionst_offsets(void* p_df_structure, std::map
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_squad_schedulest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_squad_schedulest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_squad_schedulest*>(p_df_structure);
 
@@ -17221,7 +17201,7 @@ void generate_viewscreen_layer_squad_schedulest_offsets(void* p_df_structure, st
 	p_table["copy_item"] = reinterpret_cast<uint64_t>(&(df_structure->copy_item)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_stockpilest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_stockpilest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_stockpilest*>(p_df_structure);
 
@@ -17236,7 +17216,7 @@ void generate_viewscreen_layer_stockpilest_offsets(void* p_df_structure, std::ma
 	p_table["title"] = reinterpret_cast<uint64_t>(&(df_structure->title)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_stone_restrictionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_stone_restrictionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_stone_restrictionst*>(p_df_structure);
 
@@ -17249,7 +17229,7 @@ void generate_viewscreen_layer_stone_restrictionst_offsets(void* p_df_structure,
 	p_table["use_id"] = reinterpret_cast<uint64_t>(&(df_structure->use_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_unit_actionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_unit_actionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_unit_actionst*>(p_df_structure);
 
@@ -17287,7 +17267,7 @@ void generate_viewscreen_layer_unit_actionst_offsets(void* p_df_structure, std::
 	p_table["anon_20"] = reinterpret_cast<uint64_t>(&(df_structure->anon_20)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_unit_healthst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_unit_healthst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_unit_healthst*>(p_df_structure);
 
@@ -17305,7 +17285,7 @@ void generate_viewscreen_layer_unit_healthst_offsets(void* p_df_structure, std::
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_unit_relationshipst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_unit_relationshipst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_unit_relationshipst*>(p_df_structure);
 
@@ -17318,7 +17298,7 @@ void generate_viewscreen_layer_unit_relationshipst_offsets(void* p_df_structure,
 	p_table["level"] = reinterpret_cast<uint64_t>(&(df_structure->level)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_world_gen_paramst__T_unk1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_world_gen_paramst__T_unk1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_world_gen_paramst::T_unk1*>(p_df_structure);
 
@@ -17350,7 +17330,7 @@ void generate_viewscreen_layer_world_gen_paramst__T_unk1_offsets(void* p_df_stru
 	p_table["anon_26"] = reinterpret_cast<uint64_t>(&(df_structure->anon_26)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_world_gen_paramst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_world_gen_paramst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_world_gen_paramst*>(p_df_structure);
 
@@ -17360,7 +17340,7 @@ void generate_viewscreen_layer_world_gen_paramst_offsets(void* p_df_structure, s
 	p_table["unk1"] = reinterpret_cast<uint64_t>(&(df_structure->unk1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_layer_world_gen_param_presetst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_layer_world_gen_param_presetst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_layer_world_gen_param_presetst*>(p_df_structure);
 
@@ -17376,7 +17356,7 @@ void generate_viewscreen_layer_world_gen_param_presetst_offsets(void* p_df_struc
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_legendsst__T_anon_7__T_anon_3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_legendsst__T_anon_7__T_anon_3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_legendsst::T_anon_7::T_anon_3*>(p_df_structure);
 
@@ -17387,7 +17367,7 @@ void generate_viewscreen_legendsst__T_anon_7__T_anon_3_offsets(void* p_df_struct
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_legendsst__T_anon_7_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_legendsst__T_anon_7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_legendsst::T_anon_7*>(p_df_structure);
 
@@ -17400,7 +17380,7 @@ void generate_viewscreen_legendsst__T_anon_7_offsets(void* p_df_structure, std::
 	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_legendsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_legendsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_legendsst*>(p_df_structure);
 
@@ -17464,7 +17444,7 @@ void generate_viewscreen_legendsst_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_14"] = reinterpret_cast<uint64_t>(&(df_structure->anon_14)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_locationsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_locationsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_locationsst*>(p_df_structure);
 
@@ -17482,7 +17462,7 @@ void generate_viewscreen_locationsst_offsets(void* p_df_structure, std::map<std:
 	p_table["menu"] = reinterpret_cast<uint64_t>(&(df_structure->menu)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_loadgame_save_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_loadgame_save_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::loadgame_save_info*>(p_df_structure);
 
@@ -17494,7 +17474,7 @@ void generate_loadgame_save_info_offsets(void* p_df_structure, std::map<std::str
 	p_table["folder_name"] = reinterpret_cast<uint64_t>(&(df_structure->folder_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_loadgamest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_loadgamest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_loadgamest*>(p_df_structure);
 
@@ -17509,7 +17489,7 @@ void generate_viewscreen_loadgamest_offsets(void* p_df_structure, std::map<std::
 	p_table["cur_save"] = reinterpret_cast<uint64_t>(&(df_structure->cur_save)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_meetingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_meetingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_meetingst*>(p_df_structure);
 
@@ -17518,7 +17498,7 @@ void generate_viewscreen_meetingst_offsets(void* p_df_structure, std::map<std::s
 	p_table["holder"] = reinterpret_cast<uint64_t>(&(df_structure->holder)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_movieplayerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_movieplayerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_movieplayerst*>(p_df_structure);
 
@@ -17544,7 +17524,7 @@ void generate_viewscreen_movieplayerst_offsets(void* p_df_structure, std::map<st
 	p_table["filelist"] = reinterpret_cast<uint64_t>(&(df_structure->filelist)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_new_regionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_new_regionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_new_regionst*>(p_df_structure);
 
@@ -17585,14 +17565,14 @@ void generate_viewscreen_new_regionst_offsets(void* p_df_structure, std::map<std
 	p_table["unk_bc"] = reinterpret_cast<uint64_t>(&(df_structure->unk_bc)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_noblest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_noblest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_noblest*>(p_df_structure);
 
 	p_table["become_capital_offerings"] = reinterpret_cast<uint64_t>(&(df_structure->become_capital_offerings)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_optionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_optionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_optionst*>(p_df_structure);
 
@@ -17606,7 +17586,7 @@ void generate_viewscreen_optionst_offsets(void* p_df_structure, std::map<std::st
 	p_table["options"] = reinterpret_cast<uint64_t>(&(df_structure->options)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_overallstatusst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_overallstatusst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_overallstatusst*>(p_df_structure);
 
@@ -17614,7 +17594,7 @@ void generate_viewscreen_overallstatusst_offsets(void* p_df_structure, std::map<
 	p_table["page_cursor"] = reinterpret_cast<uint64_t>(&(df_structure->page_cursor)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_petitionsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_petitionsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_petitionsst*>(p_df_structure);
 
@@ -17623,7 +17603,7 @@ void generate_viewscreen_petitionsst_offsets(void* p_df_structure, std::map<std:
 	p_table["cursor"] = reinterpret_cast<uint64_t>(&(df_structure->cursor)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_petst__T_animal_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_petst__T_animal_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_petst::T_animal*>(p_df_structure);
 
@@ -17631,7 +17611,7 @@ void generate_viewscreen_petst__T_animal_offsets(void* p_df_structure, std::map<
 	p_table["item"] = reinterpret_cast<uint64_t>(&(df_structure->item)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_petst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_petst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_petst*>(p_df_structure);
 
@@ -17648,7 +17628,7 @@ void generate_viewscreen_petst_offsets(void* p_df_structure, std::map<std::strin
 	p_table["trainer_mode"] = reinterpret_cast<uint64_t>(&(df_structure->trainer_mode)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_pricest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_pricest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_pricest*>(p_df_structure);
 
@@ -17656,7 +17636,7 @@ void generate_viewscreen_pricest_offsets(void* p_df_structure, std::map<std::str
 	p_table["item_idx"] = reinterpret_cast<uint64_t>(&(df_structure->item_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_reportlistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_reportlistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_reportlistst*>(p_df_structure);
 
@@ -17686,7 +17666,7 @@ void generate_viewscreen_reportlistst_offsets(void* p_df_structure, std::map<std
 	p_table["spoils_report_scroll"] = reinterpret_cast<uint64_t>(&(df_structure->spoils_report_scroll)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_requestagreementst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_requestagreementst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_requestagreementst*>(p_df_structure);
 
@@ -17697,7 +17677,7 @@ void generate_viewscreen_requestagreementst_offsets(void* p_df_structure, std::m
 	p_table["civ"] = reinterpret_cast<uint64_t>(&(df_structure->civ)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_nemesis_offload_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_nemesis_offload_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::nemesis_offload*>(p_df_structure);
 
@@ -17709,7 +17689,7 @@ void generate_nemesis_offload_offsets(void* p_df_structure, std::map<std::string
 	p_table["units_offloaded"] = reinterpret_cast<uint64_t>(&(df_structure->units_offloaded)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_tax_collection_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_tax_collection_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_tax_collection*>(p_df_structure);
 
@@ -17732,7 +17712,7 @@ void generate_ui__T_tax_collection_offsets(void* p_df_structure, std::map<std::s
 	p_table["guard_lack_complained"] = reinterpret_cast<uint64_t>(&(df_structure->guard_lack_complained)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_becoming_capital_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_becoming_capital_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_becoming_capital*>(p_df_structure);
 
@@ -17740,7 +17720,7 @@ void generate_ui__T_becoming_capital_offsets(void* p_df_structure, std::map<std:
 	p_table["desired_offerings"] = reinterpret_cast<uint64_t>(&(df_structure->desired_offerings)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_invasions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_invasions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_invasions*>(p_df_structure);
 
@@ -17748,7 +17728,7 @@ void generate_ui__T_invasions_offsets(void* p_df_structure, std::map<std::string
 	p_table["next_id"] = reinterpret_cast<uint64_t>(&(df_structure->next_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_kitchen_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_kitchen_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_kitchen*>(p_df_structure);
 
@@ -17759,7 +17739,7 @@ void generate_ui__T_kitchen_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["exc_types"] = reinterpret_cast<uint64_t>(&(df_structure->exc_types)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_economy_prices__T_price_adjustment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_economy_prices__T_price_adjustment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_economy_prices::T_price_adjustment*>(p_df_structure);
 
@@ -17797,7 +17777,7 @@ void generate_ui__T_economy_prices__T_price_adjustment_offsets(void* p_df_struct
 	p_table["pets"] = reinterpret_cast<uint64_t>(&(df_structure->pets)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_economy_prices__T_price_setter_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_economy_prices__T_price_setter_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_economy_prices::T_price_setter*>(p_df_structure);
 
@@ -17835,7 +17815,7 @@ void generate_ui__T_economy_prices__T_price_setter_offsets(void* p_df_structure,
 	p_table["pets"] = reinterpret_cast<uint64_t>(&(df_structure->pets)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_economy_prices_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_economy_prices_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_economy_prices*>(p_df_structure);
 
@@ -17843,7 +17823,7 @@ void generate_ui__T_economy_prices_offsets(void* p_df_structure, std::map<std::s
 	p_table["price_setter"] = reinterpret_cast<uint64_t>(&(df_structure->price_setter)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_stockpile_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_stockpile_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_stockpile*>(p_df_structure);
 
@@ -17852,7 +17832,7 @@ void generate_ui__T_stockpile_offsets(void* p_df_structure, std::map<std::string
 	p_table["custom_settings"] = reinterpret_cast<uint64_t>(&(df_structure->custom_settings)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_unk2a8c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_unk2a8c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_unk2a8c*>(p_df_structure);
 
@@ -17860,7 +17840,7 @@ void generate_ui__T_unk2a8c_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["unk2"] = reinterpret_cast<uint64_t>(&(df_structure->unk2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_map_edge_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_map_edge_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_map_edge*>(p_df_structure);
 
@@ -17872,7 +17852,7 @@ void generate_ui__T_map_edge_offsets(void* p_df_structure, std::map<std::string,
 	p_table["surface_z"] = reinterpret_cast<uint64_t>(&(df_structure->surface_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_waypoints__T_points_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_waypoints__T_points_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_waypoints::T_points*>(p_df_structure);
 
@@ -17885,7 +17865,7 @@ void generate_ui__T_waypoints__T_points_offsets(void* p_df_structure, std::map<s
 	p_table["pos"] = reinterpret_cast<uint64_t>(&(df_structure->pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_waypoints__T_routes_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_waypoints__T_routes_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_waypoints::T_routes*>(p_df_structure);
 
@@ -17894,7 +17874,7 @@ void generate_ui__T_waypoints__T_routes_offsets(void* p_df_structure, std::map<s
 	p_table["points"] = reinterpret_cast<uint64_t>(&(df_structure->points)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_waypoints_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_waypoints_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_waypoints*>(p_df_structure);
 
@@ -17917,7 +17897,7 @@ void generate_ui__T_waypoints_offsets(void* p_df_structure, std::map<std::string
 	p_table["unk_42_06"] = reinterpret_cast<uint64_t>(&(df_structure->unk_42_06)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_burrows_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_burrows_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_burrows*>(p_df_structure);
 
@@ -17941,7 +17921,7 @@ void generate_ui__T_burrows_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["sym_bg_color"] = reinterpret_cast<uint64_t>(&(df_structure->sym_bg_color)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_alerts__T_list_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_alerts__T_list_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_alerts::T_list*>(p_df_structure);
 
@@ -17950,7 +17930,7 @@ void generate_ui__T_alerts__T_list_offsets(void* p_df_structure, std::map<std::s
 	p_table["burrows"] = reinterpret_cast<uint64_t>(&(df_structure->burrows)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_alerts_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_alerts_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_alerts*>(p_df_structure);
 
@@ -17959,7 +17939,7 @@ void generate_ui__T_alerts_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["civ_alert_idx"] = reinterpret_cast<uint64_t>(&(df_structure->civ_alert_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_equipment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_equipment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_equipment*>(p_df_structure);
 
@@ -17975,7 +17955,7 @@ void generate_ui__T_equipment_offsets(void* p_df_structure, std::map<std::string
 	p_table["training_assignments"] = reinterpret_cast<uint64_t>(&(df_structure->training_assignments)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_hauling_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_hauling_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_hauling*>(p_df_structure);
 
@@ -17997,7 +17977,7 @@ void generate_ui__T_hauling_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["old_name"] = reinterpret_cast<uint64_t>(&(df_structure->old_name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_main__T_dead_citizens_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_main__T_dead_citizens_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_main::T_dead_citizens*>(p_df_structure);
 
@@ -18009,7 +17989,7 @@ void generate_ui__T_main__T_dead_citizens_offsets(void* p_df_structure, std::map
 	p_table["ghost_type"] = reinterpret_cast<uint64_t>(&(df_structure->ghost_type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_main_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_main_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_main*>(p_df_structure);
 
@@ -18036,7 +18016,7 @@ void generate_ui__T_main_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["in_rename_hotkey"] = reinterpret_cast<uint64_t>(&(df_structure->in_rename_hotkey)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui__T_squads_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui__T_squads_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui::T_squads*>(p_df_structure);
 
@@ -18063,7 +18043,7 @@ void generate_ui__T_squads_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["rect_start"] = reinterpret_cast<uint64_t>(&(df_structure->rect_start)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_ui_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_ui_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::ui*>(p_df_structure);
 
@@ -18145,7 +18125,7 @@ void generate_ui_offsets(void* p_df_structure, std::map<std::string, std::size_t
 	p_table["available_seeds"] = reinterpret_cast<uint64_t>(&(df_structure->available_seeds)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_savegamest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_savegamest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_savegamest*>(p_df_structure);
 
@@ -18156,7 +18136,7 @@ void generate_viewscreen_savegamest_offsets(void* p_df_structure, std::map<std::
 	p_table["compressor"] = reinterpret_cast<uint64_t>(&(df_structure->compressor)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_selectitemst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_selectitemst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_selectitemst*>(p_df_structure);
 
@@ -18177,7 +18157,7 @@ void generate_viewscreen_selectitemst_offsets(void* p_df_structure, std::map<std
 	p_table["categories"] = reinterpret_cast<uint64_t>(&(df_structure->categories)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_setup_character_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_setup_character_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::setup_character_info*>(p_df_structure);
 
@@ -18209,7 +18189,7 @@ void generate_setup_character_info_offsets(void* p_df_structure, std::map<std::s
 	p_table["unk_26_k"] = reinterpret_cast<uint64_t>(&(df_structure->unk_26_k)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_setupadventurest__T_races_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_setupadventurest__T_races_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_setupadventurest::T_races_info*>(p_df_structure);
 
@@ -18220,7 +18200,7 @@ void generate_viewscreen_setupadventurest__T_races_info_offsets(void* p_df_struc
 	p_table["playable"] = reinterpret_cast<uint64_t>(&(df_structure->playable)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_setupadventurest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_setupadventurest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_setupadventurest*>(p_df_structure);
 
@@ -18261,7 +18241,7 @@ void generate_viewscreen_setupadventurest_offsets(void* p_df_structure, std::map
 	p_table["values_cultural_defaults"] = reinterpret_cast<uint64_t>(&(df_structure->values_cultural_defaults)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_embark_item_choice__T_list_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_embark_item_choice__T_list_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::embark_item_choice::T_list*>(p_df_structure);
 
@@ -18272,14 +18252,14 @@ void generate_embark_item_choice__T_list_offsets(void* p_df_structure, std::map<
 	p_table["unk_c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_embark_item_choice_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_embark_item_choice_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::embark_item_choice*>(p_df_structure);
 
 	p_table["list"] = reinterpret_cast<uint64_t>(&(df_structure->list)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_embark_profile_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_embark_profile_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::embark_profile*>(p_df_structure);
 
@@ -18300,7 +18280,7 @@ void generate_embark_profile_offsets(void* p_df_structure, std::map<std::string,
 	p_table["profession"] = reinterpret_cast<uint64_t>(&(df_structure->profession)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_setupdwarfgamest__T_animals_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_setupdwarfgamest__T_animals_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_setupdwarfgamest::T_animals*>(p_df_structure);
 
@@ -18310,7 +18290,7 @@ void generate_viewscreen_setupdwarfgamest__T_animals_offsets(void* p_df_structur
 	p_table["count"] = reinterpret_cast<uint64_t>(&(df_structure->count)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_setupdwarfgamest__T_unk_v43__T_unk_v43_sub9_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_setupdwarfgamest__T_unk_v43__T_unk_v43_sub9_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_setupdwarfgamest::T_unk_v43::T_unk_v43_sub9*>(p_df_structure);
 
@@ -18323,7 +18303,7 @@ void generate_viewscreen_setupdwarfgamest__T_unk_v43__T_unk_v43_sub9_offsets(voi
 	p_table["unk_s7"] = reinterpret_cast<uint64_t>(&(df_structure->unk_s7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_setupdwarfgamest__T_unk_v43_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_setupdwarfgamest__T_unk_v43_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_setupdwarfgamest::T_unk_v43*>(p_df_structure);
 
@@ -18335,7 +18315,7 @@ void generate_viewscreen_setupdwarfgamest__T_unk_v43_offsets(void* p_df_structur
 	p_table["unk_v43_10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_setupdwarfgamest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_setupdwarfgamest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_setupdwarfgamest*>(p_df_structure);
 
@@ -18381,7 +18361,7 @@ void generate_viewscreen_setupdwarfgamest_offsets(void* p_df_structure, std::map
 	p_table["adding_item"] = reinterpret_cast<uint64_t>(&(df_structure->adding_item)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_storesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_storesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_storesst*>(p_df_structure);
 
@@ -18402,7 +18382,7 @@ void generate_viewscreen_storesst_offsets(void* p_df_structure, std::map<std::st
 	p_table["can_zoom"] = reinterpret_cast<uint64_t>(&(df_structure->can_zoom)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_textviewerst__T_formatted_text_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_textviewerst__T_formatted_text_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_textviewerst::T_formatted_text*>(p_df_structure);
 
@@ -18414,7 +18394,7 @@ void generate_viewscreen_textviewerst__T_formatted_text_offsets(void* p_df_struc
 	p_table["indent"] = reinterpret_cast<uint64_t>(&(df_structure->indent)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_textviewerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_textviewerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_textviewerst*>(p_df_structure);
 
@@ -18434,7 +18414,7 @@ void generate_viewscreen_textviewerst_offsets(void* p_df_structure, std::map<std
 	p_table["pause_depth"] = reinterpret_cast<uint64_t>(&(df_structure->pause_depth)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_titlest__T_start_savegames_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_titlest__T_start_savegames_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_titlest::T_start_savegames*>(p_df_structure);
 
@@ -18445,7 +18425,7 @@ void generate_viewscreen_titlest__T_start_savegames_offsets(void* p_df_structure
 	p_table["save_dir"] = reinterpret_cast<uint64_t>(&(df_structure->save_dir)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_titlest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_titlest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_titlest*>(p_df_structure);
 
@@ -18479,7 +18459,7 @@ void generate_viewscreen_titlest_offsets(void* p_df_structure, std::map<std::str
 	p_table["unk_3a0"] = reinterpret_cast<uint64_t>(&(df_structure->unk_3a0)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_topicmeetingst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_topicmeetingst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_topicmeetingst*>(p_df_structure);
 
@@ -18489,7 +18469,7 @@ void generate_viewscreen_topicmeetingst_offsets(void* p_df_structure, std::map<s
 	p_table["text"] = reinterpret_cast<uint64_t>(&(df_structure->text)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_topicmeeting_fill_land_holder_positionsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_topicmeeting_fill_land_holder_positionsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_topicmeeting_fill_land_holder_positionsst*>(p_df_structure);
 
@@ -18505,7 +18485,7 @@ void generate_viewscreen_topicmeeting_fill_land_holder_positionsst_offsets(void*
 	p_table["cursor"] = reinterpret_cast<uint64_t>(&(df_structure->cursor)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_topicmeeting_takerequestsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_topicmeeting_takerequestsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_topicmeeting_takerequestsst*>(p_df_structure);
 
@@ -18517,7 +18497,7 @@ void generate_viewscreen_topicmeeting_takerequestsst_offsets(void* p_df_structur
 	p_table["good_idx"] = reinterpret_cast<uint64_t>(&(df_structure->good_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_tradeagreementst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_tradeagreementst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_tradeagreementst*>(p_df_structure);
 
@@ -18530,7 +18510,7 @@ void generate_viewscreen_tradeagreementst_offsets(void* p_df_structure, std::map
 	p_table["civ"] = reinterpret_cast<uint64_t>(&(df_structure->civ)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_tradegoodsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_tradegoodsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_tradegoodsst*>(p_df_structure);
 
@@ -18564,7 +18544,7 @@ void generate_viewscreen_tradegoodsst_offsets(void* p_df_structure, std::map<std
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_tradelistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_tradelistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_tradelistst*>(p_df_structure);
 
@@ -18573,14 +18553,14 @@ void generate_viewscreen_tradelistst_offsets(void* p_df_structure, std::map<std:
 	p_table["caravans"] = reinterpret_cast<uint64_t>(&(df_structure->caravans)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_treasurelistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_treasurelistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_treasurelistst*>(p_df_structure);
 
 	p_table["sel_idx"] = reinterpret_cast<uint64_t>(&(df_structure->sel_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_unitst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_unitst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_unitst*>(p_df_structure);
 
@@ -18591,7 +18571,7 @@ void generate_viewscreen_unitst_offsets(void* p_df_structure, std::map<std::stri
 	p_table["has_kills"] = reinterpret_cast<uint64_t>(&(df_structure->has_kills)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_unitlistst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_unitlistst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_unitlistst*>(p_df_structure);
 
@@ -18602,14 +18582,14 @@ void generate_viewscreen_unitlistst_offsets(void* p_df_structure, std::map<std::
 	p_table["units"] = reinterpret_cast<uint64_t>(&(df_structure->units)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_wagesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_wagesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_wagesst*>(p_df_structure);
 
 	p_table["profession_category"] = reinterpret_cast<uint64_t>(&(df_structure->profession_category)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_workquota_conditionst__T_traits_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_workquota_conditionst__T_traits_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_workquota_conditionst::T_traits*>(p_df_structure);
 
@@ -18624,7 +18604,7 @@ void generate_viewscreen_workquota_conditionst__T_traits_offsets(void* p_df_stru
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_workquota_conditionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_workquota_conditionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_workquota_conditionst*>(p_df_structure);
 
@@ -18653,14 +18633,14 @@ void generate_viewscreen_workquota_conditionst_offsets(void* p_df_structure, std
 	p_table["item_count_entry"] = reinterpret_cast<uint64_t>(&(df_structure->item_count_entry)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_workquota_detailsst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_workquota_detailsst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_workquota_detailsst*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_workshop_profilest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_workshop_profilest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_workshop_profilest*>(p_df_structure);
 
@@ -18675,7 +18655,7 @@ void generate_viewscreen_workshop_profilest_offsets(void* p_df_structure, std::m
 	p_table["labor_idx"] = reinterpret_cast<uint64_t>(&(df_structure->labor_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_viewscreen_update_regionst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_viewscreen_update_regionst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::viewscreen_update_regionst*>(p_df_structure);
 
@@ -18683,7 +18663,7 @@ void generate_viewscreen_update_regionst_offsets(void* p_df_structure, std::map<
 	p_table["year_tick"] = reinterpret_cast<uint64_t>(&(df_structure->year_tick)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_unk130__T_unk_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_unk130__T_unk_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_unk130::T_unk_4*>(p_df_structure);
 
@@ -18693,7 +18673,7 @@ void generate_world_site_unk130__T_unk_4_offsets(void* p_df_structure, std::map<
 	p_table["unk_c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_unk130_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_unk130_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_unk130*>(p_df_structure);
 
@@ -18701,7 +18681,7 @@ void generate_world_site_unk130_offsets(void* p_df_structure, std::map<std::stri
 	p_table["unk_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_embark_note_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_embark_note_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::embark_note*>(p_df_structure);
 
@@ -18716,7 +18696,7 @@ void generate_embark_note_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["bottom"] = reinterpret_cast<uint64_t>(&(df_structure->bottom)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_local_population_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_local_population_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::local_population*>(p_df_structure);
 
@@ -18732,7 +18712,7 @@ void generate_local_population_offsets(void* p_df_structure, std::map<std::strin
 	p_table["wp_unk_1c"] = reinterpret_cast<uint64_t>(&(df_structure->wp_unk_1c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_population_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_population_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_population*>(p_df_structure);
 
@@ -18749,7 +18729,7 @@ void generate_world_population_offsets(void* p_df_structure, std::map<std::strin
 	p_table["unk_1c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_landmass_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_landmass_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_landmass*>(p_df_structure);
 
@@ -18764,7 +18744,7 @@ void generate_world_landmass_offsets(void* p_df_structure, std::map<std::string,
 	p_table["unk_84"] = reinterpret_cast<uint64_t>(&(df_structure->unk_84)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_region_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_region_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_region*>(p_df_structure);
 
@@ -18802,7 +18782,7 @@ void generate_world_region_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["max_y"] = reinterpret_cast<uint64_t>(&(df_structure->max_y)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_underground_region_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_underground_region_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_underground_region*>(p_df_structure);
 
@@ -18825,7 +18805,7 @@ void generate_world_underground_region_offsets(void* p_df_structure, std::map<st
 	p_table["feature_init"] = reinterpret_cast<uint64_t>(&(df_structure->feature_init)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_river_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_river_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_river*>(p_df_structure);
 
@@ -18838,7 +18818,7 @@ void generate_world_river_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_geo_layer_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_geo_layer_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_geo_layer*>(p_df_structure);
 
@@ -18852,7 +18832,7 @@ void generate_world_geo_layer_offsets(void* p_df_structure, std::map<std::string
 	p_table["bottom_height"] = reinterpret_cast<uint64_t>(&(df_structure->bottom_height)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_geo_biome_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_geo_biome_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_geo_biome*>(p_df_structure);
 
@@ -18861,7 +18841,7 @@ void generate_world_geo_biome_offsets(void* p_df_structure, std::map<std::string
 	p_table["layers"] = reinterpret_cast<uint64_t>(&(df_structure->layers)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_region_feature_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_region_feature_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_region_feature*>(p_df_structure);
 
@@ -18878,7 +18858,7 @@ void generate_world_region_feature_offsets(void* p_df_structure, std::map<std::s
 	p_table["top_layer_idx"] = reinterpret_cast<uint64_t>(&(df_structure->top_layer_idx)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_region_details__T_edges_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_region_details__T_edges_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_region_details::T_edges*>(p_df_structure);
 
@@ -18889,7 +18869,7 @@ void generate_world_region_details__T_edges_offsets(void* p_df_structure, std::m
 	p_table["biome_y"] = reinterpret_cast<uint64_t>(&(df_structure->biome_y)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_region_details__T_rivers_vertical_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_region_details__T_rivers_vertical_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_region_details::T_rivers_vertical*>(p_df_structure);
 
@@ -18899,7 +18879,7 @@ void generate_world_region_details__T_rivers_vertical_offsets(void* p_df_structu
 	p_table["elevation"] = reinterpret_cast<uint64_t>(&(df_structure->elevation)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_region_details__T_rivers_horizontal_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_region_details__T_rivers_horizontal_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_region_details::T_rivers_horizontal*>(p_df_structure);
 
@@ -18909,7 +18889,7 @@ void generate_world_region_details__T_rivers_horizontal_offsets(void* p_df_struc
 	p_table["elevation"] = reinterpret_cast<uint64_t>(&(df_structure->elevation)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_region_details_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_region_details_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_region_details*>(p_df_structure);
 
@@ -18933,7 +18913,7 @@ void generate_world_region_details_offsets(void* p_df_structure, std::map<std::s
 	p_table["undef13"] = reinterpret_cast<uint64_t>(&(df_structure->undef13)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_region_map_entry_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_region_map_entry_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::region_map_entry*>(p_df_structure);
 
@@ -18964,7 +18944,7 @@ void generate_region_map_entry_offsets(void* p_df_structure, std::map<std::strin
 	p_table["geo_index"] = reinterpret_cast<uint64_t>(&(df_structure->geo_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_claim_mask__T_map_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_claim_mask__T_map_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_claim_mask::T_map*>(p_df_structure);
 
@@ -18972,7 +18952,7 @@ void generate_entity_claim_mask__T_map_offsets(void* p_df_structure, std::map<st
 	p_table["region_masks"] = reinterpret_cast<uint64_t>(&(df_structure->region_masks)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_entity_claim_mask_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_entity_claim_mask_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::entity_claim_mask*>(p_df_structure);
 
@@ -18981,7 +18961,7 @@ void generate_entity_claim_mask_offsets(void* p_df_structure, std::map<std::stri
 	p_table["height"] = reinterpret_cast<uint64_t>(&(df_structure->height)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_moving_party__T_members_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_moving_party__T_members_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::moving_party::T_members*>(p_df_structure);
 
@@ -18997,7 +18977,7 @@ void generate_moving_party__T_members_offsets(void* p_df_structure, std::map<std
 	p_table["unk_24"] = reinterpret_cast<uint64_t>(&(df_structure->unk_24)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_moving_party_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_moving_party_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::moving_party*>(p_df_structure);
 
@@ -19018,7 +18998,7 @@ void generate_moving_party_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["beast_id"] = reinterpret_cast<uint64_t>(&(df_structure->beast_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_object_data__T_offloaded_items_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_object_data__T_offloaded_items_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_object_data::T_offloaded_items*>(p_df_structure);
 
@@ -19031,7 +19011,7 @@ void generate_world_object_data__T_offloaded_items_offsets(void* p_df_structure,
 	p_table["unk_18"] = reinterpret_cast<uint64_t>(&(df_structure->unk_18)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_object_data__T_offloaded_buildings_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_object_data__T_offloaded_buildings_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_object_data::T_offloaded_buildings*>(p_df_structure);
 
@@ -19042,7 +19022,7 @@ void generate_world_object_data__T_offloaded_buildings_offsets(void* p_df_struct
 	p_table["unk_10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_object_data__T_unk_94_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_object_data__T_unk_94_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_object_data::T_unk_94*>(p_df_structure);
 
@@ -19052,7 +19032,7 @@ void generate_world_object_data__T_unk_94_offsets(void* p_df_structure, std::map
 	p_table["unk_c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_object_data_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_object_data_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_object_data*>(p_df_structure);
 
@@ -19083,7 +19063,7 @@ void generate_world_object_data_offsets(void* p_df_structure, std::map<std::stri
 	p_table["unk_v43_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v43_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_b4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_b4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_b4*>(p_df_structure);
 
@@ -19095,7 +19075,7 @@ void generate_world_data__T_unk_b4_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_constructions_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_constructions_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_constructions*>(p_df_structure);
 
@@ -19106,7 +19086,7 @@ void generate_world_data__T_constructions_offsets(void* p_df_structure, std::map
 	p_table["next_id"] = reinterpret_cast<uint64_t>(&(df_structure->next_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_150__T_unk_8_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_150__T_unk_8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_150::T_unk_8*>(p_df_structure);
 
@@ -19115,7 +19095,7 @@ void generate_world_data__T_unk_150__T_unk_8_offsets(void* p_df_structure, std::
 	p_table["unk_8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_150__T_unk_18_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_150__T_unk_18_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_150::T_unk_18*>(p_df_structure);
 
@@ -19124,7 +19104,7 @@ void generate_world_data__T_unk_150__T_unk_18_offsets(void* p_df_structure, std:
 	p_table["unk_8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_150__T_unk_28_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_150__T_unk_28_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_150::T_unk_28*>(p_df_structure);
 
@@ -19132,7 +19112,7 @@ void generate_world_data__T_unk_150__T_unk_28_offsets(void* p_df_structure, std:
 	p_table["unk_4"] = reinterpret_cast<uint64_t>(&(df_structure->unk_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_150_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_150_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_150*>(p_df_structure);
 
@@ -19143,7 +19123,7 @@ void generate_world_data__T_unk_150_offsets(void* p_df_structure, std::map<std::
 	p_table["unk_28"] = reinterpret_cast<uint64_t>(&(df_structure->unk_28)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_170__T_unk_4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_170__T_unk_4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_170::T_unk_4*>(p_df_structure);
 
@@ -19157,7 +19137,7 @@ void generate_world_data__T_unk_170__T_unk_4_offsets(void* p_df_structure, std::
 	p_table["unk_1c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_170_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_170_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_170*>(p_df_structure);
 
@@ -19172,7 +19152,7 @@ void generate_world_data__T_unk_170_offsets(void* p_df_structure, std::map<std::
 	p_table["unk_38"] = reinterpret_cast<uint64_t>(&(df_structure->unk_38)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_freakish_weather_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_freakish_weather_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_freakish_weather*>(p_df_structure);
 
@@ -19192,7 +19172,7 @@ void generate_world_data__T_freakish_weather_offsets(void* p_df_structure, std::
 	p_table["unk_34"] = reinterpret_cast<uint64_t>(&(df_structure->unk_34)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_mountain_peaks_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_mountain_peaks_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_mountain_peaks*>(p_df_structure);
 
@@ -19202,7 +19182,7 @@ void generate_world_data__T_mountain_peaks_offsets(void* p_df_structure, std::ma
 	p_table["height"] = reinterpret_cast<uint64_t>(&(df_structure->height)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_feature_map__T_features_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_feature_map__T_features_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_feature_map::T_features*>(p_df_structure);
 
@@ -19210,7 +19190,7 @@ void generate_world_data__T_feature_map__T_features_offsets(void* p_df_structure
 	p_table["unk"] = reinterpret_cast<uint64_t>(&(df_structure->unk)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_feature_map_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_feature_map_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_feature_map*>(p_df_structure);
 
@@ -19221,7 +19201,7 @@ void generate_world_data__T_feature_map_offsets(void* p_df_structure, std::map<s
 	p_table["unk_c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_274__T_unk_10_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_274__T_unk_10_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_274::T_unk_10*>(p_df_structure);
 
@@ -19230,7 +19210,7 @@ void generate_world_data__T_unk_274__T_unk_10_offsets(void* p_df_structure, std:
 	p_table["unk_8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_274_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_274_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_274*>(p_df_structure);
 
@@ -19243,7 +19223,7 @@ void generate_world_data__T_unk_274_offsets(void* p_df_structure, std::map<std::
 	p_table["unk_30"] = reinterpret_cast<uint64_t>(&(df_structure->unk_30)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data__T_unk_482f8_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data__T_unk_482f8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data::T_unk_482f8*>(p_df_structure);
 
@@ -19257,7 +19237,7 @@ void generate_world_data__T_unk_482f8_offsets(void* p_df_structure, std::map<std
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_data_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_data_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_data*>(p_df_structure);
 
@@ -19351,14 +19331,14 @@ void generate_world_data_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["unk_482f8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_482f8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_reputation_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_reputation_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_reputation_info*>(p_df_structure);
 
 	p_table["reports"] = reinterpret_cast<uint64_t>(&(df_structure->reports)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_location_scribe_jobs_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_location_scribe_jobs_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::location_scribe_jobs*>(p_df_structure);
 
@@ -19372,7 +19352,7 @@ void generate_location_scribe_jobs_offsets(void* p_df_structure, std::map<std::s
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_unk__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_unk__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_unk::T_anon_1*>(p_df_structure);
 
@@ -19386,7 +19366,7 @@ void generate_abstract_building_unk__T_anon_1_offsets(void* p_df_structure, std:
 	p_table["anon_7"] = reinterpret_cast<uint64_t>(&(df_structure->anon_7)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_unk_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_unk_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_unk*>(p_df_structure);
 
@@ -19394,7 +19374,7 @@ void generate_abstract_building_unk_offsets(void* p_df_structure, std::map<std::
 	p_table["histfigs"] = reinterpret_cast<uint64_t>(&(df_structure->histfigs)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building__T_inhabitants_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building__T_inhabitants_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building::T_inhabitants*>(p_df_structure);
 
@@ -19402,7 +19382,7 @@ void generate_abstract_building__T_inhabitants_offsets(void* p_df_structure, std
 	p_table["histfig_id"] = reinterpret_cast<uint64_t>(&(df_structure->histfig_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building__T_unk1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building__T_unk1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building::T_unk1*>(p_df_structure);
 
@@ -19413,7 +19393,7 @@ void generate_abstract_building__T_unk1_offsets(void* p_df_structure, std::map<s
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building*>(p_df_structure);
 
@@ -19433,14 +19413,14 @@ void generate_abstract_building_offsets(void* p_df_structure, std::map<std::stri
 	p_table["occupations"] = reinterpret_cast<uint64_t>(&(df_structure->occupations)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_keepst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_keepst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_keepst*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_templest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_templest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_templest*>(p_df_structure);
 
@@ -19450,21 +19430,21 @@ void generate_abstract_building_templest_offsets(void* p_df_structure, std::map<
 	p_table["contents"] = reinterpret_cast<uint64_t>(&(df_structure->contents)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_dark_towerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_dark_towerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_dark_towerst*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_marketst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_marketst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_marketst*>(p_df_structure);
 
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_tombst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_tombst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_tombst*>(p_df_structure);
 
@@ -19473,7 +19453,7 @@ void generate_abstract_building_tombst_offsets(void* p_df_structure, std::map<st
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_dungeonst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_dungeonst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_dungeonst*>(p_df_structure);
 
@@ -19486,7 +19466,7 @@ void generate_abstract_building_dungeonst_offsets(void* p_df_structure, std::map
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_underworld_spirest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_underworld_spirest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_underworld_spirest*>(p_df_structure);
 
@@ -19494,7 +19474,7 @@ void generate_abstract_building_underworld_spirest_offsets(void* p_df_structure,
 	p_table["unk_bc"] = reinterpret_cast<uint64_t>(&(df_structure->unk_bc)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_inn_tavernst__T_room_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_inn_tavernst__T_room_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_inn_tavernst::T_room_info*>(p_df_structure);
 
@@ -19505,7 +19485,7 @@ void generate_abstract_building_inn_tavernst__T_room_info_offsets(void* p_df_str
 	p_table["world_z"] = reinterpret_cast<uint64_t>(&(df_structure->world_z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_inn_tavernst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_inn_tavernst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_inn_tavernst*>(p_df_structure);
 
@@ -19515,7 +19495,7 @@ void generate_abstract_building_inn_tavernst_offsets(void* p_df_structure, std::
 	p_table["next_room_info_id"] = reinterpret_cast<uint64_t>(&(df_structure->next_room_info_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_libraryst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_libraryst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_libraryst*>(p_df_structure);
 
@@ -19528,7 +19508,7 @@ void generate_abstract_building_libraryst_offsets(void* p_df_structure, std::map
 	p_table["contents"] = reinterpret_cast<uint64_t>(&(df_structure->contents)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_1__T_units_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_1__T_units_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_1::T_units*>(p_df_structure);
 
@@ -19539,7 +19519,7 @@ void generate_world_site__T_unk_1__T_units_offsets(void* p_df_structure, std::ma
 	p_table["unk_10"] = reinterpret_cast<uint64_t>(&(df_structure->unk_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_1*>(p_df_structure);
 
@@ -19560,7 +19540,7 @@ void generate_world_site__T_unk_1_offsets(void* p_df_structure, std::map<std::st
 	p_table["unk_v40_1h"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_1h)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_118_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_118_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_118*>(p_df_structure);
 
@@ -19572,7 +19552,7 @@ void generate_world_site__T_unk_118_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_13c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_13c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_13c*>(p_df_structure);
 
@@ -19585,7 +19565,7 @@ void generate_world_site__T_unk_13c_offsets(void* p_df_structure, std::map<std::
 	p_table["unk_30"] = reinterpret_cast<uint64_t>(&(df_structure->unk_30)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_v40_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_v40_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_v40_2*>(p_df_structure);
 
@@ -19598,7 +19578,7 @@ void generate_world_site__T_unk_v40_2_offsets(void* p_df_structure, std::map<std
 	p_table["unk_30"] = reinterpret_cast<uint64_t>(&(df_structure->unk_30)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_subtype_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_subtype_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_subtype_info*>(p_df_structure);
 
@@ -19613,7 +19593,7 @@ void generate_world_site__T_subtype_info_offsets(void* p_df_structure, std::map<
 	p_table["unk_28"] = reinterpret_cast<uint64_t>(&(df_structure->unk_28)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_21c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_21c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_21c*>(p_df_structure);
 
@@ -19627,7 +19607,7 @@ void generate_world_site__T_unk_21c_offsets(void* p_df_structure, std::map<std::
 	p_table["unk_1c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_v40_4a_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_v40_4a_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_v40_4a*>(p_df_structure);
 
@@ -19639,7 +19619,7 @@ void generate_world_site__T_unk_v40_4a_offsets(void* p_df_structure, std::map<st
 	p_table["unk_14"] = reinterpret_cast<uint64_t>(&(df_structure->unk_14)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_v40_4b_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_v40_4b_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_v40_4b*>(p_df_structure);
 
@@ -19647,7 +19627,7 @@ void generate_world_site__T_unk_v40_4b_offsets(void* p_df_structure, std::map<st
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_v40_4c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_v40_4c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_v40_4c*>(p_df_structure);
 
@@ -19658,7 +19638,7 @@ void generate_world_site__T_unk_v40_4c_offsets(void* p_df_structure, std::map<st
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_v40_4d__T_anon_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_v40_4d__T_anon_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_v40_4d::T_anon_2*>(p_df_structure);
 
@@ -19672,7 +19652,7 @@ void generate_world_site__T_unk_v40_4d__T_anon_2_offsets(void* p_df_structure, s
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_v40_4d_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_v40_4d_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_v40_4d*>(p_df_structure);
 
@@ -19682,7 +19662,7 @@ void generate_world_site__T_unk_v40_4d_offsets(void* p_df_structure, std::map<st
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_v43_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_v43_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_v43_2*>(p_df_structure);
 
@@ -19705,7 +19685,7 @@ void generate_world_site__T_unk_v43_2_offsets(void* p_df_structure, std::map<std
 	p_table["anon_17"] = reinterpret_cast<uint64_t>(&(df_structure->anon_17)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_188__T_unk1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_188__T_unk1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_188::T_unk1*>(p_df_structure);
 
@@ -19716,7 +19696,7 @@ void generate_world_site__T_unk_188__T_unk1_offsets(void* p_df_structure, std::m
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site__T_unk_188_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site__T_unk_188_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site::T_unk_188*>(p_df_structure);
 
@@ -19727,7 +19707,7 @@ void generate_world_site__T_unk_188_offsets(void* p_df_structure, std::map<std::
 	p_table["unk1"] = reinterpret_cast<uint64_t>(&(df_structure->unk1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site*>(p_df_structure);
 
@@ -19796,7 +19776,7 @@ void generate_world_site_offsets(void* p_df_structure, std::map<std::string, std
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_cultural_identity__T_group_log_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_cultural_identity__T_group_log_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::cultural_identity::T_group_log*>(p_df_structure);
 
@@ -19814,7 +19794,7 @@ void generate_cultural_identity__T_group_log_offsets(void* p_df_structure, std::
 	p_table["unk_44"] = reinterpret_cast<uint64_t>(&(df_structure->unk_44)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_cultural_identity_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_cultural_identity_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::cultural_identity*>(p_df_structure);
 
@@ -19833,7 +19813,7 @@ void generate_cultural_identity_offsets(void* p_df_structure, std::map<std::stri
 	p_table["unk_f8"] = reinterpret_cast<uint64_t>(&(df_structure->unk_f8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_crossroads_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_crossroads_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_crossroads*>(p_df_structure);
 
@@ -19871,7 +19851,7 @@ void generate_site_realization_crossroads_offsets(void* p_df_structure, std::map
 	p_table["unk_356"] = reinterpret_cast<uint64_t>(&(df_structure->unk_356)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_building_item_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_building_item_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_building_item*>(p_df_structure);
 
@@ -19882,7 +19862,7 @@ void generate_site_building_item_offsets(void* p_df_structure, std::map<std::str
 	p_table["mat_index"] = reinterpret_cast<uint64_t>(&(df_structure->mat_index)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_abstract_building_mead_hallst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_abstract_building_mead_hallst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::abstract_building_mead_hallst*>(p_df_structure);
 
@@ -19891,7 +19871,7 @@ void generate_abstract_building_mead_hallst_offsets(void* p_df_structure, std::m
 	p_table["item2"] = reinterpret_cast<uint64_t>(&(df_structure->item2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building__T_unk_4c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building__T_unk_4c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building::T_unk_4c*>(p_df_structure);
 
@@ -19903,7 +19883,7 @@ void generate_site_realization_building__T_unk_4c_offsets(void* p_df_structure, 
 	p_table["unk_14"] = reinterpret_cast<uint64_t>(&(df_structure->unk_14)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building*>(p_df_structure);
 
@@ -19926,7 +19906,7 @@ void generate_site_realization_building_offsets(void* p_df_structure, std::map<s
 	p_table["unk_v40_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_realization__T_river_map_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_realization__T_river_map_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_realization::T_river_map*>(p_df_structure);
 
@@ -19938,7 +19918,7 @@ void generate_world_site_realization__T_river_map_offsets(void* p_df_structure, 
 	p_table["end_array_limits"] = reinterpret_cast<uint64_t>(&(df_structure->end_array_limits)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_realization__T_unk_55e8__T_unk_v40_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_realization__T_unk_55e8__T_unk_v40_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_realization::T_unk_55e8::T_unk_v40_2*>(p_df_structure);
 
@@ -19954,7 +19934,7 @@ void generate_world_site_realization__T_unk_55e8__T_unk_v40_2_offsets(void* p_df
 	p_table["unk_1c"] = reinterpret_cast<uint64_t>(&(df_structure->unk_1c)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_realization__T_unk_55e8_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_realization__T_unk_55e8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_realization::T_unk_55e8*>(p_df_structure);
 
@@ -19988,7 +19968,7 @@ void generate_world_site_realization__T_unk_55e8_offsets(void* p_df_structure, s
 	p_table["unk_v40_3d"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_3d)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_realization__T_building_map_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_realization__T_building_map_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_realization::T_building_map*>(p_df_structure);
 
@@ -19999,7 +19979,7 @@ void generate_world_site_realization__T_building_map_offsets(void* p_df_structur
 	p_table["unk6"] = reinterpret_cast<uint64_t>(&(df_structure->unk6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_realization__T_areas_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_realization__T_areas_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_realization::T_areas*>(p_df_structure);
 
@@ -20014,7 +19994,7 @@ void generate_world_site_realization__T_areas_offsets(void* p_df_structure, std:
 	p_table["unk_20"] = reinterpret_cast<uint64_t>(&(df_structure->unk_20)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_realization__T_unk_193bc__T_unk_8_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_realization__T_unk_193bc__T_unk_8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_realization::T_unk_193bc::T_unk_8*>(p_df_structure);
 
@@ -20029,7 +20009,7 @@ void generate_world_site_realization__T_unk_193bc__T_unk_8_offsets(void* p_df_st
 	p_table["anon_9"] = reinterpret_cast<uint64_t>(&(df_structure->anon_9)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_realization__T_unk_193bc_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_realization__T_unk_193bc_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_realization::T_unk_193bc*>(p_df_structure);
 
@@ -20054,7 +20034,7 @@ void generate_world_site_realization__T_unk_193bc_offsets(void* p_df_structure, 
 	p_table["anon_18"] = reinterpret_cast<uint64_t>(&(df_structure->anon_18)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_site_realization_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_site_realization_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_site_realization*>(p_df_structure);
 
@@ -20098,7 +20078,7 @@ void generate_world_site_realization_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_info_castle_wallst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_castle_wallst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_castle_wallst*>(p_df_structure);
 
@@ -20114,7 +20094,7 @@ void generate_site_realization_building_info_castle_wallst_offsets(void* p_df_st
 	p_table["door_item"] = reinterpret_cast<uint64_t>(&(df_structure->door_item)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_info_castle_towerst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_castle_towerst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_castle_towerst*>(p_df_structure);
 
@@ -20131,7 +20111,7 @@ void generate_site_realization_building_info_castle_towerst_offsets(void* p_df_s
 	p_table["unk_44"] = reinterpret_cast<uint64_t>(&(df_structure->unk_44)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_info_shop_housest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_shop_housest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_shop_housest*>(p_df_structure);
 
@@ -20139,14 +20119,14 @@ void generate_site_realization_building_info_shop_housest_offsets(void* p_df_str
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_info_market_squarest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_market_squarest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_market_squarest*>(p_df_structure);
 
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_info_trenchesst__T_spokes_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_trenchesst__T_spokes_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_trenchesst::T_spokes*>(p_df_structure);
 
@@ -20156,7 +20136,7 @@ void generate_site_realization_building_info_trenchesst__T_spokes_offsets(void* 
 	p_table["mound_max"] = reinterpret_cast<uint64_t>(&(df_structure->mound_max)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_info_trenchesst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_trenchesst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_trenchesst*>(p_df_structure);
 
@@ -20164,7 +20144,7 @@ void generate_site_realization_building_info_trenchesst_offsets(void* p_df_struc
 	p_table["spokes"] = reinterpret_cast<uint64_t>(&(df_structure->spokes)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_info_tree_housest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_tree_housest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_tree_housest*>(p_df_structure);
 
@@ -20173,14 +20153,14 @@ void generate_site_realization_building_info_tree_housest_offsets(void* p_df_str
 	p_table["name"] = reinterpret_cast<uint64_t>(&(df_structure->name)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_site_realization_building_info_hillock_housest_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_site_realization_building_info_hillock_housest_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::site_realization_building_info_hillock_housest*>(p_df_structure);
 
 	p_table["type"] = reinterpret_cast<uint64_t>(&(df_structure->type)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creation_zone_pwg_alteration_location_deathst__T_unk_1__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creation_zone_pwg_alteration_location_deathst__T_unk_1__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creation_zone_pwg_alteration_location_deathst::T_unk_1::T_anon_1*>(p_df_structure);
 
@@ -20194,7 +20174,7 @@ void generate_creation_zone_pwg_alteration_location_deathst__T_unk_1__T_anon_1_o
 	p_table["anon_8"] = reinterpret_cast<uint64_t>(&(df_structure->anon_8)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creation_zone_pwg_alteration_location_deathst__T_unk_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creation_zone_pwg_alteration_location_deathst__T_unk_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creation_zone_pwg_alteration_location_deathst::T_unk_1*>(p_df_structure);
 
@@ -20202,7 +20182,7 @@ void generate_creation_zone_pwg_alteration_location_deathst__T_unk_1_offsets(voi
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_creation_zone_pwg_alteration_location_deathst_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_creation_zone_pwg_alteration_location_deathst_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::creation_zone_pwg_alteration_location_deathst*>(p_df_structure);
 
@@ -20210,7 +20190,7 @@ void generate_creation_zone_pwg_alteration_location_deathst_offsets(void* p_df_s
 	p_table["unk_2"] = reinterpret_cast<uint64_t>(&(df_structure->unk_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident__T_unk_v42_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident__T_unk_v42_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident::T_unk_v42_1*>(p_df_structure);
 
@@ -20221,7 +20201,7 @@ void generate_incident__T_unk_v42_1_offsets(void* p_df_structure, std::map<std::
 	p_table["t10"] = reinterpret_cast<uint64_t>(&(df_structure->t10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident*>(p_df_structure);
 
@@ -20260,7 +20240,7 @@ void generate_incident_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["unk_v42_1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v42_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident_sub6_performance__T_participants_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident_sub6_performance__T_participants_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident_sub6_performance::T_participants*>(p_df_structure);
 
@@ -20270,7 +20250,7 @@ void generate_incident_sub6_performance__T_participants_offsets(void* p_df_struc
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident_sub6_performance_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident_sub6_performance_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident_sub6_performance*>(p_df_structure);
 
@@ -20284,7 +20264,7 @@ void generate_incident_sub6_performance_offsets(void* p_df_structure, std::map<s
 	p_table["dance_form_id"] = reinterpret_cast<uint64_t>(&(df_structure->dance_form_id)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident_sub7_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident_sub7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident_sub7*>(p_df_structure);
 
@@ -20300,7 +20280,7 @@ void generate_incident_sub7_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident_sub8_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident_sub8_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident_sub8*>(p_df_structure);
 
@@ -20316,21 +20296,21 @@ void generate_incident_sub8_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident_sub9_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident_sub9_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident_sub9*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_incident_sub10_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_incident_sub10_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::incident_sub10*>(p_df_structure);
 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_crime__T_punishment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_crime__T_punishment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::crime::T_punishment*>(p_df_structure);
 
@@ -20339,7 +20319,7 @@ void generate_crime__T_punishment_offsets(void* p_df_structure, std::map<std::st
 	p_table["give_beating"] = reinterpret_cast<uint64_t>(&(df_structure->give_beating)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_crime__T_reports_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_crime__T_reports_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::crime::T_reports*>(p_df_structure);
 
@@ -20354,7 +20334,7 @@ void generate_crime__T_reports_offsets(void* p_df_structure, std::map<std::strin
 	p_table["report_time"] = reinterpret_cast<uint64_t>(&(df_structure->report_time)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_crime_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_crime_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::crime*>(p_df_structure);
 
@@ -20375,7 +20355,7 @@ void generate_crime_offsets(void* p_df_structure, std::map<std::string, std::siz
 	p_table["reports"] = reinterpret_cast<uint64_t>(&(df_structure->reports)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mission_report_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mission_report_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mission_report*>(p_df_structure);
 
@@ -20393,7 +20373,7 @@ void generate_mission_report_offsets(void* p_df_structure, std::map<std::string,
 	p_table["unk_12"] = reinterpret_cast<uint64_t>(&(df_structure->unk_12)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_spoils_report_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_spoils_report_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::spoils_report*>(p_df_structure);
 
@@ -20412,7 +20392,7 @@ void generate_spoils_report_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["creature_counts"] = reinterpret_cast<uint64_t>(&(df_structure->creature_counts)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_unk_20__T_anon_7_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_unk_20__T_anon_7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_unk_20::T_anon_7*>(p_df_structure);
 
@@ -20424,7 +20404,7 @@ void generate_world_unk_20__T_anon_7_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_unk_20_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_unk_20_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_unk_20*>(p_df_structure);
 
@@ -20440,7 +20420,7 @@ void generate_world_unk_20_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_unk_6c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_unk_6c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_unk_6c*>(p_df_structure);
 
@@ -20452,7 +20432,7 @@ void generate_world_unk_6c_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_unk_9c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_unk_9c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_unk_9c*>(p_df_structure);
 
@@ -20467,7 +20447,7 @@ void generate_world_unk_9c_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["z_max"] = reinterpret_cast<uint64_t>(&(df_structure->z_max)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_unk_c0__T_anon_7_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_unk_c0__T_anon_7_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_unk_c0::T_anon_7*>(p_df_structure);
 
@@ -20479,7 +20459,7 @@ void generate_world_unk_c0__T_anon_7_offsets(void* p_df_structure, std::map<std:
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_unk_c0_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_unk_c0_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world_unk_c0*>(p_df_structure);
 
@@ -20495,7 +20475,7 @@ void generate_world_unk_c0_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["anon_10"] = reinterpret_cast<uint64_t>(&(df_structure->anon_10)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_glowing_barrier_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_glowing_barrier_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::glowing_barrier*>(p_df_structure);
 
@@ -20505,17 +20485,17 @@ void generate_glowing_barrier_offsets(void* p_df_structure, std::map<std::string
 	p_table["pos"] = reinterpret_cast<uint64_t>(&(df_structure->pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_deep_vein_hollow_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_deep_vein_hollow_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::deep_vein_hollow*>(p_df_structure);
 
+	p_table["triggered"] = reinterpret_cast<uint64_t>(&(df_structure->triggered)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
-	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["tiles"] = reinterpret_cast<uint64_t>(&(df_structure->tiles)) - reinterpret_cast<uint64_t>(df_structure);
 	p_table["pos"] = reinterpret_cast<uint64_t>(&(df_structure->pos)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_campfire_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_campfire_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::campfire*>(p_df_structure);
 
@@ -20523,7 +20503,7 @@ void generate_campfire_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["timer"] = reinterpret_cast<uint64_t>(&(df_structure->timer)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_web_cluster_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_web_cluster_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::web_cluster*>(p_df_structure);
 
@@ -20537,7 +20517,7 @@ void generate_web_cluster_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["ambushers"] = reinterpret_cast<uint64_t>(&(df_structure->ambushers)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_fire_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_fire_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::fire*>(p_df_structure);
 
@@ -20549,7 +20529,7 @@ void generate_fire_offsets(void* p_df_structure, std::map<std::string, std::size
 	p_table["temp_unk3"] = reinterpret_cast<uint64_t>(&(df_structure->temp_unk3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_handler__T_postings_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_handler__T_postings_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job_handler::T_postings*>(p_df_structure);
 
@@ -20559,7 +20539,7 @@ void generate_job_handler__T_postings_offsets(void* p_df_structure, std::map<std
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_handler__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_handler__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job_handler::T_anon_1*>(p_df_structure);
 
@@ -20568,7 +20548,7 @@ void generate_job_handler__T_anon_1_offsets(void* p_df_structure, std::map<std::
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_job_handler_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_job_handler_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::job_handler*>(p_df_structure);
 
@@ -20578,7 +20558,7 @@ void generate_job_handler_offsets(void* p_df_structure, std::map<std::string, st
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_building_handler_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_building_handler_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::building_handler*>(p_df_structure);
 
@@ -20589,7 +20569,7 @@ void generate_building_handler_offsets(void* p_df_structure, std::map<std::strin
 	p_table["check_machine_collapse"] = reinterpret_cast<uint64_t>(&(df_structure->check_machine_collapse)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_machine_handler_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_machine_handler_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::machine_handler*>(p_df_structure);
 
@@ -20597,7 +20577,7 @@ void generate_machine_handler_offsets(void* p_df_structure, std::map<std::string
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_mental_picture_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_mental_picture_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::mental_picture*>(p_df_structure);
 
@@ -20609,7 +20589,7 @@ void generate_mental_picture_offsets(void* p_df_structure, std::map<std::string,
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_belief_system_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_belief_system_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::belief_system*>(p_df_structure);
 
@@ -20683,7 +20663,7 @@ void generate_belief_system_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["anon_64"] = reinterpret_cast<uint64_t>(&(df_structure->anon_64)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_vermin_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_vermin_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_vermin*>(p_df_structure);
 
@@ -20691,7 +20671,7 @@ void generate_world__T_vermin_offsets(void* p_df_structure, std::map<std::string
 	p_table["colonies"] = reinterpret_cast<uint64_t>(&(df_structure->colonies)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_entities_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_entities_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_entities*>(p_df_structure);
 
@@ -20699,7 +20679,7 @@ void generate_world__T_entities_offsets(void* p_df_structure, std::map<std::stri
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_worldgen_coord_buf_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_worldgen_coord_buf_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_worldgen_coord_buf*>(p_df_structure);
 
@@ -20707,7 +20687,7 @@ void generate_world__T_worldgen_coord_buf_offsets(void* p_df_structure, std::map
 	p_table["next_slot"] = reinterpret_cast<uint64_t>(&(df_structure->next_slot)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_units_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_units_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_units*>(p_df_structure);
 
@@ -20718,7 +20698,7 @@ void generate_world__T_units_offsets(void* p_df_structure, std::map<std::string,
 	p_table["unknown"] = reinterpret_cast<uint64_t>(&(df_structure->unknown)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_nemesis_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_nemesis_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_nemesis*>(p_df_structure);
 
@@ -20728,7 +20708,7 @@ void generate_world__T_nemesis_offsets(void* p_df_structure, std::map<std::strin
 	p_table["unk4"] = reinterpret_cast<uint64_t>(&(df_structure->unk4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_items_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_items_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_items*>(p_df_structure);
 
@@ -20738,7 +20718,7 @@ void generate_world__T_items_offsets(void* p_df_structure, std::map<std::string,
 	p_table["bad_tag"] = reinterpret_cast<uint64_t>(&(df_structure->bad_tag)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_artifacts_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_artifacts_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_artifacts*>(p_df_structure);
 
@@ -20746,7 +20726,7 @@ void generate_world__T_artifacts_offsets(void* p_df_structure, std::map<std::str
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_flow_guides_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_flow_guides_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_flow_guides*>(p_df_structure);
 
@@ -20754,7 +20734,7 @@ void generate_world__T_flow_guides_offsets(void* p_df_structure, std::map<std::s
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_stockpile__T_simple1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_stockpile__T_simple1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_stockpile::T_simple1*>(p_df_structure);
 
@@ -20764,7 +20744,7 @@ void generate_world__T_stockpile__T_simple1_offsets(void* p_df_structure, std::m
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_stockpile__T_simple2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_stockpile__T_simple2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_stockpile::T_simple2*>(p_df_structure);
 
@@ -20778,7 +20758,7 @@ void generate_world__T_stockpile__T_simple2_offsets(void* p_df_structure, std::m
 	p_table["eggs"] = reinterpret_cast<uint64_t>(&(df_structure->eggs)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_stockpile__T_simple3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_stockpile__T_simple3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_stockpile::T_simple3*>(p_df_structure);
 
@@ -20800,7 +20780,7 @@ void generate_world__T_stockpile__T_simple3_offsets(void* p_df_structure, std::m
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_stockpile_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_stockpile_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_stockpile*>(p_df_structure);
 
@@ -20821,7 +20801,7 @@ void generate_world__T_stockpile_offsets(void* p_df_structure, std::map<std::str
 	p_table["simple3"] = reinterpret_cast<uint64_t>(&(df_structure->simple3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_plants_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_plants_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_plants*>(p_df_structure);
 
@@ -20833,7 +20813,7 @@ void generate_world__T_plants_offsets(void* p_df_structure, std::map<std::string
 	p_table["empty"] = reinterpret_cast<uint64_t>(&(df_structure->empty)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_enemy_status_cache_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_enemy_status_cache_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_enemy_status_cache*>(p_df_structure);
 
@@ -20842,7 +20822,7 @@ void generate_world__T_enemy_status_cache_offsets(void* p_df_structure, std::map
 	p_table["next_slot"] = reinterpret_cast<uint64_t>(&(df_structure->next_slot)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_schedules_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_schedules_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_schedules*>(p_df_structure);
 
@@ -20850,7 +20830,7 @@ void generate_world__T_schedules_offsets(void* p_df_structure, std::map<std::str
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_squads_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_squads_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_squads*>(p_df_structure);
 
@@ -20858,7 +20838,7 @@ void generate_world__T_squads_offsets(void* p_df_structure, std::map<std::string
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_formations_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_formations_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_formations*>(p_df_structure);
 
@@ -20866,7 +20846,7 @@ void generate_world__T_formations_offsets(void* p_df_structure, std::map<std::st
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_activities_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_activities_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_activities*>(p_df_structure);
 
@@ -20874,7 +20854,7 @@ void generate_world__T_activities_offsets(void* p_df_structure, std::map<std::st
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_status__T_slots_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_status__T_slots_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_status::T_slots*>(p_df_structure);
 
@@ -20894,7 +20874,7 @@ void generate_world__T_status__T_slots_offsets(void* p_df_structure, std::map<st
 	p_table["flags"] = reinterpret_cast<uint64_t>(&(df_structure->flags)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_status_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_status_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_status*>(p_df_structure);
 
@@ -20914,7 +20894,7 @@ void generate_world__T_status_offsets(void* p_df_structure, std::map<std::string
 	p_table["slots_used"] = reinterpret_cast<uint64_t>(&(df_structure->slots_used)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_interaction_instances_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_interaction_instances_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_interaction_instances*>(p_df_structure);
 
@@ -20922,7 +20902,7 @@ void generate_world__T_interaction_instances_offsets(void* p_df_structure, std::
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_written_contents_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_written_contents_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_written_contents*>(p_df_structure);
 
@@ -20930,7 +20910,7 @@ void generate_world__T_written_contents_offsets(void* p_df_structure, std::map<s
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_identities_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_identities_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_identities*>(p_df_structure);
 
@@ -20938,7 +20918,7 @@ void generate_world__T_identities_offsets(void* p_df_structure, std::map<std::st
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_incidents_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_incidents_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_incidents*>(p_df_structure);
 
@@ -20946,7 +20926,7 @@ void generate_world__T_incidents_offsets(void* p_df_structure, std::map<std::str
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_crimes_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_crimes_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_crimes*>(p_df_structure);
 
@@ -20954,7 +20934,7 @@ void generate_world__T_crimes_offsets(void* p_df_structure, std::map<std::string
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_vehicles_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_vehicles_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_vehicles*>(p_df_structure);
 
@@ -20963,7 +20943,7 @@ void generate_world__T_vehicles_offsets(void* p_df_structure, std::map<std::stri
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_armies_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_armies_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_armies*>(p_df_structure);
 
@@ -20971,7 +20951,7 @@ void generate_world__T_armies_offsets(void* p_df_structure, std::map<std::string
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_army_controllers_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_army_controllers_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_army_controllers*>(p_df_structure);
 
@@ -20979,7 +20959,7 @@ void generate_world__T_army_controllers_offsets(void* p_df_structure, std::map<s
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_army_tracking_info_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_army_tracking_info_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_army_tracking_info*>(p_df_structure);
 
@@ -20987,7 +20967,7 @@ void generate_world__T_army_tracking_info_offsets(void* p_df_structure, std::map
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_cultural_identities_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_cultural_identities_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_cultural_identities*>(p_df_structure);
 
@@ -20995,7 +20975,7 @@ void generate_world__T_cultural_identities_offsets(void* p_df_structure, std::ma
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_agreements_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_agreements_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_agreements*>(p_df_structure);
 
@@ -21003,7 +20983,7 @@ void generate_world__T_agreements_offsets(void* p_df_structure, std::map<std::st
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_poetic_forms_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_poetic_forms_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_poetic_forms*>(p_df_structure);
 
@@ -21011,7 +20991,7 @@ void generate_world__T_poetic_forms_offsets(void* p_df_structure, std::map<std::
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_musical_forms_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_musical_forms_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_musical_forms*>(p_df_structure);
 
@@ -21019,7 +20999,7 @@ void generate_world__T_musical_forms_offsets(void* p_df_structure, std::map<std:
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_dance_forms_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_dance_forms_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_dance_forms*>(p_df_structure);
 
@@ -21027,7 +21007,7 @@ void generate_world__T_dance_forms_offsets(void* p_df_structure, std::map<std::s
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_scales_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_scales_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_scales*>(p_df_structure);
 
@@ -21035,7 +21015,7 @@ void generate_world__T_scales_offsets(void* p_df_structure, std::map<std::string
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_rhythms_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_rhythms_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_rhythms*>(p_df_structure);
 
@@ -21043,7 +21023,7 @@ void generate_world__T_rhythms_offsets(void* p_df_structure, std::map<std::strin
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_occupations_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_occupations_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_occupations*>(p_df_structure);
 
@@ -21051,7 +21031,7 @@ void generate_world__T_occupations_offsets(void* p_df_structure, std::map<std::s
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_belief_systems_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_belief_systems_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_belief_systems*>(p_df_structure);
 
@@ -21059,7 +21039,7 @@ void generate_world__T_belief_systems_offsets(void* p_df_structure, std::map<std
 	p_table["bad"] = reinterpret_cast<uint64_t>(&(df_structure->bad)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_map_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_map_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_map*>(p_df_structure);
 
@@ -21079,7 +21059,7 @@ void generate_world__T_map_offsets(void* p_df_structure, std::map<std::string, s
 	p_table["distance_lookup"] = reinterpret_cast<uint64_t>(&(df_structure->distance_lookup)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_profession_skills_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_profession_skills_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_profession_skills*>(p_df_structure);
 
@@ -21087,7 +21067,7 @@ void generate_world__T_profession_skills_offsets(void* p_df_structure, std::map<
 	p_table["secondary"] = reinterpret_cast<uint64_t>(&(df_structure->secondary)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_math__T_approx_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_math__T_approx_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_math::T_approx*>(p_df_structure);
 
@@ -21095,7 +21075,7 @@ void generate_world__T_math__T_approx_offsets(void* p_df_structure, std::map<std
 	p_table["sin"] = reinterpret_cast<uint64_t>(&(df_structure->sin)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_math_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_math_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_math*>(p_df_structure);
 
@@ -21104,7 +21084,7 @@ void generate_world__T_math_offsets(void* p_df_structure, std::map<std::string, 
 	p_table["hypot"] = reinterpret_cast<uint64_t>(&(df_structure->hypot)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_map_extras_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_map_extras_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_map_extras*>(p_df_structure);
 
@@ -21116,7 +21096,7 @@ void generate_world__T_map_extras_offsets(void* p_df_structure, std::map<std::st
 	p_table["unk_v40_3d"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_3d)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_worldgen_status_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_worldgen_status_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_worldgen_status*>(p_df_structure);
 
@@ -21194,7 +21174,7 @@ void generate_world__T_worldgen_status_offsets(void* p_df_structure, std::map<st
 	p_table["some_artifacts"] = reinterpret_cast<uint64_t>(&(df_structure->some_artifacts)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_59dc4__T_unk1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_59dc4__T_unk1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_59dc4::T_unk1*>(p_df_structure);
 
@@ -21202,7 +21182,7 @@ void generate_world__T_unk_59dc4__T_unk1_offsets(void* p_df_structure, std::map<
 	p_table["unk"] = reinterpret_cast<uint64_t>(&(df_structure->unk)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_59dc4_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_59dc4_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_59dc4*>(p_df_structure);
 
@@ -21210,7 +21190,7 @@ void generate_world__T_unk_59dc4_offsets(void* p_df_structure, std::map<std::str
 	p_table["unk1"] = reinterpret_cast<uint64_t>(&(df_structure->unk1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_flow_engine_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_flow_engine_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_flow_engine*>(p_df_structure);
 
@@ -21226,7 +21206,7 @@ void generate_world__T_flow_engine_offsets(void* p_df_structure, std::map<std::s
 	p_table["unk7_cntdn"] = reinterpret_cast<uint64_t>(&(df_structure->unk7_cntdn)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_worldgen__T_worldgen_parms_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_worldgen__T_worldgen_parms_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_worldgen::T_worldgen_parms*>(p_df_structure);
 
@@ -21333,7 +21313,7 @@ void generate_world__T_worldgen__T_worldgen_parms_offsets(void* p_df_structure, 
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_worldgen_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_worldgen_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_worldgen*>(p_df_structure);
 
@@ -21345,7 +21325,7 @@ void generate_world__T_worldgen_offsets(void* p_df_structure, std::map<std::stri
 	p_table["worldgen_parms"] = reinterpret_cast<uint64_t>(&(df_structure->worldgen_parms)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_v40_6_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_v40_6_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_v40_6*>(p_df_structure);
 
@@ -21357,7 +21337,7 @@ void generate_world__T_unk_v40_6_offsets(void* p_df_structure, std::map<std::str
 	p_table["unk6"] = reinterpret_cast<uint64_t>(&(df_structure->unk6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_131ec0_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_131ec0_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_131ec0*>(p_df_structure);
 
@@ -21379,7 +21359,7 @@ void generate_world__T_unk_131ec0_offsets(void* p_df_structure, std::map<std::st
 	p_table["anon_16"] = reinterpret_cast<uint64_t>(&(df_structure->anon_16)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_languages_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_languages_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_languages*>(p_df_structure);
 
@@ -21388,7 +21368,7 @@ void generate_world__T_languages_offsets(void* p_df_structure, std::map<std::str
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_131ef0__T_unk_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_131ef0__T_unk_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_131ef0::T_unk_2*>(p_df_structure);
 
@@ -21399,7 +21379,7 @@ void generate_world__T_unk_131ef0__T_unk_2_offsets(void* p_df_structure, std::ma
 	p_table["anon_5"] = reinterpret_cast<uint64_t>(&(df_structure->anon_5)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_131ef0_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_131ef0_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_131ef0*>(p_df_structure);
 
@@ -21410,7 +21390,7 @@ void generate_world__T_unk_131ef0_offsets(void* p_df_structure, std::map<std::st
 	p_table["anon_2"] = reinterpret_cast<uint64_t>(&(df_structure->anon_2)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_pathfinder__T_boundary_heap_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_pathfinder__T_boundary_heap_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_pathfinder::T_boundary_heap*>(p_df_structure);
 
@@ -21421,7 +21401,7 @@ void generate_world__T_pathfinder__T_boundary_heap_offsets(void* p_df_structure,
 	p_table["z"] = reinterpret_cast<uint64_t>(&(df_structure->z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_pathfinder_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_pathfinder_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_pathfinder*>(p_df_structure);
 
@@ -21441,7 +21421,7 @@ void generate_world__T_pathfinder_offsets(void* p_df_structure, std::map<std::st
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_cur_savegame_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_cur_savegame_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_cur_savegame*>(p_df_structure);
 
@@ -21451,7 +21431,7 @@ void generate_world__T_cur_savegame_offsets(void* p_df_structure, std::map<std::
 	p_table["unk_v40_2s"] = reinterpret_cast<uint64_t>(&(df_structure->unk_v40_2s)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_features_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_features_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_features*>(p_df_structure);
 
@@ -21477,7 +21457,7 @@ void generate_world__T_features_offsets(void* p_df_structure, std::map<std::stri
 	p_table["anon_15"] = reinterpret_cast<uint64_t>(&(df_structure->anon_15)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_arena_spawn__T_item_types_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_arena_spawn__T_item_types_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_arena_spawn::T_item_types*>(p_df_structure);
 
@@ -21488,7 +21468,7 @@ void generate_world__T_arena_spawn__T_item_types_offsets(void* p_df_structure, s
 	p_table["anon_1"] = reinterpret_cast<uint64_t>(&(df_structure->anon_1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_arena_spawn__T_equipment_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_arena_spawn__T_equipment_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_arena_spawn::T_equipment*>(p_df_structure);
 
@@ -21500,7 +21480,7 @@ void generate_world__T_arena_spawn__T_equipment_offsets(void* p_df_structure, st
 	p_table["item_counts"] = reinterpret_cast<uint64_t>(&(df_structure->item_counts)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_arena_spawn_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_arena_spawn_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_arena_spawn*>(p_df_structure);
 
@@ -21520,7 +21500,7 @@ void generate_world__T_arena_spawn_offsets(void* p_df_structure, std::map<std::s
 	p_table["unk_int1"] = reinterpret_cast<uint64_t>(&(df_structure->unk_int1)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_arena_settings_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_arena_settings_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_arena_settings*>(p_df_structure);
 
@@ -21538,7 +21518,7 @@ void generate_world__T_arena_settings_offsets(void* p_df_structure, std::map<std
 	p_table["tree_age_str"] = reinterpret_cast<uint64_t>(&(df_structure->tree_age_str)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_19325c__T_anon_1_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_19325c__T_anon_1_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_19325c::T_anon_1*>(p_df_structure);
 
@@ -21550,7 +21530,7 @@ void generate_world__T_unk_19325c__T_anon_1_offsets(void* p_df_structure, std::m
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_19325c__T_anon_2_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_19325c__T_anon_2_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_19325c::T_anon_2*>(p_df_structure);
 
@@ -21559,7 +21539,7 @@ void generate_world__T_unk_19325c__T_anon_2_offsets(void* p_df_structure, std::m
 	p_table["anon_3"] = reinterpret_cast<uint64_t>(&(df_structure->anon_3)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_19325c__T_anon_3_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_19325c__T_anon_3_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_19325c::T_anon_3*>(p_df_structure);
 
@@ -21569,7 +21549,7 @@ void generate_world__T_unk_19325c__T_anon_3_offsets(void* p_df_structure, std::m
 	p_table["anon_4"] = reinterpret_cast<uint64_t>(&(df_structure->anon_4)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world__T_unk_19325c_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world__T_unk_19325c_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world::T_unk_19325c*>(p_df_structure);
 
@@ -21581,7 +21561,7 @@ void generate_world__T_unk_19325c_offsets(void* p_df_structure, std::map<std::st
 	p_table["anon_6"] = reinterpret_cast<uint64_t>(&(df_structure->anon_6)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_world_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_world_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::world*>(p_df_structure);
 
@@ -21702,7 +21682,7 @@ void generate_world_offsets(void* p_df_structure, std::map<std::string, std::siz
 	p_table["unk_26b618"] = reinterpret_cast<uint64_t>(&(df_structure->unk_26b618)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_T_cursor_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_T_cursor_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::global::T_cursor*>(p_df_structure);
 
@@ -21711,7 +21691,7 @@ void generate_T_cursor_offsets(void* p_df_structure, std::map<std::string, std::
 	p_table["z"] = reinterpret_cast<uint64_t>(&(df_structure->z)) - reinterpret_cast<uint64_t>(df_structure);
 }
 
-void generate_T_selection_rect_offsets(void* p_df_structure, std::map<std::string, std::size_t>& p_table)
+void generate_T_selection_rect_offsets(void* p_df_structure, std::unordered_map<std::string, std::size_t>& p_table)
 {
 	auto df_structure = static_cast<df::global::T_selection_rect*>(p_df_structure);
 
@@ -21724,3 +21704,4 @@ void generate_T_selection_rect_offsets(void* p_df_structure, std::map<std::strin
 }
 
 }
+

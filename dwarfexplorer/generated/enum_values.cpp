@@ -1,23 +1,3 @@
-/*
- * Copyright 2019 Rafael Agundo
- *
- * This file is part of dwarfexplorer plugin for DFHack
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- */
-
 #include <cstdint>
 #include <tuple>
 #include <DataDefs.h>
@@ -7528,6 +7508,8 @@ std::tuple<int64_t, std::string, std::string> get_material_flags_value_decoded(D
 		case 70: std::get<1>(result) = "TEARS_MAP_DESCRIPTOR"; break;
 		case 71: std::get<1>(result) = "SPIT_MAP_DESCRIPTOR"; break;
 		case 72: std::get<1>(result) = "EVAPORATES"; break;
+		case 73: std::get<1>(result) = "anon_1"; break;
+		case 74: std::get<1>(result) = "IS_CERAMIC"; break;
 		default: break;
 	}
 	return result;
@@ -11094,7 +11076,7 @@ std::tuple<int64_t, std::string, std::string> get_need_type_value_decoded(DF_Typ
 	{
 		case 0: std::get<1>(result) = "Socialize"; break;
 		case 1: std::get<1>(result) = "DrinkAlcohol"; break;
-		case 2: std::get<1>(result) = "PrayOrMedidate"; break;
+		case 2: std::get<1>(result) = "PrayOrMeditate"; break;
 		case 3: std::get<1>(result) = "StayOccupied"; break;
 		case 4: std::get<1>(result) = "BeCreative"; break;
 		case 5: std::get<1>(result) = "Excitement"; break;
@@ -11419,7 +11401,7 @@ std::tuple<int64_t, std::string, std::string> get_world_region_type_value_decode
 		case 6: std::get<1>(result) = "Glacier"; break;
 		case 7: std::get<1>(result) = "Tundra"; break;
 		case 8: std::get<1>(result) = "Steppe"; break;
-		case 9: std::get<1>(result) = "Hills"; break;
+		case 9: std::get<1>(result) = "Hills"; std::get<2>(result) = "Steppe and Hills share the same set of biomes, differing only in Drainage"; break;
 		default: break;
 	}
 	return result;
@@ -12764,6 +12746,65 @@ std::tuple<int64_t, std::string, std::string> get_viewscreen_locationsst__T_menu
 	return result;
 }
 
+std::tuple<int64_t, std::string, std::string> get_viewscreen_loadgamest__T_cur_step_value_decoded(DF_Type p_base_type, uint64_t p_address)
+{
+	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
+	switch (std::get<0>(result))
+	{
+		case 0: std::get<1>(result) = "OPENING_FILE"; break;
+		case 1: std::get<1>(result) = "PROCESSING_RAW_DATA"; break;
+		case 2: std::get<1>(result) = "ALLOCATING_SPACE"; break;
+		case 3: std::get<1>(result) = "LOADING_ITEMS"; break;
+		case 4: std::get<1>(result) = "LOADING_UNITS"; break;
+		case 5: std::get<1>(result) = "LOADING_JOBS"; break;
+		case 6: std::get<1>(result) = "LOADING_SCHEDULES"; break;
+		case 7: std::get<1>(result) = "LOADING_PROJECTILES"; break;
+		case 8: std::get<1>(result) = "LOADING_BUILDINGS"; break;
+		case 9: std::get<1>(result) = "LOADING_MACHINES"; break;
+		case 10: std::get<1>(result) = "LOADING_FLOW_GUIDES"; break;
+		case 11: std::get<1>(result) = "LOADING_EFFECTS"; break;
+		case 12: std::get<1>(result) = "LOADING_ENTITIES"; break;
+		case 13: std::get<1>(result) = "LOADING_LOCAL_ANIMAL_POPULATIONS"; break;
+		case 14: std::get<1>(result) = "LOADING_EVENTS"; break;
+		case 15: std::get<1>(result) = "LOADING_MANDATES"; break;
+		case 16: std::get<1>(result) = "LOADING_WORK_QUOTAS"; break;
+		case 17: std::get<1>(result) = "LOADING_WORLD_EVENTS"; break;
+		case 18: std::get<1>(result) = "LOADING_COIN_INFORMATION"; break;
+		case 19: std::get<1>(result) = "LOADING_SQUADS"; break;
+		case 20: std::get<1>(result) = "LOADING_FORMATIONS"; break;
+		case 21: std::get<1>(result) = "LOADING_ACTIVITIES"; break;
+		case 22: std::get<1>(result) = "LOADING_INTERACTIONS"; break;
+		case 23: std::get<1>(result) = "LOADING_WRITTEN_CONTENT"; break;
+		case 24: std::get<1>(result) = "LOADING_IDENTITIES"; break;
+		case 25: std::get<1>(result) = "LOADING_INCIDENTS"; break;
+		case 26: std::get<1>(result) = "LOADING_CRIMES"; break;
+		case 27: std::get<1>(result) = "LOADING_VEHICLES"; break;
+		case 28: std::get<1>(result) = "LOADING_ARMIES"; break;
+		case 29: std::get<1>(result) = "LOADING_ARMY_CONTROLLERS"; break;
+		case 30: std::get<1>(result) = "LOADING_TRACKING_INFORMATION"; break;
+		case 31: std::get<1>(result) = "LOADING_CULTURAL_IDENTITIES"; break;
+		case 32: std::get<1>(result) = "LOADING_AGREEMENTS"; break;
+		case 33: std::get<1>(result) = "LOADING_ART_FORMS"; break;
+		case 34: std::get<1>(result) = "LOADING_OCCUPATIONS"; break;
+		case 35: std::get<1>(result) = "LOADING_BELIEF_SYSTEMS"; break;
+		case 36: std::get<1>(result) = "LOADING_ANNOUNCEMENTS"; break;
+		case 37: std::get<1>(result) = "LOADING_FORTRESS_INFORMATION"; break;
+		case 38: std::get<1>(result) = "LOADING_WORLD_INFORMATION"; break;
+		case 39: std::get<1>(result) = "LOADING_ARTIFACTS"; break;
+		case 40: std::get<1>(result) = "LOADING_ACTIVE_HISTORICAL_FIGURES"; break;
+		case 41: std::get<1>(result) = "LOADING_ADVENTURE"; break;
+		case 42: std::get<1>(result) = "LOADING_GENERAL_INFORMATION"; break;
+		case 43: std::get<1>(result) = "CLOSING_FILE"; break;
+		case 44: std::get<1>(result) = "REBUILDING_TEMPORARY_INFORMATION"; break;
+		case 45: std::get<1>(result) = "REBUILDING_MORE_TEMPORARY_INFORMATION"; break;
+		case 46: std::get<1>(result) = "PREPARING_GAME_SCREEN"; break;
+		case 47: std::get<1>(result) = "HANDLING_COMPATIBILITY_ISSUES"; break;
+		case 48: std::get<1>(result) = "FINISHING"; break;
+		default: break;
+	}
+	return result;
+}
+
 std::tuple<int64_t, std::string, std::string> get_viewscreen_petst__T_mode_value_decoded(DF_Type p_base_type, uint64_t p_address)
 {
 	std::tuple<int64_t, std::string, std::string> result = std::make_tuple(cast(p_base_type, p_address), "UNKNOWN-VALUE", "");
@@ -13292,6 +13333,7 @@ std::tuple<int64_t, std::string, std::string> get_enum_decoded(const NodeEnum* p
 		case DF_Type::viewscreen_legendsst__T_cur_page: return get_viewscreen_legendsst__T_cur_page_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::viewscreen_locationsst__T_in_edit: return get_viewscreen_locationsst__T_in_edit_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::viewscreen_locationsst__T_menu: return get_viewscreen_locationsst__T_menu_value_decoded(p_node->m_base_type, p_node->m_address);
+		case DF_Type::viewscreen_loadgamest__T_cur_step: return get_viewscreen_loadgamest__T_cur_step_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::viewscreen_petst__T_mode: return get_viewscreen_petst__T_mode_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::setup_character_info__T_status: return get_setup_character_info__T_status_value_decoded(p_node->m_base_type, p_node->m_address);
 		case DF_Type::viewscreen_setupadventurest__T_page: return get_viewscreen_setupadventurest__T_page_value_decoded(p_node->m_base_type, p_node->m_address);
