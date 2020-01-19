@@ -18,7 +18,9 @@
 
 #include "df_all.h"
 
+#include "DF_Types.h"
 #ifdef _LINUX // Needed for gcc 4.8
+#if (__GNUC__ == 4) && (__GNUC_MINOR__ == 8)
 namespace std
 {
 template<>
@@ -34,6 +36,7 @@ struct hash<rdf::DF_Type>
     }
 };
 } // namespace std
+#endif
 #endif
 
 #include "offsets_cache.h"
