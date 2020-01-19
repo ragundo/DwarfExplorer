@@ -29,7 +29,9 @@
 #include <RemoteClient.h>
 #include <RemoteServer.h>
 #include <VersionInfo.h>
+#include <chrono>
 #include <cstdint>
+#include <tinythread.h>
 
 #include "DataDefs.h"
 #include <df/global_objects.h>
@@ -52,6 +54,7 @@
 
 #include <df/building.h>
 #include <modules/Gui.h>
+#include <modules/World.h>
 
 static constexpr struct in_place_t
 {
@@ -349,13 +352,15 @@ void MainWindow::on_actionLocate_in_fortress()
         {
             if ((l_coord->x != -3000) && (l_coord->y != -3000) && (l_coord->z != -3000))
             {
+                DFHack::World::SetPauseState(true);
+                m_core_suspender->unlock();
 
                 // Center window and cursor
                 DFHack::Gui::revealInDwarfmodeMap(*l_coord, true);
 
-                DFHack::Gui::setCursorCoords(l_coord->x,
-                                             l_coord->y,
-                                             l_coord->z);
+                DFHack::Gui::setCursorCoords(l_coord->x, l_coord->y, l_coord->z);
+                tthread::this_thread::sleep_for(tthread::chrono::milliseconds(100));
+                m_core_suspender->lock();
             }
         }
     }
@@ -487,12 +492,18 @@ void MainWindow::on_actionLocate_building_in_fortress()
                 l_building_position.y = l_building->centery;
                 l_building_position.z = l_building->z;
 
+                DFHack::World::SetPauseState(true);
+                m_core_suspender->unlock();
+
                 // Center window and cursor
                 DFHack::Gui::revealInDwarfmodeMap(l_building_position, true);
 
                 DFHack::Gui::setCursorCoords(l_building_position.x,
                                              l_building_position.y,
                                              l_building_position.z);
+
+                tthread::this_thread::sleep_for(tthread::chrono::milliseconds(100));
+                m_core_suspender->lock();
             }
         }
     }
