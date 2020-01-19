@@ -1357,6 +1357,7 @@
 #include <df/unit_poetic_skill.h>
 #include <df/unit_musical_skill.h>
 #include <df/unit_dance_skill.h>
+#include <df/unit_emotion_memory.h>
 #include <df/unit_personality.h>
 #include <df/historical_figure_info.h>
 #include <df/unit_soul.h>

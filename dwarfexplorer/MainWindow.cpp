@@ -31,6 +31,9 @@
 #include <VersionInfo.h>
 #include <cstdint>
 
+#include "DataDefs.h"
+#include <df/global_objects.h>
+
 #include "MainWindow.h"
 #include "QHexView/document/buffer/qmemorybuffer.h"
 #include "QtModel/df_proxy_model.h"
@@ -47,7 +50,6 @@
 
 #include <QDebug>
 
-//#include "df_all.h"
 #include <df/building.h>
 #include <modules/Gui.h>
 
@@ -347,6 +349,7 @@ void MainWindow::on_actionLocate_in_fortress()
         {
             if ((l_coord->x != -3000) && (l_coord->y != -3000) && (l_coord->z != -3000))
             {
+
                 // Center window and cursor
                 DFHack::Gui::revealInDwarfmodeMap(*l_coord, true);
 
@@ -373,121 +376,70 @@ bool is_building_subtype(rdf::DF_Type p_df_type)
 {
     using namespace rdf;
 
-    if (p_df_type == DF_Type::building_stockpilest)
-        return true;
-    if (p_df_type == DF_Type::building_civzonest)
-        return true;
-    if (p_df_type == DF_Type::building_actual)
-        return true;
-    if (p_df_type == DF_Type::building_furnacest)
-        return true;
-    if (p_df_type == DF_Type::building_workshopst)
-        return true;
-    if (p_df_type == DF_Type::building_animaltrapst)
-        return true;
-    if (p_df_type == DF_Type::building_archerytargetst)
-        return true;
-    if (p_df_type == DF_Type::building_armorstandst)
-        return true;
-    if (p_df_type == DF_Type::building_bars_verticalst)
-        return true;
-    if (p_df_type == DF_Type::building_bars_floorst)
-        return true;
-    if (p_df_type == DF_Type::building_bedst)
-        return true;
-    if (p_df_type == DF_Type::building_bookcasest)
-        return true;
-    if (p_df_type == DF_Type::building_boxst)
-        return true;
-    if (p_df_type == DF_Type::building_bridgest)
-        return true;
-    if (p_df_type == DF_Type::building_cabinetst)
-        return true;
-    if (p_df_type == DF_Type::building_cagest)
-        return true;
-    if (p_df_type == DF_Type::building_chainst)
-        return true;
-    if (p_df_type == DF_Type::building_chairst)
-        return true;
-    if (p_df_type == DF_Type::building_coffinst)
-        return true;
-    if (p_df_type == DF_Type::building_constructionst)
-        return true;
-    if (p_df_type == DF_Type::building_display_furniturest)
-        return true;
-    if (p_df_type == DF_Type::building_doorst)
-        return true;
-    if (p_df_type == DF_Type::building_farmplotst)
-        return true;
-    if (p_df_type == DF_Type::building_floodgatest)
-        return true;
-    if (p_df_type == DF_Type::building_grate_floorst)
-        return true;
-    if (p_df_type == DF_Type::building_grate_wallst)
-        return true;
-    if (p_df_type == DF_Type::building_hatchst)
-        return true;
-    if (p_df_type == DF_Type::building_hivest)
-        return true;
-    if (p_df_type == DF_Type::building_instrumentst)
-        return true;
-    if (p_df_type == DF_Type::building_nestst)
-        return true;
-    if (p_df_type == DF_Type::building_nest_boxst)
-        return true;
-    if (p_df_type == DF_Type::building_roadst)
-        return true;
-    if (p_df_type == DF_Type::building_road_dirtst)
-        return true;
-    if (p_df_type == DF_Type::building_road_pavedst)
-        return true;
-    if (p_df_type == DF_Type::building_shopst)
-        return true;
-    if (p_df_type == DF_Type::building_siegeenginest)
-        return true;
-    if (p_df_type == DF_Type::building_slabst)
-        return true;
-    if (p_df_type == DF_Type::building_statuest)
-        return true;
-    if (p_df_type == DF_Type::building_supportst)
-        return true;
-    if (p_df_type == DF_Type::building_tablest)
-        return true;
-    if (p_df_type == DF_Type::building_traction_benchst)
-        return true;
-    if (p_df_type == DF_Type::building_tradedepotst)
-        return true;
-    if (p_df_type == DF_Type::building_trapst)
-        return true;
-    if (p_df_type == DF_Type::building_wagonst)
-        return true;
-    if (p_df_type == DF_Type::building_weaponst)
-        return true;
-    if (p_df_type == DF_Type::building_weaponrackst)
-        return true;
-    if (p_df_type == DF_Type::building_wellst)
-        return true;
-    if (p_df_type == DF_Type::building_windowst)
-        return true;
-    if (p_df_type == DF_Type::building_window_glassst)
-        return true;
-    if (p_df_type == DF_Type::building_window_gemst)
-        return true;
-    if (p_df_type == DF_Type::building_axle_horizontalst)
-        return true;
-    if (p_df_type == DF_Type::building_axle_verticalst)
-        return true;
-    if (p_df_type == DF_Type::building_gear_assemblyst)
-        return true;
-    if (p_df_type == DF_Type::building_windmillst)
-        return true;
-    if (p_df_type == DF_Type::building_water_wheelst)
-        return true;
-    if (p_df_type == DF_Type::building_screw_pumpst)
-        return true;
-    if (p_df_type == DF_Type::building_rollersst)
-        return true;
-
+    switch (p_df_type)
+    {
+        case DF_Type::building:
+        case DF_Type::building_actual:
+        case DF_Type::building_stockpilest:
+        case DF_Type::building_civzonest:
+        case DF_Type::building_furnacest:
+        case DF_Type::building_workshopst:
+        case DF_Type::building_animaltrapst:
+        case DF_Type::building_archerytargetst:
+        case DF_Type::building_armorstandst:
+        case DF_Type::building_bars_verticalst:
+        case DF_Type::building_bars_floorst:
+        case DF_Type::building_bedst:
+        case DF_Type::building_bookcasest:
+        case DF_Type::building_boxst:
+        case DF_Type::building_bridgest:
+        case DF_Type::building_cabinetst:
+        case DF_Type::building_cagest:
+        case DF_Type::building_chainst:
+        case DF_Type::building_chairst:
+        case DF_Type::building_coffinst:
+        case DF_Type::building_constructionst:
+        case DF_Type::building_display_furniturest:
+        case DF_Type::building_doorst:
+        case DF_Type::building_farmplotst:
+        case DF_Type::building_floodgatest:
+        case DF_Type::building_grate_floorst:
+        case DF_Type::building_grate_wallst:
+        case DF_Type::building_hatchst:
+        case DF_Type::building_hivest:
+        case DF_Type::building_instrumentst:
+        case DF_Type::building_nestst:
+        case DF_Type::building_nest_boxst:
+        case DF_Type::building_roadst:
+        case DF_Type::building_road_dirtst:
+        case DF_Type::building_road_pavedst:
+        case DF_Type::building_shopst:
+        case DF_Type::building_siegeenginest:
+        case DF_Type::building_slabst:
+        case DF_Type::building_statuest:
+        case DF_Type::building_supportst:
+        case DF_Type::building_tablest:
+        case DF_Type::building_traction_benchst:
+        case DF_Type::building_tradedepotst:
+        case DF_Type::building_trapst:
+        case DF_Type::building_wagonst:
+        case DF_Type::building_weaponst:
+        case DF_Type::building_weaponrackst:
+        case DF_Type::building_wellst:
+        case DF_Type::building_windowst:
+        case DF_Type::building_window_glassst:
+        case DF_Type::building_window_gemst:
+        case DF_Type::building_axle_horizontalst:
+        case DF_Type::building_axle_verticalst:
+        case DF_Type::building_gear_assemblyst:
+        case DF_Type::building_windmillst:
+        case DF_Type::building_water_wheelst:
+        case DF_Type::building_screw_pumpst:
+        case DF_Type::building_rollersst:
+            return true;
+        default:
+            break;
+    }
     return false;
 }
 
