@@ -329,18 +329,19 @@ void MainWindow::on_actionLocate_in_fortress()
 {
     if (!m_suspended)
         return;
+    revealCoordInMap(ui->treeView);
+}
 
+void MainWindow::revealCoordInMap(QTreeView* p_treeview)
+{
     using namespace rdf;
-
-    // Get the selected node index
-    QTreeView*      treeview       = ui->treeView;
-    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    QModelIndexList selected_nodes = p_treeview->selectionModel()->selectedIndexes();
     if (selected_nodes.size() == 0)
         return;
     QModelIndex selected_node = selected_nodes.first();
 
     // Get the model
-    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
+    DF_Model* model = dynamic_cast<DF_Model*>(p_treeview->model());
 
     // Get the selected node
     Node* node = dynamic_cast<Node*>(model->nodeFromIndex(selected_node));
@@ -348,21 +349,9 @@ void MainWindow::on_actionLocate_in_fortress()
     if (node->m_df_type == rdf::DF_Type::coord)
     {
         df::coord* l_coord = (df::coord*)(node->m_address);
-        if (l_coord)
-        {
-            if ((l_coord->x != -3000) && (l_coord->y != -3000) && (l_coord->z != -3000))
-            {
-                DFHack::World::SetPauseState(true);
-                m_core_suspender->unlock();
-
-                // Center window and cursor
-                DFHack::Gui::revealInDwarfmodeMap(*l_coord, true);
-
-                DFHack::Gui::setCursorCoords(l_coord->x, l_coord->y, l_coord->z);
-                tthread::this_thread::sleep_for(tthread::chrono::milliseconds(100));
-                m_core_suspender->lock();
-            }
-        }
+        this->revealInMap(l_coord->x,
+                          l_coord->y,
+                          l_coord->z);
     }
 }
 
@@ -376,7 +365,6 @@ void MainWindow::closeEvent(QCloseEvent* p_event)
 //{
 //}
 
-// TODO cambiar esto a switch
 bool is_building_subtype(rdf::DF_Type p_df_type)
 {
     using namespace rdf;
@@ -453,17 +441,22 @@ void MainWindow::on_actionLocate_building_in_fortress()
     if (!m_suspended)
         return;
 
+    // Zoom the DF window if the selected node in the tree is a building.
+    // If not, do nothing
+    revealBuildingInMap(ui->treeView);
+}
+
+void MainWindow::revealBuildingInMap(QTreeView* p_treeview)
+{
     using namespace rdf;
 
-    // Get the selected node index
-    QTreeView*      treeview       = ui->treeView;
-    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
+    // Get the model
+    DF_Model* model = dynamic_cast<DF_Model*>(p_treeview->model());
+
+    QModelIndexList selected_nodes = p_treeview->selectionModel()->selectedIndexes();
     if (selected_nodes.size() == 0)
         return;
     QModelIndex selected_node = selected_nodes.first();
-
-    // Get the model
-    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
 
     // Get the selected node
     Node* node = dynamic_cast<Node*>(model->nodeFromIndex(selected_node));
@@ -487,24 +480,29 @@ void MainWindow::on_actionLocate_building_in_fortress()
             }
             if (l_building)
             {
-                df::coord l_building_position;
-                l_building_position.x = l_building->centerx;
-                l_building_position.y = l_building->centery;
-                l_building_position.z = l_building->z;
-
-                DFHack::World::SetPauseState(true);
-                m_core_suspender->unlock();
-
-                // Center window and cursor
-                DFHack::Gui::revealInDwarfmodeMap(l_building_position, true);
-
-                DFHack::Gui::setCursorCoords(l_building_position.x,
-                                             l_building_position.y,
-                                             l_building_position.z);
-
-                tthread::this_thread::sleep_for(tthread::chrono::milliseconds(100));
-                m_core_suspender->lock();
+                revealInMap(l_building->centerx,
+                            l_building->centery,
+                            l_building->z);
             }
         }
+    }
+}
+
+void MainWindow::revealInMap(int32_t p_x, int32_t p_y, int32_t p_z)
+{
+    if ((p_x != -3000) && (p_y != -3000) && (p_z != -3000))
+    {
+        DFHack::World::SetPauseState(true);
+        m_core_suspender->unlock();
+
+        // Center window and cursor
+        df::coord l_coord(p_x,
+                          p_y,
+                          p_z);
+        DFHack::Gui::revealInDwarfmodeMap(l_coord, true);
+
+        DFHack::Gui::setCursorCoords(p_x, p_y, p_z);
+        tthread::this_thread::sleep_for(tthread::chrono::milliseconds(100));
+        m_core_suspender->lock();
     }
 }

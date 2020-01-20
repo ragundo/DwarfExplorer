@@ -256,35 +256,12 @@ void DFStructure_Window::on_MainWindow_resumed()
 
 void DFStructure_Window::on_actionLocate_in_fortress()
 {
-    using namespace rdf;
+    MainWindow* l_main_window = dynamic_cast<MainWindow*>(parent());
+    l_main_window->revealCoordInMap(ui->treeView);
+}
 
-    // Get the selected node index
-    QTreeView*      treeview       = ui->treeView;
-    QModelIndexList selected_nodes = treeview->selectionModel()->selectedIndexes();
-    if (selected_nodes.size() == 0)
-        return;
-    QModelIndex selected_node = selected_nodes.first();
-
-    // Get the model
-    DF_Model* model = dynamic_cast<DF_Model*>(treeview->model());
-
-    // Get the selected node
-    Node* node = dynamic_cast<Node*>(model->nodeFromIndex(selected_node));
-
-    if (node->m_df_type == rdf::DF_Type::coord)
-    {
-        df::coord* l_coord = (df::coord*)(node->m_address);
-        if (l_coord)
-        {
-            if ((l_coord->x != -3000) && (l_coord->y != -3000) && (l_coord->z != -3000))
-            {
-                // Center window and cursor
-                DFHack::Gui::revealInDwarfmodeMap(*l_coord, true);
-
-                DFHack::Gui::setCursorCoords(l_coord->x,
-                                             l_coord->y,
-                                             l_coord->z);
-            }
-        }
-    }
+void DFStructure_Window::on_actionLocate_building_in_fortress()
+{
+    MainWindow* l_main_window = dynamic_cast<MainWindow*>(parent());
+    l_main_window->revealBuildingInMap(ui->treeView);
 }

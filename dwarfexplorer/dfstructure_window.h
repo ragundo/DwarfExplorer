@@ -46,6 +46,7 @@ class DFStructure_Window : public QMainWindow
     void on_actionOpen_in_hex_viewer_triggered();
     void on_actionOpenPointer_in_hex_viewer_triggered();
     void on_actionLocate_in_fortress();
+    void on_actionLocate_building_in_fortress();
   public slots:
     void on_MainWindow_resumed();
 

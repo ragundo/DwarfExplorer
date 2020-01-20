@@ -26,6 +26,7 @@
 #include <Core.h>
 #include <QCloseEvent>
 #include <QSortFilterProxyModel>
+#include <QTreeView.h>
 
 #include "QtModel/df_proxy_model.h"
 #include "df_model.h"
@@ -48,6 +49,11 @@ class MainWindow : public QMainWindow
   public:
     explicit MainWindow(std::shared_ptr<EventProxy>&& proxy, QWidget* parent = nullptr);
     ~MainWindow() override;
+
+  public:
+    void revealInMap(int32_t p_x, int32_t p_y, int32_t p_z);
+    void revealCoordInMap(QTreeView* p_treeview);
+    void revealBuildingInMap(QTreeView* p_treeview);
 
   signals:
     void resumed_signal();
