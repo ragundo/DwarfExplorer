@@ -1,85 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DFStructure_Window</class>
- <widget class="QMainWindow" name="DFStructure_Window">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>869</width>
-    <height>710</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string/>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QTreeView" name="treeView"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>869</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
+  <class>DFStructure_Window</class>
+  <widget class="QMainWindow" name="DFStructure_Window">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>869</width>
+        <height>710</height>
+      </rect>
     </property>
-    <addaction name="actionExit"/>
-   </widget>
-   <widget class="QMenu" name="menuWindow">
-    <property name="title">
-     <string>Window</string>
+    <property name="windowTitle">
+      <string/>
     </property>
-    <addaction name="actionOpen_in_new_window"/>
-     <addaction name="actionOpen_in_hex_viewer"/>
-     <addaction name="actionOpenPointer_in_hex_viewer"/>
-   </widget>
-      <widget class="QMenu" name="menuCoordinate">
-       <property name="title">
-     <string>Coordinate</string>
-    </property>
-    <addaction name="actionLocate_in_fortress"/>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuWindow"/>
-   <addaction name="menuCoordinate"/>
+    <widget class="QWidget" name="centralwidget">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+          <widget class="QTreeView" name="treeView"/>
+        </item>
+      </layout>
+    </widget>
+    <widget class="QMenuBar" name="menubar">
+      <property name="geometry">
+        <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>869</width>
+          <height>25</height>
+        </rect>
+      </property>
+    <widget class="QMenu" name="menuFile">
+      <property name="title">
+        <string>File</string>
+      </property>
+      <addaction name="actionExit"/>
+    </widget>
+    <widget class="QMenu" name="menuWindow">
+      <property name="title">
+        <string>Window</string>
+      </property>
+      <addaction name="actionOpen_in_new_window"/>
+      <addaction name="actionOpen_in_hex_viewer"/>
+      <addaction name="actionOpenPointer_in_hex_viewer"/>
+    </widget>
+    <widget class="QMenu" name="menuCoordinate">
+      <property name="title">
+        <string>Coordinate</string>
+      </property>
+      <addaction name="actionLocate_in_fortress"/>
+    </widget>
+    <widget class="QMenu" name="menuBuilding">
+      <property name="title">
+        <string>Building</string>
+      </property>
+      <addaction name="actionLocate_building_in_fortress"/>
+    </widget>
+    <addaction name="menuFile"/>
+    <addaction name="menuWindow"/>
+    <addaction name="menuCoordinate"/>
+    <addaction name="menuBuilding"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionExit">
-   <property name="text">
-    <string>Exit</string>
-   </property>
-  </action>
-  <action name="actionOpen_in_new_window">
-   <property name="text">
-    <string>Open in new Window</string>
-   </property>
-  </action>
-   <action name="actionOpen_in_hex_viewer">
-     <property name="text">
-       <string>Open address in hex viewer</string>
-     </property>
-   </action>
-   <action name="actionOpenPointer_in_hex_viewer">
-     <property name="text">
-       <string>Open destination address in hex viewer</string>
-     </property>
-   </action>
-   <action name="actionLocate_in_fortress">
-   <property name="text">
-    <string>Locate in fortress</string>
-   </property>
-  </action>
- </widget>
+    <action name="actionExit">
+      <property name="text">
+        <string>Exit</string>
+      </property>
+    </action>
+    <action name="actionOpen_in_new_window">
+      <property name="text">
+        <string>Open in new Window</string>
+      </property>
+    </action>
+    <action name="actionOpen_in_hex_viewer">
+      <property name="text">
+        <string>Open address in hex viewer</string>
+      </property>
+    </action>
+    <action name="actionOpenPointer_in_hex_viewer">
+      <property name="text">
+        <string>Open destination address in hex viewer</string>
+      </property>
+    </action>
+    <action name="actionLocate_in_fortress">
+      <property name="text">
+        <string>Locate in fortress</string>
+      </property>
+    </action>
+    <action name="actionLocate_building_in_fortress">
+      <property name="text">
+        <string>Locate in fortress</string>
+      </property>
+    </action>
+  </widget>
  <resources/>
  <connections/>
 </ui>

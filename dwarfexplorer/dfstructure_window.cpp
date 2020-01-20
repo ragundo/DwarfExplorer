@@ -43,8 +43,10 @@ DFStructure_Window::DFStructure_Window(QWidget* parent)
     ui->setupUi(this);
 
     MainWindow* mw = dynamic_cast<MainWindow*>(parent);
-    bool        ok = QObject::connect(mw, &MainWindow::resumed_signal, this, &DFStructure_Window::on_MainWindow_resumed);
-    connect(ui->actionLocate_in_fortress, SIGNAL(triggered()), this, SLOT(on_actionLocate_in_fortress()));
+    bool        ok;
+    ok = QObject::connect(mw, &MainWindow::resumed_signal, this, &DFStructure_Window::on_MainWindow_resumed);
+    ok = connect(ui->actionLocate_in_fortress, SIGNAL(triggered()), this, SLOT(on_actionLocate_in_fortress()));
+    ok = connect(ui->actionLocate_building_in_fortress, SIGNAL(triggered()), this, SLOT(on_actionLocate_building_in_fortress()));
 }
 
 //
