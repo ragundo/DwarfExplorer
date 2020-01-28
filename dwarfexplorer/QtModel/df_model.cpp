@@ -18,13 +18,13 @@
  *
  */
 
-#include <array>
-#include <algorithm>
-#include <QPixmap>
-#include <QListIterator>
-#include <QDebug>
 #include "../df_model.h"
 #include "node.h"
+#include <QDebug>
+#include <QListIterator>
+#include <QPixmap>
+#include <algorithm>
+#include <array>
 
 using namespace rdf;
 
@@ -84,10 +84,8 @@ QModelIndex DF_Model::parent(const QModelIndex& p_child_index) const
         return QModelIndex();
     Node* l_gp_node = static_cast<Node*>(grandparentNode);
 
-    auto it = std::find(l_gp_node->m_children.cbegin()
-                       ,l_gp_node->m_children.cend()
-                       , parentNode);
-    int row = std::distance(l_gp_node->m_children.cbegin(), it);
+    auto it  = std::find(l_gp_node->m_children.cbegin(), l_gp_node->m_children.cend(), parentNode);
+    int  row = std::distance(l_gp_node->m_children.cbegin(), it);
     //int row = l_gp_node->m_children.indexOf(parentNode);
     return createIndex(row, 0, parentNode);
 }
@@ -104,7 +102,6 @@ int DF_Model::rowCount(const QModelIndex& p_parent) const
     auto l_parent = static_cast<Node*>(parentNode);
     return l_parent->m_children.size();
 }
-
 
 NodeBase* DF_Model::nodeFromIndex(const QModelIndex& p_index) const
 {
@@ -150,6 +147,46 @@ QString data_from_Refers_to(const NodeBase* p_node)
     return QString::fromStdString(base->m_refers_to);
 }
 
+QString data_fromm_Offset(const NodeBase* p_node)
+{
+    const NodeBase* base          = dynamic_cast<const NodeBase*>(p_node);
+    NodeBase*       base_compound = base->m_parent;
+    do
+    {
+        if (base_compound)
+        {
+            if (base_compound->m_node_type == NodeType::Compound)
+                // sucess
+                break;
+            if (base_compound->m_node_type == NodeType::Vector)
+                return "-";
+            if (base_compound->m_node_type == NodeType::Pointer)
+            {
+                if (base_compound->m_address == 0)
+                    return "-";
+                break;
+            }
+        }
+        base_compound = base_compound->m_parent;
+
+    } while (base_compound != nullptr);
+
+    if (base_compound)
+    {
+        if (base_compound->m_node_type == NodeType::Pointer)
+        {
+            uint64_t*   pointer    = reinterpret_cast<uint64_t*>(base_compound->m_address);
+            uint64_t    pointee    = *pointer;
+            std::string offset_hex = to_hex(base->m_address - pointee);
+            return QString::fromStdString(offset_hex);
+        }
+        std::string offset_hex = to_hex(base->m_address - base_compound->m_address);
+        return QString::fromStdString(offset_hex);
+    }
+
+    return "-";
+}
+
 QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
 {
     if (m_root_node == nullptr)
@@ -159,21 +196,12 @@ QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
 
     if ((p_index.column() == 0) && (p_role == Qt::DecorationRole))
     {
-        if ((node->m_rdf_type == rdf::RDF_Type::uint8_t)
-                || (node->m_rdf_type == rdf::RDF_Type::uint16_t)
-                || (node->m_rdf_type == rdf::RDF_Type::uint32_t)
-                || (node->m_rdf_type == rdf::RDF_Type::uint64_t)
-                || (node->m_rdf_type == rdf::RDF_Type::int8_t)
-                || (node->m_rdf_type == rdf::RDF_Type::int16_t)
-                || (node->m_rdf_type == rdf::RDF_Type::int32_t)
-                || (node->m_rdf_type == rdf::RDF_Type::int64_t)
-                || (node->m_rdf_type == rdf::RDF_Type::Long)
-                || (node->m_rdf_type == rdf::RDF_Type::Bool))
+        if ((node->m_rdf_type == rdf::RDF_Type::uint8_t) || (node->m_rdf_type == rdf::RDF_Type::uint16_t) || (node->m_rdf_type == rdf::RDF_Type::uint32_t) || (node->m_rdf_type == rdf::RDF_Type::uint64_t) || (node->m_rdf_type == rdf::RDF_Type::int8_t) || (node->m_rdf_type == rdf::RDF_Type::int16_t) || (node->m_rdf_type == rdf::RDF_Type::int32_t) || (node->m_rdf_type == rdf::RDF_Type::int64_t) || (node->m_rdf_type == rdf::RDF_Type::Long) || (node->m_rdf_type == rdf::RDF_Type::Bool))
             return QPixmap(":/circle.png");
 
         if ((node->m_rdf_type == rdf::RDF_Type::Stl_string) ||
-                (node->m_rdf_type == rdf::RDF_Type::Static_string) ||
-                (node->m_rdf_type == rdf::RDF_Type::Ptr_string))
+            (node->m_rdf_type == rdf::RDF_Type::Static_string) ||
+            (node->m_rdf_type == rdf::RDF_Type::Ptr_string))
             return QPixmap(":/t2_small.png");
 
         if ((node->m_rdf_type == rdf::RDF_Type::Compound))
@@ -210,6 +238,9 @@ QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
             return QPixmap(":/stripes.png");
     }
 
+    if (p_role == Qt::ToolTipRole)
+        return QString("Tooltip");
+
     if (p_role != Qt::DisplayRole)
         return QVariant();
 
@@ -218,21 +249,23 @@ QVariant DF_Model::data(const QModelIndex& p_index, int p_role) const
 
     switch (p_index.column())
     {
-        case 0 :
-            return data_from_Name(node);      // Name
-        case 1 :
+        case 0:
+            return data_from_Name(node); // Name
+        case 1:
             return data_from_Structure(node); // Structure type
-        case 2 :
-            return data_from_Type(node);      // Type
-        case 3 :
-            return data_from_Value(node);     // Value
-        case 4 :
-            return data_from_Address(node);   // Address
-        case 5 :
-            return QString::fromStdString(node->m_defined_in);  // refers-to
-        case 6 :
-            return data_from_Comment(node);   // Comment
-        case 7 :
+        case 2:
+            return data_from_Type(node); // Type
+        case 3:
+            return data_from_Value(node); // Value
+        case 4:
+            return data_from_Address(node); // Address
+        case 5:
+            return data_fromm_Offset(node); // Offset
+        case 6:
+            return QString::fromStdString(node->m_defined_in); // refers-to
+        case 7:
+            return data_from_Comment(node); // Comment
+        case 8:
             return data_from_Refers_to(node); // refers-to
         default:
             return QVariant();
@@ -246,21 +279,23 @@ QVariant DF_Model::headerData(int p_section, Qt::Orientation p_orientation, int 
     {
         switch (p_section)
         {
-            case 0 :
+            case 0:
                 return tr("Name");
-            case 1 :
+            case 1:
                 return tr("Structure");
-            case 2 :
+            case 2:
                 return tr("Type");
-            case 3 :
+            case 3:
                 return tr("Value");
-            case 4 :
+            case 4:
                 return tr("Address");
-            case 5 :
+            case 5:
+                return tr("Offset");
+            case 6:
                 return tr("Defined in");
-            case 6 :
+            case 7:
                 return tr("Comment");
-            case 7 :
+            case 8:
                 return tr("Refers-to");
 
             default:
@@ -272,7 +307,7 @@ QVariant DF_Model::headerData(int p_section, Qt::Orientation p_orientation, int 
 
 int DF_Model::columnCount(const QModelIndex& /*p_parent*/) const
 {
-    return 8;
+    return 9;
 }
 
 bool DF_Model::removeRows(int p_row, int p_count, const QModelIndex& /*p_parent*/)
@@ -292,11 +327,10 @@ bool DF_Model::removeColumns(int p_column, int p_count, const QModelIndex& /*p_p
 
 void DF_Model::update_node_path(NodeBase* p_source, NodeBase* p_dest)
 {
-//    QListIterator<NodeBase*> l_iterator(p_source->m_path);
-//    while(l_iterator.hasNext())
-//        p_dest->m_path.append(l_iterator.next());
+    //    QListIterator<NodeBase*> l_iterator(p_source->m_path);
+    //    while(l_iterator.hasNext())
+    //        p_dest->m_path.append(l_iterator.next());
 }
-
 
 bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
 {
@@ -308,16 +342,16 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
     auto bitfield_value   = *pointer_bitfield;
     if (bitfield_node->m_index_enum == DF_Type::None)
     {
-		std::array < std::array<std::string, 3>, 32>& bitfield_data = get_bitfield_bits(bitfield_node->m_df_type);
+        std::array<std::array<std::string, 3>, 32>& bitfield_data = get_bitfield_bits(bitfield_node->m_df_type);
         beginInsertRows(p_parent, 0, bitfield_data.size());
         unsigned int mask = 1;
-        for (unsigned int i = 0; i < bitfield_data.size() ; i++)
+        for (unsigned int i = 0; i < bitfield_data.size(); i++)
         {
             std::string field_name = bitfield_data[i][1];
             if ((bitfield_value & mask) || (field_name.length() > 0))
             {
-                auto* n_pve          = new NodeBitfieldEntry();
-                n_pve->m_field_name  = field_name;
+                auto* n_pve         = new NodeBitfieldEntry();
+                n_pve->m_field_name = field_name;
                 if (field_name.length() == 0)
                 {
                     if (i < 10)
@@ -328,28 +362,27 @@ bool DF_Model::insertRowsBitfield(const QModelIndex& p_parent)
                 else
                 {
                     if (i < 10)
-                        n_pve->m_field_name = "[0" + std::to_string(i) + "] " +  field_name;
+                        n_pve->m_field_name = "[0" + std::to_string(i) + "] " + field_name;
                     else
-                        n_pve->m_field_name = "[" + std::to_string(i) + "] " +  field_name;
+                        n_pve->m_field_name = "[" + std::to_string(i) + "] " + field_name;
                 }
-                n_pve->m_rdf_type    = rdf::RDF_Type::Bool;
-                n_pve->m_df_type     = rdf::DF_Type::Bool;
-                n_pve->m_parent      = bitfield_node;
-                n_pve->m_index       = i;
-                n_pve->m_comment     = bitfield_data[i][2];
-                n_pve->m_value       = bitfield_value & mask;
-                n_pve->m_address     = bitfield_node->m_address;
+                n_pve->m_rdf_type = rdf::RDF_Type::Bool;
+                n_pve->m_df_type  = rdf::DF_Type::Bool;
+                n_pve->m_parent   = bitfield_node;
+                n_pve->m_index    = i;
+                n_pve->m_comment  = bitfield_data[i][2];
+                n_pve->m_value    = bitfield_value & mask;
+                n_pve->m_address  = bitfield_node->m_address;
                 bitfield_node->m_children.push_back(n_pve);
             }
             mask = mask << 1;
         }
     }
-//        // Update this node path
-//        update_node_path(l_bitfield_node, n_pve);
+    //        // Update this node path
+    //        update_node_path(l_bitfield_node, n_pve);
     endInsertRows();
     return true;
 }
-
 
 bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
 {
@@ -357,8 +390,8 @@ bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
     if (df_flag_array_node->m_children.size() > 0)
         return false;
 
-    uint8_t**  a                     = reinterpret_cast<uint8_t**>(df_flag_array_node->m_address);
-    uint8_t*   pointer_df_flag_array = *a;
+    uint8_t** a                     = reinterpret_cast<uint8_t**>(df_flag_array_node->m_address);
+    uint8_t*  pointer_df_flag_array = *a;
     // This is a hack
     NodeEnum ne;
     ne.m_base_type = DF_Type::int8_t;
@@ -366,19 +399,19 @@ bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
 
     beginInsertRows(p_parent, 0, df_flag_array_node->m_size);
 
-    unsigned int mask = 1;
-    uint8_t bitfield_value = 0;
-    for (unsigned int i = 0; i < df_flag_array_node->m_size ; i++)
+    unsigned int mask           = 1;
+    uint8_t      bitfield_value = 0;
+    for (unsigned int i = 0; i < df_flag_array_node->m_size; i++)
     {
-        ne.m_address   = reinterpret_cast<uint64_t>(&i);
-        auto enum_data = get_enum_decoded(&ne);
+        ne.m_address           = reinterpret_cast<uint64_t>(&i);
+        auto        enum_data  = get_enum_decoded(&ne);
         std::string field_name = std::get<1>(enum_data);
         if (i % 8 == 0)
             bitfield_value = *pointer_df_flag_array;
         if ((bitfield_value & mask) || (field_name.length() > 0))
         {
-            auto* n_pve          = new NodeBitfieldEntry();
-            n_pve->m_field_name  = field_name;
+            auto* n_pve         = new NodeBitfieldEntry();
+            n_pve->m_field_name = field_name;
             if (field_name.length() == 0)
             {
                 if (i < 10)
@@ -389,21 +422,21 @@ bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
             else
             {
                 if (i < 10)
-                    n_pve->m_field_name = "[0" + std::to_string(i) + "] " +  field_name;
+                    n_pve->m_field_name = "[0" + std::to_string(i) + "] " + field_name;
                 else
-                    n_pve->m_field_name = "[" + std::to_string(i) + "] " +  field_name;
+                    n_pve->m_field_name = "[" + std::to_string(i) + "] " + field_name;
             }
-            n_pve->m_rdf_type    = rdf::RDF_Type::Bool;
-            n_pve->m_df_type     = rdf::DF_Type::Bool;
-            n_pve->m_parent      = df_flag_array_node;
-            n_pve->m_index       = i;
-            n_pve->m_comment     = "";
-            n_pve->m_value       = bitfield_value & mask;
-            n_pve->m_address     = reinterpret_cast<uint64_t>(pointer_df_flag_array);
+            n_pve->m_rdf_type = rdf::RDF_Type::Bool;
+            n_pve->m_df_type  = rdf::DF_Type::Bool;
+            n_pve->m_parent   = df_flag_array_node;
+            n_pve->m_index    = i;
+            n_pve->m_comment  = "";
+            n_pve->m_value    = bitfield_value & mask;
+            n_pve->m_address  = reinterpret_cast<uint64_t>(pointer_df_flag_array);
             df_flag_array_node->m_children.push_back(n_pve);
         }
         mask = mask << 1;
-        if ((i+1) % 8 == 0)
+        if ((i + 1) % 8 == 0)
         {
             pointer_df_flag_array++;
             mask = 1;
@@ -412,7 +445,6 @@ bool DF_Model::insertRowsDFFlagArray(const QModelIndex& p_parent)
     endInsertRows();
     return true;
 }
-
 
 bool DF_Model::insertRowsCompound(const QModelIndex& p_parent, int p_num_rows)
 {
@@ -426,7 +458,7 @@ bool DF_Model::insertRowsCompound(const QModelIndex& p_parent, int p_num_rows)
     return true;
 }
 
-bool DF_Model::has_children_from_type( NodeBase* p_node) const
+bool DF_Model::has_children_from_type(NodeBase* p_node) const
 {
     if (p_node->is_root_node())
         return true;
@@ -502,10 +534,9 @@ bool DF_Model::has_children_from_type( NodeBase* p_node) const
             break;
     }
 
-
     if (p_node->m_rdf_type == rdf::RDF_Type::Pointer)
     {
-        NodePointer *l_pointer = dynamic_cast<NodePointer *>(p_node);
+        NodePointer* l_pointer = dynamic_cast<NodePointer*>(p_node);
         if (m_outdated)
         {
             if (l_pointer->m_children.size() > 0)
@@ -577,13 +608,10 @@ bool DF_Model::hasChildren(const QModelIndex& p_parent) const
 //return nullptr;
 //}
 
-
 //NodeBase* DF_Model::locate(rdf::RDFBase* p_object)
 //{
 //    return locate_aux(p_object, m_rootNode);
 //}
-
-
 
 void DF_Model::insert_child_nodes(NodeBase* p_node, const QModelIndex& p_index)
 {

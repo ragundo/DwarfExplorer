@@ -26,7 +26,7 @@
 #include <Core.h>
 #include <QCloseEvent>
 #include <QSortFilterProxyModel>
-#include <QTreeView.h>
+#include <QTreeView>
 
 #include "QtModel/df_proxy_model.h"
 #include "df_model.h"
