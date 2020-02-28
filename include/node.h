@@ -1,514 +1,511 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <functional>
-#include <string>
-#include <QtAlgorithms>
-#include <QList>
-#include <vector>
 #include "DF_Types.h"
 #include "RDF_Types.h"
+#include <QList>
+#include <QtAlgorithms>
+#include <functional>
+#include <string>
+#include <vector>
 
 namespace rdf
 {
-    enum class NodeType
-    {
-        Simple,
-        Compound,
-        AnonymousCompound,
-        Vector,
-        Array,
-        Union,
-        AnonymousUnion,
-        Range,
-        Root,
-        Enum,
-        Bitfield,
-        BitfieldEntry,
-        Pointer,
-        Void,
-        Padding,
-        StaticString,
-        Dummy,
-        DFFlagArray,
-        DFArray
-    };
+enum class NodeType
+{
+    Simple,
+    Compound,
+    AnonymousCompound,
+    Vector,
+    Array,
+    Union,
+    AnonymousUnion,
+    Range,
+    Root,
+    Enum,
+    Bitfield,
+    BitfieldEntry,
+    Pointer,
+    Void,
+    Padding,
+    StaticString,
+    Dummy,
+    DFFlagArray,
+    DFArray
+};
 
-    class NodeRoot;
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeBase
-    {
-    public:
-        std::string      m_field_name {""};
-        DF_Type          m_df_type    {rdf::DF_Type::None};
-        RDF_Type         m_rdf_type   {rdf::RDF_Type::None};
-        NodeBase*        m_parent     {nullptr};
-        std::string      m_comment    {""};
-        std::string      m_refers_to  {""};
-        std::string      m_defined_in {""};
-        uint64_t         m_address;
-        NodeType         m_node_type;
-        //QList<NodeBase*> m_path;
-
-        virtual ~NodeBase() {}
-        virtual NodeBase* clone() = 0;
-        virtual std::string node_path_name() = 0;
-        virtual bool is_root_node() const
-        {
-            return false;
-        }
-
-        NodeRoot* get_root_node();
-
-
-        std::string path();
-
-    protected:
-        void init(NodeBase* p_dest)
-        {
-            p_dest->m_field_name = this->m_field_name;
-            p_dest->m_df_type    = this->m_df_type;
-            p_dest->m_rdf_type   = this->m_rdf_type;
-            p_dest->m_parent     = nullptr;
-            p_dest->m_comment    = this->m_comment;
-            p_dest->m_defined_in = this->m_defined_in;
-            p_dest->m_node_type  = this->m_node_type;
-            p_dest->m_address    = this->m_address;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeDummy : public NodeBase
-    {
-        NodeDummy()
-        {
-            m_node_type = NodeType::Dummy;
-        }
-
-        NodeBase* clone() override
-        {
-            auto clone = new NodeDummy;
-            init(clone);
-            return clone;
-        }
-
-        std::string node_path_name()
-        {
-            return "";
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodePadding : public NodeBase
-    {
-        unsigned int m_size;
-
-        NodePadding()
-        {
-            m_node_type = NodeType::Padding;
-        }
-
-        NodeBase* clone() override
-        {
-            auto clone = new NodePadding;
-            clone->m_size = m_size;
-            init(clone);
-            return clone;
-        }
-
-        std::string node_path_name()
-        {
-            return "";
-        }
-    };
+class NodeRoot;
 
 //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeStaticString : public NodeBase
+//------------------------------------------------------------------------------------//
+//
+struct NodeBase
+{
+  public:
+    std::string m_field_name{""};
+    DF_Type     m_df_type{rdf::DF_Type::None};
+    RDF_Type    m_rdf_type{rdf::RDF_Type::None};
+    NodeBase*   m_parent{nullptr};
+    std::string m_comment{""};
+    std::string m_refers_to{""};
+    std::string m_defined_in{""};
+    uint64_t    m_address;
+    NodeType    m_node_type;
+    //QList<NodeBase*> m_path;
+
+    virtual ~NodeBase() {}
+    virtual NodeBase*   clone()          = 0;
+    virtual std::string node_path_name() = 0;
+    virtual bool        is_root_node() const
     {
-        unsigned int m_size;
+        return false;
+    }
 
-        NodeStaticString()
-        {
-            m_node_type = NodeType::StaticString;
-        }
+    NodeRoot* get_root_node();
 
-        NodeBase* clone() override
-        {
-            auto clone = new NodePadding;
-            clone->m_size = m_size;
-            init(clone);
-            return clone;
-        }
+    std::string path();
 
-        std::string node_path_name()
-        {
-            return "";
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct Node : public NodeBase
+  protected:
+    void init(NodeBase* p_dest)
     {
-        std::vector<NodeBase*> m_children;
+        p_dest->m_field_name = this->m_field_name;
+        p_dest->m_df_type    = this->m_df_type;
+        p_dest->m_rdf_type   = this->m_rdf_type;
+        p_dest->m_parent     = nullptr;
+        p_dest->m_comment    = this->m_comment;
+        p_dest->m_defined_in = this->m_defined_in;
+        p_dest->m_node_type  = this->m_node_type;
+        p_dest->m_address    = this->m_address;
+    }
+};
 
-        NodeBase* clone() override
-        {
-            auto clon = new Node;
-            init(clon);
-            return clon;
-        }
-
-        std::string node_path_name()
-        {
-            return m_field_name;
-        }
-
-        ~Node()
-        {
-            for(std::size_t i = 0; i < m_children.size(); i++)
-            {
-                if (m_children[i])
-                    if (m_children[i]->m_node_type != NodeType::Dummy)
-                        delete m_children[i];
-                m_children[i] = nullptr;
-            }
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    template<typename T>
-    struct NodeSimple : public Node
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeDummy : public NodeBase
+{
+    NodeDummy()
     {
-        NodeBase* clone() override
-        {
-            auto clon = new NodeSimple<T>;
-            init(clon);
-            return clon;
-        }
+        m_node_type = NodeType::Dummy;
+    }
 
-        std::string node_path_name()
-        {
-            return m_field_name;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeVoid : public NodeBase
+    NodeBase* clone() override
     {
-        NodeVoid() : NodeBase()
-        {
-            m_df_type   = DF_Type::Void;
-            m_rdf_type  = RDF_Type::Void;
-            m_node_type = NodeType::Void;
-        }
+        auto clone = new NodeDummy;
+        init(clone);
+        return clone;
+    }
 
-        NodeBase* clone() override
-        {
-            auto clon = new NodeVoid;
-            return clon;
-        }
-
-        std::string node_path_name()
-        {
-            return m_field_name;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeRoot : public Node
+    std::string node_path_name()
     {
-        std::string m_path;
+        return "";
+    }
+};
 
-        NodeRoot()
-        {
-            m_node_type = NodeType::Root;
-        }
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodePadding : public NodeBase
+{
+    unsigned int m_size;
 
-        bool is_root_node() const override
-        {
-            return true;
-        }
-
-        NodeBase* clone() override
-        {
-            auto clon = new NodeRoot;
-            init(clon);
-            clon->m_path = m_path;
-            return clon;
-        }
-
-        std::string node_path_name()
-        {
-            return m_field_name;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeCompound : public Node
+    NodePadding()
     {
-        NodeCompound()
-        {
-            m_node_type = NodeType::Compound;
-        }
+        m_node_type = NodeType::Padding;
+    }
 
-        NodeBase* clone() override
-        {
-            auto clon = new NodeCompound;
-            init(clon);
-            return clon;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeUnion : public Node
+    NodeBase* clone() override
     {
-        NodeUnion()
-        {
-            m_node_type = NodeType::Union;
-        }
+        auto clone    = new NodePadding;
+        clone->m_size = m_size;
+        init(clone);
+        return clone;
+    }
 
-        NodeBase* clone() override
-        {
-            auto clon = new NodeUnion;
-            init(clon);
-            return clon;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeAnonymous : public Node
+    std::string node_path_name()
     {
-        NodeBase* clone() override
-        {
-            auto clon = new NodeAnonymous;
-            init(clon);
-            return clon;
-        }
+        return "";
+    }
+};
 
-        std::string node_path_name()
-        {
-            return "";
-        }
-    };
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeStaticString : public NodeBase
+{
+    unsigned int m_size;
 
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeEnum : public Node
+    NodeStaticString()
     {
-        DF_Type     m_base_type{DF_Type::int32_t};
-        std::string m_enum_type{""};
-        int         m_first_value{999999};
-        int         m_last_value{0};
+        m_node_type = NodeType::StaticString;
+    }
 
-        NodeEnum()
-        {
-            m_node_type = NodeType::Enum;
-        }
-
-        NodeBase* clone() override
-        {
-            auto clon = new NodeEnum;
-            init(clon);
-            clon->m_enum_type   = m_enum_type;
-            clon->m_base_type   = m_base_type;
-            clon->m_first_value = m_first_value;
-            clon->m_last_value  = m_last_value            ;
-            return clon;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeBitfieldEntry : public NodeSimple<bool>
+    NodeBase* clone() override
     {
-        int m_index;
-        bool m_value;
+        auto clone    = new NodePadding;
+        clone->m_size = m_size;
+        init(clone);
+        return clone;
+    }
 
-        NodeBitfieldEntry()
-        {
-            m_node_type = NodeType::BitfieldEntry;
-        }
-
-        NodeBase* clone() override
-        {
-            auto clon = new NodeBitfieldEntry;
-            init(clon);
-            clon->m_index = m_index;
-            clon->m_value = m_value;
-            return clon;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeBitfield : public Node
+    std::string node_path_name()
     {
-        DF_Type m_index_enum{DF_Type::None};
-        NodeBitfield()
-        {
-            m_node_type = NodeType::Bitfield;
-        }
+        return "";
+    }
+};
 
-        NodeBase* clone() override
-        {
-            auto clon = new NodeBitfield;
-            init(clon);
-            clon->m_index_enum = m_index_enum;
-            return clon;
-        }
-    };
+//
+//------------------------------------------------------------------------------------//
+//
+struct Node : public NodeBase
+{
+    std::vector<NodeBase*> m_children;
 
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeDFFlagArray : public Node
+    NodeBase* clone() override
     {
-        DF_Type     m_index_enum{DF_Type::None};
-        std::size_t m_size;
+        auto clon = new Node;
+        init(clon);
+        return clon;
+    }
 
-        NodeDFFlagArray()
-        {
-            m_node_type = NodeType::DFFlagArray;
-        }
-
-        NodeBase* clone() override
-        {
-            auto clon = new NodeDFFlagArray;
-            init(clon);
-            clon->m_index_enum = m_index_enum;
-            clon->m_size       = m_size;
-            return clon;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodePointer : public Node
+    std::string node_path_name()
     {
-        std::string m_addornements{""};
-        DF_Type m_enum_base{DF_Type::int32_t};
-        NodePointer()
-        {
-            m_node_type = NodeType::Pointer;
-        }
+        return m_field_name;
+    }
 
-
-        NodeBase* clone() override
-        {
-            auto clon = new NodePointer;
-            init(clon);
-            clon->m_addornements = m_addornements;
-            clon->m_enum_base    = m_enum_base;
-            return clon;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeVector : public Node
+    ~Node()
     {
-        std::string  m_addornements{""};
-        DF_Type m_enum_base{DF_Type::None};
-        DF_Type     m_index_enum{DF_Type::None};
-
-        NodeVector()
+        for (std::size_t i = 0; i < m_children.size(); i++)
         {
-            m_node_type = NodeType::Vector;
-            m_enum_base = DF_Type::None;
+            if (m_children[i])
+                if (m_children[i]->m_node_type != NodeType::Dummy)
+                    delete m_children[i];
+            m_children[i] = nullptr;
         }
+    }
+};
 
-        NodeBase* clone() override
-        {
-            auto clon = new NodeVector;
-            init(clon);
-            clon->m_addornements = m_addornements;
-            clon->m_enum_base = m_enum_base;
-            return clon;
-        }
-    };
-
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeArray : public Node
+//
+//------------------------------------------------------------------------------------//
+//
+template<typename T>
+struct NodeSimple : public Node
+{
+    NodeBase* clone() override
     {
-    public:
-        std::string m_addornements{""};
-        std::size_t m_array_size{0};
-        DF_Type     m_enum_base{DF_Type::None};
-        DF_Type     m_index_enum{DF_Type::None};
+        auto clon = new NodeSimple<T>;
+        init(clon);
+        return clon;
+    }
 
-        NodeArray()
-        {
-            m_node_type = NodeType::Array;
-        }
-
-
-        NodeBase* clone() override
-        {
-            auto clon = new NodeArray;
-            init(clon);
-            clon->m_addornements = m_addornements;
-            clon->m_array_size   = m_array_size;
-            clon->m_enum_base    = m_enum_base;
-            clon->m_index_enum   = m_index_enum;
-            return clon;
-        }
-    };
-
-    //
-    //------------------------------------------------------------------------------------//
-    //
-    struct NodeDFArray : public Node
+    std::string node_path_name()
     {
-    public:
-        std::string m_addornements{""};
-        std::size_t m_array_size{0};
+        return m_field_name;
+    }
+};
 
-        NodeDFArray()
-        {
-            m_node_type = NodeType::DFArray;
-        }
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeVoid : public NodeBase
+{
+    NodeVoid()
+        : NodeBase()
+    {
+        m_df_type   = DF_Type::Void;
+        m_rdf_type  = RDF_Type::Void;
+        m_node_type = NodeType::Void;
+    }
 
-        NodeBase* clone() override
-        {
-            auto clon = new NodeDFArray;
-            init(clon);
-            clon->m_addornements = m_addornements;
-            clon->m_array_size   = m_array_size;
-            return clon;
-        }
-    };
+    NodeBase* clone() override
+    {
+        auto clon = new NodeVoid;
+        return clon;
+    }
 
-    NodeDummy*  dummy();
-}
+    std::string node_path_name()
+    {
+        return m_field_name;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeRoot : public Node
+{
+    std::string m_path;
+
+    NodeRoot()
+    {
+        m_node_type = NodeType::Root;
+    }
+
+    bool is_root_node() const override
+    {
+        return true;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeRoot;
+        init(clon);
+        clon->m_path = m_path;
+        return clon;
+    }
+
+    std::string node_path_name()
+    {
+        return m_field_name;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeCompound : public Node
+{
+    NodeCompound()
+    {
+        m_node_type = NodeType::Compound;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeCompound;
+        init(clon);
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeUnion : public Node
+{
+    NodeUnion()
+    {
+        m_node_type = NodeType::Union;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeUnion;
+        init(clon);
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeAnonymous : public Node
+{
+    NodeBase* clone() override
+    {
+        auto clon = new NodeAnonymous;
+        init(clon);
+        return clon;
+    }
+
+    std::string node_path_name()
+    {
+        return "";
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeEnum : public Node
+{
+    DF_Type     m_base_type{DF_Type::int32_t};
+    std::string m_enum_type{""};
+    int         m_first_value{999999};
+    int         m_last_value{0};
+
+    NodeEnum()
+    {
+        m_node_type = NodeType::Enum;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeEnum;
+        init(clon);
+        clon->m_enum_type   = m_enum_type;
+        clon->m_base_type   = m_base_type;
+        clon->m_first_value = m_first_value;
+        clon->m_last_value  = m_last_value;
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeBitfieldEntry : public NodeSimple<bool>
+{
+    int  m_index;
+    bool m_value;
+
+    NodeBitfieldEntry()
+    {
+        m_node_type = NodeType::BitfieldEntry;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeBitfieldEntry;
+        init(clon);
+        clon->m_index = m_index;
+        clon->m_value = m_value;
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeBitfield : public Node
+{
+    DF_Type m_index_enum{DF_Type::None};
+    NodeBitfield()
+    {
+        m_node_type = NodeType::Bitfield;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeBitfield;
+        init(clon);
+        clon->m_index_enum = m_index_enum;
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeDFFlagArray : public Node
+{
+    DF_Type     m_index_enum{DF_Type::None};
+    std::size_t m_size;
+
+    NodeDFFlagArray()
+    {
+        m_node_type = NodeType::DFFlagArray;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeDFFlagArray;
+        init(clon);
+        clon->m_index_enum = m_index_enum;
+        clon->m_size       = m_size;
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodePointer : public Node
+{
+    std::string m_addornements{""};
+    DF_Type     m_enum_base{DF_Type::int32_t};
+    NodePointer()
+    {
+        m_node_type = NodeType::Pointer;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodePointer;
+        init(clon);
+        clon->m_addornements = m_addornements;
+        clon->m_enum_base    = m_enum_base;
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeVector : public Node
+{
+    std::string m_addornements{""};
+    DF_Type     m_enum_base{DF_Type::None};
+    DF_Type     m_index_enum{DF_Type::None};
+
+    NodeVector()
+    {
+        m_node_type = NodeType::Vector;
+        m_enum_base = DF_Type::None;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeVector;
+        init(clon);
+        clon->m_addornements = m_addornements;
+        clon->m_enum_base    = m_enum_base;
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeArray : public Node
+{
+  public:
+    std::string m_addornements{""};
+    std::size_t m_array_size{0};
+    DF_Type     m_enum_base{DF_Type::None};
+    DF_Type     m_index_enum{DF_Type::None};
+
+    NodeArray()
+    {
+        m_node_type = NodeType::Array;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeArray;
+        init(clon);
+        clon->m_addornements = m_addornements;
+        clon->m_array_size   = m_array_size;
+        clon->m_enum_base    = m_enum_base;
+        clon->m_index_enum   = m_index_enum;
+        return clon;
+    }
+};
+
+//
+//------------------------------------------------------------------------------------//
+//
+struct NodeDFArray : public Node
+{
+  public:
+    std::string m_addornements{""};
+    std::size_t m_array_size{0};
+
+    NodeDFArray()
+    {
+        m_node_type = NodeType::DFArray;
+    }
+
+    NodeBase* clone() override
+    {
+        auto clon = new NodeDFArray;
+        init(clon);
+        clon->m_addornements = m_addornements;
+        clon->m_array_size   = m_array_size;
+        return clon;
+    }
+};
+
+NodeDummy* dummy();
+} // namespace rdf
 #endif // NODE_H

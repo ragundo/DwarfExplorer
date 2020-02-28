@@ -1,34 +1,34 @@
-#include <cstdint>
-#include <DataDefs.h>
-#include <Core.h>
-#include <Console.h>
-#include <Export.h>
-#include <PluginManager.h>
-#include <RemoteServer.h>
-#include <RemoteClient.h>
-#include <VersionInfo.h>
-#include "df_all.h"
-#include "node.h"
-#include "offsets_cache.h"
-#include "DF_Types.h"
-
-
-using namespace rdf;
-
-
-extern DF_Type get_df_subtype(DF_Type, uint64_t);
-extern DF_Type get_real_subtype(uint64_t p_address, DF_Type p_df_type);
-extern DF_Type enum_base_type(DF_Type p_enum);
-extern DF_Type enum_size(DF_Type p_enum);
-
-
-extern rdf::NodeDummy* dummy();
-
-
-void fill_globals(Node* p_node_parent)
-{
-	std::string field_name;
-
+#include <cstdint>
+#include <DataDefs.h>
+#include <Core.h>
+#include <Console.h>
+#include <Export.h>
+#include <PluginManager.h>
+#include <RemoteServer.h>
+#include <RemoteClient.h>
+#include <VersionInfo.h>
+#include "df_all.h"
+#include "node.h"
+#include "offsets_cache.h"
+#include "DF_Types.h"
+
+
+using namespace rdf;
+
+
+extern DF_Type get_df_subtype(DF_Type, uint64_t);
+extern DF_Type get_real_subtype(uint64_t p_address, DF_Type p_df_type);
+extern DF_Type enum_base_type(DF_Type p_enum);
+extern DF_Type enum_size(DF_Type p_enum);
+
+
+extern rdf::NodeDummy* dummy();
+
+
+void fill_globals(Node* p_node_parent)
+{
+	std::string field_name;
+
 	field_name = "activity_next_id";
 	auto n_activity_next_id          = new NodeSimple<int32_t>;
 	n_activity_next_id->m_field_name = field_name;
@@ -1527,5 +1527,5 @@ void fill_globals(Node* p_node_parent)
 	n_written_content_next_id->m_parent     = p_node_parent;
 	p_node_parent->m_children.push_back(n_written_content_next_id);
 
-}
+}
 

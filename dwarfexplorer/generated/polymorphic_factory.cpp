@@ -253,6 +253,8 @@ DF_Type building_subtype(uint64_t p_address)
             return DF_Type::building_nestst;
         if (l_full_name == "building_nest_boxst")
             return DF_Type::building_nest_boxst;
+        if (l_full_name == "building_offering_placest")
+            return DF_Type::building_offering_placest;
         if (l_full_name == "building_roadst")
             return DF_Type::building_roadst;
         if (l_full_name == "building_road_dirtst")
@@ -596,6 +598,48 @@ DF_Type history_event_subtype(uint64_t p_address)
             return DF_Type::history_event_tactical_situationst;
         if (l_full_name == "history_event_squad_vs_squadst")
             return DF_Type::history_event_squad_vs_squadst;
+        if (l_full_name == "history_event_tradest")
+            return DF_Type::history_event_tradest;
+        if (l_full_name == "history_event_add_entity_site_profile_flagst")
+            return DF_Type::history_event_add_entity_site_profile_flagst;
+        if (l_full_name == "history_event_gamblest")
+            return DF_Type::history_event_gamblest;
+        if (l_full_name == "history_event_add_hf_entity_honorst")
+            return DF_Type::history_event_add_hf_entity_honorst;
+        if (l_full_name == "history_event_entity_dissolvedst")
+            return DF_Type::history_event_entity_dissolvedst;
+        if (l_full_name == "history_event_entity_equipment_purchasest")
+            return DF_Type::history_event_entity_equipment_purchasest;
+        if (l_full_name == "history_event_modified_buildingst")
+            return DF_Type::history_event_modified_buildingst;
+        if (l_full_name == "history_event_building_profile_acquiredst")
+            return DF_Type::history_event_building_profile_acquiredst;
+        if (l_full_name == "history_event_hf_preachst")
+            return DF_Type::history_event_hf_preachst;
+        if (l_full_name == "history_event_entity_persecutedst")
+            return DF_Type::history_event_entity_persecutedst;
+        if (l_full_name == "history_event_entity_breach_feature_layerst")
+            return DF_Type::history_event_entity_breach_feature_layerst;
+        if (l_full_name == "history_event_entity_alliance_formedst")
+            return DF_Type::history_event_entity_alliance_formedst;
+        if (l_full_name == "history_event_hf_ransomedst")
+            return DF_Type::history_event_hf_ransomedst;
+        if (l_full_name == "history_event_hf_enslavedst")
+            return DF_Type::history_event_hf_enslavedst;
+        if (l_full_name == "history_event_sabotagest")
+            return DF_Type::history_event_sabotagest;
+        if (l_full_name == "history_event_entity_overthrownst")
+            return DF_Type::history_event_entity_overthrownst;
+        if (l_full_name == "history_event_hfs_formed_intrigue_relationshipst")
+            return DF_Type::history_event_hfs_formed_intrigue_relationshipst;
+        if (l_full_name == "history_event_failed_intrigue_corruptionst")
+            return DF_Type::history_event_failed_intrigue_corruptionst;
+        if (l_full_name == "history_event_hf_convictedst")
+            return DF_Type::history_event_hf_convictedst;
+        if (l_full_name == "history_event_failed_frame_attemptst")
+            return DF_Type::history_event_failed_frame_attemptst;
+        if (l_full_name == "history_event_hf_interrogatedst")
+            return DF_Type::history_event_hf_interrogatedst;
     }
     return DF_Type::None;
 }
@@ -641,6 +685,10 @@ DF_Type history_event_collection_subtype(uint64_t p_address)
             return DF_Type::history_event_collection_purgest;
         if (l_full_name == "history_event_collection_raidst")
             return DF_Type::history_event_collection_raidst;
+        if (l_full_name == "history_event_collection_persecutionst")
+            return DF_Type::history_event_collection_persecutionst;
+        if (l_full_name == "history_event_collection_entity_overthrownst")
+            return DF_Type::history_event_collection_entity_overthrownst;
     }
     return DF_Type::None;
 }
@@ -668,6 +716,16 @@ DF_Type interaction_effect_subtype(uint64_t p_address)
             return DF_Type::interaction_effect_material_emissionst;
         if (l_full_name == "interaction_effect_hidest")
             return DF_Type::interaction_effect_hidest;
+        if (l_full_name == "interaction_effect_change_item_qualityst")
+            return DF_Type::interaction_effect_change_item_qualityst;
+        if (l_full_name == "interaction_effect_change_weatherst")
+            return DF_Type::interaction_effect_change_weatherst;
+        if (l_full_name == "interaction_effect_create_itemst")
+            return DF_Type::interaction_effect_create_itemst;
+        if (l_full_name == "interaction_effect_propel_unitst")
+            return DF_Type::interaction_effect_propel_unitst;
+        if (l_full_name == "interaction_effect_summon_unitst")
+            return DF_Type::interaction_effect_summon_unitst;
     }
     return DF_Type::None;
 }
@@ -697,6 +755,8 @@ DF_Type interaction_source_subtype(uint64_t p_address)
             return DF_Type::interaction_source_creature_actionst;
         if (l_full_name == "interaction_source_underground_specialst")
             return DF_Type::interaction_source_underground_specialst;
+        if (l_full_name == "interaction_source_experimentst")
+            return DF_Type::interaction_source_experimentst;
     }
     return DF_Type::None;
 }
@@ -1537,6 +1597,8 @@ DF_Type general_ref_subtype(uint64_t p_address)
             return DF_Type::general_ref_unit_climberst;
         if (l_full_name == "general_ref_unit_geldeest")
             return DF_Type::general_ref_unit_geldeest;
+        if (l_full_name == "general_ref_unit_interrogateest")
+            return DF_Type::general_ref_unit_interrogateest;
         if (l_full_name == "general_ref_building")
             return DF_Type::general_ref_building;
         if (l_full_name == "general_ref_building_civzone_assignedst")
@@ -1669,6 +1731,8 @@ DF_Type histfig_site_link_subtype(uint64_t p_address)
     if (id != nullptr)
     {
         auto l_full_name = id->getFullName();
+        if (l_full_name == "histfig_site_link_occupationst")
+            return DF_Type::histfig_site_link_occupationst;
         if (l_full_name == "histfig_site_link_seat_of_powerst")
             return DF_Type::histfig_site_link_seat_of_powerst;
         if (l_full_name == "histfig_site_link_hangoutst")
@@ -1683,8 +1747,10 @@ DF_Type histfig_site_link_subtype(uint64_t p_address)
             return DF_Type::histfig_site_link_home_site_realization_sulst;
         if (l_full_name == "histfig_site_link_home_site_saved_civzonest")
             return DF_Type::histfig_site_link_home_site_saved_civzonest;
-        if (l_full_name == "histfig_site_link_occupationst")
-            return DF_Type::histfig_site_link_occupationst;
+        if (l_full_name == "histfig_site_link_prison_abstract_buildingst")
+            return DF_Type::histfig_site_link_prison_abstract_buildingst;
+        if (l_full_name == "histfig_site_link_prison_site_building_profilest")
+            return DF_Type::histfig_site_link_prison_site_building_profilest;
     }
     return DF_Type::None;
 }
@@ -1726,6 +1792,10 @@ DF_Type histfig_hf_link_subtype(uint64_t p_address)
             return DF_Type::histfig_hf_link_former_masterst;
         if (l_full_name == "histfig_hf_link_pet_ownerst")
             return DF_Type::histfig_hf_link_pet_ownerst;
+        if (l_full_name == "histfig_hf_link_former_spousest")
+            return DF_Type::histfig_hf_link_former_spousest;
+        if (l_full_name == "histfig_hf_link_deceased_spousest")
+            return DF_Type::histfig_hf_link_deceased_spousest;
     }
     return DF_Type::None;
 }
@@ -1912,6 +1982,34 @@ DF_Type creature_interaction_effect_subtype(uint64_t p_address)
             return DF_Type::creature_interaction_effect_change_personalityst;
         if (l_full_name == "creature_interaction_effect_erratic_behaviorst")
             return DF_Type::creature_interaction_effect_erratic_behaviorst;
+        if (l_full_name == "creature_interaction_effect_close_open_woundsst")
+            return DF_Type::creature_interaction_effect_close_open_woundsst;
+        if (l_full_name == "creature_interaction_effect_cure_infectionsst")
+            return DF_Type::creature_interaction_effect_cure_infectionsst;
+        if (l_full_name == "creature_interaction_effect_heal_nervesst")
+            return DF_Type::creature_interaction_effect_heal_nervesst;
+        if (l_full_name == "creature_interaction_effect_heal_tissuesst")
+            return DF_Type::creature_interaction_effect_heal_tissuesst;
+        if (l_full_name == "creature_interaction_effect_reduce_dizzinessst")
+            return DF_Type::creature_interaction_effect_reduce_dizzinessst;
+        if (l_full_name == "creature_interaction_effect_reduce_feverst")
+            return DF_Type::creature_interaction_effect_reduce_feverst;
+        if (l_full_name == "creature_interaction_effect_reduce_nauseast")
+            return DF_Type::creature_interaction_effect_reduce_nauseast;
+        if (l_full_name == "creature_interaction_effect_reduce_painst")
+            return DF_Type::creature_interaction_effect_reduce_painst;
+        if (l_full_name == "creature_interaction_effect_reduce_paralysisst")
+            return DF_Type::creature_interaction_effect_reduce_paralysisst;
+        if (l_full_name == "creature_interaction_effect_reduce_swellingst")
+            return DF_Type::creature_interaction_effect_reduce_swellingst;
+        if (l_full_name == "creature_interaction_effect_regrow_partsst")
+            return DF_Type::creature_interaction_effect_regrow_partsst;
+        if (l_full_name == "creature_interaction_effect_special_attack_interactionst")
+            return DF_Type::creature_interaction_effect_special_attack_interactionst;
+        if (l_full_name == "creature_interaction_effect_stop_bleedingst")
+            return DF_Type::creature_interaction_effect_stop_bleedingst;
+        if (l_full_name == "creature_interaction_effect_cure_infectionst")
+            return DF_Type::creature_interaction_effect_cure_infectionst;
     }
     return DF_Type::None;
 }
@@ -2035,6 +2133,8 @@ DF_Type viewscreen_subtype(uint64_t p_address)
             return DF_Type::viewscreen_choose_start_sitest;
         if (l_full_name == "viewscreen_civlistst")
             return DF_Type::viewscreen_civlistst;
+        if (l_full_name == "viewscreen_counterintelligencest")
+            return DF_Type::viewscreen_counterintelligencest;
         if (l_full_name == "viewscreen_createquotast")
             return DF_Type::viewscreen_createquotast;
         if (l_full_name == "viewscreen_customize_unitst")
@@ -2210,6 +2310,12 @@ DF_Type abstract_building_subtype(uint64_t p_address)
             return DF_Type::abstract_building_inn_tavernst;
         if (l_full_name == "abstract_building_libraryst")
             return DF_Type::abstract_building_libraryst;
+        if (l_full_name == "abstract_building_counting_housest")
+            return DF_Type::abstract_building_counting_housest;
+        if (l_full_name == "abstract_building_guildhallst")
+            return DF_Type::abstract_building_guildhallst;
+        if (l_full_name == "abstract_building_towerst")
+            return DF_Type::abstract_building_towerst;
     }
     return DF_Type::None;
 }
