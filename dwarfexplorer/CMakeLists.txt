@@ -41,6 +41,7 @@ set(DWARFEXPLORER_SOURCES
     generated/polymorphic_factory.cpp
     generated/fill_globals.cpp
     generated/enum_sizes.cpp
+    #generated/find_fields_names.cpp
     QHexView/document/commands/hexcommand.cpp
     QHexView/document/commands/insertcommand.cpp
     QHexView/document/commands/removecommand.cpp
