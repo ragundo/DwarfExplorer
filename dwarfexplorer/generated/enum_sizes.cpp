@@ -37,6 +37,7 @@ DF_Type enum_base_type(DF_Type p_enum)
 		case DF_Type::musical_form_purpose: return DF_Type::int32_t;
 		case DF_Type::musical_form_style: return DF_Type::int32_t;
 		case DF_Type::musical_form_pitch_style: return DF_Type::int32_t;
+		case DF_Type::unk_scale_enum_type: return DF_Type::int32_t;
 		case DF_Type::occupation_type: return DF_Type::int32_t;
 		case DF_Type::buildings_other_id: return DF_Type::int32_t;
 		case DF_Type::building_type: return DF_Type::int32_t;
@@ -93,6 +94,7 @@ DF_Type enum_base_type(DF_Type p_enum)
 		case DF_Type::game_type: return DF_Type::int32_t;
 		case DF_Type::lever_target_type: return DF_Type::int8_t;
 		case DF_Type::zoom_commands: return DF_Type::int32_t;
+		case DF_Type::justification: return DF_Type::uint8_t;
 		case DF_Type::reputation_type: return DF_Type::int32_t;
 		case DF_Type::whereabouts_type: return DF_Type::int16_t;
 		case DF_Type::death_condition_type: return DF_Type::int8_t;
@@ -101,11 +103,14 @@ DF_Type enum_base_type(DF_Type p_enum)
 		case DF_Type::histfig_flags: return DF_Type::int32_t;
 		case DF_Type::histfig_relationship_type: return DF_Type::int16_t;
 		case DF_Type::vague_relationship_type: return DF_Type::int16_t;
+		case DF_Type::identity_type: return DF_Type::int32_t;
 		case DF_Type::mental_picture_property_type: return DF_Type::int32_t;
 		case DF_Type::mental_picture_element_type: return DF_Type::int32_t;
 		case DF_Type::history_event_type: return DF_Type::int32_t;
 		case DF_Type::history_event_reason: return DF_Type::int32_t;
+		case DF_Type::architectural_element: return DF_Type::int16_t;
 		case DF_Type::history_event_flags: return DF_Type::int32_t;
+		case DF_Type::history_event_war_attacked_sitest__T_unk_1: return DF_Type::int8_t;
 		case DF_Type::death_type: return DF_Type::int16_t;
 		case DF_Type::entity_action_type: return DF_Type::int32_t;
 		case DF_Type::masterpiece_loss_type: return DF_Type::int16_t;
@@ -133,6 +138,7 @@ DF_Type enum_base_type(DF_Type p_enum)
 		case DF_Type::interaction_target_location_type: return DF_Type::int32_t;
 		case DF_Type::breath_attack_type: return DF_Type::int16_t;
 		case DF_Type::item_type: return DF_Type::int16_t;
+		case DF_Type::itemdef_flags: return DF_Type::int32_t;
 		case DF_Type::ammo_flags: return DF_Type::int32_t;
 		case DF_Type::armor_general_flags: return DF_Type::int32_t;
 		case DF_Type::armor_flags: return DF_Type::int32_t;
@@ -325,6 +331,7 @@ DF_Type enum_base_type(DF_Type p_enum)
 		case DF_Type::ui_advmode__T_conversation__T_targets__T_type: return DF_Type::int32_t;
 		case DF_Type::ui_advmode__T_travel_right_map: return DF_Type::int8_t;
 		case DF_Type::ui_advmode__T_show_menu: return DF_Type::int8_t;
+		case DF_Type::history_event_collection_battlest__T_attacker_merc_type: return DF_Type::int8_t;
 		case DF_Type::army_controller__T_type: return DF_Type::int32_t;
 		case DF_Type::stop_depart_condition__T_direction: return DF_Type::int32_t;
 		case DF_Type::stop_depart_condition__T_mode: return DF_Type::int32_t;
@@ -408,6 +415,7 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::musical_form_purpose: return std::pair<int,int>(0,3);
 		case DF_Type::musical_form_style: return std::pair<int,int>(-1,72);
 		case DF_Type::musical_form_pitch_style: return std::pair<int,int>(-1,4);
+		case DF_Type::unk_scale_enum_type: return std::pair<int,int>(0,2);
 		case DF_Type::occupation_type: return std::pair<int,int>(0,6);
 		case DF_Type::buildings_other_id: return std::pair<int,int>(-1,90);
 		case DF_Type::building_type: return std::pair<int,int>(-1,54);
@@ -464,19 +472,23 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::game_type: return std::pair<int,int>(0,11);
 		case DF_Type::lever_target_type: return std::pair<int,int>(-1,119);
 		case DF_Type::zoom_commands: return std::pair<int,int>(0,4);
+		case DF_Type::justification: return std::pair<int,int>(0,4);
 		case DF_Type::reputation_type: return std::pair<int,int>(0,31);
-		case DF_Type::whereabouts_type: return std::pair<int,int>(0,5);
+		case DF_Type::whereabouts_type: return std::pair<int,int>(-1,5);
 		case DF_Type::death_condition_type: return std::pair<int,int>(0,6);
 		case DF_Type::plot_role_type: return std::pair<int,int>(-1,21);
 		case DF_Type::plot_strategy_type: return std::pair<int,int>(-1,8);
 		case DF_Type::histfig_flags: return std::pair<int,int>(0,15);
 		case DF_Type::histfig_relationship_type: return std::pair<int,int>(-1,64);
 		case DF_Type::vague_relationship_type: return std::pair<int,int>(0,15);
+		case DF_Type::identity_type: return std::pair<int,int>(0,5);
 		case DF_Type::mental_picture_property_type: return std::pair<int,int>(0,8);
 		case DF_Type::mental_picture_element_type: return std::pair<int,int>(0,2);
 		case DF_Type::history_event_type: return std::pair<int,int>(0,133);
 		case DF_Type::history_event_reason: return std::pair<int,int>(-1,93);
+		case DF_Type::architectural_element: return std::pair<int,int>(-1,11);
 		case DF_Type::history_event_flags: return std::pair<int,int>(0,0);
+		case DF_Type::history_event_war_attacked_sitest__T_unk_1: return std::pair<int,int>(0,2);
 		case DF_Type::death_type: return std::pair<int,int>(-1,54);
 		case DF_Type::entity_action_type: return std::pair<int,int>(0,1);
 		case DF_Type::masterpiece_loss_type: return std::pair<int,int>(0,5);
@@ -504,6 +516,7 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::interaction_target_location_type: return std::pair<int,int>(-1,6);
 		case DF_Type::breath_attack_type: return std::pair<int,int>(0,21);
 		case DF_Type::item_type: return std::pair<int,int>(-1,90);
+		case DF_Type::itemdef_flags: return std::pair<int,int>(0,0);
 		case DF_Type::ammo_flags: return std::pair<int,int>(0,0);
 		case DF_Type::armor_general_flags: return std::pair<int,int>(0,10);
 		case DF_Type::armor_flags: return std::pair<int,int>(0,0);
@@ -540,7 +553,7 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::interface_key: return std::pair<int,int>(0,1614);
 		case DF_Type::dfhack_knowledge_scholar_flag: return std::pair<int,int>(0,445);
 		case DF_Type::part_of_speech: return std::pair<int,int>(0,8);
-		case DF_Type::sphere_type: return std::pair<int,int>(0,129);
+		case DF_Type::sphere_type: return std::pair<int,int>(-1,129);
 		case DF_Type::language_name_category: return std::pair<int,int>(0,66);
 		case DF_Type::nemesis_flags: return std::pair<int,int>(0,2);
 		case DF_Type::machine_type: return std::pair<int,int>(0,0);
@@ -622,7 +635,7 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::kitchen_exc_type: return std::pair<int,int>(1,2);
 		case DF_Type::timed_event_type: return std::pair<int,int>(0,8);
 		case DF_Type::emotion_type: return std::pair<int,int>(-1,169);
-		case DF_Type::unit_thought_type: return std::pair<int,int>(-1,251);
+		case DF_Type::unit_thought_type: return std::pair<int,int>(-1,265);
 		case DF_Type::value_type: return std::pair<int,int>(-1,32);
 		case DF_Type::goal_type: return std::pair<int,int>(0,14);
 		case DF_Type::personality_facet_type: return std::pair<int,int>(-1,49);
@@ -663,7 +676,7 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::fortress_type: return std::pair<int,int>(-1,3);
 		case DF_Type::monument_type: return std::pair<int,int>(-1,1);
 		case DF_Type::lair_type: return std::pair<int,int>(-1,4);
-		case DF_Type::site_realization_building_type: return std::pair<int,int>(0,22);
+		case DF_Type::site_realization_building_type: return std::pair<int,int>(0,31);
 		case DF_Type::site_shop_type: return std::pair<int,int>(0,25);
 		case DF_Type::tree_house_type: return std::pair<int,int>(0,5);
 		case DF_Type::hillock_house_type: return std::pair<int,int>(0,3);
@@ -696,6 +709,7 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::ui_advmode__T_conversation__T_targets__T_type: return std::pair<int,int>(0,4);
 		case DF_Type::ui_advmode__T_travel_right_map: return std::pair<int,int>(0,2);
 		case DF_Type::ui_advmode__T_show_menu: return std::pair<int,int>(-1,3);
+		case DF_Type::history_event_collection_battlest__T_attacker_merc_type: return std::pair<int,int>(0,2);
 		case DF_Type::army_controller__T_type: return std::pair<int,int>(0,24);
 		case DF_Type::stop_depart_condition__T_direction: return std::pair<int,int>(0,3);
 		case DF_Type::stop_depart_condition__T_mode: return std::pair<int,int>(0,2);
@@ -722,7 +736,7 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::viewscreen_civlistst__T_rumors__T_type: return std::pair<int,int>(0,28);
 		case DF_Type::viewscreen_civlistst__T_page: return std::pair<int,int>(0,8);
 		case DF_Type::viewscreen_game_cleanerst__T_state: return std::pair<int,int>(0,2);
-		case DF_Type::viewscreen_justicest__T_cur_column: return std::pair<int,int>(0,2);
+		case DF_Type::viewscreen_justicest__T_cur_column: return std::pair<int,int>(0,3);
 		case DF_Type::assign_trade_status__T_status: return std::pair<int,int>(-2,3);
 		case DF_Type::viewscreen_layer_choose_language_namest__T_current_component: return std::pair<int,int>(0,6);
 		case DF_Type::viewscreen_layer_militaryst__T_equip__T_mode: return std::pair<int,int>(0,2);
@@ -750,7 +764,7 @@ std::pair<int,int> enum_min_max(DF_Type p_enum)
 		case DF_Type::abstract_building_dungeonst__T_dungeon_type: return std::pair<int,int>(0,2);
 		case DF_Type::cultural_identity__T_group_log__T_join_type: return std::pair<int,int>(0,2);
 		case DF_Type::world_site_realization__T_areas__T_type: return std::pair<int,int>(0,8);
-		case DF_Type::incident__T_type: return std::pair<int,int>(0,6);
+		case DF_Type::incident__T_type: return std::pair<int,int>(0,10);
 		case DF_Type::crime__T_mode: return std::pair<int,int>(0,18);
 		case DF_Type::world__T_arena_spawn__T_tame: return std::pair<int,int>(0,1);
 		default: break;

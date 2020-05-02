@@ -91,7 +91,7 @@ std::array<std::array<std::string, 3>, 32> poetic_form_feature_values = {{
 	{"1", "EndRhymesDontMatch", ""},
 	{"2", "Alliteration", ""},
 	{"3", "Onomatopoeia", ""},
-	{"4", "antanaclasis", ""},
+	{"4", "Antanaclasis", ""},
 	{"5", "DifferentReadings", ""},
 	{"6", "ReadBackwards", ""},
 	{"7", "ReadOrthogonally", ""},
@@ -2608,9 +2608,9 @@ std::array<std::array<std::string, 3>, 32> uniform_flags_values = {{
 
 std::array<std::array<std::string, 3>, 32> army_controller_sub4__T_unk_2_values = {{
 	{"0", "not_sleeping", "set to 1 to make army wake up"},
-	{"1", "", ""},
-	{"2", "", ""},
-	{"3", "", ""},
+	{"1", "unk_2", "sen set on necro attack controller"},
+	{"2", "unk_3", ""},
+	{"3", "unk_4", "sen set on necro attack controller"},
 	{"4", "", ""},
 	{"5", "", ""},
 	{"6", "", ""},
@@ -2781,76 +2781,6 @@ std::array<std::array<std::string, 3>, 32> reaction_reagent_flags_values = {{
 	{"31", "", ""}
 }};
 
-std::array<std::array<std::string, 3>, 32> general_ref_entity_popst__T_flags_values = {{
-	{"0", "animated_corpse", ""},
-	{"1", "ghostly", ""},
-	{"2", "", ""},
-	{"3", "", ""},
-	{"4", "", ""},
-	{"5", "", ""},
-	{"6", "", ""},
-	{"7", "", ""},
-	{"8", "", ""},
-	{"9", "", ""},
-	{"10", "", ""},
-	{"11", "", ""},
-	{"12", "", ""},
-	{"13", "", ""},
-	{"14", "", ""},
-	{"15", "", ""},
-	{"16", "", ""},
-	{"17", "", ""},
-	{"18", "", ""},
-	{"19", "", ""},
-	{"20", "", ""},
-	{"21", "", ""},
-	{"22", "", ""},
-	{"23", "", ""},
-	{"24", "", ""},
-	{"25", "", ""},
-	{"26", "", ""},
-	{"27", "", ""},
-	{"28", "", ""},
-	{"29", "", ""},
-	{"30", "", ""},
-	{"31", "", ""}
-}};
-
-std::array<std::array<std::string, 3>, 32> general_ref_creaturest__T_flags_values = {{
-	{"0", "animated_corpse", ""},
-	{"1", "ghostly", ""},
-	{"2", "", ""},
-	{"3", "", ""},
-	{"4", "", ""},
-	{"5", "", ""},
-	{"6", "", ""},
-	{"7", "", ""},
-	{"8", "", ""},
-	{"9", "", ""},
-	{"10", "", ""},
-	{"11", "", ""},
-	{"12", "", ""},
-	{"13", "", ""},
-	{"14", "", ""},
-	{"15", "", ""},
-	{"16", "", ""},
-	{"17", "", ""},
-	{"18", "", ""},
-	{"19", "", ""},
-	{"20", "", ""},
-	{"21", "", ""},
-	{"22", "", ""},
-	{"23", "", ""},
-	{"24", "", ""},
-	{"25", "", ""},
-	{"26", "", ""},
-	{"27", "", ""},
-	{"28", "", ""},
-	{"29", "", ""},
-	{"30", "", ""},
-	{"31", "", ""}
-}};
-
 std::array<std::array<std::string, 3>, 32> general_ref_unit_itemownerst__T_flags_values = {{
 	{"0", "litter", "apparetly set after 1000 ticks, then confiscated in 1000 more ticks"},
 	{"1", "", ""},
@@ -2936,6 +2866,41 @@ std::array<std::array<std::string, 3>, 32> entity_site_link_status_flags_values 
 	{"11", "unk_2048", ""},
 	{"12", "unk_4096", ""},
 	{"13", "unk_8192", ""},
+	{"14", "", ""},
+	{"15", "", ""},
+	{"16", "", ""},
+	{"17", "", ""},
+	{"18", "", ""},
+	{"19", "", ""},
+	{"20", "", ""},
+	{"21", "", ""},
+	{"22", "", ""},
+	{"23", "", ""},
+	{"24", "", ""},
+	{"25", "", ""},
+	{"26", "", ""},
+	{"27", "", ""},
+	{"28", "", ""},
+	{"29", "", ""},
+	{"30", "", ""},
+	{"31", "", ""}
+}};
+
+std::array<std::array<std::string, 3>, 32> undead_flags_values = {{
+	{"0", "zombie", ""},
+	{"1", "ghostly", ""},
+	{"2", "", ""},
+	{"3", "", ""},
+	{"4", "", ""},
+	{"5", "", ""},
+	{"6", "", ""},
+	{"7", "", ""},
+	{"8", "", ""},
+	{"9", "", ""},
+	{"10", "", ""},
+	{"11", "", ""},
+	{"12", "", ""},
+	{"13", "", ""},
 	{"14", "", ""},
 	{"15", "", ""},
 	{"16", "", ""},
@@ -4531,7 +4496,7 @@ std::array<std::array<std::string, 3>, 32> honors_type__T_required_skill_type_va
 	{"31", "", ""}
 }};
 
-std::array<std::array<std::string, 3>, 32> agreement__T_anon_3_values = {{
+std::array<std::array<std::string, 3>, 32> agreement__T_flags_values = {{
 	{"0", "petition_not_accepted", "this gets unset by accepting a petition"},
 	{"1", "convicted_accepted", "convicted for PositionCorruption/accepted for Location"},
 	{"2", "", ""},
@@ -6538,11 +6503,10 @@ std::array<std::array<std::string, 3>, 32>& get_bitfield_bits(DF_Type p_df_type)
 		case DF_Type::plant_tree_tile: return plant_tree_tile_values;
 		case DF_Type::projectile_flags: return projectile_flags_values;
 		case DF_Type::reaction_reagent_flags: return reaction_reagent_flags_values;
-		case DF_Type::general_ref_entity_popst__T_flags: return general_ref_entity_popst__T_flags_values;
-		case DF_Type::general_ref_creaturest__T_flags: return general_ref_creaturest__T_flags_values;
 		case DF_Type::general_ref_unit_itemownerst__T_flags: return general_ref_unit_itemownerst__T_flags_values;
 		case DF_Type::entity_site_link_flags: return entity_site_link_flags_values;
 		case DF_Type::entity_site_link_status_flags: return entity_site_link_status_flags_values;
+		case DF_Type::undead_flags: return undead_flags_values;
 		case DF_Type::stockpile_group_set: return stockpile_group_set_values;
 		case DF_Type::route_stockpile_link__T_mode: return route_stockpile_link__T_mode_values;
 		case DF_Type::creature_interaction_effect_flags: return creature_interaction_effect_flags_values;
@@ -6588,7 +6552,7 @@ std::array<std::array<std::string, 3>, 32>& get_bitfield_bits(DF_Type p_df_type)
 		case DF_Type::caravan_state__T_flags: return caravan_state__T_flags_values;
 		case DF_Type::honors_type__T_flags: return honors_type__T_flags_values;
 		case DF_Type::honors_type__T_required_skill_type: return honors_type__T_required_skill_type_values;
-		case DF_Type::agreement__T_anon_3: return agreement__T_anon_3_values;
+		case DF_Type::agreement__T_flags: return agreement__T_flags_values;
 		case DF_Type::history_event_artifact_createdst__T_flags2: return history_event_artifact_createdst__T_flags2_values;
 		case DF_Type::history_event_hist_figure_revivedst__T_flags2: return history_event_hist_figure_revivedst__T_flags2_values;
 		case DF_Type::history_event_tactical_situationst__T_tactics_flags: return history_event_tactical_situationst__T_tactics_flags_values;
