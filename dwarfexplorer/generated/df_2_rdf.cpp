@@ -143,7 +143,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::adventure_optionst: return RDF_Type::Class;
 		case DF_Type::adventurer_attribute_level: return RDF_Type::Enum;
 		case DF_Type::agreement: return RDF_Type::Struct;
-		case DF_Type::agreement__T_anon_3: return RDF_Type::Bitfield;
+		case DF_Type::agreement__T_flags: return RDF_Type::Bitfield;
 		case DF_Type::agreement_details: return RDF_Type::Struct;
 		case DF_Type::agreement_details__T_data: return RDF_Type::Union;
 		case DF_Type::agreement_details_data_citizenship: return RDF_Type::Struct;
@@ -157,11 +157,11 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::agreement_details_data_plot_frame_treason: return RDF_Type::Struct;
 		case DF_Type::agreement_details_data_plot_induce_war: return RDF_Type::Struct;
 		case DF_Type::agreement_details_data_plot_infiltration_coup: return RDF_Type::Struct;
+		case DF_Type::agreement_details_data_plot_sabotage: return RDF_Type::Struct;
 		case DF_Type::agreement_details_data_plot_steal_artifact: return RDF_Type::Struct;
 		case DF_Type::agreement_details_data_position_corruption: return RDF_Type::Struct;
 		case DF_Type::agreement_details_data_promise_position: return RDF_Type::Struct;
 		case DF_Type::agreement_details_data_residency: return RDF_Type::Struct;
-		case DF_Type::agreement_details_data_unk10: return RDF_Type::Struct;
 		case DF_Type::agreement_details_type: return RDF_Type::Enum;
 		case DF_Type::agreement_party: return RDF_Type::Struct;
 		case DF_Type::agreement_party__T_anon_1: return RDF_Type::Compound;
@@ -172,6 +172,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::announcements: return RDF_Type::Struct;
 		case DF_Type::appearance_modifier_growth_interval: return RDF_Type::Enum;
 		case DF_Type::appearance_modifier_type: return RDF_Type::Enum;
+		case DF_Type::architectural_element: return RDF_Type::Enum;
 		case DF_Type::armor_flags: return RDF_Type::Enum;
 		case DF_Type::armor_general_flags: return RDF_Type::Enum;
 		case DF_Type::armor_properties: return RDF_Type::Struct;
@@ -181,10 +182,12 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::army_controller: return RDF_Type::Struct;
 		case DF_Type::army_controller__T_type: return RDF_Type::Enum;
 		case DF_Type::army_controller__T_unk_64: return RDF_Type::Union;
+		case DF_Type::army_controller_invasion: return RDF_Type::Struct;
+		case DF_Type::army_controller_invasion__T_anon_1: return RDF_Type::Compound;
 		case DF_Type::army_controller_sub11: return RDF_Type::Struct;
 		case DF_Type::army_controller_sub11__T_anon_3: return RDF_Type::Compound;
 		case DF_Type::army_controller_sub12: return RDF_Type::Struct;
-		case DF_Type::army_controller_sub12__T_anon_4: return RDF_Type::Compound;
+		case DF_Type::army_controller_sub12__T_unk_4: return RDF_Type::Compound;
 		case DF_Type::army_controller_sub13: return RDF_Type::Struct;
 		case DF_Type::army_controller_sub13__T_anon_4: return RDF_Type::Compound;
 		case DF_Type::army_controller_sub14: return RDF_Type::Struct;
@@ -195,15 +198,13 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::army_controller_sub17: return RDF_Type::Struct;
 		case DF_Type::army_controller_sub18: return RDF_Type::Struct;
 		case DF_Type::army_controller_sub1: return RDF_Type::Struct;
-		case DF_Type::army_controller_sub24: return RDF_Type::Struct;
-		case DF_Type::army_controller_sub2: return RDF_Type::Struct;
-		case DF_Type::army_controller_sub2__T_anon_5: return RDF_Type::Compound;
 		case DF_Type::army_controller_sub4: return RDF_Type::Struct;
 		case DF_Type::army_controller_sub4__T_unk_2: return RDF_Type::Bitfield;
 		case DF_Type::army_controller_sub5: return RDF_Type::Struct;
 		case DF_Type::army_controller_sub6: return RDF_Type::Struct;
 		case DF_Type::army_controller_sub7: return RDF_Type::Struct;
 		case DF_Type::army_controller_sub7__T_anon_3: return RDF_Type::Compound;
+		case DF_Type::army_controller_villain_visiting: return RDF_Type::Struct;
 		case DF_Type::army_flags: return RDF_Type::Enum;
 		case DF_Type::art_facet_type: return RDF_Type::Enum;
 		case DF_Type::art_image: return RDF_Type::Struct;
@@ -228,6 +229,8 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::assign_trade_status__T_status: return RDF_Type::Enum;
 		case DF_Type::assume_identity_mode: return RDF_Type::Enum;
 		case DF_Type::barrack_preference_category: return RDF_Type::Enum;
+		case DF_Type::battlefield: return RDF_Type::Struct;
+		case DF_Type::battlefield__T_sapient_deaths: return RDF_Type::Compound;
 		case DF_Type::belief_system: return RDF_Type::Struct;
 		case DF_Type::biome_type: return RDF_Type::Enum;
 		case DF_Type::block_burrow: return RDF_Type::Struct;
@@ -260,6 +263,10 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::body_template: return RDF_Type::Struct;
 		case DF_Type::bp_appearance_modifier: return RDF_Type::Struct;
 		case DF_Type::breath_attack_type: return RDF_Type::Enum;
+		case DF_Type::breed: return RDF_Type::Struct;
+		case DF_Type::breed__T_unk_18: return RDF_Type::Compound;
+		case DF_Type::breed__T_unk_28: return RDF_Type::Compound;
+		case DF_Type::breed__T_unk_8: return RDF_Type::Compound;
 		case DF_Type::build_req_choice_genst: return RDF_Type::Class;
 		case DF_Type::build_req_choice_specst: return RDF_Type::Class;
 		case DF_Type::build_req_choice_type: return RDF_Type::Enum;
@@ -491,11 +498,13 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::creature_variation: return RDF_Type::Struct;
 		case DF_Type::creature_variation_convert_tag: return RDF_Type::Struct;
 		case DF_Type::crime: return RDF_Type::Struct;
+		case DF_Type::crime__T_convict_data: return RDF_Type::Compound;
 		case DF_Type::crime__T_counterintelligence: return RDF_Type::Compound;
 		case DF_Type::crime__T_flags: return RDF_Type::Bitfield;
 		case DF_Type::crime__T_mode: return RDF_Type::Enum;
 		case DF_Type::crime__T_punishment: return RDF_Type::Compound;
 		case DF_Type::crime__T_reports: return RDF_Type::Compound;
+		case DF_Type::crime__T_victim_data: return RDF_Type::Compound;
 		case DF_Type::crime_type: return RDF_Type::Enum;
 		case DF_Type::cultural_identity: return RDF_Type::Struct;
 		case DF_Type::cultural_identity__T_anon_1: return RDF_Type::Compound;
@@ -714,14 +723,12 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::general_ref_contains_itemst: return RDF_Type::Class;
 		case DF_Type::general_ref_contains_unitst: return RDF_Type::Class;
 		case DF_Type::general_ref_creaturest: return RDF_Type::Class;
-		case DF_Type::general_ref_creaturest__T_flags: return RDF_Type::Bitfield;
 		case DF_Type::general_ref_dance_formst: return RDF_Type::Class;
 		case DF_Type::general_ref_entity: return RDF_Type::Class;
 		case DF_Type::general_ref_entity_art_image: return RDF_Type::Class;
 		case DF_Type::general_ref_entity_itemownerst: return RDF_Type::Class;
 		case DF_Type::general_ref_entity_offeredst: return RDF_Type::Class;
 		case DF_Type::general_ref_entity_popst: return RDF_Type::Class;
-		case DF_Type::general_ref_entity_popst__T_flags: return RDF_Type::Bitfield;
 		case DF_Type::general_ref_entity_stolenst: return RDF_Type::Class;
 		case DF_Type::general_ref_feature_layerst: return RDF_Type::Class;
 		case DF_Type::general_ref_historical_eventst: return RDF_Type::Class;
@@ -858,9 +865,12 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::historical_entity__T_unknown1d: return RDF_Type::Compound;
 		case DF_Type::historical_entity__T_unknown1e: return RDF_Type::Compound;
 		case DF_Type::historical_entity__T_unknown2: return RDF_Type::Compound;
+		case DF_Type::historical_entity__T_unknown2__T_unk28: return RDF_Type::Compound;
+		case DF_Type::historical_entity__T_unknown2__T_unk29: return RDF_Type::Compound;
 		case DF_Type::historical_entity_type: return RDF_Type::Enum;
 		case DF_Type::historical_figure: return RDF_Type::Struct;
 		case DF_Type::historical_figure__T_unk_fc: return RDF_Type::Compound;
+		case DF_Type::historical_figure__T_unk_v47_2: return RDF_Type::Compound;
 		case DF_Type::historical_figure__T_vague_relationships: return RDF_Type::Compound;
 		case DF_Type::historical_figure_info: return RDF_Type::Struct;
 		case DF_Type::historical_figure_info__T_books: return RDF_Type::Compound;
@@ -950,6 +960,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::history_event_collection: return RDF_Type::Class;
 		case DF_Type::history_event_collection_abductionst: return RDF_Type::Class;
 		case DF_Type::history_event_collection_battlest: return RDF_Type::Class;
+		case DF_Type::history_event_collection_battlest__T_attacker_merc_type: return RDF_Type::Enum;
 		case DF_Type::history_event_collection_beast_attackst: return RDF_Type::Class;
 		case DF_Type::history_event_collection_ceremonyst: return RDF_Type::Class;
 		case DF_Type::history_event_collection_competitionst: return RDF_Type::Class;
@@ -1088,6 +1099,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::history_event_tradest: return RDF_Type::Class;
 		case DF_Type::history_event_type: return RDF_Type::Enum;
 		case DF_Type::history_event_war_attacked_sitest: return RDF_Type::Class;
+		case DF_Type::history_event_war_attacked_sitest__T_unk_1: return RDF_Type::Enum;
 		case DF_Type::history_event_war_destroyed_sitest: return RDF_Type::Class;
 		case DF_Type::history_event_war_field_battlest: return RDF_Type::Class;
 		case DF_Type::history_event_war_peace_acceptedst: return RDF_Type::Class;
@@ -1106,7 +1118,11 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::hospital_supplies: return RDF_Type::Struct;
 		case DF_Type::hospital_supplies__T_supplies_needed: return RDF_Type::Bitfield;
 		case DF_Type::identity: return RDF_Type::Struct;
+		case DF_Type::identity___union1: return RDF_Type::Union;
+		case DF_Type::identity_type: return RDF_Type::Enum;
 		case DF_Type::identity_unk_94: return RDF_Type::Struct;
+		case DF_Type::image_set: return RDF_Type::Struct;
+		case DF_Type::image_set__T_unk_vec1: return RDF_Type::Compound;
 		case DF_Type::improvement_type: return RDF_Type::Enum;
 		case DF_Type::incident: return RDF_Type::Struct;
 		case DF_Type::incident__T_data: return RDF_Type::Union;
@@ -1201,6 +1217,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::interface_button_constructionst: return RDF_Type::Class;
 		case DF_Type::interface_key: return RDF_Type::Enum;
 		case DF_Type::interfacest: return RDF_Type::Struct;
+		case DF_Type::interrogation_report: return RDF_Type::Struct;
 		case DF_Type::invasion_info: return RDF_Type::Struct;
 		case DF_Type::invasion_info__T_flags: return RDF_Type::Bitfield;
 		case DF_Type::item: return RDF_Type::Class;
@@ -1325,6 +1342,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::itemdef: return RDF_Type::Class;
 		case DF_Type::itemdef_ammost: return RDF_Type::Class;
 		case DF_Type::itemdef_armorst: return RDF_Type::Class;
+		case DF_Type::itemdef_flags: return RDF_Type::Enum;
 		case DF_Type::itemdef_foodst: return RDF_Type::Class;
 		case DF_Type::itemdef_glovesst: return RDF_Type::Class;
 		case DF_Type::itemdef_helmst: return RDF_Type::Class;
@@ -1379,6 +1397,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::job_subtype_surgery: return RDF_Type::Enum;
 		case DF_Type::job_type: return RDF_Type::Enum;
 		case DF_Type::job_type_class: return RDF_Type::Enum;
+		case DF_Type::justification: return RDF_Type::Enum;
 		case DF_Type::kitchen_exc_type: return RDF_Type::Enum;
 		case DF_Type::kitchen_pref_flag: return RDF_Type::Bitfield;
 		case DF_Type::knowledge_scholar_category_flag: return RDF_Type::Struct;
@@ -1417,7 +1436,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::loadgame_save_info: return RDF_Type::Struct;
 		case DF_Type::local_population: return RDF_Type::Struct;
 		case DF_Type::local_population__T_flags: return RDF_Type::Bitfield;
-		case DF_Type::local_population___union3: return RDF_Type::Union;
+		case DF_Type::local_population___union4: return RDF_Type::Union;
 		case DF_Type::location_scribe_jobs: return RDF_Type::Struct;
 		case DF_Type::machine: return RDF_Type::Class;
 		case DF_Type::machine__T_components: return RDF_Type::Compound;
@@ -1610,6 +1629,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::region_map_entry__T_clouds: return RDF_Type::Bitfield;
 		case DF_Type::region_map_entry__T_wind: return RDF_Type::Bitfield;
 		case DF_Type::region_map_entry_flags: return RDF_Type::Enum;
+		case DF_Type::region_weather: return RDF_Type::Struct;
 		case DF_Type::relationship_event: return RDF_Type::Struct;
 		case DF_Type::relationship_event_supplement: return RDF_Type::Struct;
 		case DF_Type::renderer: return RDF_Type::Class;
@@ -1734,7 +1754,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::special_mat_table: return RDF_Type::Struct;
 		case DF_Type::specific_ref: return RDF_Type::Struct;
 		case DF_Type::specific_ref__T_data: return RDF_Type::Union;
-		case DF_Type::specific_ref__T_data__T_UNIT_ITEM_WRESTLE: return RDF_Type::Compound;
+		case DF_Type::specific_ref__T_data__T_wrestle: return RDF_Type::Compound;
 		case DF_Type::specific_ref_type: return RDF_Type::Enum;
 		case DF_Type::sphere_type: return RDF_Type::Enum;
 		case DF_Type::spoils_report: return RDF_Type::Struct;
@@ -1888,7 +1908,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::ui_build_selector: return RDF_Type::Class;
 		case DF_Type::ui_hotkey: return RDF_Type::Struct;
 		case DF_Type::ui_hotkey__T_cmd: return RDF_Type::Enum;
-		case DF_Type::ui_hotkey___union1: return RDF_Type::Union;
+		case DF_Type::ui_hotkey___union2: return RDF_Type::Union;
 		case DF_Type::ui_look_list: return RDF_Type::Struct;
 		case DF_Type::ui_look_list__T_items: return RDF_Type::Compound;
 		case DF_Type::ui_look_list__T_items__T_data: return RDF_Type::Union;
@@ -1918,6 +1938,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::ui_unit_view_mode__T_value: return RDF_Type::Enum;
 		case DF_Type::uint16_t: return RDF_Type::DFArray;
 		case DF_Type::uint8_t: return RDF_Type::DFArray;
+		case DF_Type::undead_flags: return RDF_Type::Bitfield;
 		case DF_Type::uniform_category: return RDF_Type::Enum;
 		case DF_Type::uniform_flags: return RDF_Type::Bitfield;
 		case DF_Type::uniform_indiv_choice: return RDF_Type::Bitfield;
@@ -2033,7 +2054,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::unit_poetic_skill: return RDF_Type::Struct;
 		case DF_Type::unit_preference: return RDF_Type::Struct;
 		case DF_Type::unit_preference__T_type: return RDF_Type::Enum;
-		case DF_Type::unit_preference___union2: return RDF_Type::Union;
+		case DF_Type::unit_preference___union3: return RDF_Type::Union;
 		case DF_Type::unit_relationship_type: return RDF_Type::Enum;
 		case DF_Type::unit_report_type: return RDF_Type::Enum;
 		case DF_Type::unit_request: return RDF_Type::Struct;
@@ -2053,6 +2074,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::unit_wound__T_flags: return RDF_Type::Bitfield;
 		case DF_Type::unit_wound__T_parts: return RDF_Type::Compound;
 		case DF_Type::units_other_id: return RDF_Type::Enum;
+		case DF_Type::unk_scale_enum_type: return RDF_Type::Enum;
 		case DF_Type::vague_relationship_type: return RDF_Type::Enum;
 		case DF_Type::value_type: return RDF_Type::Enum;
 		case DF_Type::vehicle: return RDF_Type::Struct;
@@ -2253,8 +2275,6 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::world__T_formations: return RDF_Type::Compound;
 		case DF_Type::world__T_identities: return RDF_Type::Compound;
 		case DF_Type::world__T_image_sets: return RDF_Type::Compound;
-		case DF_Type::world__T_image_sets__T_all: return RDF_Type::Compound;
-		case DF_Type::world__T_image_sets__T_all__T_anon_3: return RDF_Type::Compound;
 		case DF_Type::world__T_incidents: return RDF_Type::Compound;
 		case DF_Type::world__T_interaction_instances: return RDF_Type::Compound;
 		case DF_Type::world__T_items: return RDF_Type::Compound;
@@ -2316,15 +2336,8 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::world_data__T_constructions: return RDF_Type::Compound;
 		case DF_Type::world_data__T_feature_map: return RDF_Type::Compound;
 		case DF_Type::world_data__T_feature_map__T_features: return RDF_Type::Compound;
-		case DF_Type::world_data__T_field_battles: return RDF_Type::Compound;
-		case DF_Type::world_data__T_field_battles__T_sapient_deaths: return RDF_Type::Compound;
 		case DF_Type::world_data__T_flip_latitude: return RDF_Type::Enum;
-		case DF_Type::world_data__T_freakish_weather: return RDF_Type::Compound;
 		case DF_Type::world_data__T_mountain_peaks: return RDF_Type::Compound;
-		case DF_Type::world_data__T_unk_150: return RDF_Type::Compound;
-		case DF_Type::world_data__T_unk_150__T_unk_18: return RDF_Type::Compound;
-		case DF_Type::world_data__T_unk_150__T_unk_28: return RDF_Type::Compound;
-		case DF_Type::world_data__T_unk_150__T_unk_8: return RDF_Type::Compound;
 		case DF_Type::world_data__T_unk_274: return RDF_Type::Compound;
 		case DF_Type::world_data__T_unk_274__T_unk_10: return RDF_Type::Compound;
 		case DF_Type::world_data__T_unk_482f8: return RDF_Type::Compound;
@@ -2346,7 +2359,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::world_object_data__T_offloaded_items: return RDF_Type::Compound;
 		case DF_Type::world_object_data__T_unk_94: return RDF_Type::Compound;
 		case DF_Type::world_population: return RDF_Type::Struct;
-		case DF_Type::world_population___union4: return RDF_Type::Union;
+		case DF_Type::world_population___union5: return RDF_Type::Union;
 		case DF_Type::world_population_ref: return RDF_Type::Struct;
 		case DF_Type::world_population_type: return RDF_Type::Enum;
 		case DF_Type::world_raws: return RDF_Type::Struct;
@@ -2412,6 +2425,7 @@ RDF_Type df_2_rdf(DF_Type p_df_type)
 		case DF_Type::worldgen_range_type: return RDF_Type::Enum;
 		case DF_Type::worldgen_region_type: return RDF_Type::Enum;
 		case DF_Type::wound_curse_info: return RDF_Type::Struct;
+		case DF_Type::wound_curse_info__T_timing: return RDF_Type::Compound;
 		case DF_Type::wound_damage_flags1: return RDF_Type::Bitfield;
 		case DF_Type::wound_damage_flags2: return RDF_Type::Bitfield;
 		case DF_Type::wound_effect_type: return RDF_Type::Enum;
